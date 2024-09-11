@@ -1,0 +1,17 @@
+.DS_Store
+*.docx
+*.jpg
+*.png
+*.zip
+.vscode/
+*.log
+*.conf
+*.rc
+*.key
+simv.daidir/
+nWaveLog/
+csrc/
+BSSLib.lib++/
+simv
+*.svf
+*.drawio
