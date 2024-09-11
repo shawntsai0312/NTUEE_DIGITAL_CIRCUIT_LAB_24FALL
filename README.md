@@ -22,7 +22,7 @@ git push
 2. download
 
 ```shell
-git checkout <branchName>
+git checkout <branch name>
 git fetch
 git merge
 ```
@@ -30,30 +30,30 @@ git merge
 3. new branch
 
 ```shell
-git checkout -b <branchName>
+git checkout -b <branch name>
 ```
 
 4. switch branch
 
 ```shell
-git checkout <branchName>
+git checkout <branch name>
 ```
 
 5. delete a local branch
 
  ```shell
- git branch -D <branchName>
+ git branch -D <branch name>
  ```
 
 6. delete a remote branch
 
  ```shell
- git push origin --delete <remoteBranchName>
+ git push origin --delete <remote branch name>
  ```
 
 7. merge branch
 
 ```shell
-git checkout master
-git merge <branchName>
+git checkout main
+git merge <branch to be merged>
 ```
