@@ -23,7 +23,7 @@ git push
 
 ```shell
 git fetch origin <branchName>
-git checkout master
+git checkout <branchName>
 git merge origin/<branchName>
 ```
 
