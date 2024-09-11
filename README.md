@@ -22,9 +22,9 @@ git push
 2. download
 
 ```shell
-git fetch origin <branchName>
 git checkout <branchName>
-git merge origin/<branchName>
+git fetch
+git merge
 ```
 
 3. new branch
