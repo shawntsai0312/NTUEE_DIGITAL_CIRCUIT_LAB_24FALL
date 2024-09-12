@@ -37,6 +37,18 @@ dv -no_gui
 read_sverilog Top.sv
 ```
 
+### Signal Explanation
+
+| Signal  | Explanation |
+|---------|-------------|
+| i_clk   | clock       |
+| i_rst_n | reset       |
+| i_start | start (after reset) |
+| i_stop  | freeze it   |
+| i_show  | show the last result |
+| o_random_out | output |
+
+
 ## Lab 2 RSA 解碼器
 
 ## Lab 3 簡單的錄音機

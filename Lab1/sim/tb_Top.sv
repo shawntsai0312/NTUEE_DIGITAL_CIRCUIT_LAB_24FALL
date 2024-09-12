@@ -50,7 +50,7 @@ initial begin
     i_stop = 0;
 
 	// new operaion for result 2
-	repeat(3) @(negedge i_clk);
+	repeat(100) @(negedge i_clk);
     i_rst_n = 0;
     @(negedge i_clk) i_rst_n = 1; 
     repeat(3) @(negedge i_clk);
@@ -67,11 +67,11 @@ initial begin
 	// show result 1
 	repeat(3) @(negedge i_clk);
 	i_show = 1;
-	repeat(50) @(negedge i_clk);
+	repeat(2) @(negedge i_clk);
 	i_show = 0;
 
 	// new operaion for result 3
-	repeat(3) @(negedge i_clk);
+	repeat(100) @(negedge i_clk); // wait for showing result 1
     i_rst_n = 0;
     @(negedge i_clk) i_rst_n = 1; 
     repeat(3) @(negedge i_clk);
@@ -80,9 +80,9 @@ initial begin
     i_start = 0;
 
 	// show result 2
-	repeat(1000) @(negedge i_clk);
+	repeat(1000) @(negedge i_clk); // wait for the system to stop
 	i_show = 1;
-	repeat(50) @(negedge i_clk);
+	repeat(2) @(negedge i_clk);
 	i_show = 0;
 end
 

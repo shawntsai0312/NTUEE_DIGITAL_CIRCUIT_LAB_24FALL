@@ -58,7 +58,7 @@ always_comb begin
 		else 		state_w = (counter_r == S_SLOW_PERIOD) ? S_DONE : S_SLOW;
 	end
 	S_DONE:   state_w = i_show ? S_SHOW : S_DONE;
-	S_SHOW:   state_w = (counter_r == S_SHOW_PERIOD) ? S_IDLE : S_SHOW;
+	S_SHOW:   state_w = (counter_r == S_SHOW_PERIOD) ? S_DONE : S_SHOW;
 	endcase
 end
 
@@ -98,7 +98,7 @@ always_comb begin
 	S_DONE: lastResult_w = i_show ? o_random_out_r : lastResult_r;
 	S_SHOW: lastResult_w = (counter_r == S_SHOW_PERIOD) ? o_random_out_r : lastResult_r;
 	endcase
-	if(!i_rst_n) lastResult_w = o_random_out_r;
+	// if(!i_rst_n) lastResult_w = o_random_out_r;
 end
 
 // output transition
