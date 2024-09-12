@@ -4,12 +4,23 @@
 
 ## Lab 1 亂數產生器
 
+### Before Running
+
+```shell
+cd Lab1/sim/
+source tool.sh
+```
+
 ### How To Run Simulation
 
 ```shell
 cd Lab1/sim/
 source run.sh
+nWave &
 ```
+
+1. open sim/Lab1_test.fsdb
+2. select desired signals
 
 ## Lab 2 RSA 解碼器
 
