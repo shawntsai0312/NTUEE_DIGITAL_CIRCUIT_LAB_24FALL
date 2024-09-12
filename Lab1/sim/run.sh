@@ -1,0 +1,1 @@
+vcs tb_Top.sv ./../src/Top.sv -full64 -R -debug_access+all -sverilog +access+rw
