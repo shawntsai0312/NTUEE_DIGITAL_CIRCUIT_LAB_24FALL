@@ -7,7 +7,7 @@
 ### Before Running
 
 ```shell
-cd Lab1/sim/
+cd Lab1/sim
 source tool.sh
 ```
 
@@ -28,6 +28,14 @@ source tool.sh
 
 3. open nWave and open the file `sim/Lab1_test.fsdb`
 4. select desired signals
+
+### How To Check Registers' Type
+
+```shell
+cd Lab1/src
+dv -no_gui
+read_sverilog Top.sv
+```
 
 ## Lab 2 RSA 解碼器
 
