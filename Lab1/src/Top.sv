@@ -21,28 +21,29 @@ logic state_r, state_w;
 assign o_random_out = o_random_out_r;
 
 // ===== Combinational Circuits =====
+
+// state transition
 always_comb begin
-	// Default Values
-	o_random_out_w = o_random_out_r;
 	state_w        = state_r;
 
-	// FSM
 	case(state_r)
 	S_IDLE: begin
 		if (i_start) begin
 			state_w = S_PROC;
-			o_random_out_w = 4'd15;
 		end
 	end
 
 	S_PROC: begin
 		if (i_start) begin
 			state_w = (o_random_out_r == 4'd10) ? S_IDLE : state_w;
-			o_random_out_w = (o_random_out_r == 4'd10) ? 4'd1 : (o_random_out_r - 4'd1);
 		end
 	end
-
 	endcase
+end
+
+// random number generator
+always_comb begin
+	o_random_out_w = (state_r == S_PROC) ? $urandom_range(0, 16) : 4'd0;
 end
 
 // ===== Sequential Circuits =====
