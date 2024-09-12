@@ -6,6 +6,8 @@ parameter	cycle = 100.0;
 
 logic 		i_clk;
 logic 		i_rst_n, i_start;
+logic       i_stop;
+logic       i_show;
 logic [3:0] o_random_out;
 
 initial i_clk = 0;
@@ -15,6 +17,8 @@ Top top0(
 	.i_clk(i_clk),
 	.i_rst_n(i_rst_n),
 	.i_start(i_start),
+	.i_stop(i_stop),
+	.i_show(i_show),
 	.o_random_out(o_random_out)
 );
 
@@ -24,22 +28,46 @@ initial begin
 end
 
 initial begin	
-	i_clk 	= 0;
-	i_rst_n = 1;
-	i_start	= 0;
+    i_clk 	= 0;
+    i_rst_n = 1;
+    i_start	= 0;
+	i_stop  = 0;
+	i_show  = 0;
 
-	@(negedge i_clk);
-	@(negedge i_clk);
-	@(negedge i_clk) i_rst_n = 0;
-	@(negedge i_clk) i_rst_n = 1; 
+    repeat(3) @(negedge i_clk);
+    i_rst_n = 0;
+    @(negedge i_clk) i_rst_n = 1; 
 
+    repeat(3) @(negedge i_clk);
+    i_start = 1;
+    repeat(2) @(negedge i_clk);
+    i_start = 0;
 
-	@(negedge i_clk);
-	@(negedge i_clk);
-	@(negedge i_clk);
-	@(negedge i_clk) i_start = 1;
-	@(negedge i_clk);
-	@(negedge i_clk) i_start = 0;
+	// first stop
+	repeat(491) @(negedge i_clk);
+	i_stop = 1;
+	repeat(2) @(negedge i_clk);
+    i_stop = 0;
+
+	repeat(3) @(negedge i_clk);
+    i_rst_n = 0;
+    @(negedge i_clk) i_rst_n = 1; 
+
+    repeat(3) @(negedge i_clk);
+    i_start = 1;
+    repeat(2) @(negedge i_clk);
+    i_start = 0;
+
+	// second stop
+	repeat(182) @(negedge i_clk);
+	i_stop = 1;
+	repeat(2) @(negedge i_clk);
+    i_stop = 0;
+
+	repeat(3) @(negedge i_clk);
+	i_show = 1;
+	repeat(50) @(negedge i_clk);
+	i_show = 0;
 end
 
 initial #(cycle*10000000) $finish;
