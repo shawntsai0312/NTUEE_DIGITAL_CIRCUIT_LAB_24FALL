@@ -34,37 +34,53 @@ initial begin
 	i_stop  = 0;
 	i_show  = 0;
 
+	// new operaion for result 1
     repeat(3) @(negedge i_clk);
     i_rst_n = 0;
     @(negedge i_clk) i_rst_n = 1; 
-
     repeat(3) @(negedge i_clk);
     i_start = 1;
     repeat(2) @(negedge i_clk);
     i_start = 0;
 
-	// first stop
+	// stop for result 1
 	repeat(491) @(negedge i_clk);
 	i_stop = 1;
 	repeat(2) @(negedge i_clk);
     i_stop = 0;
 
+	// new operaion for result 2
 	repeat(3) @(negedge i_clk);
     i_rst_n = 0;
     @(negedge i_clk) i_rst_n = 1; 
-
     repeat(3) @(negedge i_clk);
     i_start = 1;
     repeat(2) @(negedge i_clk);
     i_start = 0;
 
-	// second stop
+	// result 2
 	repeat(182) @(negedge i_clk);
 	i_stop = 1;
 	repeat(2) @(negedge i_clk);
     i_stop = 0;
 
+	// show result 1
 	repeat(3) @(negedge i_clk);
+	i_show = 1;
+	repeat(50) @(negedge i_clk);
+	i_show = 0;
+
+	// new operaion for result 3
+	repeat(3) @(negedge i_clk);
+    i_rst_n = 0;
+    @(negedge i_clk) i_rst_n = 1; 
+    repeat(3) @(negedge i_clk);
+    i_start = 1;
+    repeat(2) @(negedge i_clk);
+    i_start = 0;
+
+	// show result 2
+	repeat(1000) @(negedge i_clk);
 	i_show = 1;
 	repeat(50) @(negedge i_clk);
 	i_show = 0;

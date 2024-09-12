@@ -108,7 +108,7 @@ always_comb begin
 	temp = counter_r + 8'd1;
 	case(state_r)
 	S_FAST: begin
-		if (counter == 8'd1) o_random_out_w = 4'd0;
+		if (counter_r == 8'd1) o_random_out_w = 4'd0;
 		if (temp[0]^counter_r[0])  o_random_out_w = lfsr_r[3:0];
 	end
 	S_MEDIUM: 	if (temp[3]^counter_r[3])  o_random_out_w = lfsr_r[3:0];
