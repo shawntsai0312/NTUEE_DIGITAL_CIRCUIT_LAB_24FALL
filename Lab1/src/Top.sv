@@ -98,7 +98,6 @@ always_comb begin
 	S_DONE: lastResult_w = i_show ? o_random_out_r : lastResult_r;
 	S_SHOW: lastResult_w = (counter_r == S_SHOW_PERIOD) ? o_random_out_r : lastResult_r;
 	endcase
-	// if(!i_rst_n) lastResult_w = o_random_out_r;
 end
 
 // output transition
