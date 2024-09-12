@@ -14,7 +14,7 @@ parameter S_MEDIUM = 3'd2;
 parameter S_SLOW   = 3'd3;
 parameter S_DONE   = 3'd4;
 
-parameter SEED = 16'b1001_0001_0000_0000;
+parameter SEED = 16'b1001_0001_1001_0000;
 
 // ===== Output Buffers =====
 logic [3:0] o_random_out_r, o_random_out_w;
@@ -34,17 +34,11 @@ always_comb begin
 	state_w = state_r;
 
 	case(state_r)
-	S_IDLE: begin
-		if (i_start) state_w = S_FAST;
-		else 		 state_w = S_IDLE;
-	end
+	S_IDLE:	  state_w = i_start ? S_FAST : S_IDLE;
 	S_FAST:   state_w = (counter_r == 8'd255) ? S_MEDIUM : S_FAST;
 	S_MEDIUM: state_w = (counter_r == 8'd255) ? S_SLOW : S_MEDIUM;
 	S_SLOW:   state_w = (counter_r == 8'd255) ? S_DONE : S_SLOW;
-	S_DONE: begin
-		if (i_start) state_w = S_IDLE;
-		else 		 state_w = S_DONE;
-	end
+	S_DONE:   state_w = i_start ? S_IDLE : S_DONE;
 	endcase
 end
 
@@ -54,12 +48,8 @@ always_comb begin
 	lfsr_w = lfsr_r;
 
 	case(state_r)
-	S_IDLE: begin
-		lfsr_w = SEED;
-	end
-	S_DONE: begin
-		lfsr_w = SEED;
-	end
+	S_IDLE: lfsr_w = SEED;
+	S_DONE: lfsr_w = SEED;
 	default: begin
 		lfsr_w[15:1] = lfsr_r[14:0];
 		lfsr_w[0] = lfsr_r[15] ^ lfsr_r[14] ^ lfsr_r[12] ^ lfsr_r[3];
@@ -72,15 +62,9 @@ always_comb begin
 	counter_w = counter_r;
 
 	case(state_r)
-	S_IDLE: begin
-		counter_w = 8'd0;
-	end
-	S_DONE: begin
-		counter_w = 8'd0;
-	end
-	default: begin
-		counter_w = (counter_r == 8'd255) ? 8'd0 : counter_r + 8'd1;
-	end
+	S_IDLE:  counter_w = 8'd0;
+	S_DONE:  counter_w = 8'd0;
+	default: counter_w = (counter_r == 8'd255) ? 8'd0 : counter_r + 8'd1;
 	endcase
 end
 
@@ -90,21 +74,11 @@ always_comb begin
 	o_random_out_w = o_random_out_r;
 	temp = counter_r + 8'd1;
 	case(state_r)
-	S_IDLE: begin
-		o_random_out_w = 4'd0;
-	end
-	S_FAST: begin
-		if (temp[0]^counter_r[0])  o_random_out_w = lfsr_r[3:0];
-	end
-	S_MEDIUM: begin
-		if (temp[3]^counter_r[3])  o_random_out_w = lfsr_r[3:0];
-	end
-	S_SLOW: begin
-		if (temp[6]^counter_r[6])  o_random_out_w = lfsr_r[3:0];
-	end
-	S_DONE: begin
-		o_random_out_w = o_random_out_r;
-	end
+	S_IDLE: o_random_out_w = 4'd0;
+	S_FAST: 	if (temp[0]^counter_r[0])  o_random_out_w = lfsr_r[3:0];
+	S_MEDIUM: 	if (temp[3]^counter_r[3])  o_random_out_w = lfsr_r[3:0];
+	S_SLOW: 	if (temp[6]^counter_r[6])  o_random_out_w = lfsr_r[3:0];
+	S_DONE: o_random_out_w = o_random_out_r;
 	endcase
 end
 
