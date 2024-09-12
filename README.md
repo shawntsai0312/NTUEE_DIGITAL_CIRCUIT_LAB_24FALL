@@ -61,7 +61,7 @@ git checkout <branch>
 5. delete a local branch
 
  ```shell
- git branch -D <branch>
+ git branch -d <branch>
  ```
 
 6. delete a remote branch
