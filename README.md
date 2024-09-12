@@ -13,14 +13,21 @@ source tool.sh
 
 ### How To Run Simulation
 
-```shell
-cd Lab1/sim/
-source run.sh
-nWave &
-```
+1. open `src/Top.sv` and modify `SEED`
+    ```verilog
+    // src/Top.sv
+    parameter SEED = 16'b1000_0000_0000_0000; // it cannot be 0
+    ```
 
-1. open sim/Lab1_test.fsdb
-2. select desired signals
+2. run the following commands in the terminal
+    ```shell
+    cd Lab1/sim/
+    source run.sh
+    nWave &
+    ```
+
+3. open nWave and open the file `sim/Lab1_test.fsdb`
+4. select desired signals
 
 ## Lab 2 RSA 解碼器
 
@@ -28,50 +35,50 @@ nWave &
 
 ### Some Github Commands
 
-* Remember to save and git add, git commit before downloading
+* Remember to save and git add, git commit before doing further operations
 
 1. upload
 
-```shell
-git add .
-git commit -m "your comments"
-git push
-```
+    ```shell
+    git add .
+    git commit -m "your comments"
+    git push
+    ```
 
 2. download
 
-```shell
-git checkout <branch>
-git fetch
-git merge
-```
+    ```shell
+    git checkout <branch>
+    git fetch
+    git merge
+    ```
 
 3. new branch
 
-```shell
-git checkout -b <branch>
-```
+    ```shell
+    git checkout -b <branch>
+    ```
 
 4. switch branch
 
-```shell
-git checkout <branch>
-```
+    ```shell
+    git checkout <branch>
+    ```
 
 5. delete a local branch
 
- ```shell
- git branch -d <branch>
- ```
+    ```shell
+    git branch -d <branch>
+    ```
 
 6. delete a remote branch
 
- ```shell
- git push origin --delete <remote branch>
- ```
+    ```shell
+    git push origin --delete <remote branch>
+    ```
 
 7. merge branch
 
-```shell
-git merge <branch to be merged>
-```
+    ```shell
+    git merge <branch to be merged>
+    ```

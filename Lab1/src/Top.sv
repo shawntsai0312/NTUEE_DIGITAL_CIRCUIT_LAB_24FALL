@@ -14,7 +14,7 @@ parameter S_MEDIUM = 3'd2;
 parameter S_SLOW   = 3'd3;
 parameter S_DONE   = 3'd4;
 
-parameter SEED = 16'b1001_0000_0000_0000;
+parameter SEED = 16'b1001_0001_0000_0000;
 
 // ===== Output Buffers =====
 logic [3:0] o_random_out_r, o_random_out_w;
