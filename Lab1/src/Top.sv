@@ -19,7 +19,7 @@ parameter S_SHOW   = 3'd5;
 
 parameter SEED = 16'b1001_0001_1001_0000;
 
-// modify when uploading to FPGA, clock is 50MHz
+// modify when uploading to FPGA, clock is 50MHz, clock period is 20ns
 parameter S_FAST_PERIOD   = 8'd255;
 parameter S_MEDIUM_PERIOD = 8'd255;
 parameter S_SLOW_PERIOD   = 8'd255;
