@@ -57,7 +57,10 @@ always_comb begin
 		if(i_stop) 	state_w = S_DONE;
 		else 		state_w = (counter_r == S_SLOW_PERIOD) ? S_DONE : S_SLOW;
 	end
-	S_DONE:   state_w = i_show ? S_SHOW : S_DONE;
+	S_DONE: begin
+		if(i_start) state_w = S_FAST;
+		else		state_w = i_show ? S_SHOW : S_DONE;
+	end
 	S_SHOW:   state_w = (counter_r == S_SHOW_PERIOD) ? S_DONE : S_SHOW;
 	endcase
 end
@@ -91,11 +94,11 @@ end
 // lastResult transition
 always_comb begin
 	lastResult_w = lastResult_r;
-
-	if(lastResult_r ==4'bzzzz) lastResult_w = 4'd0;
-
 	case(state_r)
-	S_DONE: lastResult_w = i_show ? o_random_out_r : lastResult_r;
+	S_DONE: begin
+		if(i_start) lastResult_w = o_random_out_r;
+		else		lastResult_w = i_show ? o_random_out_r : lastResult_r;
+	end
 	S_SHOW: lastResult_w = (counter_r == S_SHOW_PERIOD) ? o_random_out_r : lastResult_r;
 	endcase
 end
@@ -123,9 +126,9 @@ always_ff @(posedge i_clk or negedge i_rst_n) begin
 	if (!i_rst_n) begin
 		lfsr_r 		   <= SEED;
 		counter_r	   <= 8'd0;
-		o_random_out_r <= o_random_out_w;
+		o_random_out_r <= 4'd0;
 		state_r        <= S_IDLE;
-		lastResult_r   <= o_random_out_w;
+		lastResult_r   <= 4'd0;
 	end
 	else begin
 		lfsr_r         <= lfsr_w;

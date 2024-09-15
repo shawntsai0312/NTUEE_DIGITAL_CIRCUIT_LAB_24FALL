@@ -51,9 +51,6 @@ initial begin
 
 	// new operaion for result 2
 	repeat(100) @(negedge i_clk);
-    i_rst_n = 0;
-    @(negedge i_clk) i_rst_n = 1; 
-    repeat(3) @(negedge i_clk);
     i_start = 1;
     repeat(2) @(negedge i_clk);
     i_start = 0;
@@ -72,9 +69,6 @@ initial begin
 
 	// new operaion for result 3
 	repeat(100) @(negedge i_clk); // wait for showing result 1
-    i_rst_n = 0;
-    @(negedge i_clk) i_rst_n = 1; 
-    repeat(3) @(negedge i_clk);
     i_start = 1;
     repeat(2) @(negedge i_clk);
     i_start = 0;
