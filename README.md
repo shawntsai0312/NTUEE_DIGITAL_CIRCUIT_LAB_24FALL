@@ -53,7 +53,7 @@ read_sverilog Top.sv
 
 ## Lab 3 簡單的錄音機
 
-### Some Github Commands
+## Some Github Commands
 
 * Remember to save and git add, git commit before doing further operations
 
@@ -88,7 +88,8 @@ read_sverilog Top.sv
 5. delete a local branch
 
     ```shell
-    git branch -d <branch>
+    git branch -d <branch> # for merged branches
+    git branch -D <branch> # force merging
     ```
 
 6. delete a remote branch
