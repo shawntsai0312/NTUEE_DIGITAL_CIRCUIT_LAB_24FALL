@@ -43,8 +43,8 @@ read_sverilog Top.sv
 |---------|-------------|
 | i_clk   | clock       |
 | i_rst_n | reset       |
-| i_start | start (after reset) |
-| i_stop  | freeze it   |
+| i_start | start the machine |
+| i_stop  | freeze the result |
 | i_show  | show the last result |
 | o_random_out | output |
 
