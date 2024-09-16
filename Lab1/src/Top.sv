@@ -20,10 +20,10 @@ parameter S_SHOW   = 3'd5;
 parameter SEED = 16'b1001_0001_1001_0000;
 
 // modify when uploading to FPGA, clock is 50MHz, clock period is 20ns
-parameter S_FAST_PERIOD   = 8'd255;
-parameter S_MEDIUM_PERIOD = 8'd255;
-parameter S_SLOW_PERIOD   = 8'd255;
-parameter S_SHOW_PERIOD   = 8'd15;
+parameter S_FAST_PERIOD   = 25'b1_0000_0000_0000_0000_0000_0000;
+parameter S_MEDIUM_PERIOD = 25'b1_0000_0000_0000_0000_0000_0000;
+parameter S_SLOW_PERIOD   = 25'b1_0000_0000_0000_0000_0000_0000;
+parameter S_SHOW_PERIOD   = 25'b1_0000_0000_0000_0000_0000_0000;
 
 // ===== Output Buffers =====
 logic [3:0] o_random_out_r, o_random_out_w;
@@ -31,7 +31,7 @@ logic [3:0] o_random_out_r, o_random_out_w;
 // ===== Registers & Wires =====
 logic [2:0] state_r, state_w;
 logic [15:0] lfsr_r, lfsr_w; // taps = 15, 14, 12, 3
-logic [7:0] counter_r, counter_w;
+logic [24:0] counter_r, counter_w;
 logic [3:0] lastResult_r, lastResult_w;
 
 // ===== Output Assignments =====
@@ -85,9 +85,9 @@ always_comb begin
 	counter_w = counter_r;
 
 	case(state_r)
-	S_IDLE:  counter_w = 8'd0;
-	S_DONE:  counter_w = 8'd0;
-	default: counter_w = (counter_r == 8'd255) ? 8'd0 : counter_r + 8'd1;
+	S_IDLE:  counter_w = 25'd0;
+	S_DONE:  counter_w = 25'd0;
+	default: counter_w = (counter_r == 25'b1_0000_0000_0000_0000_0000_0000) ? 25'd0 : counter_r + 25'd1;
 	endcase
 end
 
@@ -104,17 +104,14 @@ always_comb begin
 end
 
 // output transition
-logic [8:0] temp;
+logic [24:0] temp;
 always_comb begin
 	o_random_out_w = o_random_out_r;
-	temp = counter_r + 8'd1;
+	temp = counter_r + 25'd1;
 	case(state_r)
-	S_FAST: begin
-		if (counter_r == 8'd1) o_random_out_w = 4'd0;
-		if (temp[0]^counter_r[0])  o_random_out_w = lfsr_r[3:0];
-	end
-	S_MEDIUM: 	if (temp[3]^counter_r[3])  o_random_out_w = lfsr_r[3:0];
-	S_SLOW: 	if (temp[6]^counter_r[6])  o_random_out_w = lfsr_r[3:0];
+	S_FAST: 	if (temp[18]^counter_r[18])  o_random_out_w = lfsr_r[3:0];
+	S_MEDIUM: 	if (temp[20]^counter_r[20])  o_random_out_w = lfsr_r[3:0];
+	S_SLOW: 	if (temp[22]^counter_r[22])  o_random_out_w = lfsr_r[3:0];
 	S_DONE: o_random_out_w = i_show ? lastResult_r : o_random_out_r;
 	S_SHOW: o_random_out_w = (counter_r == S_SHOW_PERIOD) ? lastResult_r : o_random_out_r;
 	endcase
@@ -125,7 +122,7 @@ always_ff @(posedge i_clk or negedge i_rst_n) begin
 	// reset
 	if (!i_rst_n) begin
 		lfsr_r 		   <= SEED;
-		counter_r	   <= 8'd0;
+		counter_r	   <= 25'b0_0000_0000_0000_0000_0000_0000;;
 		o_random_out_r <= 4'd0;
 		state_r        <= S_IDLE;
 		lastResult_r   <= 4'd0;
