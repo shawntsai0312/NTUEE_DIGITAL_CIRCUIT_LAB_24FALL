@@ -50,13 +50,13 @@ initial begin
     i_stop = 0;
 
 	// new operaion for result 2
-	repeat(100) @(negedge i_clk);
+	repeat(25'b1_0000_0000_0000_0000_0000_0000) @(negedge i_clk);
     i_start = 1;
     repeat(2) @(negedge i_clk);
     i_start = 0;
 
 	// result 2
-	repeat(182) @(negedge i_clk);
+	repeat(181) @(negedge i_clk);
 	i_stop = 1;
 	repeat(2) @(negedge i_clk);
     i_stop = 0;
