@@ -4,50 +4,8 @@
 
 ## Lab 1 亂數產生器
 
-### Before Running
-
-```shell
-cd Lab1/sim
-source tool.sh
-```
-
-### How To Run Simulation
-
-1. open `src/Top.sv` and modify `SEED`
-    ```verilog
-    // src/Top.sv
-    parameter SEED = 16'b1000_0000_0000_0000; // it cannot be 0
-    ```
-
-2. run the following commands in the terminal
-    ```shell
-    cd Lab1/sim/
-    source run.sh
-    nWave &
-    ```
-
-3. open nWave and open the file `sim/Lab1_test.fsdb`
-4. select desired signals
-
-### How To Check Registers' Type
-
-```shell
-cd Lab1/src
-dv -no_gui
-read_sverilog Top.sv
-```
-
-### Signal Explanation
-
-| Signal  | Explanation |
-|---------|-------------|
-| i_clk   | clock       |
-| i_rst_n | reset       |
-| i_start | start the machine |
-| i_stop  | freeze the result |
-| i_show  | show the last result |
-| o_random_out | output |
-
+ - [Problem](./Lab1/doc/Lab1_lecture.pdf)
+ - [Tutorial](./Lab1/README.md)
 
 ## Lab 2 RSA 解碼器
 

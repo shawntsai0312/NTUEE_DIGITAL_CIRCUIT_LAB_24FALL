@@ -1,169 +1,69 @@
-# Lab1 Guideline
-## Synthesizable Verilog
-In Verilog, only a subset of syntax can be compiled to hardware,
-and we call them the *synthesizable* code.
-Here is some guidelines about the recommended synthesizable code.
+# Lab 1 亂數產生器
 
-## Register and the Sequential Block
-The ONLY way you should use to generate registers is:
+### Before Running
 
-    always_ff @(posedge clk or negedge rst_n) begin
-      if (!rst_n) begin
-        a_r <= 1'b0;
-        b_r <= '0;
-      end
-      else begin
-        a_r <= a_w;
-        b_r <= b_w;
-      end
-    end
+```shell
+cd Lab1/sim
+source tool.sh
+```
 
-## Register (Sequential Blocks) and Combinational Blocks
-If you follow the X\_r and X\_w naming conventions,
-always keep in mind that X\_r is a register.
-And NEVER use X\_r in the left hand side of combinational blocks.
+### How To Run Simulation
 
-    always_comb begin
-      a_r = XXX ? ZZZ : YYY; // very possibly wrong
-    end
-    assign a_r = AAA ? BBB : CCC; // very possibly wrong
+1. open `src/Top.sv` and modify the following periods for shorter simulations
+    ```verilog
+    // src/Top.sv
+    parameter S_PROCESS_PERIOD = 26'b10_0000_0000_0000_0000_0000_0000;
+    parameter S_SHOW_PERIOD   = 26'b01_0000_0000_0000_0000_0000_0000;
+    ```
 
-Simliarly, also always keep in mind that X\_w is usually not a register.
-NEVER use X\_w in the left hand side of sequential blocks.
-And be careful when X\_w appears in right hand side of combinational blocks.
-
-    always_comb begin
-      a_w = b_w + 1; // possibly wrong
-    end
-    always_ff @(posedge clk or negedge rst_n) if (!rst_n)
-      a_w <= 0; // definitely wrong
-    else if (cond) begin
-      a_w <= ...; // definitely wrong
-    end
-
-## A Working Example
-Compile (Ctrl+L) the Top module below and program it to DE2-115.
-Guess and observe what will happen?
-
-    module Top (
-        input        i_clk,
-        input        i_rst_n,
-        input        i_start,
-        output [3:0] o_random_out
-    );
-
-    // ===== States =====
-    parameter S_IDLE = 1'b0;
-    parameter S_PROC = 1'b1;
-
-    // ===== Output Buffers =====
-    logic [3:0] o_random_out_r, o_random_out_w;
-
-    // ===== Registers & Wires =====
-    logic state_r, state_w;
-
-    // ===== Output Assignments =====
-    assign o_random_out = o_random_out_r;
-
-    // ===== Combinational Circuits =====
-    always_comb begin
-       // Default Values
-       o_random_out_w = o_random_out_r;
-       state_w        = state_r;
-
-       // FSM
-       case(state_r)
-       S_IDLE: begin
-          if (i_start) begin
-             state_w = S_PROC;
-             o_random_out_w = 4'd15;
-          end
-       end
-
-       S_PROC: begin
-          if (i_start) begin
-             state_w = (o_random_out_r == 4'd10) ? S_IDLE : state_w;
-             o_random_out_w = (o_random_out_r == 4'd10) ? 4'd1 : (o_random_out_r - 4'd1);
-          end
-       end
-
-       endcase
-    end
-
-    // ===== Sequential Circuits =====
-    always_ff @(posedge i_clk or negedge i_rst_n) begin
-       // reset
-       if (!i_rst_n) begin
-          o_random_out_r <= 4'd0;
-          state_r        <= S_IDLE;
-       end
-       else begin
-          o_random_out_r <= o_random_out_w;
-          state_r        <= state_w;
-       end
-    end
-
-    endmodule
-
-First, press *Key1* to reset and the dispay would show red "00". 
-If you press *Key0* when display shows "00", it will become "15".
-Every subsequent *Key0* press will decrease the number by 1 until "10" is reached.
-Press *Key0* then the number would become "01".
-Another press will start the countdown again from "15".
-
-# FAQ
-## My Verilog Pass the Simulation, but It Doesn't Work.
-Again, in Verilog, only a subset of syntax can be compiled to hardware.
-If you see any WARNING about *Combinational Loop* or *Infered Latch*,
-then you should modify your source code.
-
-Or you can use nLint to check your Verilog (see also appendix).
-If you pass the simulation but encounter these warnings/errors,
-please double check your code.
-
-* 22011 Combinational Loop
-* 22013 Asynchronous Loop
-* 22014 Synchronous Loop
-* 22051 (Verilog) Generated Reset
-* 22052 (Verilog) Generated Clock
-* 22082 Port Not Connected
-* 23003 Inferred Latch
-* 23006 (Verilog) Incomplete Case Expression with Default Clause
-* 23007 (Verilog) Case Statement Not Fully Specified
-* 25001 Signal with No Driver
-
-## Compile Fails at Fitter/Generate Program File Stage
-If synthesis passes but you encounter a weird error,
-please follow these steps:
-
-* (in the left panel) Hierarchy
-* (right click) Device
-* (button) Device and pin options
-* Dual-Purpose pins
-* nCEO: Choose *Use as regular I/O*
-
-# Appendix
-## File Structure
-
-* src/DE2\_115
-	* All files related to the FPGA
-* include/
-	* Verilog files which only contain include lines
-	* Not necessary for Quartus
-* sim/ and lint/
-	* Working directories
-
-## Spyglass
-Verilog coding style checking
-
-    spyglass &
-
-## Simulation
-Simulate the core file(s)
-
+2. run the following commands in the terminal
+    ```shell
     cd Lab1/sim/
-    vcs tb_Top.sv ./../src/Top.sv -full64 -R -debug_access+all -sverilog +access+rw
-
-And you can use nWave to check the signals of your Verilog code.
-
+    source run.sh
     nWave &
+    ```
+
+3. open nWave and open the file `sim/Lab1_test.fsdb`
+4. select desired signals
+
+### How To Check Registers' Type
+
+```shell
+cd Lab1/src
+dv -no_gui
+read_sverilog Top.sv
+```
+
+### Signal, Button Explanation
+
+| Button  | Signal  | Explanation |
+|---------|---------|-------------|
+| none    | i_clk   | clock       |
+| key1    | i_rst_n | reset       |
+| key0    | i_start | start the machine |
+| key2    | i_stop  | freeze the result |
+| key3    | i_show  | show the last result |
+| none    | o_random_out | output |
+
+### State Transistion Explanation
+
+![state](./doc/state.png)
+
+1. Initial state is `S_IDLE`. Pressing `key0` will start the machine and go to state `S_FAST`
+2. There are three processing state, which are `S_FAST`, `S_MEDIUM` ,and `S_SLOW`. Pressing `key2` will interrupt all three states and got to state `S_DONE`, meaning that we have stop the machine and freezed the result.
+3. After the result is out, the machine is now at `S_DONE`. Pressing `key3` will go to `S_SHOW` and display the previous result. Pressing `key0` will go to `S_FAST` and start the next operaion.
+4. If we do nothing when the machine is running, it will change state after several cycles. The four transitions are
+   1. `S_FAST` -> `S_MEDIUM`, need $2^{25}$ cycles
+   2. `S_MEDIUM` -> `S_SLOW`, need $2^{25}$ cycles
+   3. `S_SLOW` -> `S_DONE`, need $2^{25}$ cycles
+   4. `S_SHOW` -> `S_DONE`, need $2^{24}$ cycles
+5. Pressing `key1` will reset the machine.
+
+### Pseudo Random Number Generation Explanaion
+
+We implement the machine by 16-bit XOR LFSR.
+
+ - Feedback polynomial is $x^{16}+x^{15}+x^{13}+x^{14}+1$
+ - SEED is set to $2^{15}$ when pressing `key1`, and it will increase $1$ every cycle. When it equals to $0$ it will reset to $2^{15}$
+
+[Reference](https://en.wikipedia.org/wiki/Linear-feedback_shift_register)
