@@ -7,6 +7,15 @@
  - [Problem](./Lab1/doc/Lab1_lecture.pdf)
  - [Tutorial](./Lab1/README.md)
 
+### Functions
+
+1. 隨機產生0~15的亂數
+2. 以七段顯示器顯示
+3. 數字跳動頻率逐漸變慢
+4. 最後停在一個數字上
+5. 跳動中途擷取亂數
+6. 記憶前次亂數結果
+
 ## Lab 2 RSA 解碼器
 
 ## Lab 3 簡單的錄音機
