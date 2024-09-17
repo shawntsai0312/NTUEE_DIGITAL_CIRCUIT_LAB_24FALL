@@ -9,12 +9,15 @@
 
 ### Functions
 
-1. 隨機產生0~15的亂數
-2. 以七段顯示器顯示
-3. 數字跳動頻率逐漸變慢
-4. 最後停在一個數字上
-5. 跳動中途擷取亂數
-6. 記憶前次亂數結果
+- Basic
+  1. 隨機產生0~15的亂數
+  2. 以七段顯示器顯示
+  3. 數字跳動頻率逐漸變慢
+  4. 最後停在一個數字上
+   
+- Bonus
+  1. 跳動中途擷取亂數
+  2. 記憶前次亂數結果
 
 ## Lab 2 RSA 解碼器
 
@@ -56,7 +59,7 @@
 
     ```shell
     git branch -d <branch> # for merged branches
-    git branch -D <branch> # force merging
+    git branch -D <branch> # force deleting
     ```
 
 6. delete a remote branch
