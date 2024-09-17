@@ -65,5 +65,33 @@ We implement the machine by 16-bit XOR LFSR.
 
  - Feedback polynomial is $x^{16}+x^{15}+x^{13}+x^{14}+1$
  - SEED is set to $2^{15}$ when pressing `key1`, and it will increase $1$ every cycle. When it equals to $0$ it will reset to $2^{15}$
+ - Output the last four bit as the result
 
 [Reference](https://en.wikipedia.org/wiki/Linear-feedback_shift_register)
+
+### Display Changing Rate Explanation
+
+| State  | Change Period |
+|--------|--------------|
+| `S_FAST` | $2^{19}$ clock cycles |
+| `S_MEDIUM` | $2^{21}$ clock cycles |
+| `S_SLOW` | $2^{23}$ clock cycles |
+
+Modify the period at
+
+```verilog
+// output transition
+logic [COUNTER_BITS-1:0] temp;
+always_comb begin
+	o_random_out_w = o_random_out_r;
+	temp = counter_r + COUNTER_INC;
+	case(state_r)
+	S_IDLE: o_random_out_w = o_random_out_r +1;
+	S_FAST: 	if (temp[19]^counter_r[19])  o_random_out_w = lfsr_r[3:0];
+	S_MEDIUM: 	if (temp[21]^counter_r[21])  o_random_out_w = lfsr_r[3:0];
+	S_SLOW: 	if (temp[23]^counter_r[23])  o_random_out_w = lfsr_r[3:0];
+	S_DONE: o_random_out_w = i_show ? lastResult_r : o_random_out_r;
+	S_SHOW: o_random_out_w = (counter_r == S_SHOW_PERIOD) ? lastResult_r : o_random_out_r;
+	endcase
+end
+```
