@@ -1,7 +1,5 @@
 .DS_Store
 *.docx
-*.jpg
-*.png
 *.zip
 .vscode/
 *.log
