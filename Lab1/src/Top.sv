@@ -71,11 +71,6 @@ end
 
 // SEED transition
 always_comb begin
-	// SEED_w = SEED_r;
-	// case(state_r)
-	// S_IDLE: SEED_w = (SEED_r == 16'b0)? 16'b1000_0000_0000_0000 : SEED_r + 1;
-	// default: SEED_w = SEED_r;
-	// endcase
 	SEED_w = (SEED_r == 16'b0)? 16'b1000_0000_0000_0000 : SEED_r + 1;
 end
 
@@ -83,7 +78,6 @@ end
 // taps = 15, 14, 12, 3
 always_comb begin
 	lfsr_w = lfsr_r;
-
 	case(state_r)
 	S_IDLE: lfsr_w = SEED_r;
 	S_DONE: lfsr_w = SEED_r;
@@ -97,7 +91,6 @@ end
 // counter transition
 always_comb begin
 	counter_w = counter_r;
-
 	case(state_r)
 	S_IDLE:  counter_w = COUNTER_LOWER;
 	S_DONE:  counter_w = COUNTER_LOWER;

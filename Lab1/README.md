@@ -3,7 +3,7 @@
 ### Before Running
 
 ```shell
-cd Lab1/sim
+cd Lab1/sim/
 source tool.sh
 ```
 
@@ -29,7 +29,7 @@ source tool.sh
 ### How To Check Registers' Type
 
 ```shell
-cd Lab1/src
+cd Lab1/src/
 dv -no_gui
 read_sverilog Top.sv
 ```
@@ -63,7 +63,7 @@ read_sverilog Top.sv
 
 We implement the machine by 16-bit XOR LFSR.
 
- - Feedback polynomial is $x^{16}+x^{15}+x^{13}+x^{4}+1$
+ - Feedback polynomial is $x^{16}+x^{15}+x^{13}+x^{14}+1$
  - SEED is set to $2^{15}$ when pressing `key1`, and it will increase $1$ every cycle. When it equals to $0$ it will reset to $2^{15}$
  - Output the last four bit as the result
 
