@@ -1,1 +1,0 @@
-vcs ../src/tb_verilog/tb.sv ../src/Rsa256Core.sv -full64 -R -debug_access+all -sverilog +access+rw

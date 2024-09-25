@@ -1,0 +1,1 @@
+vcs test_wrapper.sv PipelineCtrl.v PipelineTb.v ../Rsa256Wrapper.sv ../Rsa256Core.sv -full64 -R -debug_access+all -sverilog +access+rw

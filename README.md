@@ -19,7 +19,10 @@
   1. 跳動中途擷取亂數
   2. 記憶前次亂數結果
 
-## Lab 2 RSA 解碼器
+## Lab 2 RSA256 解密機
+
+ - [Problem](./Lab2/doc/Lab2_lecture.pdf)
+ <!-- - [Tutorial](./Lab1/README.md) -->
 
 ## Lab 3 簡單的錄音機
 

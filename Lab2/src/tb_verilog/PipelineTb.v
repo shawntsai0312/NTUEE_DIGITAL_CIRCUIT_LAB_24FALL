@@ -108,7 +108,7 @@ always @* dat = rdy ? dat_r: X;
 
 always @(posedge clk or negedge rst_n) begin
 	if(!rst_n) begin
-		$rewind(fp);
+		$fseek(fp, 0, 0);
 		$fscanf(fp, FMT, dat_r);
 	end else if (ack) begin
 		if ($feof(fp)) begin
@@ -155,7 +155,7 @@ endtask
 
 always @(posedge clk or negedge rst_n) begin
 	if(!rst_n) begin
-		$rewind(fp);
+		$fseek(fp, 0, 0);
 		error = 0;
 		received = 0;
 		if ($feof(fp)) begin

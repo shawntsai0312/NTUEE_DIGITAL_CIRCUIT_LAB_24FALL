@@ -1,1 +1,0 @@
-vcs ../src/tb_verilog/test_wrapper.sv ../src/tb_verilog/PipelineCtrl.v ../src/tb_verilog/PipelineTb.v ../src/Rsa256Wrapper.sv ../src/Rsa256Core.sv -full64 -R -debug_access+all -sverilog +access+rw
