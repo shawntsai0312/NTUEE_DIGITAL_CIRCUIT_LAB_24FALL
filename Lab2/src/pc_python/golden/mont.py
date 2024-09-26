@@ -1,9 +1,9 @@
 import random
 
 # 隨機生成 a 和 b
-a = random.randint(0, 2**256 - 1)
-b = random.randint(0, 2**256 - 1)
-n = random.randint(1, 2**256 - 1)  # 確保 n 不為 0
+# a = random.randint(0, 2**256 - 1)
+# b = random.randint(0, 2**256 - 1)
+# n = random.randint(1, 2**256 - 1)  # 確保 n 不為 0
 
 # a = 6
 # b = pow(2,255)
@@ -13,13 +13,19 @@ n = random.randint(1, 2**256 - 1)  # 確保 n 不為 0
 # b = 0xfc4a83b9b222ed377613e58d47bea58fdaa22fae4249d95d9b330e38faa35bf1
 # n = 0x95089b4fb8c6b6be2cd7d5db17682ab39a974ea5ffe8b77ee810b68917f431a6
 
+# a = 0x1
+n = 0xca35_86e7_ea48_5f3b_0a22_2a4c_79f7_dd12_e853_88ec_cdee_4035_940d_774c_029c_f831
+a = 0x34736a22e7f1e3b8be59f3603c4d8b1a64f21d770743a9318c0cebcdb67b1eff
+b = 0x34736a22e7f1e3b8be59f3603c4d8b1a64f21d770743a9318c0cebcdb67b1eff
+
+
 def montgomery_algorithm(N, a, b):
     m = 0
     
     # Loop over the 256 bits of a
     for i in range(256):
         print(f"counter: {i}")
-        print(f"o_result_w: {hex(m)}")
+        print(f"o_result_r: {hex(m)}")
         # Check if the i-th bit of a is 1
         if (a >> i) & 1:
             m = m + b
@@ -36,7 +42,7 @@ def montgomery_algorithm(N, a, b):
         # Right shift m (m = m // 2)
         m = m // 2
         
-        print(f"o_result_r: {hex(m)}")
+        print(f"o_result_w: {hex(m)}")
         print('\n')
     
     # Final adjustment if m >= N

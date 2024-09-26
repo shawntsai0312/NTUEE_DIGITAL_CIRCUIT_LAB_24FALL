@@ -1,0 +1,1 @@
+python3 -u core.py>core.log 2>&1

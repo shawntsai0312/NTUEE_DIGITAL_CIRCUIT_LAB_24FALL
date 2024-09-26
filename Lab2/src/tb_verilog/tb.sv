@@ -25,8 +25,12 @@ module tb;
 	initial begin
 		$fsdbDumpfile("lab2.fsdb");
 		$fsdbDumpvars;
-		fp_e = $fopen("../pc_python/golden/enc1.bin", "rb");
-		fp_d = $fopen("../pc_python/golden/dec1.txt", "rb");
+		// fp_e = $fopen("../pc_python/golden/enc1.bin", "rb");
+		// fp_d = $fopen("../pc_python/golden/dec1.txt", "rb");
+		// fp_e = $fopen("../pc_python/golden/enc2.bin", "rb");
+		// fp_d = $fopen("../pc_python/golden/dec2.txt", "rb");
+		fp_e = $fopen("../pc_python/golden/enc3.bin", "rb");
+		fp_d = $fopen("../pc_python/golden/dec3.txt", "rb");
 		rst = 1;
 		#(2*CLK)
 		rst = 0;
@@ -48,6 +52,13 @@ module tb;
 			$display("dec  %2d = %64x", i, decrypted_data);
 			$display("gold %2d = %64x", i, golden);
 			$display("=========");
+			if(decrypted_data != golden) begin
+				$display("Mismatch at %d", i);
+				$finish;
+			end
+			else begin
+				$display("Case %d pass", i);
+			end
 		end
 		$finish;
 	end

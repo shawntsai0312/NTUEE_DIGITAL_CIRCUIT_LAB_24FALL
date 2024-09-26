@@ -48,7 +48,7 @@ always_comb begin
 	case(state_r)
 	S_IDLE: begin	  
 		state_w = i_start ? S_FAST : S_IDLE;
-			end
+	end
 	S_FAST: begin
 		if(i_stop) 	state_w = S_DONE;
 		else 		state_w = (counter_r == S_PROCESS_PERIOD) ? S_MEDIUM : S_FAST;
