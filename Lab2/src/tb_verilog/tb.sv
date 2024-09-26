@@ -25,16 +25,18 @@ module tb;
 	initial begin
 		$fsdbDumpfile("lab2.fsdb");
 		$fsdbDumpvars;
-		// fp_e = $fopen("../pc_python/golden/enc1.bin", "rb");
-		// fp_d = $fopen("../pc_python/golden/dec1.txt", "rb");
+		fp_e = $fopen("../pc_python/golden/enc1.bin", "rb");
+		fp_d = $fopen("../pc_python/golden/dec1.txt", "rb");
 		// fp_e = $fopen("../pc_python/golden/enc2.bin", "rb");
 		// fp_d = $fopen("../pc_python/golden/dec2.txt", "rb");
-		fp_e = $fopen("../pc_python/golden/enc3.bin", "rb");
-		fp_d = $fopen("../pc_python/golden/dec3.txt", "rb");
+		// fp_e = $fopen("../pc_python/golden/enc3.bin", "rb");
+		// fp_d = $fopen("../pc_python/golden/dec3.txt", "rb");
 		rst = 1;
 		#(2*CLK)
 		rst = 0;
-		for (int i = 0; i < 5; i++) begin
+		for (int i = 0; i < 7; i++) begin // enc1
+		// for (int i = 0; i < 9; i++) begin // enc2
+		// for (int i = 0; i < 18; i++) begin // enc3
 			for (int j = 0; j < 10; j++) begin
 				@(posedge clk);
 			end
@@ -64,7 +66,7 @@ module tb;
 	end
 
 	initial begin
-		#(500000*CLK)
+		#(2500000*CLK)
 		$display("Too slow, abort.");
 		$finish;
 	end

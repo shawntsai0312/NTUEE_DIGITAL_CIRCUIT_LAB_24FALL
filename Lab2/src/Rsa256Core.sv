@@ -42,9 +42,9 @@ module Rsa256Core (
 	reg [1:0] state_r, state_w;
 	reg [8:0] counter_r, counter_w; // 0 to 256
 
-	reg mont_start_r, mont_start_w;			// mont_start_r used on both mont_Nmt and mont_Ntt, they will start and finish at the same time
+	reg mont_start_r, mont_start_w;	// mont_start_r used on both mont_Nmt and mont_Ntt, they will start and finish at the same time
 
-	reg [255:0] d_r, d_w;					// d_r[i] used to determine whether to update m
+	reg [255:0] d_r, d_w;			// d_r[i] used to determine whether to update m
 
 	reg [255:0] t_r, t_w;
 	reg [255:0] m_r, m_w;
@@ -161,9 +161,7 @@ module Rsa256Core (
 		m_w = m_r;
 		case(state_r)
 			S_PREP: m_w = 256'd1;
-			S_MONT: begin
-				if(mont_Nmt_finished && d_r[0])	m_w = mont_Nmt_result;
-			end
+			S_MONT: if(mont_Nmt_finished && d_r[0])	m_w = mont_Nmt_result;
 		endcase
 	end
 
