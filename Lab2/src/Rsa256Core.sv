@@ -9,25 +9,24 @@ module Rsa256Core (
 	output         o_finished
 	);
 
-/*-------------------------------------------- submodule RsaMont tester --------------------------------------------*/
-	// wire [255:0] test_a, test_b, test_n;
-	// assign test_a = 256'hee3ca49fc758f320488c88d171560086a2d558079716b6a0bda315be47e025ba;
-	// assign test_b = 256'hf91444d973e52a870d8900fa5648d11bda75686b4d15c6db0b8458d5d7d050d7;
-	// assign test_n = 256'hc81f20fc0fe23f89dcf7296bbca44b3380ed1679ce2ad6477b5572929eff1324;
+	/*-------------------------------------------- submodule RsaMont tester --------------------------------------------*/
+		// wire [255:0] test_a, test_b, test_n;
+		// assign test_a = 256'hee3ca49fc758f320488c88d171560086a2d558079716b6a0bda315be47e025ba;
+		// assign test_b = 256'hf91444d973e52a870d8900fa5648d11bda75686b4d15c6db0b8458d5d7d050d7;
+		// assign test_n = 256'hc81f20fc0fe23f89dcf7296bbca44b3380ed1679ce2ad6477b5572929eff1324;
 
-	// logic [255:0] test_result;
-	// logic test_finished;
-	// RsaMont mont(
-	// 	.i_clk(i_clk),
-	// 	.i_rst(i_rst),
-	// 	.i_start(i_start),
-	// 	.i_a(test_a),
-	// 	.i_b(test_b),
-	// 	.i_n(test_n),
-	// 	.o_result(test_result),
-	// 	.o_finished(test_finished)
-	// );
-/*-------------------------------------------- submodule RsaMont tester --------------------------------------------*/
+		// logic [255:0] test_result;
+		// logic test_finished;
+		// RsaMont mont(
+		// 	.i_clk(i_clk),
+		// 	.i_rst(i_rst),
+		// 	.i_start(i_start),
+		// 	.i_a(test_a),
+		// 	.i_b(test_b),
+		// 	.i_n(test_n),
+		// 	.o_result(test_result),
+		// 	.o_finished(test_finished)
+		// );
 
 	// operations for RSA256 decryption
 	// namely, the Montgomery algorithm
