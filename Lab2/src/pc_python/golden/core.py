@@ -81,12 +81,12 @@ def rsa256_mont(N, y, d):
 
 # Example parameters to test the functions
 N = 0xCA3586E7EA485F3B0A222A4C79F7DD12E85388ECCDEE4035940D774C029CF831  # Example modulus
-# y = 0xc6b662ecb173c53cc7bb4212057f9c0ba283e000b98c9dcf5feaee7d6c933dfb
-y= 0x9d29a982563bf87a5814dfc70059a3772cf98a11099f093a2e95d5a874836dd8
+y = 0xc6b662ecb173c53cc7bb4212057f9c0ba283e000b98c9dcf5feaee7d6c933dfb
+# y = 0x9d29a982563bf87a5814dfc70059a3772cf98a11099f093a2e95d5a874836dd8
 d = 0xB6ACE0B14720169839B15FD13326CF1A1829BEAFC37BB937BEC8802FBCF46BD9  # Example exponent
 # Debug run with the same parameters
 result = rsa256_mont(N, y, d)
-print(f"n: {hex(N)}")
+print(f"\nn: {hex(N)}")
 print(f"y: {hex(y)}")
 print(f"d: {hex(d)}")
 print(f"Result: {hex(result)}")

@@ -38,3 +38,13 @@ cd Lab2/src/
 dv -no_gui
 read_sverilog Rsa256Core.sv
 read_sverilog Rsa256Wrapper.sv
+```
+
+wrapper_input.txt
+288 lines, 3 tests, each test 96 lines with 32 lines for n,d,enc each
+first 32 lines are n
+secode 32 lines are d
+last 7*32 lines are enc
+
+wrapper_output.txt
+217=7*31 tests

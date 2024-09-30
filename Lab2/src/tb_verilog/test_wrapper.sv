@@ -193,7 +193,7 @@ module tb;
 		avm_rst_n = 0;
 		#100;
 		avm_rst_n = 1;
-		for (int i = 0; i < 1000000; ++i) begin
+		for (int i = 0; i < 2000000; ++i) begin
 			@(posedge avm_clk)
 			if (u_pp_rnd_from232.count == 0 && u_pp_rnd_to232.count <= EXTRA_ACK) begin
 				for (int j = 0; j < 100; ++j) begin
