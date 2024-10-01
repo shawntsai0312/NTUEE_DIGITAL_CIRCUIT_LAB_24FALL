@@ -208,3 +208,12 @@ dv -no_gui
 read_sverilog Rsa256Core.sv
 read_sverilog Rsa256Wrapper.sv
 ```
+
+
+## Part 4: How To Run
+
+1. Press reset button on FPGA
+2. Run python
+    ```shell
+    python3 rs232.py <YOUR COM> # modify the COM
+    ```
