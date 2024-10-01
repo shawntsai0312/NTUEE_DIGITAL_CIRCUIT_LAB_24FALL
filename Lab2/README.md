@@ -111,7 +111,7 @@ do `montgomery_algorithm(N, a, b)`
 
 do `rsa256_mont(N, y, d)`
 
-![state machine](./doc/core.png)
+![state machine](./doc/core%20state.png)
 
 * `S_IDLE`: wait for master module call
 * `S_PREP`: do `modulo_product(N, a)`. if done, go to `S_MONT`
@@ -195,6 +195,10 @@ do `rsa256_mont(N, y, d)`
    2. second 32 lines are d
    3. last 32*7 lines are 7 encoded data
 2. Output: `wrapper_output.txt` contains 217 lines, which is 7 decoded data. Each data contains 31 lines
+
+### State Machine
+
+![state](./doc/wrapper%20state.png)
 
 ## Part 3: How To Check Registers' Type
 

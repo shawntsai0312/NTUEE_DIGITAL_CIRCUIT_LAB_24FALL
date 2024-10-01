@@ -93,7 +93,7 @@ module Rsa256Core (
 	assign o_finished = o_finished_r;
 
 	// state transition
-	always_comb begin
+	always @(*) begin
 		state_w = state_r;
 		case(state_r)
 			// S_IDLE:  state_w = i_start ? S_PREP : S_IDLE;
@@ -120,7 +120,7 @@ module Rsa256Core (
 	end
 
 	// counter logic
-	always_comb begin
+	always @(*) begin
 		counter_w = counter_r;
 		case(state_r)
 			S_IDLE: counter_w = 0;
@@ -129,7 +129,7 @@ module Rsa256Core (
 	end
 
 	// mont start logic
-	always_comb begin
+	always @(*) begin
 		mont_start_w = 1'b0;
 		case(state_r)
 			S_PREP: mont_start_w = prep_finished;
@@ -138,7 +138,7 @@ module Rsa256Core (
 	end
 
 	// d logic
-	always_comb begin
+	always @(*) begin
 		d_w = d_r;
 		case(state_r)
 			S_IDLE: if(i_start) d_w = i_d;
@@ -147,7 +147,7 @@ module Rsa256Core (
 	end
 
 	// t logic
-	always_comb begin
+	always @(*) begin
 		t_w = t_r;
 		case(state_r)
 			S_PREP: if(prep_finished) t_w = prep_result;
@@ -156,7 +156,7 @@ module Rsa256Core (
 	end
 
 	// output / m logic
-	always_comb begin
+	always @(*) begin
 		m_w = m_r;
 		case(state_r)
 			S_PREP: m_w = 256'd1;
@@ -165,7 +165,7 @@ module Rsa256Core (
 	end
 
 	// output signal logic
-	always_comb begin
+	always @(*) begin
 		o_finished_w = 1'b0;
 		case(state_r)
 			S_CALC: if(counter_r[8]) o_finished_w = 1'b1;
@@ -221,7 +221,7 @@ module RsaPrep (
 	assign o_finished = o_finished_r;
 
 	// state transition
-	always_comb begin
+	always @(*) begin
 		state_w = state_r;
 		case(state_r)
 			// S_IDLE:  state_w = (i_start)? 			S_CALC : S_IDLE;
@@ -239,7 +239,7 @@ module RsaPrep (
 	end
 
 	// counter logic
-	always_comb begin
+	always @(*) begin
 		counter_w = counter_r;
 		case(state_r)
 			S_CALC:  counter_w = counter_r + 1;
@@ -250,7 +250,7 @@ module RsaPrep (
 	// output logic
 	// assume i_a < i_n
 	logic [256:0] a_leftshift_1;
-	always_comb begin
+	always @(*) begin
 		o_result_w[255:0] = o_result_r[255:0];
 		a_leftshift_1 = o_result_r << 1;
 		case(state_r)
@@ -263,7 +263,7 @@ module RsaPrep (
 	end
 
 	// output signal logic
-	always_comb begin
+	always @(*) begin
 		o_finished_w = 1'b0;
 		case(state_r)
 			S_CALC: if(counter_r == 255) o_finished_w = 1'b1;
@@ -316,7 +316,7 @@ module RsaMont (
 	assign o_finished = o_finished_r;
 
 	// state transition
-	always_comb begin
+	always @(*) begin
 		state_w = state_r;
 		case(state_r)
 			// S_IDLE:  state_w = (i_start)? 			S_CALC : S_IDLE;
@@ -334,7 +334,7 @@ module RsaMont (
 	end
 
 	// counter logic
-	always_comb begin
+	always @(*) begin
 		counter_w = counter_r;
 		case(state_r)
 			S_CALC:  counter_w = counter_r + 1;
@@ -343,7 +343,7 @@ module RsaMont (
 	end
 
 	// a_r logic
-	always_comb begin
+	always @(*) begin
 		a_w = a_r;
 		case(state_r)
 			S_IDLE: if(i_start) a_w = i_a;
@@ -355,7 +355,7 @@ module RsaMont (
 	logic [257:0] temp1; // the first result of m after the first if
 	logic [257:0] temp2; // the second result of m after the second if
 	logic [256:0] temp3; // do the right shift
-	always_comb begin
+	always @(*) begin
 		o_result_w = o_result_r;
 		if(counter_r == 0) o_result_w = 257'd0;
 		case(state_r)
@@ -378,7 +378,7 @@ module RsaMont (
 	end
 
 	// output signal logic
-	always_comb begin
+	always @(*) begin
 		o_finished_w = 1'b0;
 		case(state_r)
 			S_CALC: if(counter_r == 255) o_finished_w = 1'b1;

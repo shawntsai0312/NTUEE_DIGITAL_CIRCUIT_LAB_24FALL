@@ -83,7 +83,7 @@ task StartWrite;
 endtask
 
 // state transition
-always_comb begin
+always @(*) begin
     state_w = state_r;
     case(state_r)
         S_QUERY_RX: begin
@@ -112,7 +112,7 @@ always_comb begin
 end
 
 // bytes counter logic
-always_comb begin
+always @(*) begin
     bytes_counter_w = bytes_counter_r;
     case(state_r)
         S_READ: begin
@@ -129,7 +129,7 @@ always_comb begin
 end
 
 // core inputs logic
-always_comb begin
+always @(*) begin
     n_w = n_r;
     d_w = d_r;
     enc_w = enc_r;
@@ -149,7 +149,7 @@ always_comb begin
 end
 
 // core control logic
-always_comb begin
+always @(*) begin
     rsa_start_w = 0;
     case(state_r)
         S_READ: begin
@@ -161,7 +161,7 @@ always_comb begin
 end
 
 // core outputs logic
-always_comb begin
+always @(*) begin
     dec_w = dec_r;
     case(state_r)
         S_CALCULATE: dec_w = rsa_dec;
@@ -170,7 +170,7 @@ always_comb begin
 end
 
 // AVM interface logic
-always_comb begin
+always @(*) begin
     StartRead(STATUS_BASE);
     case(state_r)
         S_QUERY_RX: begin
