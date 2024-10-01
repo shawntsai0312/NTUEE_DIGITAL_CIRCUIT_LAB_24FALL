@@ -1,3 +1,7 @@
+# Example usage
+n = 0xCA3586E7EA485F3B0A222A4C79F7DD12E85388ECCDEE4035940D774C029CF831  # Define N as hexadecimal
+enc = extract_hex_numbers('enc1.txt')
+
 def extract_hex_numbers(file_path):
     with open(file_path, 'r') as file:
         hex_data = file.readlines()
@@ -25,12 +29,6 @@ def calculate_mod_exp(x, n):
     # Calculate (x * 2^256) % N
     result = (x * pow(2, 256, n)) % n
     return result
-
-# Example usage
-n = 0xCA3586E7EA485F3B0A222A4C79F7DD12E85388ECCDEE4035940D774C029CF831  # Define N as hexadecimal
-
-enc = extract_hex_numbers('enc1.txt')
-enc_step_1 = []
 
 def split_string(s):
     return '_'.join([s[max(i-4, 0):i] for i in range(len(s), 0, -4)][::-1])
