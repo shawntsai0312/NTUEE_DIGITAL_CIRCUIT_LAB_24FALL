@@ -105,7 +105,7 @@ always_comb begin
         end
         S_WRITE: begin
             if (avm_waitrequest)                state_w = S_WRITE;
-            else if (bytes_counter_r == 30)     state_w = S_QUERY_RX; // not 31, only 247 bits to output
+            else if (bytes_counter_r == 30)     state_w = S_QUERY_RX; // only 248 bits to output, not 256
             else                                state_w = S_QUERY_TX;
         end
     endcase
@@ -122,7 +122,7 @@ always_comb begin
         end
         S_WRITE: begin
             if (avm_waitrequest)            bytes_counter_w = bytes_counter_r;      // S_WRITE
-            else if(bytes_counter_r == 30)  bytes_counter_w = 64;                   // S_QUERY_RX, no need to read n and d again !!!, not 31, only 247 bits to output
+            else if(bytes_counter_r == 30)  bytes_counter_w = 64;                   // S_QUERY_RX, no need to read n and d again !!!
             else                            bytes_counter_w = bytes_counter_r + 1;  // WRITE OUT
         end
     endcase

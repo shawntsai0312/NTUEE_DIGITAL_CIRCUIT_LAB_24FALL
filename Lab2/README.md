@@ -123,55 +123,55 @@ do `rsa256_mont(N, y, d)`
 #### RsaPrep
 
 1. modify n and input file
-   ```python
-   # src/pc_python/golden/prep.py
+    ```python
+    # src/pc_python/golden/prep.py
 
-   # Example usage
+    # Example usage
     n = 0xCA3586E7EA485F3B0A222A4C79F7DD12E85388ECCDEE4035940D774C029CF831  # Define N as hexadecimal
     enc = extract_hex_numbers('enc1.txt')
-   ```
+    ```
 2. run python
-   ```shell
-   cd src/pc_python/golden
-   source prep.py
-   ```
+    ```shell
+    cd src/pc_python/golden
+    source prep.py
+    ```
 3. checkout the log at `src/pc_python/golden/prep.log`
 
 #### RsaMont
 
 1. modify n, a, b
-   ```python
-   # src/pc_python/golden/mont.py
+    ```python
+    # src/pc_python/golden/mont.py
 
-   # Example usage
+    # Example usage
     n = 0xca3586e7ea485f3b0a222a4c79f7dd12e85388eccdee4035940d774c029cf831
     a = 0x34736a22e7f1e3b8be59f3603c4d8b1a64f21d770743a9318c0cebcdb67b1eff
     b = 0x34736a22e7f1e3b8be59f3603c4d8b1a64f21d770743a9318c0cebcdb67b1eff
-   ```
+    ```
 2. run python
-   ```shell
-   cd src/pc_python/golden
-   source mont.py
-   ```
+    ```shell
+    cd src/pc_python/golden
+    source mont.py
+    ```
 3. checkout the log at `src/pc_python/golden/mont.log`
 
 #### Rsa256Core
 
 1. modify n, a, b
-   ```python
-   # src/pc_python/golden/mont.py
+    ```python
+    # src/pc_python/golden/mont.py
 
-   # Example usage
+    # Example usage
     # Example parameters to test the functions
     N = 0xCA3586E7EA485F3B0A222A4C79F7DD12E85388ECCDEE4035940D774C029CF831  # Example modulus
     y = 0xc6b662ecb173c53cc7bb4212057f9c0ba283e000b98c9dcf5feaee7d6c933dfb
     d = 0xB6ACE0B14720169839B15FD13326CF1A1829BEAFC37BB937BEC8802FBCF46BD9  # Example exponent
-   ```
+    ```
 2. run python
-   ```shell
-   cd src/pc_python/golden
-   source core.py
-   ```
+    ```shell
+    cd src/pc_python/golden
+    source core.py
+    ```
 3. checkout the log at `src/pc_python/golden/core.log`
 
 ## Part 2: Wrapper
@@ -196,7 +196,7 @@ do `rsa256_mont(N, y, d)`
    3. last 32*7 lines are 7 encoded data
 2. Output: `wrapper_output.txt` contains 217 lines, which is 7 decoded data. Each data contains 31 lines
 
-## How To Check Registers' Type
+## Part 3: How To Check Registers' Type
 
 ```shell
 cd Lab2/src/
