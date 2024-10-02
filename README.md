@@ -5,7 +5,8 @@
 ## Lab 1 亂數產生器
 
  - [Problem](./Lab1/doc/Lab1_lecture.pdf)
- - [Tutorial](./Lab1/README.md)
+ - [Intro](./Lab1/README.md)
+ - [Tutorial](https://youtu.be/d8w0doN23KI?si=Dq26wgp3Q-xypjBB)
 
 ### Functions
 
@@ -22,7 +23,15 @@
 ## Lab 2 RSA256 解密機
 
  - [Problem](./Lab2/doc/Lab2_lecture.pdf)
- <!-- - [Tutorial](./Lab1/README.md) -->
+ - [Intro](./Lab2/README.md)
+ - [Tutorial](https://youtu.be/MsHFpBeLLhE?si=C6iLQeSVo7LsV2kv)
+  
+### Functions
+
+- Basic
+  1. 進行256 bit的RSA解密
+  2. Key0 可以reset
+  3. 設計可為單次使用(每次解密前要先按reset)
 
 ## Lab 3 簡單的錄音機
 
