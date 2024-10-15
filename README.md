@@ -5,8 +5,7 @@
 ## Lab 1 亂數產生器
 
  - [Problem](./Lab1/doc/Lab1_lecture.pdf)
- - [Intro](./Lab1/README.md)
- - [Tutorial](https://youtu.be/d8w0doN23KI?si=Dq26wgp3Q-xypjBB)
+ - [Tutorial](./Lab1/README.md)
 
 ### Functions
 
@@ -23,17 +22,26 @@
 ## Lab 2 RSA256 解密機
 
  - [Problem](./Lab2/doc/Lab2_lecture.pdf)
- - [Intro](./Lab2/README.md)
- - [Tutorial](https://youtu.be/MsHFpBeLLhE?si=C6iLQeSVo7LsV2kv)
-  
+ - [Tutorial](./Lab2/README.md)
+
 ### Functions
 
 - Basic
-  1. 進行256 bit的RSA解密
-  2. Key0 可以reset
-  3. 設計可為單次使用(每次解密前要先按reset)
+  1. 進行RSA256解密
 
-## Lab 3 簡單的錄音機
+## Lab 3 數位錄音機
+
+ - [Problem](./Lab3/doc/Lab3_lecture.pdf)
+ - [Tutorial](./Lab3/README.md)
+
+### Functions
+
+- Basic
+  1. 可錄音、播放
+  2. 播放時可以暫停、停止
+  3. 取樣值為16-bit signed，可錄製時間達32秒
+  4. 需支援快速播放(2, 3, 4, 5, 6, 7, 8 倍速)以及慢速播放(1/2, 1/3, 1/4, 1/5, 1/6, 1/7, 1/8 倍速)
+  5. 慢速播放時要包含零次內插與一次內插兩種模式
 
 ## Some Github Commands
 
