@@ -128,7 +128,7 @@ AudRecorder recorder0(
 	.o_data(data_record),
 );
 
-always_comb begin
+always @(*) begin
 	// design your control here
 end
 

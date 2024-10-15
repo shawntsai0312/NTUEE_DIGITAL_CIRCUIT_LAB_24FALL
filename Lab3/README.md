@@ -3,6 +3,6 @@
 ### Before Running
 
 ```shell
-cd Lab3/src/
+cd Lab3/sim/
 source tool.sh
 ```
