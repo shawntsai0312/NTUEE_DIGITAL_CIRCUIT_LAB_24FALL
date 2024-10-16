@@ -14,24 +14,24 @@ module I2cInitializer (
     // [15:9]: register address
     // [8:0]: register data
     // checkout doc/Lab3_sup1_audiocodec.pdf for more details
-    parameter [23:0] LEFT_LINE_IN =                     24'b0011_0100_000_0000_0_1001_0111; // to register 0x00
-    parameter [23:0] RIGHT_LINE_IN =                    24'b0011_0100_000_0001_0_1001_0111; // to register 0x01
-    parameter [23:0] LEFT_HEADPHONE_OUT =               24'b0011_0100_000_0010_0_0111_1001; // to register 0x02
-    parameter [23:0] RIGHT_HEADPHONE_OUT =              24'b0011_0100_000_0011_0_0111_1001; // to register 0x03
-    parameter [23:0] ANALOGUE_AUDIO_PATH_CONTROL =      24'b0011_0100_000_0100_0_0001_0101; // to register 0x04
-    parameter [23:0] DIGITAL_AUDIO_PATH_CONTROL =       24'b0011_0100_000_0101_0_0000_0000; // to register 0x05
-    parameter [23:0] POWER_DOWN_CONTROL =               24'b0011_0100_000_0110_0_0000_0000; // to register 0x06
-    parameter [23:0] DIGITAL_AUDIO_INTERFACE_FORMAT =   24'b0011_0100_000_0111_0_0100_0010; // to register 0x07
-    parameter [23:0] SAMPLING_CONTROL =                 24'b0011_0100_000_1000_0_0001_1001; // to register 0x08
-    parameter [23:0] ACTIVE_CONTROL =                   24'b0011_0100_000_1001_0_0000_0001; // to register 0x09
-    parameter [23:0] RESET =                            24'b0011_0100_000_1111_0_0000_0000; // to register 0x0F
+    parameter [23:0] LEFT_LINE_IN                     = 24'b0011_0100_000_0000_0_1001_0111; // to register 0x00
+    parameter [23:0] RIGHT_LINE_IN                    = 24'b0011_0100_000_0001_0_1001_0111; // to register 0x01
+    parameter [23:0] LEFT_HEADPHONE_OUT               = 24'b0011_0100_000_0010_0_0111_1001; // to register 0x02
+    parameter [23:0] RIGHT_HEADPHONE_OUT              = 24'b0011_0100_000_0011_0_0111_1001; // to register 0x03
+    parameter [23:0] ANALOGUE_AUDIO_PATH_CONTROL      = 24'b0011_0100_000_0100_0_0001_0101; // to register 0x04
+    parameter [23:0] DIGITAL_AUDIO_PATH_CONTROL       = 24'b0011_0100_000_0101_0_0000_0000; // to register 0x05
+    parameter [23:0] POWER_DOWN_CONTROL               = 24'b0011_0100_000_0110_0_0000_0000; // to register 0x06
+    parameter [23:0] DIGITAL_AUDIO_INTERFACE_FORMAT   = 24'b0011_0100_000_0111_0_0100_0010; // to register 0x07
+    parameter [23:0] SAMPLING_CONTROL                 = 24'b0011_0100_000_1000_0_0001_1001; // to register 0x08
+    parameter [23:0] ACTIVE_CONTROL                   = 24'b0011_0100_000_1001_0_0000_0001; // to register 0x09
+    parameter [23:0] RESET                            = 24'b0011_0100_000_1111_0_0000_0000; // to register 0x0F
 
     /*-------------------------------------------------- FSM states --------------------------------------------------*/
-    parameter S_IDLE = 0;
+    parameter S_IDLE  = 0;
     parameter S_START = 1;
-    parameter S_SEND = 2;
-    parameter S_ACK  = 3;
-    parameter S_STOP = 4;
+    parameter S_SEND  = 2;
+    parameter S_ACK   = 3;
+    parameter S_STOP  = 4;
 
     reg [2:0] state_r, state_w;
     reg [2:0] bitcount_r, bitcount_w; // bit count for the 8-bit data (8)
