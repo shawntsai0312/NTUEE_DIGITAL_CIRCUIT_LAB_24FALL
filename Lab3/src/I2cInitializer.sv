@@ -2,18 +2,22 @@ module I2cInitializer (
     input i_rst_n,
     input i_clk,
     input i_start,
+    /*------------------------------------------- Testbench use only -------------------------------------------*/
+        // output [3:0] o_bit_counter, // testbench use only
+        // output [1:0] o_byte_counter, // testbench use only
+        // output [3:0] o_command_counter, // testbench use only
     output o_finished,
-    output o_sclk,//not yet
-    inout o_sdat,
-    output o_oen//not yet
+    output o_sclk,
+    inout io_sdat,
+    output o_oen // true for io_sdat output, false for input
 );
-
-    /*-------------------------------------------------- I2C bus signals --------------------------------------------------*/
-    // [23:17]: slave address, 0011010
-    // [16]: read/write bit, 0 for write, 1 for read
-    // [15:9]: register address
-    // [8:0]: register data
-    // checkout doc/Lab3_sup1_audiocodec.pdf for more details
+/*-------------------------------------------------- Parameters --------------------------------------------------*/
+    // Data to be sent to the audio codec
+        // [23:17]: slave address, 0011010
+        // [16]: read/write bit, 0 for write, 1 for read
+        // [15:9]: register address
+        // [8:0]: register data
+        // checkout doc/Lab3_sup1_audiocodec.pdf for more details
     parameter [23:0] LEFT_LINE_IN                     = 24'b0011_0100_000_0000_0_1001_0111; // to register 0x00
     parameter [23:0] RIGHT_LINE_IN                    = 24'b0011_0100_000_0001_0_1001_0111; // to register 0x01
     parameter [23:0] LEFT_HEADPHONE_OUT               = 24'b0011_0100_000_0010_0_0111_1001; // to register 0x02
@@ -26,71 +30,72 @@ module I2cInitializer (
     parameter [23:0] ACTIVE_CONTROL                   = 24'b0011_0100_000_1001_0_0000_0001; // to register 0x09
     parameter [23:0] RESET                            = 24'b0011_0100_000_1111_0_0000_0000; // to register 0x0F
 
-    /*-------------------------------------------------- FSM states --------------------------------------------------*/
-    parameter S_IDLE  = 0;
-    parameter S_START = 1;
-    parameter S_SEND  = 2;
-    parameter S_ACK   = 3;
-    parameter S_STOP  = 4;
+    // State
+    parameter S_IDLE  = 0; // initial state
+    parameter S_START = 1; // start signal
+    parameter S_SETUP = 2; // SCLK = 0, set SDAT
+    parameter S_SEND  = 3; // SCLK = 1, send SDAT
+    parameter S_ACK   = 4; // read SDAT when SCLK = 1
+    parameter S_STOP  = 5; // one command finished
 
+/*------------------------------------------------- registers -------------------------------------------------*/
+    // state registers
     reg [2:0] state_r, state_w;
-    reg [2:0] bitcount_r, bitcount_w; // bit count for the 8-bit data (8)
-    reg [4:0] command_r, command_w; // command count for the 10 commands  (11) 
-    //output
+
+    // counter registers
+    reg [3:0] bit_counter_r, bit_counter_w; // bit count for the 8-bit data (8)
+    reg [1:0] byte_counter_r, byte_counter_w; // byte count for the 3 bytes (3)
+    reg [3:0] command_counter_r, command_counter_w; // command count for the 10 commands  (11) 
+
+    // output registers
     reg o_finished_r, o_finished_w;
-    reg o_sclk_r, o_sclk_w;
-    reg o_oen_r, o_oen_w;
-    // data
-    reg [23:0] data_r, data_w; // data to be sent
+    reg [23:0] o_data_r, o_data_w;
 
+/*--------------------------------------------- Output assignment ---------------------------------------------*/
     assign o_finished = o_finished_r;
-    assign o_oen = o_oen_r;
-    assign o_sdat = data_r[23];
-    //bitcount_r 
-    always@(*)begin
-        bitcount_r = bitcount_w;
-        case(state_r)
-            S_SEND: begin
-                bitcount_w = bitcount_+1;
-            end
-        endcase
 
-    end
-    // command
-    always@(*)begin
-        command_w = command_r;
-        case(state_r)
-            S_STOP: begin
-                command_w = command_r + 1;
-            end
-        endcase
-    end
-    // state
+    // SCLK = 1 when not in S_SETUP or S_IDLE
+    assign o_sclk = (state_r != S_SETUP) && (state_r != S_IDLE);
+
+    assign o_oen = (state_r != S_ACK);
+    // when o_oen = 1
+        // 1. state_r = S_START, o_sdat = 0
+        // 2. state_r = S_STOP, o_sdat = 1
+        // 3. state_r = S_SEND, o_sdat = o_data_r[23]
+    wire o_sdat = (state_r == S_START) ? 1'b0 : (state_r == S_STOP) ? 1'b1 : o_data_r[23];
+    // wire o_sdat = (state_r == S_START) ? 1'b0 : (state_r == S_STOP) ? 1'b1 : (state_r == S_SEND) ? o_data_r[23] : 1'b0;
+    assign io_sdat = o_oen ? o_sdat : 1'bz;
+    // assign io_sdat = o_oen ? o_data_r[23] : 1'bz; 
+
+/*--------------------------------------------- Testbench use only --------------------------------------------*/
+    // assign o_bit_counter = bit_counter_r; // testbench use only
+    // assign o_byte_counter = byte_counter_r; // testbench use only
+    // assign o_command_counter = command_counter_r; // testbench use only
+    
+
+/*-------------------------------------------- Combinational logic --------------------------------------------*/
+    // state logic
     always@(*)begin
         state_w = state_r;
-
         case(state_r)
-            S_IDLE: begin
-                if(i_start) begin
-                    state_w = S_START;
-                end
-            end
-            S_START: begin
-                state_w = S_SEND;
-            end
-            S_SEND: begin
-                if(bitcount_w == 7) begin
-                    state_w = S_ACK;
-                end
+            S_IDLE: if(i_start) state_w = S_START;
+            S_START: state_w = S_SETUP;
+            S_SETUP: begin
+                // if(bit_counter_r == 8) begin
+                //     if(byte_counter_r == 3) state_w = S_STOP;
+                //     else                    state_w = S_ACK;
+                // end
+                // else state_w = S_SEND;
+                if(byte_counter_r == 3) state_w = S_STOP;
                 else begin
-                    state_w = S_SEND;
+                    if(bit_counter_r == 8) state_w = S_ACK;
+                    else state_w = S_SEND;
                 end
             end
-            S_ACK: begin
-                state_w = S_STOP;
-            end
+            S_SEND: state_w = S_SETUP;
+            S_ACK:  state_w = S_SETUP;
             S_STOP: begin
-                if (command_r == 9) begin
+                if (command_counter_r == 10) begin
                     state_w = S_IDLE;
                 end
                 else begin
@@ -102,127 +107,90 @@ module I2cInitializer (
             end
         endcase
     end
-    //o_finished
-    always@(*)begin
-       if(command_r == 9 && bitcount_r == 7) begin // 注意一下这里的条件
-           o_finished_w = 1;
-       end
-    end
-    //data
-    always@(*)begin
-        case(state)
-            S_START: begin
-                case(command_r)
-                    0: begin
-                        data_w = LEFT_LINE_IN;
-                    end
-                    1: begin
-                        data_w = RIGHT_LINE_IN;
-                    end
-                    2: begin
-                        data_w = LEFT_HEADPHONE_OUT;
-                    end
-                    3: begin
-                        data_w = RIGHT_HEADPHONE_OUT;
-                    end
-                    4: begin
-                        data_w = ANALOGUE_AUDIO_PATH_CONTROL;
-                    end
-                    5: begin
-                        data_w = DIGITAL_AUDIO_PATH_CONTROL;
-                    end
-                    6: begin
-                        data_w = POWER_DOWN_CONTROL;
-                    end
-                    7: begin
-                        data_w = DIGITAL_AUDIO_INTERFACE_FORMAT;
-                    end
-                    8: begin
-                        data_w = SAMPLING_CONTROL;
-                    end
-                    9: begin
-                        data_w = ACTIVE_CONTROL;
-                    end
-                    10: begin
-                        data_w = RESET;
-                    end
-                    default: begin
-                        data_w = 24'b0000_0000_000_0000_0_0000_0000;
-                    end
-                endcase
-            end
-            S_SEND: begin
-                data_w = data_r << 1;
-            end
-            
+
+    // bit counter logic
+    always @(*) begin
+        bit_counter_w = bit_counter_r;
+        case(state_r)
+            S_START: bit_counter_w = 0;
+            S_SEND:  bit_counter_w = bit_counter_r + 1;
+            S_ACK:   bit_counter_w = 0;
         endcase
     end
-    //o_sdat
-    always@(*)begin
+
+    // byte counter logic
+    always @(*) begin
+        byte_counter_w = byte_counter_r;
         case(state_r)
-            S_SEND: begin
-                case(command_r)
-                    0: begin
-                        o_sdat_w = LEFT_LINE_IN[23];
-                    end
-                    1: begin
-                        o_sdat_w = RIGHT_LINE_IN[23-bitcount_r];
-                    end
-                    2: begin
-                        o_sdat_w = LEFT_HEADPHONE_OUT[23-bitcount_r];
-                    end
-                    3: begin
-                        o_sdat_w = RIGHT_HEADPHONE_OUT[23-bitcount_r];
-                    end
-                    4: begin
-                        o_sdat_w = ANALOGUE_AUDIO_PATH_CONTROL[23-bitcount_r];
-                    end
-                    5: begin
-                        o_sdat_w = DIGITAL_AUDIO_PATH_CONTROL[23-bitcount_r];
-                    end
-                    6: begin
-                        o_sdat_w = POWER_DOWN_CONTROL[23-bitcount_r];
-                    end
-                    7: begin
-                        o_sdat_w = DIGITAL_AUDIO_INTERFACE_FORMAT[23-bitcount_r];
-                    end
-                    8: begin
-                        o_sdat_w = SAMPLING_CONTROL[23-bitcount_r];
-                    end
-                    9: begin
-                        o_sdat_w = ACTIVE_CONTROL[23-bitcount_r];
-                    end
-                    default: begin
-                        o_sdat_w = 1;
-                    end
-                endcase
-            end
-            default: begin
-                o_sdat_w = 1;
+            S_START: byte_counter_w = 0;
+            S_ACK:   byte_counter_w = byte_counter_r + 1;
+        endcase
+    end
+
+    // command counter logic
+    always @(*) begin
+        command_counter_w = command_counter_r;
+        case(state_r)
+            S_IDLE: command_counter_w = 0;
+            S_STOP: command_counter_w = command_counter_r + 1;
+        endcase
+    end
+
+    // finished logic
+    always @(*) begin
+        o_finished_w = 0;
+        case(state_r)
+            S_STOP: begin
+                if(command_counter_r == 10) o_finished_w = 1;
             end
         endcase
     end
 
-//sequential logic
+    // data logic
+    always@(*)begin
+        o_data_w = o_data_r;
+        case(state_r)
+            S_SETUP: begin
+                // set o_data_w if state_w is S_SEND
+                // S_SEND and sending the MSB of the command
+                if(bit_counter_r == 0 && byte_counter_r == 0) begin
+                    case(command_counter_r)
+                        0:  o_data_w = LEFT_LINE_IN;
+                        1:  o_data_w = RIGHT_LINE_IN;
+                        2:  o_data_w = LEFT_HEADPHONE_OUT;
+                        3:  o_data_w = RIGHT_HEADPHONE_OUT;
+                        4:  o_data_w = ANALOGUE_AUDIO_PATH_CONTROL;
+                        5:  o_data_w = DIGITAL_AUDIO_PATH_CONTROL;
+                        6:  o_data_w = POWER_DOWN_CONTROL;
+                        7:  o_data_w = DIGITAL_AUDIO_INTERFACE_FORMAT;
+                        8:  o_data_w = SAMPLING_CONTROL;
+                        9:  o_data_w = ACTIVE_CONTROL;
+                        10: o_data_w = RESET;
+                    endcase
+                end
+                // S_SEND but not sending the MSB of the command
+                else if (bit_counter_r < 8) o_data_w = o_data_r << 1; 
+            end
+        endcase
+    end
+
+/*----------------------------------------------- Sequential logic ----------------------------------------------*/
     always_ff @(posedge i_clk or negedge i_rst_n) begin
         if (!i_rst_n) begin
-            state_r <= S_IDLE;
-            bitcount_r <= 0;
-            command_r <= 0;
-            o_finished_r <= 0;
-            o_sclk_r <= 0;
-            o_sdat_r <= 0;
-            o_oen_r <= 0;
-
-        end
+            state_r             <= S_IDLE;
+            bit_counter_r       <= 0;
+            byte_counter_r      <= 0;
+            command_counter_r   <= 0;
+            o_finished_r        <= 0;
+            o_data_r            <= 0;
+        end 
         else begin
-            state_r <= state_w;
-            bitcount_r <= bitcount_w;
-            command_r <= command_w;
-            o_finished_r <= o_finished_w;
-            o_sclk_r <= o_sclk_w;
-            o_sdat_r <= o_sdat_w;
-            o_oen_r <= o_oen_w;
+            state_r             <= state_w;
+            bit_counter_r       <= bit_counter_w;
+            byte_counter_r      <= byte_counter_w;
+            command_counter_r   <= command_counter_w;
+            o_finished_r        <= o_finished_w;
+            o_data_r            <= o_data_w;
         end
     end
 endmodule
