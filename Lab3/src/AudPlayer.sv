@@ -8,9 +8,8 @@ module AudPlayer (
 );
     // state
     localparam S_IDLE = 0;
-    localparam S_HOLD = 1;
-    localparam S_TRAN = 2;
-    localparam S_WAIT = 3;
+    localparam S_TRAN = 1;
+    localparam S_WAIT = 2;
 
     // TODO: Fetch and send audio data to WM8731 using I2S protocol
     reg [1:0] state_r, state_w;
@@ -27,10 +26,9 @@ module AudPlayer (
         state_w = state_r;
         case(state_r)
             S_IDLE: begin
-                if(i_en && !i_daclrck)  state_w = S_HOLD;
+                if(i_en && !i_daclrck)  state_w = S_TRAN;
                 else                    state_w = S_IDLE;
             end
-            S_HOLD: state_w = S_TRAN; // the first cycle is hold
             S_TRAN: begin
                 if(count_r == 15)   state_w = S_WAIT;
                 else                state_w = S_TRAN;
@@ -47,7 +45,6 @@ module AudPlayer (
         count_w = count_r;
         case(state_r)
             S_IDLE: count_w = 5'd0;
-            S_HOLD: count_w = 5'd0;
             S_TRAN: count_w = count_r + 1;
         endcase
     end
@@ -56,7 +53,7 @@ module AudPlayer (
     always@(*)begin
         o_aud_dacdat_w = o_aud_dacdat_r;
         case(state_r)
-            S_HOLD: o_aud_dacdat_w = i_dac_data;
+            S_IDLE: if(i_en && !i_daclrck) o_aud_dacdat_w = i_dac_data;
             S_TRAN: o_aud_dacdat_w = o_aud_dacdat_r << 1;
         endcase
     end
