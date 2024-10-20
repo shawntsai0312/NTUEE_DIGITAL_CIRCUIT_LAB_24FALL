@@ -1,161 +1,116 @@
 module AudRecorder (
     input i_rst_n,
     input i_clk,
-    input i_lrc,
+    input i_lrc, // mic only right channel, so only need to handle when i_lrc is high
     input i_start,
-    input i_pause,
     input i_stop,
-    input i_data,
-    output [19:0] o_address,
+    input i_data, // i2s data
+    output [19:0] o_address, // total 2^20 words by 16 bits can be saved
     output [15:0] o_data,
     output [19:0] o_stop_address
 );
     // TODO: Record audio data from WM8731 and save it to SRAM
-    reg [19:0] addr_r, addr_w;
-    reg [15:0] data_r, data_w;
-    
-    assign o_address = addr_r;
-    assign o_data = data_r;
-    assign o_stop_address = addr_r;
+    localparam S_IDLE  = 0;
+    localparam S_LEFT  = 1;
+    localparam S_RIGHT = 2;
+    localparam S_STOP  = 3;
 
-    reg [2:0] state_r, state_w;
-    localparam S_IDLE = 0;
-    localparam S_WAIT = 1;
-    localparam S_DATA = 2;
-    localparam S_PAUSE = 3;
-    localparam ADD_BASE = 20'b11111111111111111111; //-1
-    reg [4:0] count_r, count_w;
-    //counters
-    always @(*)begin
-        count_w = count_r;
-        S_IDLE:begin
-            count_w = 5'd0;
-        end
-        S_WAIT:begin
-            count_w = 5'd0;
-        end
-        S_DATA:begin
-            if(i_stop)begin
-                count_w = 5'd0;
+    // localparam STOP_ADDR = 20'hfffff;
+    localparam STOP_ADDR = 20'd15; // for testing, at most 11 words
+
+    reg [1:0] state_r, state_w;
+    reg [4:0] count_r, count_w; // counter for right channel data
+
+    reg stop_r, stop_w;
+
+    reg [19:0] address_r, address_w;
+    reg [15:0] data_r, data_w;
+    reg [19:0] stop_address_r, stop_address_w;
+
+    // output assignment
+    assign o_address = address_r;
+    assign o_data = data_r;
+    assign o_stop_address = stop_address_r;
+
+    // state machine
+    always @(*) begin
+        state_w = state_r;
+        case(state_r)
+            S_IDLE: if(i_start) state_w = S_LEFT;
+            S_LEFT: begin
+                if(stop_r)      state_w = S_STOP;
+                else if(i_lrc)  state_w = S_RIGHT;
             end
-            else if(i_pause)begin
-                count_w = 5'd0;
-            end
-            else if (count_r < 5'd16)begin
-                count_w = count_r + 1;
-            end
-            else if (!i_lrc)begin
-                count_w = count_r;
-            end
-            else count_w = count_r;
-        end
-        S_PAUSE:begin
-            count_w = 5'd0;
-        end
+            S_RIGHT: if(!i_lrc) state_w = S_LEFT;
+        endcase
     end
-    //data
+
+    // counter logic
+    always @(*) begin
+        count_w = count_r;
+        case(state_r)
+            S_LEFT: count_w = 0;
+            S_RIGHT: if(count_r < 16) count_w = count_r + 1;
+        endcase
+    end
+
+    // stop logic
+    always @(*) begin
+        stop_w = stop_r;
+        case(state_r)
+            S_IDLE: stop_w = 0;
+            S_LEFT:  if(i_stop) stop_w = 1;
+            S_RIGHT: if(i_stop || (address_r == STOP_ADDR)) stop_w = 1;
+            S_STOP: stop_w = 1;
+        endcase
+    end
+
+    // address logic
+    always @(*) begin
+        address_w = address_r;
+        case(state_r)
+            S_IDLE: address_w = 0;
+            S_RIGHT: if(!i_lrc) address_w = address_r + 1;
+        endcase
+    end
+
+    // data logic
     always @(*) begin
         data_w = data_r;
         case(state_r)
-            S_IDLE:begin
-                data_w = 16'd0;
-            end
-            S_WAIT:begin
-                data_w = 16'd0;
-            end
-            S_DATA:begin
-                if(i_stop)begin
-                    data_w = 16'd0;
-                end
-                else if (i_pause)begin
-                    data_w = 16'd0;
-                end 
-                else if (count_r < 5'd16)begin
-                    data_w = {data_r[15:0],i_data};///可以這樣寫嗎
-                end
-                else if (!i_lrc)begin
-                    data_w = data_r;
-                end
-            end
-            S_PAUSE:begin
-                data_w = 16'd0;
+            S_LEFT: data_w = 0;
+            S_RIGHT: begin
+                if(count_r < 16) data_w = {data_r[14:0], i_data};
             end
         endcase
     end
-    //address
-    always @(*)begin
-        addr_w = addr_r;
-        case(state_r)
-            S_IDLE:begin
-                if(i_start)begin
-                    addr_w = ADD_BASE;
-                end
-                else begin
-                    addr_w = addr_r;
-                end
-            end
-            S_WAIT:begin
-                addr_w = addr_r;
-            end
-            S_DATA:begin
-                if(i_stop)begin
-                    addr_w = addr_r;
-                end
-                else if (i_pause)begin
-                    addr_w = addr_r;
-                end 
-                else if (count_r < 5'd16)begin
-                    addr_w = addr_r;
-                end
-                else if (!i_lrc)begin
-                    addr_w = addr_r + 20'd1;
-                end
-            end
-            S_PAUSE:begin
-                addr_w = addr_r;
-            end
-        endcase
-    end
-    //state machine
+
+    // stop address logic
     always @(*) begin
-        state_w = state_r;
-        case(state_r) 
-            S_IDLE:begin
-                if(i_start) state_w = S_WAIT;
-                else state_w = S_IDLE;
-            end
-            S_WAIT:begin
-                if(i_lrc) state_w = S_DATA;
-                else if(i_stop) state_w = S_IDLE;
-                else if (i_pause) state_w = S_PAUSE;
-                else state_w = S_WAIT;
-            end
-            S_DATA:begin
-                if(!i_lrc) state_w = S_WAIT;
-                else if(i_stop) state_w = S_IDLE;
-                else if (i_pause) state_w = S_PAUSE;
-                else state_w = S_DATA;
-            end
-            S_PAUSE:begin
-                if(i_start) state_w = S_WAIT;
-                else if(i_stop) state_w = S_IDLE;
-                else state_w = S_PAUSE;
-            end
+        stop_address_w = stop_address_r;
+        case(state_r)
+            S_IDLE:  stop_address_w = 0;
+            S_RIGHT: if(stop_r) stop_address_w = address_r;
         endcase
     end
-//sequential
+
+    // sequential logic
     always_ff @(posedge i_clk or negedge i_rst_n) begin
         if (!i_rst_n) begin
             state_r <= S_IDLE;
-            addr_r <= ADD_BASE;
-            data_r <= 16'd0;
-            count_r <= 5'd0;
+            count_r <= 0;
+            stop_r <= 0;
+            address_r <= 0;
+            data_r <= 0;
+            stop_address_r <= 0;
         end
         else begin
             state_r <= state_w;
-            addr_r <= addr_w;
-            data_r <= data_w;
             count_r <= count_w;
+            stop_r <= stop_w;
+            address_r <= address_w;
+            data_r <= data_w;
+            stop_address_r <= stop_address_w;
         end
     end
 endmodule

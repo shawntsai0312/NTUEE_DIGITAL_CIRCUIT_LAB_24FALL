@@ -49,8 +49,8 @@ module AudPlayer (
         endcase
     end
 
-    // o_aud_dacdat
-    always@(*)begin
+    // o_aud_dacdat logic
+    always @(*)begin
         o_aud_dacdat_w = o_aud_dacdat_r;
         case(state_r)
             S_IDLE: if(i_en && !i_daclrck) o_aud_dacdat_w = i_dac_data;
@@ -58,8 +58,8 @@ module AudPlayer (
         endcase
     end
 
-    // sequential
-    always_ff @(posedge i_bclk or negedge i_rst_n) begin
+    // sequential logic
+    always_ff @(negedge i_bclk or negedge i_rst_n) begin
         if (!i_rst_n) begin
             state_r <= S_IDLE;
             count_r <= 0;
