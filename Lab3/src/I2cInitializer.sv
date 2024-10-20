@@ -31,12 +31,12 @@ module I2cInitializer (
     parameter [23:0] RESET                            = 24'b0011_0100_000_1111_0_0000_0000; // to register 0x0F
 
     // State
-    parameter S_IDLE  = 0; // initial state
-    parameter S_START = 1; // start signal
-    parameter S_SETUP = 2; // SCLK = 0, set SDAT
-    parameter S_SEND  = 3; // SCLK = 1, send SDAT
-    parameter S_ACK   = 4; // read SDAT when SCLK = 1
-    parameter S_STOP  = 5; // one command finished
+    localparam S_IDLE  = 0; // initial state
+    localparam S_START = 1; // start signal
+    localparam S_SETUP = 2; // SCLK = 0, set SDAT
+    localparam S_SEND  = 3; // SCLK = 1, send SDAT
+    localparam S_ACK   = 4; // read SDAT when SCLK = 1
+    localparam S_STOP  = 5; // one command finished
 
 /*------------------------------------------------- registers -------------------------------------------------*/
     // state registers
@@ -81,26 +81,17 @@ module I2cInitializer (
             S_IDLE: if(i_start) state_w = S_START;
             S_START: state_w = S_SETUP;
             S_SETUP: begin
-                // if(bit_counter_r == 8) begin
-                //     if(byte_counter_r == 3) state_w = S_STOP;
-                //     else                    state_w = S_ACK;
-                // end
-                // else state_w = S_SEND;
                 if(byte_counter_r == 3) state_w = S_STOP;
                 else begin
-                    if(bit_counter_r == 8) state_w = S_ACK;
-                    else state_w = S_SEND;
+                    if(bit_counter_r == 8)  state_w = S_ACK;
+                    else                    state_w = S_SEND;
                 end
             end
             S_SEND: state_w = S_SETUP;
             S_ACK:  state_w = S_SETUP;
             S_STOP: begin
-                if (command_counter_r == 10) begin
-                    state_w = S_IDLE;
-                end
-                else begin
-                    state_w = S_START;
-                end
+                if (command_counter_r == 10)    state_w = S_IDLE;
+                else                            state_w = S_START;
             end
             default: begin
                 state_w = S_IDLE;

@@ -89,9 +89,8 @@ module Top (
 		.i_clk(),
 		.i_start(),
 		.i_pause(),
-		.i_stop(),
 		.i_speed(), // total 3 bits, use 3 switches
-		.i_slow(), // 0 for fast play, 1 for slow play, use 1 switch
+		.i_is_slow(), // 0 for fast play, 1 for slow play, use 1 switch
 		.i_slow_mode(), // 0 for constant interpolation, 1 for linear interpolation, use 1 switch
 		.i_daclrck(i_AUD_DACLRCK),
 		.i_sram_data(data_play),
