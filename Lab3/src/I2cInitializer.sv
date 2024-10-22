@@ -75,7 +75,7 @@ module I2cInitializer (
 
 /*-------------------------------------------- Combinational logic --------------------------------------------*/
     // state logic
-    always@(*)begin
+    always @(*) begin
         state_w = state_r;
         case(state_r)
             S_IDLE: if(i_start) state_w = S_START;
@@ -138,7 +138,7 @@ module I2cInitializer (
     end
 
     // data logic
-    always@(*)begin
+    always @(*) begin
         o_data_w = o_data_r;
         case(state_r)
             S_SETUP: begin

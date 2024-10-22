@@ -15,8 +15,8 @@ module AudRecorder (
     localparam S_RIGHT = 2;
     localparam S_STOP  = 3;
 
-    // localparam STOP_ADDR = 20'hfffff;
-    localparam STOP_ADDR = 20'd15; // for testing, at most 11 words
+    localparam STOP_ADDR = 20'hfffff;
+    // localparam STOP_ADDR = 20'd15; // for testing, at most 11 words
 
     reg [1:0] state_r, state_w;
     reg [4:0] count_r, count_w; // counter for right channel data
