@@ -5,11 +5,11 @@
 `define NUM_MEM_DATA 100
 `define SIM_CYCLES 1000000
 
-// `define GOLDENFILE "../../tb/AudDSP/golden/linear/linear_3.txt" // File for golden data
-// `define SPEED 3
-// `define IS_SLOW 1
-// `define SLOW_MODE 1
-// `define NUM_GOLDEN_DATA (`NUM_MEM_DATA * `SPEED)
+`define GOLDENFILE "../../tb/AudDSP/golden/linear/linear_7.txt" // File for golden data
+`define SPEED 7
+`define IS_SLOW 1
+`define SLOW_MODE 1
+`define NUM_GOLDEN_DATA (`NUM_MEM_DATA * `SPEED)
 
 // `define GOLDENFILE "../../tb/AudDSP/golden/fast/fast_4.txt" // File for golden data
 // `define SPEED 4
@@ -23,11 +23,11 @@
 // `define SLOW_MODE 0
 // `define NUM_GOLDEN_DATA (`NUM_MEM_DATA * `SPEED)
 
-`define GOLDENFILE "../../tb/AudDSP/golden/normal.txt" // File for golden data
-`define SPEED 1
-`define IS_SLOW 1
-`define SLOW_MODE 0
-`define NUM_GOLDEN_DATA `NUM_MEM_DATA
+// `define GOLDENFILE "../../tb/AudDSP/golden/normal.txt" // File for golden data
+// `define SPEED 1
+// `define IS_SLOW 1
+// `define SLOW_MODE 0
+// `define NUM_GOLDEN_DATA `NUM_MEM_DATA
 
 module tb;
     // Dumping waveform files
