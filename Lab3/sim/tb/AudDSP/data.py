@@ -23,7 +23,7 @@ def linear_interpolation(lines, i):
         
         # 插入內差點
         for j in range(1, i):
-            result.append(int(start + step * j))
+            result.append(round(start + step * j))
     
     # 最後一個終點加入結果
     result.append(lines[-1])
@@ -31,11 +31,11 @@ def linear_interpolation(lines, i):
     return result
 
 
-NUM_SAMPLES = 10
+NUM_DATA = 100
 RANGE_MIN = -2**15
 RANGE_MAX = 2**15 - 1
 
-lines = [random.randint(RANGE_MIN, RANGE_MAX) for _ in range(NUM_SAMPLES)]
+lines = [random.randint(RANGE_MIN, RANGE_MAX) for _ in range(NUM_DATA-1)]
 
 # test = [-4200, -3360, -2520, -1680, -840, 0, 840, 1680, 2520, 3360, 4200]
 # test = [-8, -4, 0, 4, 8]
@@ -47,12 +47,18 @@ lines = [random.randint(RANGE_MIN, RANGE_MAX) for _ in range(NUM_SAMPLES)]
 # print(linear_test)
 
 # 開啟檔案以寫入模式
-with open('golden/original.txt', 'w') as file:
+with open('golden/mem.txt', 'w') as file:
+    file.writelines([int_to_binary(int(line)) + '\n' for line in lines])
+
+lines = [0] + lines
+
+with open('golden/normal.txt', 'w') as file:
     file.writelines([int_to_binary(int(line)) + '\n' for line in lines])
 
 for i in range(2, 9):
     # 過濾出索引為 3 的倍數的行
-    fast_lines = [line for index, line in enumerate(lines) if index % i == 0]
+    fast_lines = [line for index, line in enumerate(lines) if index % i == 1]
+    fast_lines = [0] + fast_lines
     
     # 生成 constant_lines
     constant_lines = constant_interpolation(lines, i)
