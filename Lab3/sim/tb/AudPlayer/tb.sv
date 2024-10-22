@@ -78,7 +78,8 @@ module tb;
             i_en = 1'b1;
             i_daclrck = 1'b0;
             i_dac_data = golden_data[i];
-            #(`CYCLE *1) check = 1'b1; // the first cycle is hold
+            #(`CYCLE *1);
+            check = 1'b1; // the first cycle is hold
             // Compare each bit of i_dac_data with the corresponding output
             for (int bit_index = 15; bit_index >= 0; bit_index = bit_index - 1) begin
                 #(`CYCLE * 0.5); // detect at the falling edge of bclk
@@ -89,8 +90,8 @@ module tb;
                 #(`CYCLE * 0.5);
             end
             check = 1'b0;
-            #(`CYCLE * 3) i_daclrck = 1'b1;
-            #(`CYCLE * 20) i_en = 1'b0;
+            #(`CYCLE * 3) i_daclrck = 1'b1; i_en = 1'b0;
+            #(`CYCLE * 20);
             $display("");
         end
 
