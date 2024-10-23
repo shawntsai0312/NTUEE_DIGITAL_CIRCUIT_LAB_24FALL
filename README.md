@@ -5,9 +5,9 @@
 ## Lab 1 亂數產生器
 
  - [Problem](./Lab1/doc/Lab1_lecture.pdf)
- - [Tutorial](./Lab1/README.md)
- - [Video Tutorial](https://youtu.be/d8w0doN23KI)
- - [Video Demo](https://youtube.com/shorts/18ylWNKHyas?feature=share)
+ - [Tutorial Doc](./Lab1/README.md)
+ - [Tutorial Video](https://youtu.be/d8w0doN23KI)
+ - [Demo Video](https://youtube.com/shorts/18ylWNKHyas?feature=share)
 
 ### Functions
 
@@ -25,8 +25,8 @@
 
  - [Problem](./Lab2/doc/Lab2_lecture.pdf)
  - [Tutorial](./Lab2/README.md)
- - [Video Tutorial](https://youtu.be/MsHFpBeLLhE)
- - [Video Demo](https://youtube.com/shorts/qKg8rVshnjM?feature=share)
+ - [Tutorial Doc](https://youtu.be/MsHFpBeLLhE)
+ - [Demo Video](https://youtube.com/shorts/qKg8rVshnjM?feature=share)
 
 ### Functions
 
@@ -36,7 +36,7 @@
 ## Lab 3 數位錄音機
 
  - [Problem](./Lab3/doc/Lab3_lecture.pdf)
- - [Tutorial](./Lab3/README.md)
+ - [Tutorial Doc](./Lab3/README.md)
 
 ### Functions
 
