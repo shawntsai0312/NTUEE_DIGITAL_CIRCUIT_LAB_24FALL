@@ -3,7 +3,7 @@ module AudDSP (
     input i_clk,
     input i_start, // start signal, sent by the controller, not a button press
     input i_pause, // pause signal, press to pause, press again to resume
-    input [3:0] i_speed,
+    input [2:0] i_speed,
     input i_is_slow,
     input i_slow_mode,
     input i_daclrck,               // prepare data when low
@@ -135,6 +135,7 @@ module AudDSP (
         i_data_next_w = i_data_next_r;
         case(state_r)
             S_IDLE: i_data_next_w = 0;
+            S_PAUSE: i_data_next_w = i_sram_data;
             S_GETDATA: begin
                 if(get_data_counter_r == 2) begin
                     if(i_is_slow) begin

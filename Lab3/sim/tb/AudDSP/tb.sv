@@ -32,7 +32,7 @@
 module tb;
     // Dumping waveform files
     logic i_rst_n, i_clk, i_start, i_pause;
-    logic [3:0] i_speed;
+    logic [2:0] i_speed;
     logic i_is_slow, i_slow_mode, i_daclrck;
     logic [15:0] i_sram_data;
     logic [19:0] i_sram_stop_addr;

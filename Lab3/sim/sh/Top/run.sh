@@ -1,1 +1,1 @@
-vcs ../../tb/Top/tb.sv ../../../src/Top.sv -full64 -R -debug_access+all -sverilog +access+rw | tee compile_log.txt
+vcs ../../tb/Top/tb.sv ../../../src/Top.sv ../../../src/AudDSP.sv ../../../src/AudPlayer.sv ../../../src/AudRecorder.sv ../../../src/I2cInitializer.sv -full64 -R -debug_access+all -sverilog +access+rw | tee compile_log.txt

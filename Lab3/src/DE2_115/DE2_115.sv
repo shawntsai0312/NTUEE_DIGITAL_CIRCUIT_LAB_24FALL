@@ -138,6 +138,7 @@ module DE2_115 (
 
 logic key0down, key1down, key2down, key3down;
 logic CLK_12M, CLK_100K, CLK_800K;
+wire [5:0] o_time;
 
 assign AUD_XCK = CLK_12M;
 
@@ -150,12 +151,12 @@ Altpll pll0( // generate with qsys, please follow lab2 tutorials
 );
 
 // you can decide key down settings on your own, below is just an example
-Debounce deb0(
-	.i_in(KEY[0]), // Record/Pause
-	.i_rst_n(KEY[3]),
-	.i_clk(CLK_12M),
-	.o_neg(key0down) 
-);
+// Debounce deb0(
+// 	.i_in(KEY[0]), // Record/Pause
+// 	.i_rst_n(KEY[3]),
+// 	.i_clk(CLK_12M),
+// 	.o_neg(key0down) 
+// );
 
 Debounce deb1(
 	.i_in(KEY[1]), // Play/Pause
@@ -174,10 +175,9 @@ Debounce deb2(
 Top top0(
 	.i_rst_n(KEY[3]),
 	.i_clk(CLK_12M),
-	.i_key_0(key0down),
 	.i_key_1(key1down),
 	.i_key_2(key2down),
-	// .i_speed(SW[3:0]), // design how user can decide mode on your own
+	.i_speed(SW[2:0]), // design how user can decide mode on your own
 	
 	// AudDSP and SRAM
 	.o_SRAM_ADDR(SRAM_ADDR), // [19:0]
@@ -201,8 +201,7 @@ Top top0(
 	.o_AUD_DACDAT(AUD_DACDAT)
 
 	// SEVENDECODER (optional display)
-	// .o_record_time(recd_time),
-	// .o_play_time(play_time),
+	.o_time(o_time),
 
 	// LCD (optional display)
 	// .i_clk_800k(CLK_800K),
@@ -218,17 +217,11 @@ Top top0(
 	// .o_ledr(LEDR) // [17:0]
 );
 
-// SevenHexDecoder seven_dec0(
-// 	.i_num(play_time),
-// 	.o_seven_ten(HEX1),
-// 	.o_seven_one(HEX0)
-// );
-
-// SevenHexDecoder seven_dec1(
-// 	.i_num(recd_time),
-// 	.o_seven_ten(HEX5),
-//  	.o_seven_one(HEX4)
-// );
+SevenHexDecoder seven_dec0(
+	.i_num(play_time),
+	.o_seven_ten(HEX1),
+	.o_seven_one(HEX0)
+);
 
 // comment those are use for display
 assign HEX0 = '1;
