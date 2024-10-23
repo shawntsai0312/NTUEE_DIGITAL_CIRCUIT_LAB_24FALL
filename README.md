@@ -6,6 +6,8 @@
 
  - [Problem](./Lab1/doc/Lab1_lecture.pdf)
  - [Tutorial](./Lab1/README.md)
+ - [Video Tutorial](https://youtu.be/d8w0doN23KI)
+ - [Video Demo](https://youtube.com/shorts/18ylWNKHyas?feature=share)
 
 ### Functions
 
@@ -23,6 +25,8 @@
 
  - [Problem](./Lab2/doc/Lab2_lecture.pdf)
  - [Tutorial](./Lab2/README.md)
+ - [Video Tutorial](https://youtu.be/MsHFpBeLLhE)
+ - [Video Demo](https://youtube.com/shorts/qKg8rVshnjM?feature=share)
 
 ### Functions
 
@@ -42,6 +46,9 @@
   3. 取樣值為16-bit signed，可錄製時間達32秒
   4. 需支援快速播放(2, 3, 4, 5, 6, 7, 8 倍速)以及慢速播放(1/2, 1/3, 1/4, 1/5, 1/6, 1/7, 1/8 倍速)
   5. 慢速播放時要包含零次內插與一次內插兩種模式
+
+- Bonus
+  1. 可將錄音/播放時間顯示在七段顯示器上
 
 ## Some Github Commands
 
