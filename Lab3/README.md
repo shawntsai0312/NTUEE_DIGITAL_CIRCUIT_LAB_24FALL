@@ -18,3 +18,11 @@ source tool.sh
 
 2. open nWave and open the file `sim/sh/tb_MODULE_NAME.fsdb`
 3. select desired signals
+
+### How To Check Registers' Type
+
+```shell
+cd Lab1/src/
+dv -no_gui
+read_sverilog Top.sv # or other file to be checked
+```

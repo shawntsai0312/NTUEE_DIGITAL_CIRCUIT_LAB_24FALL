@@ -24,7 +24,12 @@ module AudDSP (
     reg [2:0] state_r, state_w;
     reg [3:0] slow_counter_r, slow_counter_w; // counter for S_SLOW0 and S_SLOW1
     reg [1:0] get_data_counter_r, get_data_counter_w; // counter for getting data from SRAM, when 0 set addr_w, when 1 set addr_r, when 2 get data
+
+    // save input state
     reg is_pause_r, is_pause_w; // pause signal
+    reg [2:0] speed_r, speed_w;
+    reg is_slow_r, is_slow_w;
+    reg slow_mode_r, slow_mode_w;
 
     reg [19:0] addr_r, addr_w;
     reg signed [15:0] i_data_curr_r, i_data_curr_w;
@@ -72,8 +77,8 @@ module AudDSP (
             S_IDLE:     slow_counter_w = 0;
             S_PAUSE:    slow_counter_w = 0;
             S_SENDDATA: begin
-                if(i_is_slow && !is_pause_r && i_daclrck) begin
-                    if(slow_counter_r == i_speed)   slow_counter_w = 0;
+                if(is_slow_r && !is_pause_r && i_daclrck) begin
+                    if(slow_counter_r == speed_r)   slow_counter_w = 0;
                     else                            slow_counter_w = slow_counter_r + 1;
                 end
             end
@@ -102,6 +107,36 @@ module AudDSP (
         endcase
     end
 
+    // play config logic
+    always @(*) begin
+        speed_w = speed_r;
+        is_slow_w = is_slow_r;
+        slow_mode_w = slow_mode_r;
+        case(state_r)
+            S_IDLE: begin
+                speed_w = 0;
+                is_slow_w = 0;
+                slow_mode_w = 0;
+            end
+            S_PAUSE: begin
+                speed_w = i_speed;
+                is_slow_w = i_is_slow;
+                slow_mode_w = i_slow_mode;
+            end
+            S_GETDATA: begin
+                // not able to change configs when getting data
+                speed_w = speed_r;
+                is_slow_w = is_slow_r;
+                slow_mode_w = slow_mode_r;
+            end
+            S_SENDDATA: begin
+                speed_w = i_speed;
+                is_slow_w = i_is_slow;
+                slow_mode_w = i_slow_mode;
+            end
+        endcase
+    end
+
     // address logic
     // ask for i_data_next
     // add one more bit to prevent overflow
@@ -114,13 +149,13 @@ module AudDSP (
             S_IDLE: temp_addr = 0;
             S_GETDATA: begin
                 if(get_data_counter_r == 0) begin
-                    if(i_is_slow) begin
+                    if(is_slow_r) begin
                         // slow mode
                         if(slow_counter_r == 0) temp_addr = addr_r + 1;
                     end
                     else begin
                         // fast mode
-                        temp_addr = addr_r + i_speed + 1;
+                        temp_addr = addr_r + speed_r + 1;
                     end
                 end
             end
@@ -138,7 +173,7 @@ module AudDSP (
             S_PAUSE: i_data_next_w = i_sram_data;
             S_GETDATA: begin
                 if(get_data_counter_r == 2) begin
-                    if(i_is_slow) begin
+                    if(is_slow_r) begin
                         // slow mode
                         if(slow_counter_r == 0) begin
                             i_data_curr_w = i_data_next_r;
@@ -168,13 +203,13 @@ module AudDSP (
             S_IDLE: o_data_w = 0;
             S_GETDATA: begin
                 if(get_data_counter_r == 3) begin
-                    if(i_is_slow) begin
+                    if(is_slow_r) begin
                         // slow mode
-                        if(i_slow_mode) begin
+                        if(slow_mode_r) begin
                             // linear interpolation
                             diff = $signed(i_data_next_r) - $signed(i_data_curr_r);
                             diff_times_slow_counter = $signed(diff) * $signed({1'b0, slow_counter_r});
-                            diff_times_slow_counter_div_speed = $signed($signed(diff_times_slow_counter) / $signed({1'b0, i_speed + 1}));
+                            diff_times_slow_counter_div_speed = $signed($signed(diff_times_slow_counter) / $signed({1'b0, speed_r + 1}));
                             o_data_w = $signed($signed(i_data_curr_r) + $signed(diff_times_slow_counter_div_speed));
                         end
                         else begin
@@ -197,6 +232,9 @@ module AudDSP (
             slow_counter_r <= 0;
             get_data_counter_r <= 0;
             is_pause_r <= 1;
+            speed_r <= 0;
+            is_slow_r <= 0;
+            slow_mode_r <= 0;
             addr_r <= 0;
             i_data_curr_r <= 0;
             i_data_next_r <= 0;
@@ -207,6 +245,9 @@ module AudDSP (
             slow_counter_r <= slow_counter_w;
             get_data_counter_r <= get_data_counter_w;
             is_pause_r <= is_pause_w;
+            speed_r <= i_speed;
+            is_slow_r <= i_is_slow;
+            slow_mode_r <= i_slow_mode;
             addr_r <= addr_w;
             i_data_curr_r <= i_data_curr_w;
             i_data_next_r <= i_data_next_w;
