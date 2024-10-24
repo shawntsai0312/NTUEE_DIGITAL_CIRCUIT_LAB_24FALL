@@ -200,10 +200,10 @@ Top top0(
 	.i_AUD_ADCLRCK(AUD_ADCLRCK),
 	.i_AUD_BCLK(AUD_BCLK),
 	.i_AUD_DACLRCK(AUD_DACLRCK),
-	.o_AUD_DACDAT(AUD_DACDAT)
+	.o_AUD_DACDAT(AUD_DACDAT),
 
 	// SEVENDECODER (optional display)
-	.o_time(o_time),
+	.o_time(o_time)
 
 	// LCD (optional display)
 	// .i_clk_800k(CLK_800K),
@@ -220,14 +220,14 @@ Top top0(
 );
 
 SevenHexDecoder seven_dec0(
-	.i_num(play_time),
+	.i_hex(o_time),
 	.o_seven_ten(HEX1),
 	.o_seven_one(HEX0)
 );
 
 // comment those are use for display
-assign HEX0 = '1;
-assign HEX1 = '1;
+// assign HEX0 = '1;
+// assign HEX1 = '1;
 assign HEX2 = '1;
 assign HEX3 = '1;
 assign HEX4 = '1;

@@ -24,8 +24,8 @@
 ## Lab 2 RSA256 解密機
 
  - [Problem](./Lab2/doc/Lab2_lecture.pdf)
- - [Tutorial](./Lab2/README.md)
- - [Tutorial Doc](https://youtu.be/MsHFpBeLLhE)
+ - [Tutorial Doc](./Lab2/README.md)
+ - [Tutorial Video](https://youtu.be/MsHFpBeLLhE)
  - [Demo Video](https://youtube.com/shorts/qKg8rVshnjM?feature=share)
 
 ### Functions
