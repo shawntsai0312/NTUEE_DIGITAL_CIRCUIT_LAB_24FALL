@@ -138,6 +138,7 @@ module DE2_115 (
 
 logic key0down, key1down, key2down, key3down;
 logic CLK_12M, CLK_100K, CLK_800K;
+
 wire [5:0] o_time;
 
 assign AUD_XCK = CLK_12M;
@@ -178,8 +179,8 @@ Top top0(
 	.i_key_1(key1down),
 	.i_key_2(key2down),
 	.i_speed(SW[2:0]), // design how user can decide mode on your own
-	.i_slow_mode(SW[3]), // design how user can decide mode on your own
-	.i_is_slow(SW[4]), // design how user can decide mode on your own
+	.i_slow_mode(SW[4]), // design how user can decide mode on your own
+	.i_is_slow(SW[3]), // design how user can decide mode on your own
 	
 	// AudDSP and SRAM
 	.o_SRAM_ADDR(SRAM_ADDR), // [19:0]
@@ -203,7 +204,7 @@ Top top0(
 	.o_AUD_DACDAT(AUD_DACDAT),
 
 	// SEVENDECODER (optional display)
-	.o_time(o_time)
+	.o_time(o_time),
 
 	// LCD (optional display)
 	// .i_clk_800k(CLK_800K),
@@ -215,14 +216,29 @@ Top top0(
 	// .o_LCD_BLON(LCD_BLON),
 
 	// LED
-	// .o_ledg(LEDG), // [8:0]
-	// .o_ledr(LEDR) // [17:0]
+	.o_ledg(LEDG), // [8:0]
+	.o_ledr(LEDR) // [17:0]
 );
 
 SevenHexDecoder seven_dec0(
-	.i_hex(o_time),
+	.i_hex(o_time),			// time
 	.o_seven_ten(HEX1),
 	.o_seven_one(HEX0)
+);
+
+SevenHexDecoder seven_dec1(
+	.i_hex(SW[2:0]+1),		// speed
+	.o_seven_one(HEX4)
+);
+
+FastSlow fast_slow0(
+	.i_is_slow(SW[3]),		// is slow
+	.o_seven(HEX5)
+);
+
+SevenHexDecoder seven_dec2(
+	.i_hex(SW[4]),			// slow mode
+	.o_seven_one(HEX6)
 );
 
 // comment those are use for display
@@ -230,9 +246,9 @@ SevenHexDecoder seven_dec0(
 // assign HEX1 = '1;
 assign HEX2 = '1;
 assign HEX3 = '1;
-assign HEX4 = '1;
-assign HEX5 = '1;
-assign HEX6 = '1;
+// assign HEX4 = '1;
+// assign HEX5 = '1;
+// assign HEX6 = '1;
 assign HEX7 = '1;
 
 endmodule

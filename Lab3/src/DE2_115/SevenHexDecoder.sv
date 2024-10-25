@@ -1,5 +1,5 @@
 module SevenHexDecoder (
-	input        [6:0] i_hex,
+	input        [5:0] i_hex,
 	output logic [6:0] o_seven_ten,
 	output logic [6:0] o_seven_one
 );

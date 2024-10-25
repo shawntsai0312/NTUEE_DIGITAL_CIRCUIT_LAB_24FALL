@@ -11,6 +11,7 @@ module AudDSP (
     input [19:0] i_sram_stop_addr, // the last address to read from SRAM
     output signed [15:0] o_dac_data,
     output o_en,                   // enable signal for AudPlayer, !i_daclrck
+    output o_is_pause,
     output [19:0] o_sram_addr
 );
     // TODO: DSP operations including speed adjustments
@@ -40,6 +41,7 @@ module AudDSP (
     assign o_dac_data = o_data_r;
     assign o_en = !i_daclrck;
     assign o_sram_addr = addr_r;
+    assign o_is_pause = is_pause_r;
 
     // state machine
     always @(*) begin

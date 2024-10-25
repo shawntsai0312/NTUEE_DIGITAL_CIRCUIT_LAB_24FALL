@@ -85,7 +85,7 @@ module tb;
         #(`CYCLE * 2.5) i_rst_n = 1'b0;
         #(`CYCLE * 3)   i_rst_n = 1'b1;
         #(`CYCLE * 0.5) i_start = 1'b1;
-        #(`CYCLE * 0.5) i_start = 1'b0;
+        #(`CYCLE * 0.5);
 
         // Loop through test patterns
         for (int i = 0; i < `PATTERN_NUM; i = i + 1) begin

@@ -99,7 +99,7 @@ initial begin
     i_start = 0;
 
     // Open and read golden file
-    fp_golden = $fopen("../tb/I2cInitializer/golden.txt", "rb");
+    fp_golden = $fopen("../../tb/I2cInitializer/golden.txt", "rb");
     if (fp_golden == 0) begin
         $display("ERROR: Could not open golden.txt file");
         $finish;

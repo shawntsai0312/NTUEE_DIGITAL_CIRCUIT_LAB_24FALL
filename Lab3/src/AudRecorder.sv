@@ -8,7 +8,8 @@ module AudRecorder (
     output [19:0] o_address, // total 2^20 words by 16 bits can be saved
     output [15:0] o_data,
     output [19:0] o_stop_address,
-    output o_done
+    output o_done,
+    output [1:0] o_state // debug purpose
 );
     // TODO: Record audio data from WM8731 and save it to SRAM
     localparam S_IDLE  = 0;
@@ -33,6 +34,7 @@ module AudRecorder (
     assign o_data = data_r;
     assign o_stop_address = stop_address_r;
     assign o_done = (state_r == S_STOP);
+    assign o_state = state_r;
 
     // state machine
     always @(*) begin

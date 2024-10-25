@@ -1,8 +1,8 @@
 module Top (
 	input i_rst_n, // map to key[3]
 	input i_clk,
-	input i_key_1, // start
-	input i_key_2, // stop
+	input i_key_1, // useless
+	input i_key_2, 
 	input [2:0] i_speed, // design how user can decide mode on your own
 	input i_slow_mode, // design how user can decide mode on your own
 	input i_is_slow, // design how user can decide mode on your own
@@ -29,7 +29,7 @@ module Top (
 	output o_AUD_DACDAT,
 
 	// SEVENDECODER (optional display)
-	output [5:0] o_time
+	output [5:0] o_time,
 
 	// LCD (optional display)
 	// input        i_clk_800k,
@@ -41,8 +41,8 @@ module Top (
 	// output       o_LCD_BLON,
 
 	// LED
-	// output  [8:0] o_ledg,
-	// output [17:0] o_ledr
+	output  [8:0] o_ledg,
+	output [17:0] o_ledr
 );
 
 	// design the FSM and states as you like
@@ -56,7 +56,7 @@ module Top (
 	wire i2c_done;
 	reg i2c_done_r, i2c_done_w;
 	wire recorder_start;
-	assign recorder_start = i2c_done_r && (state_r == S_REC) && i_key_1;
+	assign recorder_start = i2c_done_r && (state_r == S_REC) && i_key_2;
 
 	wire dsp_oen;
 	wire rec_done;
@@ -83,15 +83,51 @@ module Top (
 	assign o_SRAM_LB_N = 1'b0;
 	assign o_SRAM_UB_N = 1'b0;
 
+	// led output assignment
+	// if state_r = S_I2C,  then ledg = 9'b000000001
+	// if state_r = S_REC,  then ledg = 9'b000000010
+	// if state_r = S_PLAY, then ledg = 9'b000000100
+	assign o_ledg = (state_r == S_I2C) ? 9'b000000001 : 
+				   (state_r == S_REC) ? 9'b000000010 : 9'b000000100;
+
+
 	// below is a simple example for module division
 	// you can design these as you like
+
+	reg i2c_start_r, i2c_start_w;
+	reg rec_start_r, rec_start_w;
+	reg dsp_start_r, dsp_start_w;
+	reg is_not_idle_r, is_not_idle_w;
+	
+
+	always @(*) begin
+		i2c_start_w = i2c_start_r;
+		rec_start_w = rec_start_r;
+		dsp_start_w = dsp_start_r;
+		is_not_idle_w = is_not_idle_r;
+		if(i2c_done_r) i2c_start_w = 1'b0;
+		if(recorder_start) rec_start_w = 1'b1;
+		if(player_start) dsp_start_w = 1'b1;
+		if(rec_state == 2'b01) is_not_idle_w = 1'b1;
+	end
+
+	wire [1:0] rec_state;
+	wire is_player_pause;
+	assign o_ledr[0] = i2c_start_r;
+	assign o_ledr[1] = i2c_done_r;
+	assign o_ledr[2] = rec_start_r;
+	assign o_ledr[3] = rec_done_r;
+	assign o_ledr[4] = player_start;
+	// assign o_ledr = addr_record[17:0];
+	assign o_ledr[17:16] = rec_state;
+	assign o_ledr[15] = is_player_pause;
 
 	// === I2cInitializer ===
 	// sequentially sent out settings to initialize WM8731 with I2C protocal
 	I2cInitializer i2c(
 		.i_rst_n(i_rst_n),
 		.i_clk(i_clk_100k),
-		.i_start(i_key_1),
+		.i_start(i2c_start_r),
 		.o_finished(i2c_done),
 		.o_sclk(o_I2C_SCLK),
 		.io_sdat(io_I2C_SDAT),
@@ -104,7 +140,7 @@ module Top (
 	AudDSP dsp(
 		.i_rst_n(i_rst_n),
 		.i_clk(i_AUD_BCLK),
-		.i_start(player_start),
+		.i_start(dsp_start_r),
 		.i_pause(i_key_2),
 		.i_speed(i_speed), // total 3 bits, use 3 switches
 		.i_is_slow(i_is_slow), // 0 for fast play, 1 for slow play, use 1 switch
@@ -114,6 +150,7 @@ module Top (
 		.i_sram_stop_addr(stop_address),
 		.o_dac_data(dac_data),
 		.o_en(dsp_oen),
+		.o_is_pause(is_player_pause),
 		.o_sram_addr(addr_play)
 	);
 
@@ -134,13 +171,14 @@ module Top (
 		.i_rst_n(i_rst_n), 
 		.i_clk(i_AUD_BCLK),
 		.i_lrc(i_AUD_ADCLRCK),
-		.i_start(recorder_start),
+		.i_start(rec_start_r),
 		.i_stop(i_key_2),
 		.i_data(i_AUD_ADCDAT),
 		.o_address(addr_record),
 		.o_data(data_record),
 		.o_stop_address(stop_address),
-		.o_done(rec_done)
+		.o_done(rec_done),
+		.o_state(rec_state)
 	);
 
 	// state machine
@@ -173,11 +211,21 @@ module Top (
 			state_r <= S_I2C;
 			i2c_done_r <= 1'b0;
 			rec_done_r <= 1'b0;
+
+			i2c_start_r <= 1'b1;
+			rec_start_r <= 1'b0;
+			dsp_start_r <= 1'b0;
+			is_not_idle_r <= 1'b0;
 		end
 		else begin
 			state_r <= state_w;
 			i2c_done_r <= i2c_done_w;
 			rec_done_r <= rec_done_w;
+
+			i2c_start_r <= i2c_start_w;
+			rec_start_r <= rec_start_w;
+			dsp_start_r <= dsp_start_w;
+			is_not_idle_r <= is_not_idle_w;
 		end
 	end
 
