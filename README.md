@@ -100,3 +100,11 @@
     ```shell
     git merge <branch to be merged>
     ```
+
+8. bring back deleted files
+   
+   ```shell
+   git checkout <PREVIUS COMMIT> -- .
+   git add .
+   git commit -m "Restore all deleted files"
+   ```
