@@ -1,7 +1,6 @@
 module Top (
 	input i_rst_n, // map to key[3]
 	input i_clk,
-	input i_key_1, // useless
 	input i_key_2, 
 	input [2:0] i_speed, // design how user can decide mode on your own
 	input i_slow_mode, // design how user can decide mode on your own
@@ -97,18 +96,15 @@ module Top (
 	reg i2c_start_r, i2c_start_w;
 	reg rec_start_r, rec_start_w;
 	reg dsp_start_r, dsp_start_w;
-	reg is_not_idle_r, is_not_idle_w;
 	
 
 	always @(*) begin
 		i2c_start_w = i2c_start_r;
 		rec_start_w = rec_start_r;
 		dsp_start_w = dsp_start_r;
-		is_not_idle_w = is_not_idle_r;
 		if(i2c_done_r) i2c_start_w = 1'b0;
 		if(recorder_start) rec_start_w = 1'b1;
 		if(player_start) dsp_start_w = 1'b1;
-		if(rec_state == 2'b01) is_not_idle_w = 1'b1;
 	end
 
 	wire [1:0] rec_state;
@@ -215,7 +211,6 @@ module Top (
 			i2c_start_r <= 1'b1;
 			rec_start_r <= 1'b0;
 			dsp_start_r <= 1'b0;
-			is_not_idle_r <= 1'b0;
 		end
 		else begin
 			state_r <= state_w;
@@ -225,7 +220,6 @@ module Top (
 			i2c_start_r <= i2c_start_w;
 			rec_start_r <= rec_start_w;
 			dsp_start_r <= dsp_start_w;
-			is_not_idle_r <= is_not_idle_w;
 		end
 	end
 

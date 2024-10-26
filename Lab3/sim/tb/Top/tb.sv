@@ -33,7 +33,7 @@
 
 
 module tb;
-    reg i_rst_n, i_clk, i_start, i_pause;
+    reg i_rst_n, i_clk, i_pause;
     reg [2:0] i_speed;
     reg i_slow_mode, i_is_slow;
 
@@ -49,8 +49,8 @@ module tb;
     reg o_I2C_SCLK;
 
     wire io_I2C_SDAT;
-    reg io_I2C_SDAT_drive;
-    assign io_I2C_SDAT = io_I2C_SDAT_drive;
+    // reg io_I2C_SDAT_drive;
+    // assign io_I2C_SDAT = io_I2C_SDAT_drive;
 
     reg [15:0] i_AUD_ADCDAT;
     wire io_lrck;
@@ -72,7 +72,6 @@ module tb;
     Top u_Top (
         .i_rst_n          (i_rst_n),
 	    .i_clk            (i_clk),
-	    .i_key_1          (i_start),
 	    .i_key_2          (i_pause),
 	    .i_speed          (i_speed),
 	    .i_slow_mode      (i_slow_mode),
@@ -154,7 +153,6 @@ module tb;
 
     initial begin
         i_rst_n = 1'b1;
-        i_start = 1'b0;
         i_pause = 1'b0;
         i_speed = `SPEED - 1;
         i_is_slow = `IS_SLOW;
@@ -167,12 +165,12 @@ module tb;
         // Reset sequence
         #(`CYCLE * 2.5) i_rst_n = 1'b0;
         #(`CYCLE * 3)   i_rst_n = 1'b1;
-        #(`CYCLE * 0.5) i_start = 1'b1;
-        #(`CYCLE * 0.5) i_start = 1'b0;
+        // #(`CYCLE * 0.5) i_start = 1'b1;
+        // #(`CYCLE * 0.5) i_start = 1'b0;
 
         // wait for i2c initialization and start recording
-        #(`CYCLE * 800) i_start = 1'b1;
-        #(`CYCLE * 1) i_start = 1'b0;
+        #(`CYCLE * 1000) i_pause = 1'b1;
+        #(`CYCLE * 1) i_pause = 1'b0;
         $display("Start recording, Time: %0d", $time);
         // Loop through test patterns
         @ (negedge i_clk);
@@ -233,7 +231,7 @@ module tb;
     end
 
     initial begin
-        $fsdbDumpfile("tb_AudDSP.fsdb");
+        $fsdbDumpfile("tb_Top.fsdb");
         $fsdbDumpvars;
     end
 

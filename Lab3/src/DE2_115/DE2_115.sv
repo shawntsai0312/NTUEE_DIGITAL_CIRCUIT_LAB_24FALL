@@ -159,12 +159,12 @@ Altpll pll0( // generate with qsys, please follow lab2 tutorials
 // 	.o_neg(key0down) 
 // );
 
-Debounce deb1(
-	.i_in(KEY[1]), // Play/Pause
-	.i_rst_n(KEY[3]),
-	.i_clk(CLK_12M),
-	.o_neg(key1down) 
-);
+// Debounce deb1(
+// 	.i_in(KEY[1]), // Play/Pause
+// 	.i_rst_n(KEY[3]),
+// 	.i_clk(CLK_12M),
+// 	.o_neg(key1down) 
+// );
 
 Debounce deb2(
 	.i_in(KEY[2]), // Stop
@@ -176,7 +176,6 @@ Debounce deb2(
 Top top0(
 	.i_rst_n(KEY[3]),
 	.i_clk(CLK_12M),
-	.i_key_1(key1down),
 	.i_key_2(key2down),
 	.i_speed(SW[2:0]), // design how user can decide mode on your own
 	.i_slow_mode(SW[4]), // design how user can decide mode on your own
