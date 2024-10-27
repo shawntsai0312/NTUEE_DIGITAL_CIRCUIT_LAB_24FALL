@@ -159,7 +159,7 @@ do `rsa256_mont(N, y, d)`
 
 1. modify n, a, b
     ```python
-    # src/pc_python/golden/mont.py
+    # src/pc_python/golden/core.py
 
     # Example usage
     # Example parameters to test the functions

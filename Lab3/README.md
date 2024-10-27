@@ -22,7 +22,7 @@ source tool.sh
 ### How To Check Registers' Type
 
 ```shell
-cd Lab1/src/
+cd Lab3/src/
 dv -no_gui
 read_sverilog Top.sv # or other file to be checked
 ```
