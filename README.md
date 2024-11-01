@@ -37,7 +37,8 @@
 
  - [Problem](./Lab3/doc/Lab3_lecture.pdf)
  - [Tutorial Doc](./Lab3/README.md)
- - [Tutorial Video](https://youtu.be/lxQ1CqLxdgA)
+ - [Tutorial Video 1](https://youtu.be/lxQ1CqLxdgA)
+ - [Tutorial Video 2](https://youtu.be/XZyHApFdQvU)
  - [Demo Video](https://youtube.com/shorts/vMJCUgTGA44?feature=share)
 
 ### Functions
