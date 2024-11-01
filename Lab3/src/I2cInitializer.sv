@@ -18,6 +18,7 @@ module I2cInitializer (
         // [15:9]: register address
         // [8:0]: register data
         // checkout doc/Lab3_sup1_audiocodec.pdf for more details
+    parameter COMMAND_COUNT = 10;
     parameter [23:0] LEFT_LINE_IN                     = 24'b0011_0100_000_0000_0_1001_0111; // to register 0x00
     parameter [23:0] RIGHT_LINE_IN                    = 24'b0011_0100_000_0001_0_1001_0111; // to register 0x01
     parameter [23:0] LEFT_HEADPHONE_OUT               = 24'b0011_0100_000_0010_0_0111_1001; // to register 0x02
@@ -28,20 +29,28 @@ module I2cInitializer (
     parameter [23:0] DIGITAL_AUDIO_INTERFACE_FORMAT   = 24'b0011_0100_000_0111_0_0100_0010; // to register 0x07
     parameter [23:0] SAMPLING_CONTROL                 = 24'b0011_0100_000_1000_0_0001_1001; // to register 0x08
     parameter [23:0] ACTIVE_CONTROL                   = 24'b0011_0100_000_1001_0_0000_0001; // to register 0x09
-    parameter [23:0] RESET                            = 24'b0011_0100_000_1111_0_0000_0000; // to register 0x0F
+
+    /*----------------------------------------------- DON'T SEND -----------------------------------------------*/
+    parameter [23:0] RESET                            = 24'b0011_0100_000_1111_0_0000_0000; // to register 0x0F 
+
+    
 
     // State
     localparam S_IDLE  = 0; // initial state
     localparam S_START = 1; // start signal
     localparam S_SETUP = 2; // SCLK = 0, set SDAT
-    localparam S_SEND  = 3; // SCLK = 1, send SDAT
-    localparam S_ACK   = 4; // read SDAT when SCLK = 1
-    localparam S_STOP  = 5; // one command finished
-    localparam S_STOP_BUFFER = 6; // stop buffer state
+    localparam S_SEND_BEFORE  = 3; // SCLK = 1, send SDAT
+    localparam S_SEND = 4; // send buffer state
+    localparam S_ACK_BEFORE   = 5; // read SDAT when SCLK = 1
+    localparam S_ACK = 6; // ack buffer state
+    localparam S_ACK_AFTER = 7; // read SDAT when SCLK = 0
+    localparam S_STOP_BUFFER = 8; // stop buffer state
+    localparam S_STOP  = 9; // one command finished
+    
 
 /*------------------------------------------------- registers -------------------------------------------------*/
     // state registers
-    reg [2:0] state_r, state_w;
+    reg [3:0] state_r, state_w;
 
     // counter registers
     reg [3:0] bit_counter_r, bit_counter_w; // bit count for the 8-bit data (8)
@@ -55,16 +64,16 @@ module I2cInitializer (
 /*--------------------------------------------- Output assignment ---------------------------------------------*/
     assign o_finished = o_finished_r;
 
-    // SCLK = 1 when not in S_SETUP
-    assign o_sclk = o_finished_r ? 1'b1 : (state_r != S_SETUP);
+    // SCLK = 1 when not in S_SETUP or S_SEND_BEFORE or S_ACK_BEFORE
+    assign o_sclk = o_finished_r ? 1'b1 : (state_r == S_SETUP || state_r == S_SEND_BEFORE || state_r == S_ACK_BEFORE || state_r == S_ACK_AFTER) ? 1'b0 : 1'b1;
 
-    assign o_oen = (state_r != S_ACK);
+    assign o_oen = (state_r == S_ACK_BEFORE || state_r == S_ACK || state_r == S_ACK_AFTER) ? 1'b0 : 1'b1;
     // when o_oen = 1
         // 1. state_r = S_IDLE, o_sdat = 1
         // 2. state_r = S_START, o_sdat = 0
         // 3. state_r = S_STOP_BUFFER, o_sdat = 0
         // 4. state_r = S_STOP, o_sdat = 1
-        // 5. state_r = S_SEND, o_sdat = o_data_r[23]
+        // 5. else, o_sdat = o_data_r[23]
     wire o_sdat =   o_finished_r                ? 1'b1 :
                     (state_r == S_IDLE)         ? 1'b1 :
                     (state_r == S_START)        ? 1'b0 :
@@ -92,17 +101,16 @@ module I2cInitializer (
             S_SETUP: begin
                 if(byte_counter_r == 3) state_w = S_STOP_BUFFER;
                 else begin
-                    if(bit_counter_r == 8)  state_w = S_ACK;
-                    else                    state_w = S_SEND;
+                    if(bit_counter_r == 8)  state_w = S_ACK_BEFORE;
+                    else                    state_w = S_SEND_BEFORE;
                 end
             end
+            S_SEND_BEFORE: state_w = S_SEND;
             S_SEND: state_w = S_SETUP;
-            S_ACK:  state_w = S_SETUP;
+            S_ACK_BEFORE:  state_w = S_ACK;
+            S_ACK: state_w = S_ACK_AFTER;
+            S_ACK_AFTER: state_w = S_SETUP;
             S_STOP_BUFFER: state_w = S_STOP;
-            // S_STOP: begin
-            //     if (command_counter_r == 10)    state_w = S_IDLE;
-            //     else                            state_w = S_START;
-            // end
             S_STOP: state_w = S_IDLE;
             default: begin
                 state_w = S_IDLE;
@@ -115,8 +123,8 @@ module I2cInitializer (
         bit_counter_w = bit_counter_r;
         case(state_r)
             S_START: bit_counter_w = 0;
-            S_SEND:  bit_counter_w = bit_counter_r + 1;
-            S_ACK:   bit_counter_w = 0;
+            S_SEND_BEFORE:  bit_counter_w = bit_counter_r + 1;
+            S_ACK_BEFORE:   bit_counter_w = 0;
         endcase
     end
 
@@ -125,7 +133,7 @@ module I2cInitializer (
         byte_counter_w = byte_counter_r;
         case(state_r)
             S_START: byte_counter_w = 0;
-            S_ACK:   byte_counter_w = byte_counter_r + 1;
+            S_ACK_BEFORE:   byte_counter_w = byte_counter_r + 1;
         endcase
     end
 
@@ -133,7 +141,7 @@ module I2cInitializer (
     always @(*) begin
         command_counter_w = command_counter_r;
         case(state_r)
-            S_STOP: if(command_counter_r < 10)  command_counter_w = command_counter_r + 1;
+            S_STOP: if(command_counter_r < COMMAND_COUNT-1)  command_counter_w = command_counter_r + 1;
         endcase
     end
 
@@ -142,7 +150,7 @@ module I2cInitializer (
         o_finished_w = o_finished_r;
         case(state_r)
             S_STOP: begin
-                if(command_counter_r == 10) o_finished_w = 1;
+                if(command_counter_r == COMMAND_COUNT-1) o_finished_w = 1;
             end
         endcase
     end
@@ -152,8 +160,8 @@ module I2cInitializer (
         o_data_w = o_data_r;
         case(state_r)
             S_SETUP: begin
-                // set o_data_w if state_w is S_SEND
-                // S_SEND and sending the MSB of the command
+                // set o_data_w if state_w is S_SEND_BEFORE
+                // S_SEND_BEFORE and sending the MSB of the command
                 if(bit_counter_r == 0 && byte_counter_r == 0) begin
                     case(command_counter_r)
                         0:  o_data_w = LEFT_LINE_IN;
@@ -166,7 +174,6 @@ module I2cInitializer (
                         7:  o_data_w = DIGITAL_AUDIO_INTERFACE_FORMAT;
                         8:  o_data_w = SAMPLING_CONTROL;
                         9:  o_data_w = ACTIVE_CONTROL;
-                        10: o_data_w = RESET;
                     endcase
                 end
                 // S_SEND but not sending the MSB of the command
