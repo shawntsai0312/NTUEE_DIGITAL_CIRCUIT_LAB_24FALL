@@ -230,11 +230,6 @@ SevenHexDecoder seven_dec1(
 	.o_seven_one(HEX4)
 );
 
-FastSlow fast_slow0(
-	.i_is_slow(SW[3]),		// is slow
-	.o_seven(HEX5)
-);
-
 SevenHexDecoder seven_dec2(
 	.i_hex(SW[4]),			// slow mode
 	.o_seven_one(HEX6)

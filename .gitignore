@@ -12,3 +12,7 @@ csrc/
 BSSLib.lib++/
 simv
 *.svf
+DE2-115/
+*.vcd
+*.fsdb
+*.out

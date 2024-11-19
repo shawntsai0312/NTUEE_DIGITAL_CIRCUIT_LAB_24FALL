@@ -1,0 +1,3 @@
+VCD info: dumpfile tb_rotate.vcd opened for output.
+VCD warning: $dumpvars: Package ($unit) is not dumpable with VCD.
+tb_mac.sv:60: $finish called at 100000000 (10ps)

@@ -1,0 +1,3 @@
+VCD info: dumpfile tb_vga.vcd opened for output.
+VCD warning: $dumpvars: Package ($unit) is not dumpable with VCD.
+tb_mac.sv:40: $finish called at 10000000000 (10ps)
