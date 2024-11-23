@@ -1,0 +1,4 @@
+tb_mac.sv:66: warning: Extra digits given for sized binary constant.
+tb_mac.sv:66: warning: Numeric constant truncated to 7 bits.
+tb_mac.sv:67: warning: Extra digits given for sized binary constant.
+tb_mac.sv:67: warning: Numeric constant truncated to 7 bits.
