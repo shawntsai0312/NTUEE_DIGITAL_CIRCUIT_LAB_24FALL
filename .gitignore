@@ -16,3 +16,8 @@ DE2-115/
 *.vcd
 *.fsdb
 *.out
+*.mp4
+*.mov
+Resources/VGA_Image/generate/output.txt
+Resources/VGA_Image/generate/output.bin
+Resources/VGA_Image/generate/output/
