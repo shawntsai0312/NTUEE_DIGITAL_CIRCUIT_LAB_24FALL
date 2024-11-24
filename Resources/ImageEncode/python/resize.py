@@ -14,6 +14,6 @@ input = 'car.png'
 output = input.replace('.png', '_resized.png')
 colors_output = '../verilog/color_palette.sv'
 encode_output = '../verilog/car_lut.sv'
-width, height = 59, 59
+width, height = 60, 60
 
 resized_img = resize_image(width, height, input, output)

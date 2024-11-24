@@ -149,7 +149,7 @@ assign VGA_SYNC_N = 0;
 assign VGA_BLANK_N = 1;
 assign VGA_CLK = clk_108m;
 // assign VGA_CLK = clk_25m;
-vga vga0(
+ vga0(
     .i_clk(VGA_CLK),
     .i_rst_n(KEY[0]),
     .o_H_sync(VGA_HS), 

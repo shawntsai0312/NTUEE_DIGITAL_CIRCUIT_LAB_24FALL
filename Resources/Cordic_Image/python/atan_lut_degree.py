@@ -7,7 +7,7 @@ ANG_PROCESS_WIDTH = 20
 ANG_TABLE_WIDTH = ANG_PROCESS_WIDTH - 1
 
 # File to save the generated Verilog LUT module
-filename = "../verilog_degree_pipeline/atan_lut.sv"
+filename = "../verilog/atan_lut.sv"
 
 # Fixed-point scaling factor (e.g., for Q16.16 format)
 shift = ANG_PROCESS_WIDTH - ANG_INPUT_WIDTH

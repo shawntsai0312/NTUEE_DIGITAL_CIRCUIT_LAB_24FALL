@@ -8,7 +8,7 @@ module tb;
     wire o_H_sync, o_V_sync;
     wire [7:0] o_R, o_G, o_B;
 
-    vga u_vga (
+     u_vga (
         .i_clk       (i_clk),
         .i_rst_n     (i_rst_n),
         .o_H_sync    (o_H_sync),

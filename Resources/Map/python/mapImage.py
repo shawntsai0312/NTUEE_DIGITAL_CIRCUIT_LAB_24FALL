@@ -2,7 +2,7 @@ import numpy as np
 from PIL import Image
 import random
 
-WIDTH, HEIGHT = 1600, 900
+WIDTH, HEIGHT = 1600, 800
 PADDING = 30
 BAR_WIDTH = 100
 CAR_WIDTH = 60
@@ -21,6 +21,7 @@ BACKGROUND_COLOR = [255, 255, 255]
 TRACK_ORDINARY_COLOR = [1, 1, 1]
 TRACK_SAND_COLOR = [210, 180, 140]
 TRACK_ROCK_COLOR = [100, 100, 100]
+TRACK_RANDOM_COLOR_RATIO = 10
 TRACK_NUM_OF_RANDOM_COLORS = 1
 
 class CircleRegion:
@@ -71,7 +72,7 @@ def pixel_to_coord(x, y):
     return coord_x, coord_y
 
 def random_gray_color():
-    return np.array([10, 10, 10])*random.randint(0, TRACK_NUM_OF_RANDOM_COLORS-1)
+    return np.array([1, 1, 1])*random.randint(0, TRACK_NUM_OF_RANDOM_COLORS-1)*TRACK_RANDOM_COLOR_RATIO
 
 def render_track_color(track_color):
     if track_color == TRACK_ORDINARY_COLOR:
@@ -127,7 +128,7 @@ def render_rectangleY(img, rectangleYRegion):
                     img[y, x] = render_track_color(rectangleYRegion.track_color)  # 使用 rectangleYRegion 的 track_color
 
 def render_image(circleRegions, rectangleXRegions, regtangleYRegions):
-    width, height = 1600, 900
+    width, height = WIDTH, HEIGHT
     img = np.zeros((height, width, 3), dtype=np.uint8)
     
     for region in circleRegions:
@@ -165,12 +166,11 @@ YT3 = Y_MAX-PADDING-TRACK_WIDTH
 YT4 = Y_MAX-PADDING
 YT5 = Y_MAX-PADDING+TRACK_BORDER
 
-YB1 = Y_MIN+BAR_WIDTH+PADDING+TRACK_WIDTH+INNER_RADIUS
-YB2 = Y_MIN+BAR_WIDTH+PADDING+TRACK_WIDTH+TRACK_BORDER
-YB3 = Y_MIN+BAR_WIDTH+PADDING+TRACK_WIDTH
-YB4 = Y_MIN+BAR_WIDTH+PADDING
-YB5 = Y_MIN+BAR_WIDTH+PADDING-TRACK_BORDER
-YB6 = Y_MIN+BAR_WIDTH
+YB1 = Y_MIN+PADDING+TRACK_WIDTH+INNER_RADIUS
+YB2 = Y_MIN+PADDING+TRACK_WIDTH+TRACK_BORDER
+YB3 = Y_MIN+PADDING+TRACK_WIDTH
+YB4 = Y_MIN+PADDING
+YB5 = Y_MIN+PADDING-TRACK_BORDER
 
 R1 = INNER_RADIUS-TRACK_BORDER
 R2 = INNER_RADIUS
@@ -192,7 +192,7 @@ circleRegions = [
     ),
     CircleRegion( x_min=X_MIN, 
             x_max=XL1,
-            y_min=YB6, 
+            y_min=YB5, 
             y_max=YB1,
             x0=XL1, 
             y0=YB1, 
@@ -203,7 +203,7 @@ circleRegions = [
     ),
     CircleRegion( x_min=XR1, 
             x_max=X_MAX,
-            y_min=YB6, 
+            y_min=YB5, 
             y_max=YB1,
             x0=XR1, 
             y0=YB1, 
@@ -249,7 +249,7 @@ rectangleXRegions = [
 rectangleYRegions = [
     RectangleYRegion( x_min=XL1, 
             x_max=XR1,
-            y_min=YB6,
+            y_min=Y_MIN,
             y_max=YB1,
             y_track_bottom_outer=YB5, 
             y_track_bottom_inner=YB4, 
@@ -271,4 +271,4 @@ rectangleYRegions = [
 
 image = render_image(circleRegions, rectangleXRegions, rectangleYRegions)
 # image.show()
-image.save('track.png')
+image.save(f'track_{TRACK_NUM_OF_RANDOM_COLORS}.png')

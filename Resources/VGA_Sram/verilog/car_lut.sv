@@ -1,4 +1,4 @@
-module image_data(output reg [3:0] pixel_data [0:59][0:59]);
+module image_data(output reg [3:0] pixel_data [0:58][0:58]);
     initial begin
         pixel_data[0][0] = 4'b0000; // x=0, y=0
         pixel_data[0][1] = 4'b0000; // x=1, y=0
@@ -59,7 +59,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[0][56] = 4'b0000; // x=56, y=0
         pixel_data[0][57] = 4'b0000; // x=57, y=0
         pixel_data[0][58] = 4'b0000; // x=58, y=0
-        pixel_data[0][59] = 4'b0000; // x=59, y=0
         pixel_data[1][0] = 4'b0000; // x=0, y=1
         pixel_data[1][1] = 4'b0000; // x=1, y=1
         pixel_data[1][2] = 4'b0000; // x=2, y=1
@@ -119,7 +118,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[1][56] = 4'b0000; // x=56, y=1
         pixel_data[1][57] = 4'b0000; // x=57, y=1
         pixel_data[1][58] = 4'b0000; // x=58, y=1
-        pixel_data[1][59] = 4'b0000; // x=59, y=1
         pixel_data[2][0] = 4'b0000; // x=0, y=2
         pixel_data[2][1] = 4'b0000; // x=1, y=2
         pixel_data[2][2] = 4'b0000; // x=2, y=2
@@ -179,7 +177,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[2][56] = 4'b0000; // x=56, y=2
         pixel_data[2][57] = 4'b0000; // x=57, y=2
         pixel_data[2][58] = 4'b0000; // x=58, y=2
-        pixel_data[2][59] = 4'b0000; // x=59, y=2
         pixel_data[3][0] = 4'b0000; // x=0, y=3
         pixel_data[3][1] = 4'b0000; // x=1, y=3
         pixel_data[3][2] = 4'b0000; // x=2, y=3
@@ -239,7 +236,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[3][56] = 4'b0000; // x=56, y=3
         pixel_data[3][57] = 4'b0000; // x=57, y=3
         pixel_data[3][58] = 4'b0000; // x=58, y=3
-        pixel_data[3][59] = 4'b0000; // x=59, y=3
         pixel_data[4][0] = 4'b0000; // x=0, y=4
         pixel_data[4][1] = 4'b0000; // x=1, y=4
         pixel_data[4][2] = 4'b0000; // x=2, y=4
@@ -299,7 +295,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[4][56] = 4'b0000; // x=56, y=4
         pixel_data[4][57] = 4'b0000; // x=57, y=4
         pixel_data[4][58] = 4'b0000; // x=58, y=4
-        pixel_data[4][59] = 4'b0000; // x=59, y=4
         pixel_data[5][0] = 4'b0000; // x=0, y=5
         pixel_data[5][1] = 4'b0000; // x=1, y=5
         pixel_data[5][2] = 4'b0000; // x=2, y=5
@@ -359,7 +354,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[5][56] = 4'b0000; // x=56, y=5
         pixel_data[5][57] = 4'b0000; // x=57, y=5
         pixel_data[5][58] = 4'b0000; // x=58, y=5
-        pixel_data[5][59] = 4'b0000; // x=59, y=5
         pixel_data[6][0] = 4'b0000; // x=0, y=6
         pixel_data[6][1] = 4'b0000; // x=1, y=6
         pixel_data[6][2] = 4'b0000; // x=2, y=6
@@ -419,7 +413,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[6][56] = 4'b0000; // x=56, y=6
         pixel_data[6][57] = 4'b0000; // x=57, y=6
         pixel_data[6][58] = 4'b0000; // x=58, y=6
-        pixel_data[6][59] = 4'b0000; // x=59, y=6
         pixel_data[7][0] = 4'b0000; // x=0, y=7
         pixel_data[7][1] = 4'b0000; // x=1, y=7
         pixel_data[7][2] = 4'b0000; // x=2, y=7
@@ -479,7 +472,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[7][56] = 4'b0000; // x=56, y=7
         pixel_data[7][57] = 4'b0000; // x=57, y=7
         pixel_data[7][58] = 4'b0000; // x=58, y=7
-        pixel_data[7][59] = 4'b0000; // x=59, y=7
         pixel_data[8][0] = 4'b0000; // x=0, y=8
         pixel_data[8][1] = 4'b0000; // x=1, y=8
         pixel_data[8][2] = 4'b0000; // x=2, y=8
@@ -539,7 +531,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[8][56] = 4'b0000; // x=56, y=8
         pixel_data[8][57] = 4'b0000; // x=57, y=8
         pixel_data[8][58] = 4'b0000; // x=58, y=8
-        pixel_data[8][59] = 4'b0000; // x=59, y=8
         pixel_data[9][0] = 4'b0000; // x=0, y=9
         pixel_data[9][1] = 4'b0000; // x=1, y=9
         pixel_data[9][2] = 4'b0000; // x=2, y=9
@@ -599,7 +590,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[9][56] = 4'b0000; // x=56, y=9
         pixel_data[9][57] = 4'b0000; // x=57, y=9
         pixel_data[9][58] = 4'b0000; // x=58, y=9
-        pixel_data[9][59] = 4'b0000; // x=59, y=9
         pixel_data[10][0] = 4'b0000; // x=0, y=10
         pixel_data[10][1] = 4'b0000; // x=1, y=10
         pixel_data[10][2] = 4'b0000; // x=2, y=10
@@ -659,7 +649,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[10][56] = 4'b0000; // x=56, y=10
         pixel_data[10][57] = 4'b0000; // x=57, y=10
         pixel_data[10][58] = 4'b0000; // x=58, y=10
-        pixel_data[10][59] = 4'b0000; // x=59, y=10
         pixel_data[11][0] = 4'b0000; // x=0, y=11
         pixel_data[11][1] = 4'b0000; // x=1, y=11
         pixel_data[11][2] = 4'b0000; // x=2, y=11
@@ -719,7 +708,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[11][56] = 4'b0000; // x=56, y=11
         pixel_data[11][57] = 4'b0000; // x=57, y=11
         pixel_data[11][58] = 4'b0000; // x=58, y=11
-        pixel_data[11][59] = 4'b0000; // x=59, y=11
         pixel_data[12][0] = 4'b0000; // x=0, y=12
         pixel_data[12][1] = 4'b0000; // x=1, y=12
         pixel_data[12][2] = 4'b0000; // x=2, y=12
@@ -779,7 +767,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[12][56] = 4'b0000; // x=56, y=12
         pixel_data[12][57] = 4'b0000; // x=57, y=12
         pixel_data[12][58] = 4'b0000; // x=58, y=12
-        pixel_data[12][59] = 4'b0000; // x=59, y=12
         pixel_data[13][0] = 4'b0000; // x=0, y=13
         pixel_data[13][1] = 4'b0000; // x=1, y=13
         pixel_data[13][2] = 4'b0000; // x=2, y=13
@@ -839,7 +826,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[13][56] = 4'b0000; // x=56, y=13
         pixel_data[13][57] = 4'b0000; // x=57, y=13
         pixel_data[13][58] = 4'b0000; // x=58, y=13
-        pixel_data[13][59] = 4'b0000; // x=59, y=13
         pixel_data[14][0] = 4'b0000; // x=0, y=14
         pixel_data[14][1] = 4'b0000; // x=1, y=14
         pixel_data[14][2] = 4'b0000; // x=2, y=14
@@ -863,8 +849,8 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[14][20] = 4'b0000; // x=20, y=14
         pixel_data[14][21] = 4'b0000; // x=21, y=14
         pixel_data[14][22] = 4'b0000; // x=22, y=14
-        pixel_data[14][23] = 4'b0000; // x=23, y=14
-        pixel_data[14][24] = 4'b0101; // x=24, y=14
+        pixel_data[14][23] = 4'b0110; // x=23, y=14
+        pixel_data[14][24] = 4'b0110; // x=24, y=14
         pixel_data[14][25] = 4'b0000; // x=25, y=14
         pixel_data[14][26] = 4'b0000; // x=26, y=14
         pixel_data[14][27] = 4'b0000; // x=27, y=14
@@ -899,7 +885,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[14][56] = 4'b0000; // x=56, y=14
         pixel_data[14][57] = 4'b0000; // x=57, y=14
         pixel_data[14][58] = 4'b0000; // x=58, y=14
-        pixel_data[14][59] = 4'b0000; // x=59, y=14
         pixel_data[15][0] = 4'b0000; // x=0, y=15
         pixel_data[15][1] = 4'b0000; // x=1, y=15
         pixel_data[15][2] = 4'b0000; // x=2, y=15
@@ -919,12 +904,12 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[15][16] = 4'b0000; // x=16, y=15
         pixel_data[15][17] = 4'b0000; // x=17, y=15
         pixel_data[15][18] = 4'b0000; // x=18, y=15
-        pixel_data[15][19] = 4'b0000; // x=19, y=15
+        pixel_data[15][19] = 4'b1100; // x=19, y=15
         pixel_data[15][20] = 4'b0000; // x=20, y=15
-        pixel_data[15][21] = 4'b0000; // x=21, y=15
-        pixel_data[15][22] = 4'b0000; // x=22, y=15
-        pixel_data[15][23] = 4'b0010; // x=23, y=15
-        pixel_data[15][24] = 4'b1101; // x=24, y=15
+        pixel_data[15][21] = 4'b1100; // x=21, y=15
+        pixel_data[15][22] = 4'b1100; // x=22, y=15
+        pixel_data[15][23] = 4'b1001; // x=23, y=15
+        pixel_data[15][24] = 4'b0001; // x=24, y=15
         pixel_data[15][25] = 4'b0000; // x=25, y=15
         pixel_data[15][26] = 4'b0000; // x=26, y=15
         pixel_data[15][27] = 4'b0000; // x=27, y=15
@@ -959,7 +944,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[15][56] = 4'b0000; // x=56, y=15
         pixel_data[15][57] = 4'b0000; // x=57, y=15
         pixel_data[15][58] = 4'b0000; // x=58, y=15
-        pixel_data[15][59] = 4'b0000; // x=59, y=15
         pixel_data[16][0] = 4'b0000; // x=0, y=16
         pixel_data[16][1] = 4'b0000; // x=1, y=16
         pixel_data[16][2] = 4'b0000; // x=2, y=16
@@ -968,45 +952,45 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[16][5] = 4'b0000; // x=5, y=16
         pixel_data[16][6] = 4'b0000; // x=6, y=16
         pixel_data[16][7] = 4'b0000; // x=7, y=16
-        pixel_data[16][8] = 4'b0000; // x=8, y=16
-        pixel_data[16][9] = 4'b0000; // x=9, y=16
-        pixel_data[16][10] = 4'b0000; // x=10, y=16
-        pixel_data[16][11] = 4'b1001; // x=11, y=16
-        pixel_data[16][12] = 4'b1001; // x=12, y=16
-        pixel_data[16][13] = 4'b1001; // x=13, y=16
-        pixel_data[16][14] = 4'b1001; // x=14, y=16
-        pixel_data[16][15] = 4'b1001; // x=15, y=16
-        pixel_data[16][16] = 4'b1001; // x=16, y=16
-        pixel_data[16][17] = 4'b1001; // x=17, y=16
-        pixel_data[16][18] = 4'b1001; // x=18, y=16
-        pixel_data[16][19] = 4'b1001; // x=19, y=16
-        pixel_data[16][20] = 4'b1001; // x=20, y=16
-        pixel_data[16][21] = 4'b1001; // x=21, y=16
-        pixel_data[16][22] = 4'b0010; // x=22, y=16
-        pixel_data[16][23] = 4'b1111; // x=23, y=16
-        pixel_data[16][24] = 4'b1101; // x=24, y=16
+        pixel_data[16][8] = 4'b0001; // x=8, y=16
+        pixel_data[16][9] = 4'b0001; // x=9, y=16
+        pixel_data[16][10] = 4'b1110; // x=10, y=16
+        pixel_data[16][11] = 4'b0001; // x=11, y=16
+        pixel_data[16][12] = 4'b1110; // x=12, y=16
+        pixel_data[16][13] = 4'b1110; // x=13, y=16
+        pixel_data[16][14] = 4'b1110; // x=14, y=16
+        pixel_data[16][15] = 4'b1110; // x=15, y=16
+        pixel_data[16][16] = 4'b1110; // x=16, y=16
+        pixel_data[16][17] = 4'b1110; // x=17, y=16
+        pixel_data[16][18] = 4'b1110; // x=18, y=16
+        pixel_data[16][19] = 4'b1110; // x=19, y=16
+        pixel_data[16][20] = 4'b1110; // x=20, y=16
+        pixel_data[16][21] = 4'b1110; // x=21, y=16
+        pixel_data[16][22] = 4'b1001; // x=22, y=16
+        pixel_data[16][23] = 4'b0111; // x=23, y=16
+        pixel_data[16][24] = 4'b0100; // x=24, y=16
         pixel_data[16][25] = 4'b1001; // x=25, y=16
-        pixel_data[16][26] = 4'b0010; // x=26, y=16
-        pixel_data[16][27] = 4'b0010; // x=27, y=16
-        pixel_data[16][28] = 4'b1000; // x=28, y=16
-        pixel_data[16][29] = 4'b0010; // x=29, y=16
-        pixel_data[16][30] = 4'b1000; // x=30, y=16
-        pixel_data[16][31] = 4'b1000; // x=31, y=16
-        pixel_data[16][32] = 4'b1000; // x=32, y=16
-        pixel_data[16][33] = 4'b1000; // x=33, y=16
-        pixel_data[16][34] = 4'b0111; // x=34, y=16
-        pixel_data[16][35] = 4'b0000; // x=35, y=16
-        pixel_data[16][36] = 4'b0000; // x=36, y=16
-        pixel_data[16][37] = 4'b0000; // x=37, y=16
-        pixel_data[16][38] = 4'b0000; // x=38, y=16
-        pixel_data[16][39] = 4'b0000; // x=39, y=16
-        pixel_data[16][40] = 4'b0000; // x=40, y=16
-        pixel_data[16][41] = 4'b0000; // x=41, y=16
-        pixel_data[16][42] = 4'b0000; // x=42, y=16
-        pixel_data[16][43] = 4'b0000; // x=43, y=16
-        pixel_data[16][44] = 4'b0000; // x=44, y=16
-        pixel_data[16][45] = 4'b0000; // x=45, y=16
-        pixel_data[16][46] = 4'b0000; // x=46, y=16
+        pixel_data[16][26] = 4'b0100; // x=26, y=16
+        pixel_data[16][27] = 4'b0100; // x=27, y=16
+        pixel_data[16][28] = 4'b0100; // x=28, y=16
+        pixel_data[16][29] = 4'b0100; // x=29, y=16
+        pixel_data[16][30] = 4'b0100; // x=30, y=16
+        pixel_data[16][31] = 4'b0100; // x=31, y=16
+        pixel_data[16][32] = 4'b0100; // x=32, y=16
+        pixel_data[16][33] = 4'b1111; // x=33, y=16
+        pixel_data[16][34] = 4'b0011; // x=34, y=16
+        pixel_data[16][35] = 4'b0111; // x=35, y=16
+        pixel_data[16][36] = 4'b0111; // x=36, y=16
+        pixel_data[16][37] = 4'b1111; // x=37, y=16
+        pixel_data[16][38] = 4'b1101; // x=38, y=16
+        pixel_data[16][39] = 4'b0111; // x=39, y=16
+        pixel_data[16][40] = 4'b0100; // x=40, y=16
+        pixel_data[16][41] = 4'b0100; // x=41, y=16
+        pixel_data[16][42] = 4'b1001; // x=42, y=16
+        pixel_data[16][43] = 4'b1001; // x=43, y=16
+        pixel_data[16][44] = 4'b0110; // x=44, y=16
+        pixel_data[16][45] = 4'b0001; // x=45, y=16
+        pixel_data[16][46] = 4'b0001; // x=46, y=16
         pixel_data[16][47] = 4'b0000; // x=47, y=16
         pixel_data[16][48] = 4'b0000; // x=48, y=16
         pixel_data[16][49] = 4'b0000; // x=49, y=16
@@ -1019,327 +1003,321 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[16][56] = 4'b0000; // x=56, y=16
         pixel_data[16][57] = 4'b0000; // x=57, y=16
         pixel_data[16][58] = 4'b0000; // x=58, y=16
-        pixel_data[16][59] = 4'b0000; // x=59, y=16
         pixel_data[17][0] = 4'b0000; // x=0, y=17
         pixel_data[17][1] = 4'b0000; // x=1, y=17
         pixel_data[17][2] = 4'b0000; // x=2, y=17
         pixel_data[17][3] = 4'b0000; // x=3, y=17
         pixel_data[17][4] = 4'b0000; // x=4, y=17
-        pixel_data[17][5] = 4'b0000; // x=5, y=17
-        pixel_data[17][6] = 4'b0010; // x=6, y=17
-        pixel_data[17][7] = 4'b1111; // x=7, y=17
-        pixel_data[17][8] = 4'b0101; // x=8, y=17
-        pixel_data[17][9] = 4'b0101; // x=9, y=17
-        pixel_data[17][10] = 4'b0101; // x=10, y=17
-        pixel_data[17][11] = 4'b1111; // x=11, y=17
-        pixel_data[17][12] = 4'b1111; // x=12, y=17
-        pixel_data[17][13] = 4'b1111; // x=13, y=17
-        pixel_data[17][14] = 4'b1111; // x=14, y=17
-        pixel_data[17][15] = 4'b1111; // x=15, y=17
-        pixel_data[17][16] = 4'b1111; // x=16, y=17
-        pixel_data[17][17] = 4'b1111; // x=17, y=17
-        pixel_data[17][18] = 4'b1111; // x=18, y=17
-        pixel_data[17][19] = 4'b1111; // x=19, y=17
-        pixel_data[17][20] = 4'b1111; // x=20, y=17
-        pixel_data[17][21] = 4'b0101; // x=21, y=17
-        pixel_data[17][22] = 4'b1011; // x=22, y=17
+        pixel_data[17][5] = 4'b0001; // x=5, y=17
+        pixel_data[17][6] = 4'b0110; // x=6, y=17
+        pixel_data[17][7] = 4'b1001; // x=7, y=17
+        pixel_data[17][8] = 4'b1001; // x=8, y=17
+        pixel_data[17][9] = 4'b1001; // x=9, y=17
+        pixel_data[17][10] = 4'b0110; // x=10, y=17
+        pixel_data[17][11] = 4'b0110; // x=11, y=17
+        pixel_data[17][12] = 4'b0110; // x=12, y=17
+        pixel_data[17][13] = 4'b0110; // x=13, y=17
+        pixel_data[17][14] = 4'b1110; // x=14, y=17
+        pixel_data[17][15] = 4'b1110; // x=15, y=17
+        pixel_data[17][16] = 4'b1110; // x=16, y=17
+        pixel_data[17][17] = 4'b0110; // x=17, y=17
+        pixel_data[17][18] = 4'b0110; // x=18, y=17
+        pixel_data[17][19] = 4'b0110; // x=19, y=17
+        pixel_data[17][20] = 4'b1001; // x=20, y=17
+        pixel_data[17][21] = 4'b0100; // x=21, y=17
+        pixel_data[17][22] = 4'b0011; // x=22, y=17
         pixel_data[17][23] = 4'b0011; // x=23, y=17
-        pixel_data[17][24] = 4'b0001; // x=24, y=17
-        pixel_data[17][25] = 4'b0001; // x=25, y=17
+        pixel_data[17][24] = 4'b1101; // x=24, y=17
+        pixel_data[17][25] = 4'b0010; // x=25, y=17
         pixel_data[17][26] = 4'b1010; // x=26, y=17
-        pixel_data[17][27] = 4'b1010; // x=27, y=17
-        pixel_data[17][28] = 4'b1010; // x=28, y=17
-        pixel_data[17][29] = 4'b1010; // x=29, y=17
-        pixel_data[17][30] = 4'b1010; // x=30, y=17
-        pixel_data[17][31] = 4'b1010; // x=31, y=17
-        pixel_data[17][32] = 4'b1010; // x=32, y=17
-        pixel_data[17][33] = 4'b1010; // x=33, y=17
-        pixel_data[17][34] = 4'b0110; // x=34, y=17
-        pixel_data[17][35] = 4'b1110; // x=35, y=17
-        pixel_data[17][36] = 4'b1010; // x=36, y=17
-        pixel_data[17][37] = 4'b1010; // x=37, y=17
-        pixel_data[17][38] = 4'b0110; // x=38, y=17
-        pixel_data[17][39] = 4'b0110; // x=39, y=17
-        pixel_data[17][40] = 4'b0100; // x=40, y=17
-        pixel_data[17][41] = 4'b1110; // x=41, y=17
-        pixel_data[17][42] = 4'b1010; // x=42, y=17
-        pixel_data[17][43] = 4'b1010; // x=43, y=17
-        pixel_data[17][44] = 4'b1010; // x=44, y=17
-        pixel_data[17][45] = 4'b0001; // x=45, y=17
-        pixel_data[17][46] = 4'b1101; // x=46, y=17
-        pixel_data[17][47] = 4'b1111; // x=47, y=17
-        pixel_data[17][48] = 4'b1111; // x=48, y=17
-        pixel_data[17][49] = 4'b1111; // x=49, y=17
-        pixel_data[17][50] = 4'b1000; // x=50, y=17
-        pixel_data[17][51] = 4'b1000; // x=51, y=17
-        pixel_data[17][52] = 4'b1001; // x=52, y=17
+        pixel_data[17][27] = 4'b1000; // x=27, y=17
+        pixel_data[17][28] = 4'b1000; // x=28, y=17
+        pixel_data[17][29] = 4'b1000; // x=29, y=17
+        pixel_data[17][30] = 4'b1000; // x=30, y=17
+        pixel_data[17][31] = 4'b1000; // x=31, y=17
+        pixel_data[17][32] = 4'b1000; // x=32, y=17
+        pixel_data[17][33] = 4'b1000; // x=33, y=17
+        pixel_data[17][34] = 4'b1011; // x=34, y=17
+        pixel_data[17][35] = 4'b0101; // x=35, y=17
+        pixel_data[17][36] = 4'b1101; // x=36, y=17
+        pixel_data[17][37] = 4'b1000; // x=37, y=17
+        pixel_data[17][38] = 4'b1000; // x=38, y=17
+        pixel_data[17][39] = 4'b1011; // x=39, y=17
+        pixel_data[17][40] = 4'b1011; // x=40, y=17
+        pixel_data[17][41] = 4'b1000; // x=41, y=17
+        pixel_data[17][42] = 4'b1000; // x=42, y=17
+        pixel_data[17][43] = 4'b1000; // x=43, y=17
+        pixel_data[17][44] = 4'b1000; // x=44, y=17
+        pixel_data[17][45] = 4'b1111; // x=45, y=17
+        pixel_data[17][46] = 4'b1001; // x=46, y=17
+        pixel_data[17][47] = 4'b1001; // x=47, y=17
+        pixel_data[17][48] = 4'b1001; // x=48, y=17
+        pixel_data[17][49] = 4'b1001; // x=49, y=17
+        pixel_data[17][50] = 4'b1001; // x=50, y=17
+        pixel_data[17][51] = 4'b1110; // x=51, y=17
+        pixel_data[17][52] = 4'b0001; // x=52, y=17
         pixel_data[17][53] = 4'b0000; // x=53, y=17
         pixel_data[17][54] = 4'b0000; // x=54, y=17
         pixel_data[17][55] = 4'b0000; // x=55, y=17
         pixel_data[17][56] = 4'b0000; // x=56, y=17
         pixel_data[17][57] = 4'b0000; // x=57, y=17
         pixel_data[17][58] = 4'b0000; // x=58, y=17
-        pixel_data[17][59] = 4'b0000; // x=59, y=17
         pixel_data[18][0] = 4'b0000; // x=0, y=18
         pixel_data[18][1] = 4'b0000; // x=1, y=18
         pixel_data[18][2] = 4'b0000; // x=2, y=18
         pixel_data[18][3] = 4'b0000; // x=3, y=18
-        pixel_data[18][4] = 4'b0000; // x=4, y=18
-        pixel_data[18][5] = 4'b1111; // x=5, y=18
-        pixel_data[18][6] = 4'b0101; // x=6, y=18
-        pixel_data[18][7] = 4'b0101; // x=7, y=18
-        pixel_data[18][8] = 4'b1000; // x=8, y=18
-        pixel_data[18][9] = 4'b0010; // x=9, y=18
-        pixel_data[18][10] = 4'b0010; // x=10, y=18
-        pixel_data[18][11] = 4'b0010; // x=11, y=18
-        pixel_data[18][12] = 4'b0010; // x=12, y=18
-        pixel_data[18][13] = 4'b0010; // x=13, y=18
-        pixel_data[18][14] = 4'b0010; // x=14, y=18
-        pixel_data[18][15] = 4'b0010; // x=15, y=18
-        pixel_data[18][16] = 4'b0010; // x=16, y=18
-        pixel_data[18][17] = 4'b0010; // x=17, y=18
-        pixel_data[18][18] = 4'b0010; // x=18, y=18
-        pixel_data[18][19] = 4'b1000; // x=19, y=18
-        pixel_data[18][20] = 4'b0011; // x=20, y=18
-        pixel_data[18][21] = 4'b1100; // x=21, y=18
-        pixel_data[18][22] = 4'b1011; // x=22, y=18
-        pixel_data[18][23] = 4'b1011; // x=23, y=18
-        pixel_data[18][24] = 4'b0111; // x=24, y=18
+        pixel_data[18][4] = 4'b0001; // x=4, y=18
+        pixel_data[18][5] = 4'b1001; // x=5, y=18
+        pixel_data[18][6] = 4'b1001; // x=6, y=18
+        pixel_data[18][7] = 4'b0110; // x=7, y=18
+        pixel_data[18][8] = 4'b1110; // x=8, y=18
+        pixel_data[18][9] = 4'b0001; // x=9, y=18
+        pixel_data[18][10] = 4'b0001; // x=10, y=18
+        pixel_data[18][11] = 4'b0001; // x=11, y=18
+        pixel_data[18][12] = 4'b0001; // x=12, y=18
+        pixel_data[18][13] = 4'b0001; // x=13, y=18
+        pixel_data[18][14] = 4'b0001; // x=14, y=18
+        pixel_data[18][15] = 4'b0001; // x=15, y=18
+        pixel_data[18][16] = 4'b0001; // x=16, y=18
+        pixel_data[18][17] = 4'b0001; // x=17, y=18
+        pixel_data[18][18] = 4'b0001; // x=18, y=18
+        pixel_data[18][19] = 4'b0100; // x=19, y=18
+        pixel_data[18][20] = 4'b1000; // x=20, y=18
+        pixel_data[18][21] = 4'b1101; // x=21, y=18
+        pixel_data[18][22] = 4'b0011; // x=22, y=18
+        pixel_data[18][23] = 4'b1111; // x=23, y=18
+        pixel_data[18][24] = 4'b1111; // x=24, y=18
         pixel_data[18][25] = 4'b0111; // x=25, y=18
         pixel_data[18][26] = 4'b0111; // x=26, y=18
-        pixel_data[18][27] = 4'b1011; // x=27, y=18
-        pixel_data[18][28] = 4'b1011; // x=28, y=18
-        pixel_data[18][29] = 4'b0011; // x=29, y=18
-        pixel_data[18][30] = 4'b1100; // x=30, y=18
-        pixel_data[18][31] = 4'b1100; // x=31, y=18
-        pixel_data[18][32] = 4'b1100; // x=32, y=18
-        pixel_data[18][33] = 4'b1100; // x=33, y=18
+        pixel_data[18][27] = 4'b0111; // x=27, y=18
+        pixel_data[18][28] = 4'b0111; // x=28, y=18
+        pixel_data[18][29] = 4'b1111; // x=29, y=18
+        pixel_data[18][30] = 4'b0011; // x=30, y=18
+        pixel_data[18][31] = 4'b0011; // x=31, y=18
+        pixel_data[18][32] = 4'b0011; // x=32, y=18
+        pixel_data[18][33] = 4'b0011; // x=33, y=18
         pixel_data[18][34] = 4'b1010; // x=34, y=18
-        pixel_data[18][35] = 4'b1110; // x=35, y=18
-        pixel_data[18][36] = 4'b0011; // x=36, y=18
-        pixel_data[18][37] = 4'b0011; // x=37, y=18
-        pixel_data[18][38] = 4'b0001; // x=38, y=18
-        pixel_data[18][39] = 4'b1010; // x=39, y=18
-        pixel_data[18][40] = 4'b0100; // x=40, y=18
-        pixel_data[18][41] = 4'b0001; // x=41, y=18
-        pixel_data[18][42] = 4'b1100; // x=42, y=18
-        pixel_data[18][43] = 4'b1100; // x=43, y=18
-        pixel_data[18][44] = 4'b1100; // x=44, y=18
-        pixel_data[18][45] = 4'b1011; // x=45, y=18
-        pixel_data[18][46] = 4'b0101; // x=46, y=18
-        pixel_data[18][47] = 4'b0101; // x=47, y=18
-        pixel_data[18][48] = 4'b0101; // x=48, y=18
-        pixel_data[18][49] = 4'b1111; // x=49, y=18
-        pixel_data[18][50] = 4'b0101; // x=50, y=18
-        pixel_data[18][51] = 4'b0101; // x=51, y=18
-        pixel_data[18][52] = 4'b0101; // x=52, y=18
-        pixel_data[18][53] = 4'b0101; // x=53, y=18
-        pixel_data[18][54] = 4'b1000; // x=54, y=18
+        pixel_data[18][35] = 4'b1101; // x=35, y=18
+        pixel_data[18][36] = 4'b0111; // x=36, y=18
+        pixel_data[18][37] = 4'b1101; // x=37, y=18
+        pixel_data[18][38] = 4'b0010; // x=38, y=18
+        pixel_data[18][39] = 4'b1000; // x=39, y=18
+        pixel_data[18][40] = 4'b1101; // x=40, y=18
+        pixel_data[18][41] = 4'b0011; // x=41, y=18
+        pixel_data[18][42] = 4'b0011; // x=42, y=18
+        pixel_data[18][43] = 4'b0011; // x=43, y=18
+        pixel_data[18][44] = 4'b0111; // x=44, y=18
+        pixel_data[18][45] = 4'b0110; // x=45, y=18
+        pixel_data[18][46] = 4'b0110; // x=46, y=18
+        pixel_data[18][47] = 4'b0110; // x=47, y=18
+        pixel_data[18][48] = 4'b0110; // x=48, y=18
+        pixel_data[18][49] = 4'b0110; // x=49, y=18
+        pixel_data[18][50] = 4'b0110; // x=50, y=18
+        pixel_data[18][51] = 4'b1001; // x=51, y=18
+        pixel_data[18][52] = 4'b1001; // x=52, y=18
+        pixel_data[18][53] = 4'b1001; // x=53, y=18
+        pixel_data[18][54] = 4'b0000; // x=54, y=18
         pixel_data[18][55] = 4'b0000; // x=55, y=18
         pixel_data[18][56] = 4'b0000; // x=56, y=18
         pixel_data[18][57] = 4'b0000; // x=57, y=18
         pixel_data[18][58] = 4'b0000; // x=58, y=18
-        pixel_data[18][59] = 4'b0000; // x=59, y=18
         pixel_data[19][0] = 4'b0000; // x=0, y=19
         pixel_data[19][1] = 4'b0000; // x=1, y=19
         pixel_data[19][2] = 4'b0000; // x=2, y=19
         pixel_data[19][3] = 4'b0000; // x=3, y=19
-        pixel_data[19][4] = 4'b1111; // x=4, y=19
-        pixel_data[19][5] = 4'b0101; // x=5, y=19
-        pixel_data[19][6] = 4'b1111; // x=6, y=19
-        pixel_data[19][7] = 4'b0010; // x=7, y=19
-        pixel_data[19][8] = 4'b0010; // x=8, y=19
-        pixel_data[19][9] = 4'b0010; // x=9, y=19
-        pixel_data[19][10] = 4'b0010; // x=10, y=19
-        pixel_data[19][11] = 4'b0010; // x=11, y=19
-        pixel_data[19][12] = 4'b0010; // x=12, y=19
-        pixel_data[19][13] = 4'b0010; // x=13, y=19
-        pixel_data[19][14] = 4'b0010; // x=14, y=19
-        pixel_data[19][15] = 4'b0010; // x=15, y=19
-        pixel_data[19][16] = 4'b0010; // x=16, y=19
-        pixel_data[19][17] = 4'b0010; // x=17, y=19
-        pixel_data[19][18] = 4'b1001; // x=18, y=19
-        pixel_data[19][19] = 4'b1011; // x=19, y=19
-        pixel_data[19][20] = 4'b1110; // x=20, y=19
-        pixel_data[19][21] = 4'b0001; // x=21, y=19
+        pixel_data[19][4] = 4'b1001; // x=4, y=19
+        pixel_data[19][5] = 4'b1001; // x=5, y=19
+        pixel_data[19][6] = 4'b0110; // x=6, y=19
+        pixel_data[19][7] = 4'b0001; // x=7, y=19
+        pixel_data[19][8] = 4'b0001; // x=8, y=19
+        pixel_data[19][9] = 4'b0001; // x=9, y=19
+        pixel_data[19][10] = 4'b0001; // x=10, y=19
+        pixel_data[19][11] = 4'b0001; // x=11, y=19
+        pixel_data[19][12] = 4'b0001; // x=12, y=19
+        pixel_data[19][13] = 4'b0001; // x=13, y=19
+        pixel_data[19][14] = 4'b0001; // x=14, y=19
+        pixel_data[19][15] = 4'b0001; // x=15, y=19
+        pixel_data[19][16] = 4'b0001; // x=16, y=19
+        pixel_data[19][17] = 4'b0001; // x=17, y=19
+        pixel_data[19][18] = 4'b0110; // x=18, y=19
+        pixel_data[19][19] = 4'b1000; // x=19, y=19
+        pixel_data[19][20] = 4'b1000; // x=20, y=19
+        pixel_data[19][21] = 4'b0011; // x=21, y=19
         pixel_data[19][22] = 4'b0011; // x=22, y=19
         pixel_data[19][23] = 4'b0011; // x=23, y=19
         pixel_data[19][24] = 4'b0011; // x=24, y=19
         pixel_data[19][25] = 4'b0011; // x=25, y=19
         pixel_data[19][26] = 4'b0011; // x=26, y=19
-        pixel_data[19][27] = 4'b1011; // x=27, y=19
-        pixel_data[19][28] = 4'b1011; // x=28, y=19
-        pixel_data[19][29] = 4'b1011; // x=29, y=19
-        pixel_data[19][30] = 4'b0011; // x=30, y=19
-        pixel_data[19][31] = 4'b0011; // x=31, y=19
-        pixel_data[19][32] = 4'b0011; // x=32, y=19
-        pixel_data[19][33] = 4'b0011; // x=33, y=19
-        pixel_data[19][34] = 4'b0011; // x=34, y=19
-        pixel_data[19][35] = 4'b1100; // x=35, y=19
-        pixel_data[19][36] = 4'b0011; // x=36, y=19
-        pixel_data[19][37] = 4'b0011; // x=37, y=19
-        pixel_data[19][38] = 4'b0011; // x=38, y=19
-        pixel_data[19][39] = 4'b1100; // x=39, y=19
-        pixel_data[19][40] = 4'b1100; // x=40, y=19
-        pixel_data[19][41] = 4'b0011; // x=41, y=19
-        pixel_data[19][42] = 4'b0011; // x=42, y=19
-        pixel_data[19][43] = 4'b0011; // x=43, y=19
-        pixel_data[19][44] = 4'b0011; // x=44, y=19
-        pixel_data[19][45] = 4'b0111; // x=45, y=19
-        pixel_data[19][46] = 4'b1101; // x=46, y=19
-        pixel_data[19][47] = 4'b0101; // x=47, y=19
-        pixel_data[19][48] = 4'b1000; // x=48, y=19
-        pixel_data[19][49] = 4'b0010; // x=49, y=19
-        pixel_data[19][50] = 4'b1001; // x=50, y=19
-        pixel_data[19][51] = 4'b0010; // x=51, y=19
-        pixel_data[19][52] = 4'b0010; // x=52, y=19
-        pixel_data[19][53] = 4'b1000; // x=53, y=19
-        pixel_data[19][54] = 4'b0101; // x=54, y=19
-        pixel_data[19][55] = 4'b0101; // x=55, y=19
+        pixel_data[19][27] = 4'b0011; // x=27, y=19
+        pixel_data[19][28] = 4'b1101; // x=28, y=19
+        pixel_data[19][29] = 4'b0010; // x=29, y=19
+        pixel_data[19][30] = 4'b1010; // x=30, y=19
+        pixel_data[19][31] = 4'b1010; // x=31, y=19
+        pixel_data[19][32] = 4'b1010; // x=32, y=19
+        pixel_data[19][33] = 4'b1010; // x=33, y=19
+        pixel_data[19][34] = 4'b1010; // x=34, y=19
+        pixel_data[19][35] = 4'b1010; // x=35, y=19
+        pixel_data[19][36] = 4'b0010; // x=36, y=19
+        pixel_data[19][37] = 4'b1010; // x=37, y=19
+        pixel_data[19][38] = 4'b1010; // x=38, y=19
+        pixel_data[19][39] = 4'b1010; // x=39, y=19
+        pixel_data[19][40] = 4'b0010; // x=40, y=19
+        pixel_data[19][41] = 4'b1010; // x=41, y=19
+        pixel_data[19][42] = 4'b0010; // x=42, y=19
+        pixel_data[19][43] = 4'b0010; // x=43, y=19
+        pixel_data[19][44] = 4'b1101; // x=44, y=19
+        pixel_data[19][45] = 4'b0011; // x=45, y=19
+        pixel_data[19][46] = 4'b0111; // x=46, y=19
+        pixel_data[19][47] = 4'b0100; // x=47, y=19
+        pixel_data[19][48] = 4'b0110; // x=48, y=19
+        pixel_data[19][49] = 4'b1110; // x=49, y=19
+        pixel_data[19][50] = 4'b0001; // x=50, y=19
+        pixel_data[19][51] = 4'b0001; // x=51, y=19
+        pixel_data[19][52] = 4'b1110; // x=52, y=19
+        pixel_data[19][53] = 4'b0100; // x=53, y=19
+        pixel_data[19][54] = 4'b0100; // x=54, y=19
+        pixel_data[19][55] = 4'b0000; // x=55, y=19
         pixel_data[19][56] = 4'b0000; // x=56, y=19
         pixel_data[19][57] = 4'b0000; // x=57, y=19
         pixel_data[19][58] = 4'b0000; // x=58, y=19
-        pixel_data[19][59] = 4'b0000; // x=59, y=19
         pixel_data[20][0] = 4'b0000; // x=0, y=20
         pixel_data[20][1] = 4'b0000; // x=1, y=20
         pixel_data[20][2] = 4'b0000; // x=2, y=20
-        pixel_data[20][3] = 4'b1001; // x=3, y=20
-        pixel_data[20][4] = 4'b0101; // x=4, y=20
-        pixel_data[20][5] = 4'b0101; // x=5, y=20
-        pixel_data[20][6] = 4'b1000; // x=6, y=20
-        pixel_data[20][7] = 4'b0010; // x=7, y=20
-        pixel_data[20][8] = 4'b0010; // x=8, y=20
-        pixel_data[20][9] = 4'b0010; // x=9, y=20
-        pixel_data[20][10] = 4'b0010; // x=10, y=20
-        pixel_data[20][11] = 4'b0010; // x=11, y=20
-        pixel_data[20][12] = 4'b0010; // x=12, y=20
-        pixel_data[20][13] = 4'b0010; // x=13, y=20
-        pixel_data[20][14] = 4'b0010; // x=14, y=20
-        pixel_data[20][15] = 4'b0010; // x=15, y=20
-        pixel_data[20][16] = 4'b0010; // x=16, y=20
-        pixel_data[20][17] = 4'b1001; // x=17, y=20
+        pixel_data[20][3] = 4'b0001; // x=3, y=20
+        pixel_data[20][4] = 4'b1001; // x=4, y=20
+        pixel_data[20][5] = 4'b1001; // x=5, y=20
+        pixel_data[20][6] = 4'b1110; // x=6, y=20
+        pixel_data[20][7] = 4'b0001; // x=7, y=20
+        pixel_data[20][8] = 4'b1110; // x=8, y=20
+        pixel_data[20][9] = 4'b1110; // x=9, y=20
+        pixel_data[20][10] = 4'b1110; // x=10, y=20
+        pixel_data[20][11] = 4'b1110; // x=11, y=20
+        pixel_data[20][12] = 4'b1110; // x=12, y=20
+        pixel_data[20][13] = 4'b1110; // x=13, y=20
+        pixel_data[20][14] = 4'b1110; // x=14, y=20
+        pixel_data[20][15] = 4'b1110; // x=15, y=20
+        pixel_data[20][16] = 4'b1110; // x=16, y=20
+        pixel_data[20][17] = 4'b0001; // x=17, y=20
         pixel_data[20][18] = 4'b1111; // x=18, y=20
-        pixel_data[20][19] = 4'b0110; // x=19, y=20
-        pixel_data[20][20] = 4'b1010; // x=20, y=20
+        pixel_data[20][19] = 4'b0101; // x=19, y=20
+        pixel_data[20][20] = 4'b1101; // x=20, y=20
         pixel_data[20][21] = 4'b0011; // x=21, y=20
         pixel_data[20][22] = 4'b0011; // x=22, y=20
         pixel_data[20][23] = 4'b0011; // x=23, y=20
         pixel_data[20][24] = 4'b0011; // x=24, y=20
         pixel_data[20][25] = 4'b0011; // x=25, y=20
         pixel_data[20][26] = 4'b0011; // x=26, y=20
-        pixel_data[20][27] = 4'b0011; // x=27, y=20
-        pixel_data[20][28] = 4'b0001; // x=28, y=20
-        pixel_data[20][29] = 4'b0100; // x=29, y=20
-        pixel_data[20][30] = 4'b0100; // x=30, y=20
-        pixel_data[20][31] = 4'b0100; // x=31, y=20
-        pixel_data[20][32] = 4'b0100; // x=32, y=20
-        pixel_data[20][33] = 4'b0100; // x=33, y=20
-        pixel_data[20][34] = 4'b0100; // x=34, y=20
-        pixel_data[20][35] = 4'b0100; // x=35, y=20
-        pixel_data[20][36] = 4'b0100; // x=36, y=20
-        pixel_data[20][37] = 4'b0100; // x=37, y=20
-        pixel_data[20][38] = 4'b0100; // x=38, y=20
-        pixel_data[20][39] = 4'b0100; // x=39, y=20
-        pixel_data[20][40] = 4'b0100; // x=40, y=20
-        pixel_data[20][41] = 4'b0100; // x=41, y=20
-        pixel_data[20][42] = 4'b0100; // x=42, y=20
-        pixel_data[20][43] = 4'b0100; // x=43, y=20
-        pixel_data[20][44] = 4'b0100; // x=44, y=20
-        pixel_data[20][45] = 4'b0100; // x=45, y=20
-        pixel_data[20][46] = 4'b0100; // x=46, y=20
-        pixel_data[20][47] = 4'b1110; // x=47, y=20
-        pixel_data[20][48] = 4'b0110; // x=48, y=20
-        pixel_data[20][49] = 4'b0001; // x=49, y=20
-        pixel_data[20][50] = 4'b0011; // x=50, y=20
-        pixel_data[20][51] = 4'b0111; // x=51, y=20
-        pixel_data[20][52] = 4'b1101; // x=52, y=20
-        pixel_data[20][53] = 4'b0101; // x=53, y=20
-        pixel_data[20][54] = 4'b1101; // x=54, y=20
-        pixel_data[20][55] = 4'b1101; // x=55, y=20
+        pixel_data[20][27] = 4'b1101; // x=27, y=20
+        pixel_data[20][28] = 4'b0101; // x=28, y=20
+        pixel_data[20][29] = 4'b0101; // x=29, y=20
+        pixel_data[20][30] = 4'b0101; // x=30, y=20
+        pixel_data[20][31] = 4'b0101; // x=31, y=20
+        pixel_data[20][32] = 4'b0101; // x=32, y=20
+        pixel_data[20][33] = 4'b0101; // x=33, y=20
+        pixel_data[20][34] = 4'b0101; // x=34, y=20
+        pixel_data[20][35] = 4'b0101; // x=35, y=20
+        pixel_data[20][36] = 4'b1011; // x=36, y=20
+        pixel_data[20][37] = 4'b0101; // x=37, y=20
+        pixel_data[20][38] = 4'b0101; // x=38, y=20
+        pixel_data[20][39] = 4'b0101; // x=39, y=20
+        pixel_data[20][40] = 4'b0101; // x=40, y=20
+        pixel_data[20][41] = 4'b0101; // x=41, y=20
+        pixel_data[20][42] = 4'b0101; // x=42, y=20
+        pixel_data[20][43] = 4'b0101; // x=43, y=20
+        pixel_data[20][44] = 4'b0101; // x=44, y=20
+        pixel_data[20][45] = 4'b1011; // x=45, y=20
+        pixel_data[20][46] = 4'b1011; // x=46, y=20
+        pixel_data[20][47] = 4'b1011; // x=47, y=20
+        pixel_data[20][48] = 4'b1011; // x=48, y=20
+        pixel_data[20][49] = 4'b0101; // x=49, y=20
+        pixel_data[20][50] = 4'b1010; // x=50, y=20
+        pixel_data[20][51] = 4'b1101; // x=51, y=20
+        pixel_data[20][52] = 4'b0100; // x=52, y=20
+        pixel_data[20][53] = 4'b1001; // x=53, y=20
+        pixel_data[20][54] = 4'b1001; // x=54, y=20
+        pixel_data[20][55] = 4'b1110; // x=55, y=20
         pixel_data[20][56] = 4'b0000; // x=56, y=20
         pixel_data[20][57] = 4'b0000; // x=57, y=20
         pixel_data[20][58] = 4'b0000; // x=58, y=20
-        pixel_data[20][59] = 4'b0000; // x=59, y=20
         pixel_data[21][0] = 4'b0000; // x=0, y=21
         pixel_data[21][1] = 4'b0000; // x=1, y=21
         pixel_data[21][2] = 4'b0000; // x=2, y=21
-        pixel_data[21][3] = 4'b1000; // x=3, y=21
-        pixel_data[21][4] = 4'b0101; // x=4, y=21
-        pixel_data[21][5] = 4'b0101; // x=5, y=21
-        pixel_data[21][6] = 4'b1111; // x=6, y=21
-        pixel_data[21][7] = 4'b1111; // x=7, y=21
-        pixel_data[21][8] = 4'b1111; // x=8, y=21
-        pixel_data[21][9] = 4'b1111; // x=9, y=21
-        pixel_data[21][10] = 4'b1111; // x=10, y=21
-        pixel_data[21][11] = 4'b1111; // x=11, y=21
-        pixel_data[21][12] = 4'b1111; // x=12, y=21
-        pixel_data[21][13] = 4'b1111; // x=13, y=21
-        pixel_data[21][14] = 4'b1111; // x=14, y=21
-        pixel_data[21][15] = 4'b1111; // x=15, y=21
-        pixel_data[21][16] = 4'b1111; // x=16, y=21
-        pixel_data[21][17] = 4'b1111; // x=17, y=21
-        pixel_data[21][18] = 4'b0011; // x=18, y=21
-        pixel_data[21][19] = 4'b1110; // x=19, y=21
-        pixel_data[21][20] = 4'b1100; // x=20, y=21
+        pixel_data[21][3] = 4'b0110; // x=3, y=21
+        pixel_data[21][4] = 4'b1001; // x=4, y=21
+        pixel_data[21][5] = 4'b1001; // x=5, y=21
+        pixel_data[21][6] = 4'b0110; // x=6, y=21
+        pixel_data[21][7] = 4'b0110; // x=7, y=21
+        pixel_data[21][8] = 4'b0110; // x=8, y=21
+        pixel_data[21][9] = 4'b0110; // x=9, y=21
+        pixel_data[21][10] = 4'b0110; // x=10, y=21
+        pixel_data[21][11] = 4'b1110; // x=11, y=21
+        pixel_data[21][12] = 4'b1110; // x=12, y=21
+        pixel_data[21][13] = 4'b1110; // x=13, y=21
+        pixel_data[21][14] = 4'b1110; // x=14, y=21
+        pixel_data[21][15] = 4'b1110; // x=15, y=21
+        pixel_data[21][16] = 4'b0110; // x=16, y=21
+        pixel_data[21][17] = 4'b0100; // x=17, y=21
+        pixel_data[21][18] = 4'b1000; // x=18, y=21
+        pixel_data[21][19] = 4'b1000; // x=19, y=21
+        pixel_data[21][20] = 4'b0011; // x=20, y=21
         pixel_data[21][21] = 4'b0011; // x=21, y=21
         pixel_data[21][22] = 4'b0011; // x=22, y=21
         pixel_data[21][23] = 4'b0011; // x=23, y=21
         pixel_data[21][24] = 4'b0011; // x=24, y=21
         pixel_data[21][25] = 4'b0011; // x=25, y=21
         pixel_data[21][26] = 4'b0011; // x=26, y=21
-        pixel_data[21][27] = 4'b0011; // x=27, y=21
-        pixel_data[21][28] = 4'b0110; // x=28, y=21
-        pixel_data[21][29] = 4'b0001; // x=29, y=21
-        pixel_data[21][30] = 4'b0001; // x=30, y=21
-        pixel_data[21][31] = 4'b0001; // x=31, y=21
-        pixel_data[21][32] = 4'b0001; // x=32, y=21
-        pixel_data[21][33] = 4'b0001; // x=33, y=21
-        pixel_data[21][34] = 4'b0001; // x=34, y=21
-        pixel_data[21][35] = 4'b0001; // x=35, y=21
-        pixel_data[21][36] = 4'b1010; // x=36, y=21
-        pixel_data[21][37] = 4'b1110; // x=37, y=21
-        pixel_data[21][38] = 4'b0001; // x=38, y=21
-        pixel_data[21][39] = 4'b0001; // x=39, y=21
-        pixel_data[21][40] = 4'b0001; // x=40, y=21
-        pixel_data[21][41] = 4'b0001; // x=41, y=21
-        pixel_data[21][42] = 4'b0001; // x=42, y=21
-        pixel_data[21][43] = 4'b0001; // x=43, y=21
-        pixel_data[21][44] = 4'b0001; // x=44, y=21
-        pixel_data[21][45] = 4'b0001; // x=45, y=21
-        pixel_data[21][46] = 4'b1010; // x=46, y=21
-        pixel_data[21][47] = 4'b1010; // x=47, y=21
-        pixel_data[21][48] = 4'b0110; // x=48, y=21
-        pixel_data[21][49] = 4'b0110; // x=49, y=21
-        pixel_data[21][50] = 4'b1110; // x=50, y=21
-        pixel_data[21][51] = 4'b0100; // x=51, y=21
+        pixel_data[21][27] = 4'b0010; // x=27, y=21
+        pixel_data[21][28] = 4'b1000; // x=28, y=21
+        pixel_data[21][29] = 4'b0010; // x=29, y=21
+        pixel_data[21][30] = 4'b0010; // x=30, y=21
+        pixel_data[21][31] = 4'b0010; // x=31, y=21
+        pixel_data[21][32] = 4'b0010; // x=32, y=21
+        pixel_data[21][33] = 4'b0010; // x=33, y=21
+        pixel_data[21][34] = 4'b0010; // x=34, y=21
+        pixel_data[21][35] = 4'b0010; // x=35, y=21
+        pixel_data[21][36] = 4'b0101; // x=36, y=21
+        pixel_data[21][37] = 4'b1010; // x=37, y=21
+        pixel_data[21][38] = 4'b0010; // x=38, y=21
+        pixel_data[21][39] = 4'b0010; // x=39, y=21
+        pixel_data[21][40] = 4'b0010; // x=40, y=21
+        pixel_data[21][41] = 4'b0010; // x=41, y=21
+        pixel_data[21][42] = 4'b0010; // x=42, y=21
+        pixel_data[21][43] = 4'b0010; // x=43, y=21
+        pixel_data[21][44] = 4'b0010; // x=44, y=21
+        pixel_data[21][45] = 4'b0010; // x=45, y=21
+        pixel_data[21][46] = 4'b0010; // x=46, y=21
+        pixel_data[21][47] = 4'b0010; // x=47, y=21
+        pixel_data[21][48] = 4'b1010; // x=48, y=21
+        pixel_data[21][49] = 4'b1010; // x=49, y=21
+        pixel_data[21][50] = 4'b1000; // x=50, y=21
+        pixel_data[21][51] = 4'b0101; // x=51, y=21
         pixel_data[21][52] = 4'b0100; // x=52, y=21
-        pixel_data[21][53] = 4'b1101; // x=53, y=21
-        pixel_data[21][54] = 4'b0010; // x=54, y=21
-        pixel_data[21][55] = 4'b0101; // x=55, y=21
-        pixel_data[21][56] = 4'b1000; // x=56, y=21
+        pixel_data[21][53] = 4'b0001; // x=53, y=21
+        pixel_data[21][54] = 4'b1001; // x=54, y=21
+        pixel_data[21][55] = 4'b1001; // x=55, y=21
+        pixel_data[21][56] = 4'b0000; // x=56, y=21
         pixel_data[21][57] = 4'b0000; // x=57, y=21
         pixel_data[21][58] = 4'b0000; // x=58, y=21
-        pixel_data[21][59] = 4'b0000; // x=59, y=21
         pixel_data[22][0] = 4'b0000; // x=0, y=22
         pixel_data[22][1] = 4'b0000; // x=1, y=22
         pixel_data[22][2] = 4'b0000; // x=2, y=22
-        pixel_data[22][3] = 4'b1111; // x=3, y=22
-        pixel_data[22][4] = 4'b0101; // x=4, y=22
-        pixel_data[22][5] = 4'b1111; // x=5, y=22
-        pixel_data[22][6] = 4'b0010; // x=6, y=22
-        pixel_data[22][7] = 4'b0010; // x=7, y=22
-        pixel_data[22][8] = 4'b0010; // x=8, y=22
-        pixel_data[22][9] = 4'b0010; // x=9, y=22
-        pixel_data[22][10] = 4'b0010; // x=10, y=22
-        pixel_data[22][11] = 4'b0010; // x=11, y=22
-        pixel_data[22][12] = 4'b0010; // x=12, y=22
-        pixel_data[22][13] = 4'b0010; // x=13, y=22
-        pixel_data[22][14] = 4'b0010; // x=14, y=22
-        pixel_data[22][15] = 4'b0010; // x=15, y=22
-        pixel_data[22][16] = 4'b0010; // x=16, y=22
+        pixel_data[22][3] = 4'b1001; // x=3, y=22
+        pixel_data[22][4] = 4'b1001; // x=4, y=22
+        pixel_data[22][5] = 4'b0110; // x=5, y=22
+        pixel_data[22][6] = 4'b0001; // x=6, y=22
+        pixel_data[22][7] = 4'b0001; // x=7, y=22
+        pixel_data[22][8] = 4'b0001; // x=8, y=22
+        pixel_data[22][9] = 4'b0001; // x=9, y=22
+        pixel_data[22][10] = 4'b0001; // x=10, y=22
+        pixel_data[22][11] = 4'b0001; // x=11, y=22
+        pixel_data[22][12] = 4'b0001; // x=12, y=22
+        pixel_data[22][13] = 4'b0001; // x=13, y=22
+        pixel_data[22][14] = 4'b0001; // x=14, y=22
+        pixel_data[22][15] = 4'b0001; // x=15, y=22
+        pixel_data[22][16] = 4'b0001; // x=16, y=22
         pixel_data[22][17] = 4'b1111; // x=17, y=22
-        pixel_data[22][18] = 4'b0110; // x=18, y=22
-        pixel_data[22][19] = 4'b0110; // x=19, y=22
+        pixel_data[22][18] = 4'b0101; // x=18, y=22
+        pixel_data[22][19] = 4'b0010; // x=19, y=22
         pixel_data[22][20] = 4'b0011; // x=20, y=22
         pixel_data[22][21] = 4'b0011; // x=21, y=22
         pixel_data[22][22] = 4'b0011; // x=22, y=22
@@ -1347,59 +1325,58 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[22][24] = 4'b0011; // x=24, y=22
         pixel_data[22][25] = 4'b0011; // x=25, y=22
         pixel_data[22][26] = 4'b0011; // x=26, y=22
-        pixel_data[22][27] = 4'b1100; // x=27, y=22
-        pixel_data[22][28] = 4'b0110; // x=28, y=22
-        pixel_data[22][29] = 4'b0001; // x=29, y=22
-        pixel_data[22][30] = 4'b0001; // x=30, y=22
-        pixel_data[22][31] = 4'b0001; // x=31, y=22
-        pixel_data[22][32] = 4'b0001; // x=32, y=22
-        pixel_data[22][33] = 4'b0001; // x=33, y=22
-        pixel_data[22][34] = 4'b0001; // x=34, y=22
-        pixel_data[22][35] = 4'b0001; // x=35, y=22
-        pixel_data[22][36] = 4'b1010; // x=36, y=22
-        pixel_data[22][37] = 4'b1110; // x=37, y=22
-        pixel_data[22][38] = 4'b0001; // x=38, y=22
-        pixel_data[22][39] = 4'b0001; // x=39, y=22
-        pixel_data[22][40] = 4'b0001; // x=40, y=22
-        pixel_data[22][41] = 4'b0001; // x=41, y=22
-        pixel_data[22][42] = 4'b0001; // x=42, y=22
-        pixel_data[22][43] = 4'b0001; // x=43, y=22
-        pixel_data[22][44] = 4'b0001; // x=44, y=22
-        pixel_data[22][45] = 4'b0001; // x=45, y=22
-        pixel_data[22][46] = 4'b0001; // x=46, y=22
-        pixel_data[22][47] = 4'b0001; // x=47, y=22
-        pixel_data[22][48] = 4'b0001; // x=48, y=22
-        pixel_data[22][49] = 4'b0001; // x=49, y=22
-        pixel_data[22][50] = 4'b0001; // x=50, y=22
-        pixel_data[22][51] = 4'b0001; // x=51, y=22
-        pixel_data[22][52] = 4'b1010; // x=52, y=22
-        pixel_data[22][53] = 4'b0101; // x=53, y=22
-        pixel_data[22][54] = 4'b1001; // x=54, y=22
-        pixel_data[22][55] = 4'b1111; // x=55, y=22
-        pixel_data[22][56] = 4'b0101; // x=56, y=22
+        pixel_data[22][27] = 4'b1000; // x=27, y=22
+        pixel_data[22][28] = 4'b0010; // x=28, y=22
+        pixel_data[22][29] = 4'b0010; // x=29, y=22
+        pixel_data[22][30] = 4'b0010; // x=30, y=22
+        pixel_data[22][31] = 4'b0010; // x=31, y=22
+        pixel_data[22][32] = 4'b0010; // x=32, y=22
+        pixel_data[22][33] = 4'b0010; // x=33, y=22
+        pixel_data[22][34] = 4'b0010; // x=34, y=22
+        pixel_data[22][35] = 4'b0010; // x=35, y=22
+        pixel_data[22][36] = 4'b0101; // x=36, y=22
+        pixel_data[22][37] = 4'b1010; // x=37, y=22
+        pixel_data[22][38] = 4'b0010; // x=38, y=22
+        pixel_data[22][39] = 4'b0010; // x=39, y=22
+        pixel_data[22][40] = 4'b0010; // x=40, y=22
+        pixel_data[22][41] = 4'b0010; // x=41, y=22
+        pixel_data[22][42] = 4'b0010; // x=42, y=22
+        pixel_data[22][43] = 4'b0010; // x=43, y=22
+        pixel_data[22][44] = 4'b0010; // x=44, y=22
+        pixel_data[22][45] = 4'b0010; // x=45, y=22
+        pixel_data[22][46] = 4'b0010; // x=46, y=22
+        pixel_data[22][47] = 4'b0010; // x=47, y=22
+        pixel_data[22][48] = 4'b0010; // x=48, y=22
+        pixel_data[22][49] = 4'b0010; // x=49, y=22
+        pixel_data[22][50] = 4'b0010; // x=50, y=22
+        pixel_data[22][51] = 4'b1010; // x=51, y=22
+        pixel_data[22][52] = 4'b0100; // x=52, y=22
+        pixel_data[22][53] = 4'b0001; // x=53, y=22
+        pixel_data[22][54] = 4'b0110; // x=54, y=22
+        pixel_data[22][55] = 4'b1001; // x=55, y=22
+        pixel_data[22][56] = 4'b0000; // x=56, y=22
         pixel_data[22][57] = 4'b0000; // x=57, y=22
         pixel_data[22][58] = 4'b0000; // x=58, y=22
-        pixel_data[22][59] = 4'b0000; // x=59, y=22
         pixel_data[23][0] = 4'b0000; // x=0, y=23
         pixel_data[23][1] = 4'b0000; // x=1, y=23
-        pixel_data[23][2] = 4'b1001; // x=2, y=23
-        pixel_data[23][3] = 4'b0101; // x=3, y=23
-        pixel_data[23][4] = 4'b0101; // x=4, y=23
-        pixel_data[23][5] = 4'b1000; // x=5, y=23
-        pixel_data[23][6] = 4'b0010; // x=6, y=23
-        pixel_data[23][7] = 4'b0010; // x=7, y=23
-        pixel_data[23][8] = 4'b0010; // x=8, y=23
-        pixel_data[23][9] = 4'b0010; // x=9, y=23
-        pixel_data[23][10] = 4'b0010; // x=10, y=23
-        pixel_data[23][11] = 4'b0010; // x=11, y=23
-        pixel_data[23][12] = 4'b0010; // x=12, y=23
-        pixel_data[23][13] = 4'b0010; // x=13, y=23
-        pixel_data[23][14] = 4'b0010; // x=14, y=23
-        pixel_data[23][15] = 4'b0010; // x=15, y=23
-        pixel_data[23][16] = 4'b1001; // x=16, y=23
-        pixel_data[23][17] = 4'b0111; // x=17, y=23
-        pixel_data[23][18] = 4'b1110; // x=18, y=23
-        pixel_data[23][19] = 4'b1010; // x=19, y=23
+        pixel_data[23][2] = 4'b0001; // x=2, y=23
+        pixel_data[23][3] = 4'b1001; // x=3, y=23
+        pixel_data[23][4] = 4'b1001; // x=4, y=23
+        pixel_data[23][5] = 4'b1110; // x=5, y=23
+        pixel_data[23][6] = 4'b0001; // x=6, y=23
+        pixel_data[23][7] = 4'b0001; // x=7, y=23
+        pixel_data[23][8] = 4'b0001; // x=8, y=23
+        pixel_data[23][9] = 4'b0001; // x=9, y=23
+        pixel_data[23][10] = 4'b0001; // x=10, y=23
+        pixel_data[23][11] = 4'b0001; // x=11, y=23
+        pixel_data[23][12] = 4'b0001; // x=12, y=23
+        pixel_data[23][13] = 4'b0001; // x=13, y=23
+        pixel_data[23][14] = 4'b0001; // x=14, y=23
+        pixel_data[23][15] = 4'b0001; // x=15, y=23
+        pixel_data[23][16] = 4'b1110; // x=16, y=23
+        pixel_data[23][17] = 4'b0010; // x=17, y=23
+        pixel_data[23][18] = 4'b0101; // x=18, y=23
+        pixel_data[23][19] = 4'b1101; // x=19, y=23
         pixel_data[23][20] = 4'b0011; // x=20, y=23
         pixel_data[23][21] = 4'b0011; // x=21, y=23
         pixel_data[23][22] = 4'b0011; // x=22, y=23
@@ -1407,178 +1384,175 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[23][24] = 4'b0011; // x=24, y=23
         pixel_data[23][25] = 4'b0011; // x=25, y=23
         pixel_data[23][26] = 4'b0011; // x=26, y=23
-        pixel_data[23][27] = 4'b0001; // x=27, y=23
-        pixel_data[23][28] = 4'b1010; // x=28, y=23
-        pixel_data[23][29] = 4'b0001; // x=29, y=23
-        pixel_data[23][30] = 4'b0001; // x=30, y=23
-        pixel_data[23][31] = 4'b0001; // x=31, y=23
-        pixel_data[23][32] = 4'b0001; // x=32, y=23
-        pixel_data[23][33] = 4'b0001; // x=33, y=23
-        pixel_data[23][34] = 4'b0001; // x=34, y=23
-        pixel_data[23][35] = 4'b0001; // x=35, y=23
-        pixel_data[23][36] = 4'b1010; // x=36, y=23
-        pixel_data[23][37] = 4'b1110; // x=37, y=23
-        pixel_data[23][38] = 4'b0001; // x=38, y=23
-        pixel_data[23][39] = 4'b0001; // x=39, y=23
-        pixel_data[23][40] = 4'b0001; // x=40, y=23
-        pixel_data[23][41] = 4'b0001; // x=41, y=23
-        pixel_data[23][42] = 4'b0001; // x=42, y=23
-        pixel_data[23][43] = 4'b0001; // x=43, y=23
-        pixel_data[23][44] = 4'b0001; // x=44, y=23
-        pixel_data[23][45] = 4'b0001; // x=45, y=23
-        pixel_data[23][46] = 4'b0001; // x=46, y=23
-        pixel_data[23][47] = 4'b0001; // x=47, y=23
-        pixel_data[23][48] = 4'b0001; // x=48, y=23
-        pixel_data[23][49] = 4'b0001; // x=49, y=23
-        pixel_data[23][50] = 4'b0001; // x=50, y=23
-        pixel_data[23][51] = 4'b0001; // x=51, y=23
-        pixel_data[23][52] = 4'b1010; // x=52, y=23
-        pixel_data[23][53] = 4'b0101; // x=53, y=23
-        pixel_data[23][54] = 4'b1001; // x=54, y=23
-        pixel_data[23][55] = 4'b1000; // x=55, y=23
-        pixel_data[23][56] = 4'b0101; // x=56, y=23
+        pixel_data[23][27] = 4'b1000; // x=27, y=23
+        pixel_data[23][28] = 4'b0010; // x=28, y=23
+        pixel_data[23][29] = 4'b0010; // x=29, y=23
+        pixel_data[23][30] = 4'b0010; // x=30, y=23
+        pixel_data[23][31] = 4'b0010; // x=31, y=23
+        pixel_data[23][32] = 4'b0010; // x=32, y=23
+        pixel_data[23][33] = 4'b0010; // x=33, y=23
+        pixel_data[23][34] = 4'b0010; // x=34, y=23
+        pixel_data[23][35] = 4'b0010; // x=35, y=23
+        pixel_data[23][36] = 4'b0101; // x=36, y=23
+        pixel_data[23][37] = 4'b1010; // x=37, y=23
+        pixel_data[23][38] = 4'b0010; // x=38, y=23
+        pixel_data[23][39] = 4'b0010; // x=39, y=23
+        pixel_data[23][40] = 4'b0010; // x=40, y=23
+        pixel_data[23][41] = 4'b0010; // x=41, y=23
+        pixel_data[23][42] = 4'b0010; // x=42, y=23
+        pixel_data[23][43] = 4'b0010; // x=43, y=23
+        pixel_data[23][44] = 4'b0010; // x=44, y=23
+        pixel_data[23][45] = 4'b0010; // x=45, y=23
+        pixel_data[23][46] = 4'b0010; // x=46, y=23
+        pixel_data[23][47] = 4'b0010; // x=47, y=23
+        pixel_data[23][48] = 4'b0010; // x=48, y=23
+        pixel_data[23][49] = 4'b0010; // x=49, y=23
+        pixel_data[23][50] = 4'b0010; // x=50, y=23
+        pixel_data[23][51] = 4'b1010; // x=51, y=23
+        pixel_data[23][52] = 4'b0100; // x=52, y=23
+        pixel_data[23][53] = 4'b0001; // x=53, y=23
+        pixel_data[23][54] = 4'b1110; // x=54, y=23
+        pixel_data[23][55] = 4'b1001; // x=55, y=23
+        pixel_data[23][56] = 4'b0001; // x=56, y=23
         pixel_data[23][57] = 4'b0000; // x=57, y=23
         pixel_data[23][58] = 4'b0000; // x=58, y=23
-        pixel_data[23][59] = 4'b0000; // x=59, y=23
         pixel_data[24][0] = 4'b0000; // x=0, y=24
         pixel_data[24][1] = 4'b0000; // x=1, y=24
-        pixel_data[24][2] = 4'b0010; // x=2, y=24
-        pixel_data[24][3] = 4'b0101; // x=3, y=24
-        pixel_data[24][4] = 4'b0101; // x=4, y=24
-        pixel_data[24][5] = 4'b1000; // x=5, y=24
-        pixel_data[24][6] = 4'b0010; // x=6, y=24
-        pixel_data[24][7] = 4'b0010; // x=7, y=24
-        pixel_data[24][8] = 4'b0010; // x=8, y=24
-        pixel_data[24][9] = 4'b0010; // x=9, y=24
-        pixel_data[24][10] = 4'b0010; // x=10, y=24
-        pixel_data[24][11] = 4'b0010; // x=11, y=24
-        pixel_data[24][12] = 4'b0010; // x=12, y=24
-        pixel_data[24][13] = 4'b0010; // x=13, y=24
-        pixel_data[24][14] = 4'b0010; // x=14, y=24
-        pixel_data[24][15] = 4'b0010; // x=15, y=24
-        pixel_data[24][16] = 4'b0010; // x=16, y=24
-        pixel_data[24][17] = 4'b1100; // x=17, y=24
-        pixel_data[24][18] = 4'b1110; // x=18, y=24
-        pixel_data[24][19] = 4'b0001; // x=19, y=24
+        pixel_data[24][2] = 4'b1110; // x=2, y=24
+        pixel_data[24][3] = 4'b1001; // x=3, y=24
+        pixel_data[24][4] = 4'b1001; // x=4, y=24
+        pixel_data[24][5] = 4'b1110; // x=5, y=24
+        pixel_data[24][6] = 4'b0001; // x=6, y=24
+        pixel_data[24][7] = 4'b0001; // x=7, y=24
+        pixel_data[24][8] = 4'b0001; // x=8, y=24
+        pixel_data[24][9] = 4'b0001; // x=9, y=24
+        pixel_data[24][10] = 4'b0001; // x=10, y=24
+        pixel_data[24][11] = 4'b0001; // x=11, y=24
+        pixel_data[24][12] = 4'b0001; // x=12, y=24
+        pixel_data[24][13] = 4'b0001; // x=13, y=24
+        pixel_data[24][14] = 4'b0001; // x=14, y=24
+        pixel_data[24][15] = 4'b0001; // x=15, y=24
+        pixel_data[24][16] = 4'b1001; // x=16, y=24
+        pixel_data[24][17] = 4'b1000; // x=17, y=24
+        pixel_data[24][18] = 4'b0101; // x=18, y=24
+        pixel_data[24][19] = 4'b0011; // x=19, y=24
         pixel_data[24][20] = 4'b0011; // x=20, y=24
         pixel_data[24][21] = 4'b0011; // x=21, y=24
         pixel_data[24][22] = 4'b0011; // x=22, y=24
         pixel_data[24][23] = 4'b0011; // x=23, y=24
         pixel_data[24][24] = 4'b0011; // x=24, y=24
         pixel_data[24][25] = 4'b0011; // x=25, y=24
-        pixel_data[24][26] = 4'b0011; // x=26, y=24
-        pixel_data[24][27] = 4'b1010; // x=27, y=24
-        pixel_data[24][28] = 4'b0001; // x=28, y=24
-        pixel_data[24][29] = 4'b0001; // x=29, y=24
-        pixel_data[24][30] = 4'b0001; // x=30, y=24
-        pixel_data[24][31] = 4'b0001; // x=31, y=24
-        pixel_data[24][32] = 4'b0001; // x=32, y=24
-        pixel_data[24][33] = 4'b0001; // x=33, y=24
-        pixel_data[24][34] = 4'b0001; // x=34, y=24
-        pixel_data[24][35] = 4'b0001; // x=35, y=24
-        pixel_data[24][36] = 4'b1010; // x=36, y=24
-        pixel_data[24][37] = 4'b1110; // x=37, y=24
-        pixel_data[24][38] = 4'b0001; // x=38, y=24
-        pixel_data[24][39] = 4'b0001; // x=39, y=24
-        pixel_data[24][40] = 4'b0001; // x=40, y=24
-        pixel_data[24][41] = 4'b0001; // x=41, y=24
-        pixel_data[24][42] = 4'b0001; // x=42, y=24
-        pixel_data[24][43] = 4'b0001; // x=43, y=24
-        pixel_data[24][44] = 4'b0001; // x=44, y=24
-        pixel_data[24][45] = 4'b0001; // x=45, y=24
-        pixel_data[24][46] = 4'b0001; // x=46, y=24
-        pixel_data[24][47] = 4'b0001; // x=47, y=24
-        pixel_data[24][48] = 4'b0001; // x=48, y=24
-        pixel_data[24][49] = 4'b0001; // x=49, y=24
-        pixel_data[24][50] = 4'b0001; // x=50, y=24
-        pixel_data[24][51] = 4'b0001; // x=51, y=24
-        pixel_data[24][52] = 4'b1010; // x=52, y=24
-        pixel_data[24][53] = 4'b0101; // x=53, y=24
-        pixel_data[24][54] = 4'b1001; // x=54, y=24
-        pixel_data[24][55] = 4'b1000; // x=55, y=24
-        pixel_data[24][56] = 4'b0101; // x=56, y=24
-        pixel_data[24][57] = 4'b1000; // x=57, y=24
+        pixel_data[24][26] = 4'b1101; // x=26, y=24
+        pixel_data[24][27] = 4'b1000; // x=27, y=24
+        pixel_data[24][28] = 4'b0010; // x=28, y=24
+        pixel_data[24][29] = 4'b0010; // x=29, y=24
+        pixel_data[24][30] = 4'b0010; // x=30, y=24
+        pixel_data[24][31] = 4'b0010; // x=31, y=24
+        pixel_data[24][32] = 4'b0010; // x=32, y=24
+        pixel_data[24][33] = 4'b0010; // x=33, y=24
+        pixel_data[24][34] = 4'b0010; // x=34, y=24
+        pixel_data[24][35] = 4'b0010; // x=35, y=24
+        pixel_data[24][36] = 4'b0101; // x=36, y=24
+        pixel_data[24][37] = 4'b1010; // x=37, y=24
+        pixel_data[24][38] = 4'b0010; // x=38, y=24
+        pixel_data[24][39] = 4'b0010; // x=39, y=24
+        pixel_data[24][40] = 4'b0010; // x=40, y=24
+        pixel_data[24][41] = 4'b0010; // x=41, y=24
+        pixel_data[24][42] = 4'b0010; // x=42, y=24
+        pixel_data[24][43] = 4'b0010; // x=43, y=24
+        pixel_data[24][44] = 4'b0010; // x=44, y=24
+        pixel_data[24][45] = 4'b0010; // x=45, y=24
+        pixel_data[24][46] = 4'b0010; // x=46, y=24
+        pixel_data[24][47] = 4'b0010; // x=47, y=24
+        pixel_data[24][48] = 4'b0010; // x=48, y=24
+        pixel_data[24][49] = 4'b0010; // x=49, y=24
+        pixel_data[24][50] = 4'b0010; // x=50, y=24
+        pixel_data[24][51] = 4'b1010; // x=51, y=24
+        pixel_data[24][52] = 4'b0100; // x=52, y=24
+        pixel_data[24][53] = 4'b0001; // x=53, y=24
+        pixel_data[24][54] = 4'b1110; // x=54, y=24
+        pixel_data[24][55] = 4'b1001; // x=55, y=24
+        pixel_data[24][56] = 4'b1110; // x=56, y=24
+        pixel_data[24][57] = 4'b0000; // x=57, y=24
         pixel_data[24][58] = 4'b0000; // x=58, y=24
-        pixel_data[24][59] = 4'b0000; // x=59, y=24
         pixel_data[25][0] = 4'b0000; // x=0, y=25
         pixel_data[25][1] = 4'b0000; // x=1, y=25
-        pixel_data[25][2] = 4'b1000; // x=2, y=25
-        pixel_data[25][3] = 4'b0101; // x=3, y=25
-        pixel_data[25][4] = 4'b0101; // x=4, y=25
-        pixel_data[25][5] = 4'b1000; // x=5, y=25
-        pixel_data[25][6] = 4'b0010; // x=6, y=25
-        pixel_data[25][7] = 4'b0010; // x=7, y=25
-        pixel_data[25][8] = 4'b0010; // x=8, y=25
-        pixel_data[25][9] = 4'b0010; // x=9, y=25
-        pixel_data[25][10] = 4'b0010; // x=10, y=25
-        pixel_data[25][11] = 4'b0010; // x=11, y=25
-        pixel_data[25][12] = 4'b0010; // x=12, y=25
-        pixel_data[25][13] = 4'b0010; // x=13, y=25
-        pixel_data[25][14] = 4'b0010; // x=14, y=25
-        pixel_data[25][15] = 4'b0010; // x=15, y=25
-        pixel_data[25][16] = 4'b1111; // x=16, y=25
-        pixel_data[25][17] = 4'b1010; // x=17, y=25
-        pixel_data[25][18] = 4'b1110; // x=18, y=25
-        pixel_data[25][19] = 4'b1100; // x=19, y=25
+        pixel_data[25][2] = 4'b0110; // x=2, y=25
+        pixel_data[25][3] = 4'b1001; // x=3, y=25
+        pixel_data[25][4] = 4'b1001; // x=4, y=25
+        pixel_data[25][5] = 4'b1110; // x=5, y=25
+        pixel_data[25][6] = 4'b0001; // x=6, y=25
+        pixel_data[25][7] = 4'b0001; // x=7, y=25
+        pixel_data[25][8] = 4'b0001; // x=8, y=25
+        pixel_data[25][9] = 4'b0001; // x=9, y=25
+        pixel_data[25][10] = 4'b0001; // x=10, y=25
+        pixel_data[25][11] = 4'b0001; // x=11, y=25
+        pixel_data[25][12] = 4'b0001; // x=12, y=25
+        pixel_data[25][13] = 4'b0001; // x=13, y=25
+        pixel_data[25][14] = 4'b0001; // x=14, y=25
+        pixel_data[25][15] = 4'b0001; // x=15, y=25
+        pixel_data[25][16] = 4'b0111; // x=16, y=25
+        pixel_data[25][17] = 4'b0101; // x=17, y=25
+        pixel_data[25][18] = 4'b1000; // x=18, y=25
+        pixel_data[25][19] = 4'b0011; // x=19, y=25
         pixel_data[25][20] = 4'b0011; // x=20, y=25
         pixel_data[25][21] = 4'b0011; // x=21, y=25
         pixel_data[25][22] = 4'b0011; // x=22, y=25
         pixel_data[25][23] = 4'b0011; // x=23, y=25
         pixel_data[25][24] = 4'b0011; // x=24, y=25
         pixel_data[25][25] = 4'b0011; // x=25, y=25
-        pixel_data[25][26] = 4'b0011; // x=26, y=25
+        pixel_data[25][26] = 4'b1101; // x=26, y=25
         pixel_data[25][27] = 4'b1010; // x=27, y=25
-        pixel_data[25][28] = 4'b0001; // x=28, y=25
-        pixel_data[25][29] = 4'b0001; // x=29, y=25
-        pixel_data[25][30] = 4'b0001; // x=30, y=25
-        pixel_data[25][31] = 4'b0001; // x=31, y=25
-        pixel_data[25][32] = 4'b0001; // x=32, y=25
-        pixel_data[25][33] = 4'b0001; // x=33, y=25
-        pixel_data[25][34] = 4'b0001; // x=34, y=25
-        pixel_data[25][35] = 4'b0001; // x=35, y=25
-        pixel_data[25][36] = 4'b1010; // x=36, y=25
-        pixel_data[25][37] = 4'b1110; // x=37, y=25
-        pixel_data[25][38] = 4'b0001; // x=38, y=25
-        pixel_data[25][39] = 4'b0001; // x=39, y=25
-        pixel_data[25][40] = 4'b0001; // x=40, y=25
-        pixel_data[25][41] = 4'b0001; // x=41, y=25
-        pixel_data[25][42] = 4'b0001; // x=42, y=25
-        pixel_data[25][43] = 4'b0001; // x=43, y=25
-        pixel_data[25][44] = 4'b0001; // x=44, y=25
-        pixel_data[25][45] = 4'b0001; // x=45, y=25
-        pixel_data[25][46] = 4'b0001; // x=46, y=25
-        pixel_data[25][47] = 4'b0001; // x=47, y=25
-        pixel_data[25][48] = 4'b0001; // x=48, y=25
-        pixel_data[25][49] = 4'b0001; // x=49, y=25
-        pixel_data[25][50] = 4'b0001; // x=50, y=25
-        pixel_data[25][51] = 4'b0001; // x=51, y=25
-        pixel_data[25][52] = 4'b1010; // x=52, y=25
-        pixel_data[25][53] = 4'b0101; // x=53, y=25
-        pixel_data[25][54] = 4'b0010; // x=54, y=25
-        pixel_data[25][55] = 4'b0010; // x=55, y=25
-        pixel_data[25][56] = 4'b0101; // x=56, y=25
-        pixel_data[25][57] = 4'b1111; // x=57, y=25
+        pixel_data[25][28] = 4'b0010; // x=28, y=25
+        pixel_data[25][29] = 4'b0010; // x=29, y=25
+        pixel_data[25][30] = 4'b0010; // x=30, y=25
+        pixel_data[25][31] = 4'b0010; // x=31, y=25
+        pixel_data[25][32] = 4'b0010; // x=32, y=25
+        pixel_data[25][33] = 4'b0010; // x=33, y=25
+        pixel_data[25][34] = 4'b0010; // x=34, y=25
+        pixel_data[25][35] = 4'b0010; // x=35, y=25
+        pixel_data[25][36] = 4'b0101; // x=36, y=25
+        pixel_data[25][37] = 4'b1010; // x=37, y=25
+        pixel_data[25][38] = 4'b0010; // x=38, y=25
+        pixel_data[25][39] = 4'b0010; // x=39, y=25
+        pixel_data[25][40] = 4'b0010; // x=40, y=25
+        pixel_data[25][41] = 4'b0010; // x=41, y=25
+        pixel_data[25][42] = 4'b0010; // x=42, y=25
+        pixel_data[25][43] = 4'b0010; // x=43, y=25
+        pixel_data[25][44] = 4'b0010; // x=44, y=25
+        pixel_data[25][45] = 4'b0010; // x=45, y=25
+        pixel_data[25][46] = 4'b0010; // x=46, y=25
+        pixel_data[25][47] = 4'b0010; // x=47, y=25
+        pixel_data[25][48] = 4'b0010; // x=48, y=25
+        pixel_data[25][49] = 4'b0010; // x=49, y=25
+        pixel_data[25][50] = 4'b0010; // x=50, y=25
+        pixel_data[25][51] = 4'b1010; // x=51, y=25
+        pixel_data[25][52] = 4'b0100; // x=52, y=25
+        pixel_data[25][53] = 4'b0001; // x=53, y=25
+        pixel_data[25][54] = 4'b0001; // x=54, y=25
+        pixel_data[25][55] = 4'b1001; // x=55, y=25
+        pixel_data[25][56] = 4'b1001; // x=56, y=25
+        pixel_data[25][57] = 4'b0000; // x=57, y=25
         pixel_data[25][58] = 4'b0000; // x=58, y=25
-        pixel_data[25][59] = 4'b0000; // x=59, y=25
         pixel_data[26][0] = 4'b0000; // x=0, y=26
         pixel_data[26][1] = 4'b0000; // x=1, y=26
-        pixel_data[26][2] = 4'b1111; // x=2, y=26
-        pixel_data[26][3] = 4'b0101; // x=3, y=26
-        pixel_data[26][4] = 4'b0101; // x=4, y=26
-        pixel_data[26][5] = 4'b0010; // x=5, y=26
-        pixel_data[26][6] = 4'b0010; // x=6, y=26
-        pixel_data[26][7] = 4'b0010; // x=7, y=26
-        pixel_data[26][8] = 4'b0010; // x=8, y=26
-        pixel_data[26][9] = 4'b0010; // x=9, y=26
-        pixel_data[26][10] = 4'b0010; // x=10, y=26
-        pixel_data[26][11] = 4'b0010; // x=11, y=26
-        pixel_data[26][12] = 4'b0010; // x=12, y=26
-        pixel_data[26][13] = 4'b0010; // x=13, y=26
-        pixel_data[26][14] = 4'b0010; // x=14, y=26
-        pixel_data[26][15] = 4'b1001; // x=15, y=26
-        pixel_data[26][16] = 4'b0101; // x=16, y=26
-        pixel_data[26][17] = 4'b0110; // x=17, y=26
-        pixel_data[26][18] = 4'b1110; // x=18, y=26
+        pixel_data[26][2] = 4'b0110; // x=2, y=26
+        pixel_data[26][3] = 4'b1001; // x=3, y=26
+        pixel_data[26][4] = 4'b1001; // x=4, y=26
+        pixel_data[26][5] = 4'b0001; // x=5, y=26
+        pixel_data[26][6] = 4'b0001; // x=6, y=26
+        pixel_data[26][7] = 4'b0001; // x=7, y=26
+        pixel_data[26][8] = 4'b0001; // x=8, y=26
+        pixel_data[26][9] = 4'b0001; // x=9, y=26
+        pixel_data[26][10] = 4'b0001; // x=10, y=26
+        pixel_data[26][11] = 4'b0001; // x=11, y=26
+        pixel_data[26][12] = 4'b0001; // x=12, y=26
+        pixel_data[26][13] = 4'b0001; // x=13, y=26
+        pixel_data[26][14] = 4'b0001; // x=14, y=26
+        pixel_data[26][15] = 4'b0001; // x=15, y=26
+        pixel_data[26][16] = 4'b1111; // x=16, y=26
+        pixel_data[26][17] = 4'b1011; // x=17, y=26
+        pixel_data[26][18] = 4'b1010; // x=18, y=26
         pixel_data[26][19] = 4'b0011; // x=19, y=26
         pixel_data[26][20] = 4'b0011; // x=20, y=26
         pixel_data[26][21] = 4'b0011; // x=21, y=26
@@ -1586,59 +1560,58 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[26][23] = 4'b0011; // x=23, y=26
         pixel_data[26][24] = 4'b0011; // x=24, y=26
         pixel_data[26][25] = 4'b0011; // x=25, y=26
-        pixel_data[26][26] = 4'b0011; // x=26, y=26
+        pixel_data[26][26] = 4'b0010; // x=26, y=26
         pixel_data[26][27] = 4'b1010; // x=27, y=26
-        pixel_data[26][28] = 4'b0001; // x=28, y=26
-        pixel_data[26][29] = 4'b0001; // x=29, y=26
-        pixel_data[26][30] = 4'b0001; // x=30, y=26
-        pixel_data[26][31] = 4'b0001; // x=31, y=26
-        pixel_data[26][32] = 4'b0001; // x=32, y=26
-        pixel_data[26][33] = 4'b0001; // x=33, y=26
-        pixel_data[26][34] = 4'b0001; // x=34, y=26
-        pixel_data[26][35] = 4'b0001; // x=35, y=26
-        pixel_data[26][36] = 4'b1010; // x=36, y=26
-        pixel_data[26][37] = 4'b1110; // x=37, y=26
-        pixel_data[26][38] = 4'b0001; // x=38, y=26
-        pixel_data[26][39] = 4'b0001; // x=39, y=26
-        pixel_data[26][40] = 4'b0001; // x=40, y=26
-        pixel_data[26][41] = 4'b0001; // x=41, y=26
-        pixel_data[26][42] = 4'b0001; // x=42, y=26
-        pixel_data[26][43] = 4'b0001; // x=43, y=26
-        pixel_data[26][44] = 4'b0001; // x=44, y=26
-        pixel_data[26][45] = 4'b0001; // x=45, y=26
-        pixel_data[26][46] = 4'b0001; // x=46, y=26
-        pixel_data[26][47] = 4'b0001; // x=47, y=26
-        pixel_data[26][48] = 4'b0001; // x=48, y=26
-        pixel_data[26][49] = 4'b0001; // x=49, y=26
-        pixel_data[26][50] = 4'b0001; // x=50, y=26
-        pixel_data[26][51] = 4'b0001; // x=51, y=26
-        pixel_data[26][52] = 4'b1010; // x=52, y=26
-        pixel_data[26][53] = 4'b0101; // x=53, y=26
-        pixel_data[26][54] = 4'b0010; // x=54, y=26
-        pixel_data[26][55] = 4'b0010; // x=55, y=26
-        pixel_data[26][56] = 4'b1111; // x=56, y=26
-        pixel_data[26][57] = 4'b0111; // x=57, y=26
+        pixel_data[26][28] = 4'b0010; // x=28, y=26
+        pixel_data[26][29] = 4'b0010; // x=29, y=26
+        pixel_data[26][30] = 4'b0010; // x=30, y=26
+        pixel_data[26][31] = 4'b0010; // x=31, y=26
+        pixel_data[26][32] = 4'b0010; // x=32, y=26
+        pixel_data[26][33] = 4'b0010; // x=33, y=26
+        pixel_data[26][34] = 4'b0010; // x=34, y=26
+        pixel_data[26][35] = 4'b0010; // x=35, y=26
+        pixel_data[26][36] = 4'b0101; // x=36, y=26
+        pixel_data[26][37] = 4'b1010; // x=37, y=26
+        pixel_data[26][38] = 4'b0010; // x=38, y=26
+        pixel_data[26][39] = 4'b0010; // x=39, y=26
+        pixel_data[26][40] = 4'b0010; // x=40, y=26
+        pixel_data[26][41] = 4'b0010; // x=41, y=26
+        pixel_data[26][42] = 4'b0010; // x=42, y=26
+        pixel_data[26][43] = 4'b0010; // x=43, y=26
+        pixel_data[26][44] = 4'b0010; // x=44, y=26
+        pixel_data[26][45] = 4'b0010; // x=45, y=26
+        pixel_data[26][46] = 4'b0010; // x=46, y=26
+        pixel_data[26][47] = 4'b0010; // x=47, y=26
+        pixel_data[26][48] = 4'b0010; // x=48, y=26
+        pixel_data[26][49] = 4'b0010; // x=49, y=26
+        pixel_data[26][50] = 4'b0010; // x=50, y=26
+        pixel_data[26][51] = 4'b1010; // x=51, y=26
+        pixel_data[26][52] = 4'b0100; // x=52, y=26
+        pixel_data[26][53] = 4'b0001; // x=53, y=26
+        pixel_data[26][54] = 4'b0001; // x=54, y=26
+        pixel_data[26][55] = 4'b0110; // x=55, y=26
+        pixel_data[26][56] = 4'b0111; // x=56, y=26
+        pixel_data[26][57] = 4'b0000; // x=57, y=26
         pixel_data[26][58] = 4'b0000; // x=58, y=26
-        pixel_data[26][59] = 4'b0000; // x=59, y=26
         pixel_data[27][0] = 4'b0000; // x=0, y=27
         pixel_data[27][1] = 4'b0000; // x=1, y=27
-        pixel_data[27][2] = 4'b1111; // x=2, y=27
-        pixel_data[27][3] = 4'b0101; // x=3, y=27
-        pixel_data[27][4] = 4'b0101; // x=4, y=27
-        pixel_data[27][5] = 4'b0010; // x=5, y=27
-        pixel_data[27][6] = 4'b0010; // x=6, y=27
-        pixel_data[27][7] = 4'b0010; // x=7, y=27
-        pixel_data[27][8] = 4'b0010; // x=8, y=27
-        pixel_data[27][9] = 4'b0010; // x=9, y=27
-        pixel_data[27][10] = 4'b0010; // x=10, y=27
-        pixel_data[27][11] = 4'b0010; // x=11, y=27
-        pixel_data[27][12] = 4'b0010; // x=12, y=27
-        pixel_data[27][13] = 4'b0010; // x=13, y=27
-        pixel_data[27][14] = 4'b0010; // x=14, y=27
-        pixel_data[27][15] = 4'b1001; // x=15, y=27
-        pixel_data[27][16] = 4'b0111; // x=16, y=27
-        pixel_data[27][17] = 4'b0100; // x=17, y=27
-        pixel_data[27][18] = 4'b1110; // x=18, y=27
+        pixel_data[27][2] = 4'b1001; // x=2, y=27
+        pixel_data[27][3] = 4'b1001; // x=3, y=27
+        pixel_data[27][4] = 4'b1001; // x=4, y=27
+        pixel_data[27][5] = 4'b0001; // x=5, y=27
+        pixel_data[27][6] = 4'b0001; // x=6, y=27
+        pixel_data[27][7] = 4'b0001; // x=7, y=27
+        pixel_data[27][8] = 4'b0001; // x=8, y=27
+        pixel_data[27][9] = 4'b0001; // x=9, y=27
+        pixel_data[27][10] = 4'b0001; // x=10, y=27
+        pixel_data[27][11] = 4'b0001; // x=11, y=27
+        pixel_data[27][12] = 4'b0001; // x=12, y=27
+        pixel_data[27][13] = 4'b0001; // x=13, y=27
+        pixel_data[27][14] = 4'b0001; // x=14, y=27
+        pixel_data[27][15] = 4'b0001; // x=15, y=27
+        pixel_data[27][16] = 4'b0010; // x=16, y=27
+        pixel_data[27][17] = 4'b1011; // x=17, y=27
+        pixel_data[27][18] = 4'b1010; // x=18, y=27
         pixel_data[27][19] = 4'b0011; // x=19, y=27
         pixel_data[27][20] = 4'b0011; // x=20, y=27
         pixel_data[27][21] = 4'b0011; // x=21, y=27
@@ -1646,59 +1619,58 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[27][23] = 4'b0011; // x=23, y=27
         pixel_data[27][24] = 4'b0011; // x=24, y=27
         pixel_data[27][25] = 4'b0011; // x=25, y=27
-        pixel_data[27][26] = 4'b0011; // x=26, y=27
+        pixel_data[27][26] = 4'b0010; // x=26, y=27
         pixel_data[27][27] = 4'b1010; // x=27, y=27
-        pixel_data[27][28] = 4'b0001; // x=28, y=27
-        pixel_data[27][29] = 4'b0001; // x=29, y=27
-        pixel_data[27][30] = 4'b0001; // x=30, y=27
-        pixel_data[27][31] = 4'b0001; // x=31, y=27
-        pixel_data[27][32] = 4'b0001; // x=32, y=27
-        pixel_data[27][33] = 4'b0001; // x=33, y=27
-        pixel_data[27][34] = 4'b0001; // x=34, y=27
-        pixel_data[27][35] = 4'b0001; // x=35, y=27
-        pixel_data[27][36] = 4'b1010; // x=36, y=27
-        pixel_data[27][37] = 4'b1110; // x=37, y=27
-        pixel_data[27][38] = 4'b0001; // x=38, y=27
-        pixel_data[27][39] = 4'b0001; // x=39, y=27
-        pixel_data[27][40] = 4'b0001; // x=40, y=27
-        pixel_data[27][41] = 4'b0001; // x=41, y=27
-        pixel_data[27][42] = 4'b0001; // x=42, y=27
-        pixel_data[27][43] = 4'b0001; // x=43, y=27
-        pixel_data[27][44] = 4'b0001; // x=44, y=27
-        pixel_data[27][45] = 4'b0001; // x=45, y=27
-        pixel_data[27][46] = 4'b0001; // x=46, y=27
-        pixel_data[27][47] = 4'b0001; // x=47, y=27
-        pixel_data[27][48] = 4'b0001; // x=48, y=27
-        pixel_data[27][49] = 4'b0001; // x=49, y=27
-        pixel_data[27][50] = 4'b0001; // x=50, y=27
-        pixel_data[27][51] = 4'b0001; // x=51, y=27
-        pixel_data[27][52] = 4'b1010; // x=52, y=27
-        pixel_data[27][53] = 4'b0101; // x=53, y=27
-        pixel_data[27][54] = 4'b1001; // x=54, y=27
-        pixel_data[27][55] = 4'b0010; // x=55, y=27
-        pixel_data[27][56] = 4'b1111; // x=56, y=27
-        pixel_data[27][57] = 4'b0111; // x=57, y=27
+        pixel_data[27][28] = 4'b0010; // x=28, y=27
+        pixel_data[27][29] = 4'b0010; // x=29, y=27
+        pixel_data[27][30] = 4'b0010; // x=30, y=27
+        pixel_data[27][31] = 4'b0010; // x=31, y=27
+        pixel_data[27][32] = 4'b0010; // x=32, y=27
+        pixel_data[27][33] = 4'b0010; // x=33, y=27
+        pixel_data[27][34] = 4'b0010; // x=34, y=27
+        pixel_data[27][35] = 4'b0010; // x=35, y=27
+        pixel_data[27][36] = 4'b0101; // x=36, y=27
+        pixel_data[27][37] = 4'b1010; // x=37, y=27
+        pixel_data[27][38] = 4'b0010; // x=38, y=27
+        pixel_data[27][39] = 4'b0010; // x=39, y=27
+        pixel_data[27][40] = 4'b0010; // x=40, y=27
+        pixel_data[27][41] = 4'b0010; // x=41, y=27
+        pixel_data[27][42] = 4'b0010; // x=42, y=27
+        pixel_data[27][43] = 4'b0010; // x=43, y=27
+        pixel_data[27][44] = 4'b0010; // x=44, y=27
+        pixel_data[27][45] = 4'b0010; // x=45, y=27
+        pixel_data[27][46] = 4'b0010; // x=46, y=27
+        pixel_data[27][47] = 4'b0010; // x=47, y=27
+        pixel_data[27][48] = 4'b0010; // x=48, y=27
+        pixel_data[27][49] = 4'b0010; // x=49, y=27
+        pixel_data[27][50] = 4'b0010; // x=50, y=27
+        pixel_data[27][51] = 4'b1010; // x=51, y=27
+        pixel_data[27][52] = 4'b0100; // x=52, y=27
+        pixel_data[27][53] = 4'b0001; // x=53, y=27
+        pixel_data[27][54] = 4'b0001; // x=54, y=27
+        pixel_data[27][55] = 4'b0110; // x=55, y=27
+        pixel_data[27][56] = 4'b0111; // x=56, y=27
+        pixel_data[27][57] = 4'b0000; // x=57, y=27
         pixel_data[27][58] = 4'b0000; // x=58, y=27
-        pixel_data[27][59] = 4'b0000; // x=59, y=27
         pixel_data[28][0] = 4'b0000; // x=0, y=28
         pixel_data[28][1] = 4'b0000; // x=1, y=28
-        pixel_data[28][2] = 4'b1111; // x=2, y=28
-        pixel_data[28][3] = 4'b0101; // x=3, y=28
-        pixel_data[28][4] = 4'b1111; // x=4, y=28
-        pixel_data[28][5] = 4'b0010; // x=5, y=28
-        pixel_data[28][6] = 4'b0010; // x=6, y=28
-        pixel_data[28][7] = 4'b0010; // x=7, y=28
-        pixel_data[28][8] = 4'b0010; // x=8, y=28
-        pixel_data[28][9] = 4'b0010; // x=9, y=28
-        pixel_data[28][10] = 4'b0010; // x=10, y=28
-        pixel_data[28][11] = 4'b0010; // x=11, y=28
-        pixel_data[28][12] = 4'b0010; // x=12, y=28
-        pixel_data[28][13] = 4'b0010; // x=13, y=28
-        pixel_data[28][14] = 4'b0010; // x=14, y=28
-        pixel_data[28][15] = 4'b1001; // x=15, y=28
-        pixel_data[28][16] = 4'b1011; // x=16, y=28
-        pixel_data[28][17] = 4'b0100; // x=17, y=28
-        pixel_data[28][18] = 4'b0110; // x=18, y=28
+        pixel_data[28][2] = 4'b1001; // x=2, y=28
+        pixel_data[28][3] = 4'b1001; // x=3, y=28
+        pixel_data[28][4] = 4'b1001; // x=4, y=28
+        pixel_data[28][5] = 4'b0001; // x=5, y=28
+        pixel_data[28][6] = 4'b0001; // x=6, y=28
+        pixel_data[28][7] = 4'b0001; // x=7, y=28
+        pixel_data[28][8] = 4'b0001; // x=8, y=28
+        pixel_data[28][9] = 4'b0001; // x=9, y=28
+        pixel_data[28][10] = 4'b0001; // x=10, y=28
+        pixel_data[28][11] = 4'b0001; // x=11, y=28
+        pixel_data[28][12] = 4'b0001; // x=12, y=28
+        pixel_data[28][13] = 4'b0001; // x=13, y=28
+        pixel_data[28][14] = 4'b0001; // x=14, y=28
+        pixel_data[28][15] = 4'b0001; // x=15, y=28
+        pixel_data[28][16] = 4'b0010; // x=16, y=28
+        pixel_data[28][17] = 4'b1011; // x=17, y=28
+        pixel_data[28][18] = 4'b0010; // x=18, y=28
         pixel_data[28][19] = 4'b0011; // x=19, y=28
         pixel_data[28][20] = 4'b0011; // x=20, y=28
         pixel_data[28][21] = 4'b0011; // x=21, y=28
@@ -1706,59 +1678,58 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[28][23] = 4'b0011; // x=23, y=28
         pixel_data[28][24] = 4'b0011; // x=24, y=28
         pixel_data[28][25] = 4'b0011; // x=25, y=28
-        pixel_data[28][26] = 4'b0011; // x=26, y=28
+        pixel_data[28][26] = 4'b0010; // x=26, y=28
         pixel_data[28][27] = 4'b1010; // x=27, y=28
-        pixel_data[28][28] = 4'b0001; // x=28, y=28
-        pixel_data[28][29] = 4'b0001; // x=29, y=28
-        pixel_data[28][30] = 4'b0001; // x=30, y=28
-        pixel_data[28][31] = 4'b0001; // x=31, y=28
-        pixel_data[28][32] = 4'b0001; // x=32, y=28
-        pixel_data[28][33] = 4'b0001; // x=33, y=28
-        pixel_data[28][34] = 4'b0001; // x=34, y=28
-        pixel_data[28][35] = 4'b0001; // x=35, y=28
-        pixel_data[28][36] = 4'b1010; // x=36, y=28
-        pixel_data[28][37] = 4'b1110; // x=37, y=28
-        pixel_data[28][38] = 4'b0001; // x=38, y=28
-        pixel_data[28][39] = 4'b0001; // x=39, y=28
-        pixel_data[28][40] = 4'b0001; // x=40, y=28
-        pixel_data[28][41] = 4'b0001; // x=41, y=28
-        pixel_data[28][42] = 4'b0001; // x=42, y=28
-        pixel_data[28][43] = 4'b0001; // x=43, y=28
-        pixel_data[28][44] = 4'b0001; // x=44, y=28
-        pixel_data[28][45] = 4'b0001; // x=45, y=28
-        pixel_data[28][46] = 4'b0001; // x=46, y=28
-        pixel_data[28][47] = 4'b0001; // x=47, y=28
-        pixel_data[28][48] = 4'b0001; // x=48, y=28
-        pixel_data[28][49] = 4'b0001; // x=49, y=28
-        pixel_data[28][50] = 4'b0001; // x=50, y=28
-        pixel_data[28][51] = 4'b0001; // x=51, y=28
-        pixel_data[28][52] = 4'b1010; // x=52, y=28
-        pixel_data[28][53] = 4'b0101; // x=53, y=28
-        pixel_data[28][54] = 4'b0010; // x=54, y=28
-        pixel_data[28][55] = 4'b1000; // x=55, y=28
-        pixel_data[28][56] = 4'b1111; // x=56, y=28
-        pixel_data[28][57] = 4'b0111; // x=57, y=28
+        pixel_data[28][28] = 4'b0010; // x=28, y=28
+        pixel_data[28][29] = 4'b0010; // x=29, y=28
+        pixel_data[28][30] = 4'b0010; // x=30, y=28
+        pixel_data[28][31] = 4'b0010; // x=31, y=28
+        pixel_data[28][32] = 4'b0010; // x=32, y=28
+        pixel_data[28][33] = 4'b0010; // x=33, y=28
+        pixel_data[28][34] = 4'b0010; // x=34, y=28
+        pixel_data[28][35] = 4'b0010; // x=35, y=28
+        pixel_data[28][36] = 4'b0101; // x=36, y=28
+        pixel_data[28][37] = 4'b1010; // x=37, y=28
+        pixel_data[28][38] = 4'b0010; // x=38, y=28
+        pixel_data[28][39] = 4'b0010; // x=39, y=28
+        pixel_data[28][40] = 4'b0010; // x=40, y=28
+        pixel_data[28][41] = 4'b0010; // x=41, y=28
+        pixel_data[28][42] = 4'b0010; // x=42, y=28
+        pixel_data[28][43] = 4'b0010; // x=43, y=28
+        pixel_data[28][44] = 4'b0010; // x=44, y=28
+        pixel_data[28][45] = 4'b0010; // x=45, y=28
+        pixel_data[28][46] = 4'b0010; // x=46, y=28
+        pixel_data[28][47] = 4'b0010; // x=47, y=28
+        pixel_data[28][48] = 4'b0010; // x=48, y=28
+        pixel_data[28][49] = 4'b0010; // x=49, y=28
+        pixel_data[28][50] = 4'b0010; // x=50, y=28
+        pixel_data[28][51] = 4'b1010; // x=51, y=28
+        pixel_data[28][52] = 4'b0100; // x=52, y=28
+        pixel_data[28][53] = 4'b0001; // x=53, y=28
+        pixel_data[28][54] = 4'b0110; // x=54, y=28
+        pixel_data[28][55] = 4'b0110; // x=55, y=28
+        pixel_data[28][56] = 4'b0111; // x=56, y=28
+        pixel_data[28][57] = 4'b0000; // x=57, y=28
         pixel_data[28][58] = 4'b0000; // x=58, y=28
-        pixel_data[28][59] = 4'b0000; // x=59, y=28
         pixel_data[29][0] = 4'b0000; // x=0, y=29
         pixel_data[29][1] = 4'b0000; // x=1, y=29
-        pixel_data[29][2] = 4'b1111; // x=2, y=29
-        pixel_data[29][3] = 4'b0101; // x=3, y=29
-        pixel_data[29][4] = 4'b1111; // x=4, y=29
-        pixel_data[29][5] = 4'b0010; // x=5, y=29
-        pixel_data[29][6] = 4'b0010; // x=6, y=29
-        pixel_data[29][7] = 4'b0010; // x=7, y=29
-        pixel_data[29][8] = 4'b0010; // x=8, y=29
-        pixel_data[29][9] = 4'b0010; // x=9, y=29
-        pixel_data[29][10] = 4'b0010; // x=10, y=29
-        pixel_data[29][11] = 4'b0010; // x=11, y=29
-        pixel_data[29][12] = 4'b0010; // x=12, y=29
-        pixel_data[29][13] = 4'b0010; // x=13, y=29
-        pixel_data[29][14] = 4'b0010; // x=14, y=29
-        pixel_data[29][15] = 4'b1001; // x=15, y=29
-        pixel_data[29][16] = 4'b1011; // x=16, y=29
-        pixel_data[29][17] = 4'b0100; // x=17, y=29
-        pixel_data[29][18] = 4'b0110; // x=18, y=29
+        pixel_data[29][2] = 4'b1001; // x=2, y=29
+        pixel_data[29][3] = 4'b1001; // x=3, y=29
+        pixel_data[29][4] = 4'b1001; // x=4, y=29
+        pixel_data[29][5] = 4'b0001; // x=5, y=29
+        pixel_data[29][6] = 4'b0001; // x=6, y=29
+        pixel_data[29][7] = 4'b0001; // x=7, y=29
+        pixel_data[29][8] = 4'b0001; // x=8, y=29
+        pixel_data[29][9] = 4'b0001; // x=9, y=29
+        pixel_data[29][10] = 4'b0001; // x=10, y=29
+        pixel_data[29][11] = 4'b0001; // x=11, y=29
+        pixel_data[29][12] = 4'b0001; // x=12, y=29
+        pixel_data[29][13] = 4'b0001; // x=13, y=29
+        pixel_data[29][14] = 4'b0001; // x=14, y=29
+        pixel_data[29][15] = 4'b0001; // x=15, y=29
+        pixel_data[29][16] = 4'b0010; // x=16, y=29
+        pixel_data[29][17] = 4'b1011; // x=17, y=29
+        pixel_data[29][18] = 4'b0010; // x=18, y=29
         pixel_data[29][19] = 4'b0011; // x=19, y=29
         pixel_data[29][20] = 4'b0011; // x=20, y=29
         pixel_data[29][21] = 4'b0011; // x=21, y=29
@@ -1766,59 +1737,58 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[29][23] = 4'b0011; // x=23, y=29
         pixel_data[29][24] = 4'b0011; // x=24, y=29
         pixel_data[29][25] = 4'b0011; // x=25, y=29
-        pixel_data[29][26] = 4'b0011; // x=26, y=29
+        pixel_data[29][26] = 4'b0010; // x=26, y=29
         pixel_data[29][27] = 4'b1010; // x=27, y=29
-        pixel_data[29][28] = 4'b0001; // x=28, y=29
-        pixel_data[29][29] = 4'b0001; // x=29, y=29
-        pixel_data[29][30] = 4'b0001; // x=30, y=29
-        pixel_data[29][31] = 4'b0001; // x=31, y=29
-        pixel_data[29][32] = 4'b0001; // x=32, y=29
-        pixel_data[29][33] = 4'b0001; // x=33, y=29
-        pixel_data[29][34] = 4'b0001; // x=34, y=29
-        pixel_data[29][35] = 4'b0001; // x=35, y=29
-        pixel_data[29][36] = 4'b1010; // x=36, y=29
-        pixel_data[29][37] = 4'b1110; // x=37, y=29
-        pixel_data[29][38] = 4'b0001; // x=38, y=29
-        pixel_data[29][39] = 4'b0001; // x=39, y=29
-        pixel_data[29][40] = 4'b0001; // x=40, y=29
-        pixel_data[29][41] = 4'b0001; // x=41, y=29
-        pixel_data[29][42] = 4'b0001; // x=42, y=29
-        pixel_data[29][43] = 4'b0001; // x=43, y=29
-        pixel_data[29][44] = 4'b0001; // x=44, y=29
-        pixel_data[29][45] = 4'b0001; // x=45, y=29
-        pixel_data[29][46] = 4'b0001; // x=46, y=29
-        pixel_data[29][47] = 4'b0001; // x=47, y=29
-        pixel_data[29][48] = 4'b0001; // x=48, y=29
-        pixel_data[29][49] = 4'b0001; // x=49, y=29
-        pixel_data[29][50] = 4'b0001; // x=50, y=29
-        pixel_data[29][51] = 4'b0001; // x=51, y=29
-        pixel_data[29][52] = 4'b1010; // x=52, y=29
-        pixel_data[29][53] = 4'b0101; // x=53, y=29
-        pixel_data[29][54] = 4'b0010; // x=54, y=29
-        pixel_data[29][55] = 4'b1000; // x=55, y=29
-        pixel_data[29][56] = 4'b1111; // x=56, y=29
-        pixel_data[29][57] = 4'b0111; // x=57, y=29
+        pixel_data[29][28] = 4'b0010; // x=28, y=29
+        pixel_data[29][29] = 4'b0010; // x=29, y=29
+        pixel_data[29][30] = 4'b0010; // x=30, y=29
+        pixel_data[29][31] = 4'b0010; // x=31, y=29
+        pixel_data[29][32] = 4'b0010; // x=32, y=29
+        pixel_data[29][33] = 4'b0010; // x=33, y=29
+        pixel_data[29][34] = 4'b0010; // x=34, y=29
+        pixel_data[29][35] = 4'b0010; // x=35, y=29
+        pixel_data[29][36] = 4'b0101; // x=36, y=29
+        pixel_data[29][37] = 4'b1010; // x=37, y=29
+        pixel_data[29][38] = 4'b0010; // x=38, y=29
+        pixel_data[29][39] = 4'b0010; // x=39, y=29
+        pixel_data[29][40] = 4'b0010; // x=40, y=29
+        pixel_data[29][41] = 4'b0010; // x=41, y=29
+        pixel_data[29][42] = 4'b0010; // x=42, y=29
+        pixel_data[29][43] = 4'b0010; // x=43, y=29
+        pixel_data[29][44] = 4'b0010; // x=44, y=29
+        pixel_data[29][45] = 4'b0010; // x=45, y=29
+        pixel_data[29][46] = 4'b0010; // x=46, y=29
+        pixel_data[29][47] = 4'b0010; // x=47, y=29
+        pixel_data[29][48] = 4'b0010; // x=48, y=29
+        pixel_data[29][49] = 4'b0010; // x=49, y=29
+        pixel_data[29][50] = 4'b0010; // x=50, y=29
+        pixel_data[29][51] = 4'b1010; // x=51, y=29
+        pixel_data[29][52] = 4'b0100; // x=52, y=29
+        pixel_data[29][53] = 4'b0001; // x=53, y=29
+        pixel_data[29][54] = 4'b0001; // x=54, y=29
+        pixel_data[29][55] = 4'b0110; // x=55, y=29
+        pixel_data[29][56] = 4'b0111; // x=56, y=29
+        pixel_data[29][57] = 4'b0000; // x=57, y=29
         pixel_data[29][58] = 4'b0000; // x=58, y=29
-        pixel_data[29][59] = 4'b0000; // x=59, y=29
         pixel_data[30][0] = 4'b0000; // x=0, y=30
         pixel_data[30][1] = 4'b0000; // x=1, y=30
-        pixel_data[30][2] = 4'b1111; // x=2, y=30
-        pixel_data[30][3] = 4'b0101; // x=3, y=30
-        pixel_data[30][4] = 4'b1111; // x=4, y=30
-        pixel_data[30][5] = 4'b0010; // x=5, y=30
-        pixel_data[30][6] = 4'b0010; // x=6, y=30
-        pixel_data[30][7] = 4'b0010; // x=7, y=30
-        pixel_data[30][8] = 4'b0010; // x=8, y=30
-        pixel_data[30][9] = 4'b0010; // x=9, y=30
-        pixel_data[30][10] = 4'b0010; // x=10, y=30
-        pixel_data[30][11] = 4'b0010; // x=11, y=30
-        pixel_data[30][12] = 4'b0010; // x=12, y=30
-        pixel_data[30][13] = 4'b0010; // x=13, y=30
-        pixel_data[30][14] = 4'b0010; // x=14, y=30
-        pixel_data[30][15] = 4'b1001; // x=15, y=30
-        pixel_data[30][16] = 4'b0111; // x=16, y=30
-        pixel_data[30][17] = 4'b0100; // x=17, y=30
-        pixel_data[30][18] = 4'b0110; // x=18, y=30
+        pixel_data[30][2] = 4'b0110; // x=2, y=30
+        pixel_data[30][3] = 4'b1001; // x=3, y=30
+        pixel_data[30][4] = 4'b1001; // x=4, y=30
+        pixel_data[30][5] = 4'b0001; // x=5, y=30
+        pixel_data[30][6] = 4'b0001; // x=6, y=30
+        pixel_data[30][7] = 4'b0001; // x=7, y=30
+        pixel_data[30][8] = 4'b0001; // x=8, y=30
+        pixel_data[30][9] = 4'b0001; // x=9, y=30
+        pixel_data[30][10] = 4'b0001; // x=10, y=30
+        pixel_data[30][11] = 4'b0001; // x=11, y=30
+        pixel_data[30][12] = 4'b0001; // x=12, y=30
+        pixel_data[30][13] = 4'b0001; // x=13, y=30
+        pixel_data[30][14] = 4'b0001; // x=14, y=30
+        pixel_data[30][15] = 4'b0001; // x=15, y=30
+        pixel_data[30][16] = 4'b1101; // x=16, y=30
+        pixel_data[30][17] = 4'b1011; // x=17, y=30
+        pixel_data[30][18] = 4'b1010; // x=18, y=30
         pixel_data[30][19] = 4'b0011; // x=19, y=30
         pixel_data[30][20] = 4'b0011; // x=20, y=30
         pixel_data[30][21] = 4'b0011; // x=21, y=30
@@ -1826,59 +1796,58 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[30][23] = 4'b0011; // x=23, y=30
         pixel_data[30][24] = 4'b0011; // x=24, y=30
         pixel_data[30][25] = 4'b0011; // x=25, y=30
-        pixel_data[30][26] = 4'b0011; // x=26, y=30
+        pixel_data[30][26] = 4'b0010; // x=26, y=30
         pixel_data[30][27] = 4'b1010; // x=27, y=30
-        pixel_data[30][28] = 4'b0001; // x=28, y=30
-        pixel_data[30][29] = 4'b0001; // x=29, y=30
-        pixel_data[30][30] = 4'b0001; // x=30, y=30
-        pixel_data[30][31] = 4'b0001; // x=31, y=30
-        pixel_data[30][32] = 4'b0001; // x=32, y=30
-        pixel_data[30][33] = 4'b0001; // x=33, y=30
-        pixel_data[30][34] = 4'b0001; // x=34, y=30
-        pixel_data[30][35] = 4'b0001; // x=35, y=30
-        pixel_data[30][36] = 4'b1010; // x=36, y=30
-        pixel_data[30][37] = 4'b1110; // x=37, y=30
-        pixel_data[30][38] = 4'b0001; // x=38, y=30
-        pixel_data[30][39] = 4'b0001; // x=39, y=30
-        pixel_data[30][40] = 4'b0001; // x=40, y=30
-        pixel_data[30][41] = 4'b0001; // x=41, y=30
-        pixel_data[30][42] = 4'b0001; // x=42, y=30
-        pixel_data[30][43] = 4'b0001; // x=43, y=30
-        pixel_data[30][44] = 4'b0001; // x=44, y=30
-        pixel_data[30][45] = 4'b0001; // x=45, y=30
-        pixel_data[30][46] = 4'b0001; // x=46, y=30
-        pixel_data[30][47] = 4'b0001; // x=47, y=30
-        pixel_data[30][48] = 4'b0001; // x=48, y=30
-        pixel_data[30][49] = 4'b0001; // x=49, y=30
-        pixel_data[30][50] = 4'b0001; // x=50, y=30
-        pixel_data[30][51] = 4'b0001; // x=51, y=30
-        pixel_data[30][52] = 4'b1010; // x=52, y=30
-        pixel_data[30][53] = 4'b0101; // x=53, y=30
-        pixel_data[30][54] = 4'b1001; // x=54, y=30
-        pixel_data[30][55] = 4'b0010; // x=55, y=30
-        pixel_data[30][56] = 4'b1111; // x=56, y=30
-        pixel_data[30][57] = 4'b0111; // x=57, y=30
+        pixel_data[30][28] = 4'b0010; // x=28, y=30
+        pixel_data[30][29] = 4'b0010; // x=29, y=30
+        pixel_data[30][30] = 4'b0010; // x=30, y=30
+        pixel_data[30][31] = 4'b0010; // x=31, y=30
+        pixel_data[30][32] = 4'b0010; // x=32, y=30
+        pixel_data[30][33] = 4'b0010; // x=33, y=30
+        pixel_data[30][34] = 4'b0010; // x=34, y=30
+        pixel_data[30][35] = 4'b0010; // x=35, y=30
+        pixel_data[30][36] = 4'b0101; // x=36, y=30
+        pixel_data[30][37] = 4'b1010; // x=37, y=30
+        pixel_data[30][38] = 4'b0010; // x=38, y=30
+        pixel_data[30][39] = 4'b0010; // x=39, y=30
+        pixel_data[30][40] = 4'b0010; // x=40, y=30
+        pixel_data[30][41] = 4'b0010; // x=41, y=30
+        pixel_data[30][42] = 4'b0010; // x=42, y=30
+        pixel_data[30][43] = 4'b0010; // x=43, y=30
+        pixel_data[30][44] = 4'b0010; // x=44, y=30
+        pixel_data[30][45] = 4'b0010; // x=45, y=30
+        pixel_data[30][46] = 4'b0010; // x=46, y=30
+        pixel_data[30][47] = 4'b0010; // x=47, y=30
+        pixel_data[30][48] = 4'b0010; // x=48, y=30
+        pixel_data[30][49] = 4'b0010; // x=49, y=30
+        pixel_data[30][50] = 4'b0010; // x=50, y=30
+        pixel_data[30][51] = 4'b1010; // x=51, y=30
+        pixel_data[30][52] = 4'b0100; // x=52, y=30
+        pixel_data[30][53] = 4'b0001; // x=53, y=30
+        pixel_data[30][54] = 4'b0001; // x=54, y=30
+        pixel_data[30][55] = 4'b0110; // x=55, y=30
+        pixel_data[30][56] = 4'b0111; // x=56, y=30
+        pixel_data[30][57] = 4'b0000; // x=57, y=30
         pixel_data[30][58] = 4'b0000; // x=58, y=30
-        pixel_data[30][59] = 4'b0000; // x=59, y=30
         pixel_data[31][0] = 4'b0000; // x=0, y=31
         pixel_data[31][1] = 4'b0000; // x=1, y=31
-        pixel_data[31][2] = 4'b1111; // x=2, y=31
-        pixel_data[31][3] = 4'b0101; // x=3, y=31
-        pixel_data[31][4] = 4'b0101; // x=4, y=31
-        pixel_data[31][5] = 4'b0010; // x=5, y=31
-        pixel_data[31][6] = 4'b0010; // x=6, y=31
-        pixel_data[31][7] = 4'b0010; // x=7, y=31
-        pixel_data[31][8] = 4'b0010; // x=8, y=31
-        pixel_data[31][9] = 4'b0010; // x=9, y=31
-        pixel_data[31][10] = 4'b0010; // x=10, y=31
-        pixel_data[31][11] = 4'b0010; // x=11, y=31
-        pixel_data[31][12] = 4'b0010; // x=12, y=31
-        pixel_data[31][13] = 4'b0010; // x=13, y=31
-        pixel_data[31][14] = 4'b0010; // x=14, y=31
-        pixel_data[31][15] = 4'b1001; // x=15, y=31
-        pixel_data[31][16] = 4'b1101; // x=16, y=31
-        pixel_data[31][17] = 4'b1110; // x=17, y=31
-        pixel_data[31][18] = 4'b1110; // x=18, y=31
+        pixel_data[31][2] = 4'b0110; // x=2, y=31
+        pixel_data[31][3] = 4'b1001; // x=3, y=31
+        pixel_data[31][4] = 4'b1001; // x=4, y=31
+        pixel_data[31][5] = 4'b0001; // x=5, y=31
+        pixel_data[31][6] = 4'b0001; // x=6, y=31
+        pixel_data[31][7] = 4'b0001; // x=7, y=31
+        pixel_data[31][8] = 4'b0001; // x=8, y=31
+        pixel_data[31][9] = 4'b0001; // x=9, y=31
+        pixel_data[31][10] = 4'b0001; // x=10, y=31
+        pixel_data[31][11] = 4'b0001; // x=11, y=31
+        pixel_data[31][12] = 4'b0001; // x=12, y=31
+        pixel_data[31][13] = 4'b0001; // x=13, y=31
+        pixel_data[31][14] = 4'b0001; // x=14, y=31
+        pixel_data[31][15] = 4'b0001; // x=15, y=31
+        pixel_data[31][16] = 4'b0111; // x=16, y=31
+        pixel_data[31][17] = 4'b0101; // x=17, y=31
+        pixel_data[31][18] = 4'b1000; // x=18, y=31
         pixel_data[31][19] = 4'b0011; // x=19, y=31
         pixel_data[31][20] = 4'b0011; // x=20, y=31
         pixel_data[31][21] = 4'b0011; // x=21, y=31
@@ -1886,180 +1855,177 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[31][23] = 4'b0011; // x=23, y=31
         pixel_data[31][24] = 4'b0011; // x=24, y=31
         pixel_data[31][25] = 4'b0011; // x=25, y=31
-        pixel_data[31][26] = 4'b0011; // x=26, y=31
+        pixel_data[31][26] = 4'b0010; // x=26, y=31
         pixel_data[31][27] = 4'b1010; // x=27, y=31
-        pixel_data[31][28] = 4'b0001; // x=28, y=31
-        pixel_data[31][29] = 4'b0001; // x=29, y=31
-        pixel_data[31][30] = 4'b0001; // x=30, y=31
-        pixel_data[31][31] = 4'b0001; // x=31, y=31
-        pixel_data[31][32] = 4'b0001; // x=32, y=31
-        pixel_data[31][33] = 4'b0001; // x=33, y=31
-        pixel_data[31][34] = 4'b0001; // x=34, y=31
-        pixel_data[31][35] = 4'b0001; // x=35, y=31
-        pixel_data[31][36] = 4'b1010; // x=36, y=31
-        pixel_data[31][37] = 4'b1110; // x=37, y=31
-        pixel_data[31][38] = 4'b0001; // x=38, y=31
-        pixel_data[31][39] = 4'b0001; // x=39, y=31
-        pixel_data[31][40] = 4'b0001; // x=40, y=31
-        pixel_data[31][41] = 4'b0001; // x=41, y=31
-        pixel_data[31][42] = 4'b0001; // x=42, y=31
-        pixel_data[31][43] = 4'b0001; // x=43, y=31
-        pixel_data[31][44] = 4'b0001; // x=44, y=31
-        pixel_data[31][45] = 4'b0001; // x=45, y=31
-        pixel_data[31][46] = 4'b0001; // x=46, y=31
-        pixel_data[31][47] = 4'b0001; // x=47, y=31
-        pixel_data[31][48] = 4'b0001; // x=48, y=31
-        pixel_data[31][49] = 4'b0001; // x=49, y=31
-        pixel_data[31][50] = 4'b0001; // x=50, y=31
-        pixel_data[31][51] = 4'b0001; // x=51, y=31
-        pixel_data[31][52] = 4'b1010; // x=52, y=31
-        pixel_data[31][53] = 4'b0101; // x=53, y=31
-        pixel_data[31][54] = 4'b1001; // x=54, y=31
-        pixel_data[31][55] = 4'b0010; // x=55, y=31
-        pixel_data[31][56] = 4'b1111; // x=56, y=31
-        pixel_data[31][57] = 4'b0111; // x=57, y=31
+        pixel_data[31][28] = 4'b0010; // x=28, y=31
+        pixel_data[31][29] = 4'b0010; // x=29, y=31
+        pixel_data[31][30] = 4'b0010; // x=30, y=31
+        pixel_data[31][31] = 4'b0010; // x=31, y=31
+        pixel_data[31][32] = 4'b0010; // x=32, y=31
+        pixel_data[31][33] = 4'b0010; // x=33, y=31
+        pixel_data[31][34] = 4'b0010; // x=34, y=31
+        pixel_data[31][35] = 4'b0010; // x=35, y=31
+        pixel_data[31][36] = 4'b0101; // x=36, y=31
+        pixel_data[31][37] = 4'b1010; // x=37, y=31
+        pixel_data[31][38] = 4'b0010; // x=38, y=31
+        pixel_data[31][39] = 4'b0010; // x=39, y=31
+        pixel_data[31][40] = 4'b0010; // x=40, y=31
+        pixel_data[31][41] = 4'b0010; // x=41, y=31
+        pixel_data[31][42] = 4'b0010; // x=42, y=31
+        pixel_data[31][43] = 4'b0010; // x=43, y=31
+        pixel_data[31][44] = 4'b0010; // x=44, y=31
+        pixel_data[31][45] = 4'b0010; // x=45, y=31
+        pixel_data[31][46] = 4'b0010; // x=46, y=31
+        pixel_data[31][47] = 4'b0010; // x=47, y=31
+        pixel_data[31][48] = 4'b0010; // x=48, y=31
+        pixel_data[31][49] = 4'b0010; // x=49, y=31
+        pixel_data[31][50] = 4'b0010; // x=50, y=31
+        pixel_data[31][51] = 4'b1010; // x=51, y=31
+        pixel_data[31][52] = 4'b0100; // x=52, y=31
+        pixel_data[31][53] = 4'b0001; // x=53, y=31
+        pixel_data[31][54] = 4'b0001; // x=54, y=31
+        pixel_data[31][55] = 4'b0110; // x=55, y=31
+        pixel_data[31][56] = 4'b0100; // x=56, y=31
+        pixel_data[31][57] = 4'b0000; // x=57, y=31
         pixel_data[31][58] = 4'b0000; // x=58, y=31
-        pixel_data[31][59] = 4'b0000; // x=59, y=31
         pixel_data[32][0] = 4'b0000; // x=0, y=32
         pixel_data[32][1] = 4'b0000; // x=1, y=32
-        pixel_data[32][2] = 4'b1000; // x=2, y=32
-        pixel_data[32][3] = 4'b0101; // x=3, y=32
-        pixel_data[32][4] = 4'b0101; // x=4, y=32
-        pixel_data[32][5] = 4'b0010; // x=5, y=32
-        pixel_data[32][6] = 4'b0010; // x=6, y=32
-        pixel_data[32][7] = 4'b0010; // x=7, y=32
-        pixel_data[32][8] = 4'b0010; // x=8, y=32
-        pixel_data[32][9] = 4'b0010; // x=9, y=32
-        pixel_data[32][10] = 4'b0010; // x=10, y=32
-        pixel_data[32][11] = 4'b0010; // x=11, y=32
-        pixel_data[32][12] = 4'b0010; // x=12, y=32
-        pixel_data[32][13] = 4'b0010; // x=13, y=32
-        pixel_data[32][14] = 4'b0010; // x=14, y=32
-        pixel_data[32][15] = 4'b0010; // x=15, y=32
-        pixel_data[32][16] = 4'b1111; // x=16, y=32
-        pixel_data[32][17] = 4'b1010; // x=17, y=32
-        pixel_data[32][18] = 4'b1110; // x=18, y=32
-        pixel_data[32][19] = 4'b1100; // x=19, y=32
+        pixel_data[32][2] = 4'b1110; // x=2, y=32
+        pixel_data[32][3] = 4'b1001; // x=3, y=32
+        pixel_data[32][4] = 4'b1001; // x=4, y=32
+        pixel_data[32][5] = 4'b1110; // x=5, y=32
+        pixel_data[32][6] = 4'b0001; // x=6, y=32
+        pixel_data[32][7] = 4'b0001; // x=7, y=32
+        pixel_data[32][8] = 4'b0001; // x=8, y=32
+        pixel_data[32][9] = 4'b0001; // x=9, y=32
+        pixel_data[32][10] = 4'b0001; // x=10, y=32
+        pixel_data[32][11] = 4'b0001; // x=11, y=32
+        pixel_data[32][12] = 4'b0001; // x=12, y=32
+        pixel_data[32][13] = 4'b0001; // x=13, y=32
+        pixel_data[32][14] = 4'b0001; // x=14, y=32
+        pixel_data[32][15] = 4'b0001; // x=15, y=32
+        pixel_data[32][16] = 4'b0100; // x=16, y=32
+        pixel_data[32][17] = 4'b1000; // x=17, y=32
+        pixel_data[32][18] = 4'b0101; // x=18, y=32
+        pixel_data[32][19] = 4'b0011; // x=19, y=32
         pixel_data[32][20] = 4'b0011; // x=20, y=32
         pixel_data[32][21] = 4'b0011; // x=21, y=32
         pixel_data[32][22] = 4'b0011; // x=22, y=32
         pixel_data[32][23] = 4'b0011; // x=23, y=32
         pixel_data[32][24] = 4'b0011; // x=24, y=32
         pixel_data[32][25] = 4'b0011; // x=25, y=32
-        pixel_data[32][26] = 4'b0011; // x=26, y=32
-        pixel_data[32][27] = 4'b1010; // x=27, y=32
-        pixel_data[32][28] = 4'b0001; // x=28, y=32
-        pixel_data[32][29] = 4'b0001; // x=29, y=32
-        pixel_data[32][30] = 4'b0001; // x=30, y=32
-        pixel_data[32][31] = 4'b0001; // x=31, y=32
-        pixel_data[32][32] = 4'b0001; // x=32, y=32
-        pixel_data[32][33] = 4'b0001; // x=33, y=32
-        pixel_data[32][34] = 4'b0001; // x=34, y=32
-        pixel_data[32][35] = 4'b0001; // x=35, y=32
-        pixel_data[32][36] = 4'b1010; // x=36, y=32
-        pixel_data[32][37] = 4'b1110; // x=37, y=32
-        pixel_data[32][38] = 4'b0001; // x=38, y=32
-        pixel_data[32][39] = 4'b0001; // x=39, y=32
-        pixel_data[32][40] = 4'b0001; // x=40, y=32
-        pixel_data[32][41] = 4'b0001; // x=41, y=32
-        pixel_data[32][42] = 4'b0001; // x=42, y=32
-        pixel_data[32][43] = 4'b0001; // x=43, y=32
-        pixel_data[32][44] = 4'b0001; // x=44, y=32
-        pixel_data[32][45] = 4'b0001; // x=45, y=32
-        pixel_data[32][46] = 4'b0001; // x=46, y=32
-        pixel_data[32][47] = 4'b0001; // x=47, y=32
-        pixel_data[32][48] = 4'b0001; // x=48, y=32
-        pixel_data[32][49] = 4'b0001; // x=49, y=32
-        pixel_data[32][50] = 4'b0001; // x=50, y=32
-        pixel_data[32][51] = 4'b0001; // x=51, y=32
-        pixel_data[32][52] = 4'b1010; // x=52, y=32
-        pixel_data[32][53] = 4'b0101; // x=53, y=32
-        pixel_data[32][54] = 4'b1001; // x=54, y=32
-        pixel_data[32][55] = 4'b0010; // x=55, y=32
-        pixel_data[32][56] = 4'b1111; // x=56, y=32
-        pixel_data[32][57] = 4'b0101; // x=57, y=32
+        pixel_data[32][26] = 4'b1101; // x=26, y=32
+        pixel_data[32][27] = 4'b1000; // x=27, y=32
+        pixel_data[32][28] = 4'b0010; // x=28, y=32
+        pixel_data[32][29] = 4'b0010; // x=29, y=32
+        pixel_data[32][30] = 4'b0010; // x=30, y=32
+        pixel_data[32][31] = 4'b0010; // x=31, y=32
+        pixel_data[32][32] = 4'b0010; // x=32, y=32
+        pixel_data[32][33] = 4'b0010; // x=33, y=32
+        pixel_data[32][34] = 4'b0010; // x=34, y=32
+        pixel_data[32][35] = 4'b0010; // x=35, y=32
+        pixel_data[32][36] = 4'b0101; // x=36, y=32
+        pixel_data[32][37] = 4'b1010; // x=37, y=32
+        pixel_data[32][38] = 4'b0010; // x=38, y=32
+        pixel_data[32][39] = 4'b0010; // x=39, y=32
+        pixel_data[32][40] = 4'b0010; // x=40, y=32
+        pixel_data[32][41] = 4'b0010; // x=41, y=32
+        pixel_data[32][42] = 4'b0010; // x=42, y=32
+        pixel_data[32][43] = 4'b0010; // x=43, y=32
+        pixel_data[32][44] = 4'b0010; // x=44, y=32
+        pixel_data[32][45] = 4'b0010; // x=45, y=32
+        pixel_data[32][46] = 4'b0010; // x=46, y=32
+        pixel_data[32][47] = 4'b0010; // x=47, y=32
+        pixel_data[32][48] = 4'b0010; // x=48, y=32
+        pixel_data[32][49] = 4'b0010; // x=49, y=32
+        pixel_data[32][50] = 4'b0010; // x=50, y=32
+        pixel_data[32][51] = 4'b1010; // x=51, y=32
+        pixel_data[32][52] = 4'b0100; // x=52, y=32
+        pixel_data[32][53] = 4'b0001; // x=53, y=32
+        pixel_data[32][54] = 4'b0001; // x=54, y=32
+        pixel_data[32][55] = 4'b1001; // x=55, y=32
+        pixel_data[32][56] = 4'b0110; // x=56, y=32
+        pixel_data[32][57] = 4'b0000; // x=57, y=32
         pixel_data[32][58] = 4'b0000; // x=58, y=32
-        pixel_data[32][59] = 4'b0000; // x=59, y=32
         pixel_data[33][0] = 4'b0000; // x=0, y=33
         pixel_data[33][1] = 4'b0000; // x=1, y=33
-        pixel_data[33][2] = 4'b0010; // x=2, y=33
-        pixel_data[33][3] = 4'b0101; // x=3, y=33
-        pixel_data[33][4] = 4'b0101; // x=4, y=33
-        pixel_data[33][5] = 4'b1000; // x=5, y=33
-        pixel_data[33][6] = 4'b0010; // x=6, y=33
-        pixel_data[33][7] = 4'b0010; // x=7, y=33
-        pixel_data[33][8] = 4'b0010; // x=8, y=33
-        pixel_data[33][9] = 4'b0010; // x=9, y=33
-        pixel_data[33][10] = 4'b0010; // x=10, y=33
-        pixel_data[33][11] = 4'b0010; // x=11, y=33
-        pixel_data[33][12] = 4'b0010; // x=12, y=33
-        pixel_data[33][13] = 4'b0010; // x=13, y=33
-        pixel_data[33][14] = 4'b0010; // x=14, y=33
-        pixel_data[33][15] = 4'b0010; // x=15, y=33
-        pixel_data[33][16] = 4'b0010; // x=16, y=33
-        pixel_data[33][17] = 4'b0001; // x=17, y=33
-        pixel_data[33][18] = 4'b1110; // x=18, y=33
-        pixel_data[33][19] = 4'b1100; // x=19, y=33
+        pixel_data[33][2] = 4'b0000; // x=2, y=33
+        pixel_data[33][3] = 4'b1001; // x=3, y=33
+        pixel_data[33][4] = 4'b1001; // x=4, y=33
+        pixel_data[33][5] = 4'b1110; // x=5, y=33
+        pixel_data[33][6] = 4'b0001; // x=6, y=33
+        pixel_data[33][7] = 4'b0001; // x=7, y=33
+        pixel_data[33][8] = 4'b0001; // x=8, y=33
+        pixel_data[33][9] = 4'b0001; // x=9, y=33
+        pixel_data[33][10] = 4'b0001; // x=10, y=33
+        pixel_data[33][11] = 4'b0001; // x=11, y=33
+        pixel_data[33][12] = 4'b0001; // x=12, y=33
+        pixel_data[33][13] = 4'b0001; // x=13, y=33
+        pixel_data[33][14] = 4'b0001; // x=14, y=33
+        pixel_data[33][15] = 4'b0001; // x=15, y=33
+        pixel_data[33][16] = 4'b1110; // x=16, y=33
+        pixel_data[33][17] = 4'b1010; // x=17, y=33
+        pixel_data[33][18] = 4'b0101; // x=18, y=33
+        pixel_data[33][19] = 4'b1101; // x=19, y=33
         pixel_data[33][20] = 4'b0011; // x=20, y=33
         pixel_data[33][21] = 4'b0011; // x=21, y=33
         pixel_data[33][22] = 4'b0011; // x=22, y=33
         pixel_data[33][23] = 4'b0011; // x=23, y=33
         pixel_data[33][24] = 4'b0011; // x=24, y=33
         pixel_data[33][25] = 4'b0011; // x=25, y=33
-        pixel_data[33][26] = 4'b0011; // x=26, y=33
-        pixel_data[33][27] = 4'b1010; // x=27, y=33
-        pixel_data[33][28] = 4'b0001; // x=28, y=33
-        pixel_data[33][29] = 4'b0001; // x=29, y=33
-        pixel_data[33][30] = 4'b0001; // x=30, y=33
-        pixel_data[33][31] = 4'b0001; // x=31, y=33
-        pixel_data[33][32] = 4'b0001; // x=32, y=33
-        pixel_data[33][33] = 4'b0001; // x=33, y=33
-        pixel_data[33][34] = 4'b0001; // x=34, y=33
-        pixel_data[33][35] = 4'b0001; // x=35, y=33
-        pixel_data[33][36] = 4'b1010; // x=36, y=33
-        pixel_data[33][37] = 4'b1110; // x=37, y=33
-        pixel_data[33][38] = 4'b0001; // x=38, y=33
-        pixel_data[33][39] = 4'b0001; // x=39, y=33
-        pixel_data[33][40] = 4'b0001; // x=40, y=33
-        pixel_data[33][41] = 4'b0001; // x=41, y=33
-        pixel_data[33][42] = 4'b0001; // x=42, y=33
-        pixel_data[33][43] = 4'b0001; // x=43, y=33
-        pixel_data[33][44] = 4'b0001; // x=44, y=33
-        pixel_data[33][45] = 4'b0001; // x=45, y=33
-        pixel_data[33][46] = 4'b0001; // x=46, y=33
-        pixel_data[33][47] = 4'b0001; // x=47, y=33
-        pixel_data[33][48] = 4'b0001; // x=48, y=33
-        pixel_data[33][49] = 4'b0001; // x=49, y=33
-        pixel_data[33][50] = 4'b0001; // x=50, y=33
-        pixel_data[33][51] = 4'b0001; // x=51, y=33
-        pixel_data[33][52] = 4'b1010; // x=52, y=33
-        pixel_data[33][53] = 4'b0101; // x=53, y=33
-        pixel_data[33][54] = 4'b1001; // x=54, y=33
-        pixel_data[33][55] = 4'b0010; // x=55, y=33
-        pixel_data[33][56] = 4'b0101; // x=56, y=33
-        pixel_data[33][57] = 4'b1111; // x=57, y=33
+        pixel_data[33][26] = 4'b1101; // x=26, y=33
+        pixel_data[33][27] = 4'b1000; // x=27, y=33
+        pixel_data[33][28] = 4'b0010; // x=28, y=33
+        pixel_data[33][29] = 4'b0010; // x=29, y=33
+        pixel_data[33][30] = 4'b0010; // x=30, y=33
+        pixel_data[33][31] = 4'b0010; // x=31, y=33
+        pixel_data[33][32] = 4'b0010; // x=32, y=33
+        pixel_data[33][33] = 4'b0010; // x=33, y=33
+        pixel_data[33][34] = 4'b0010; // x=34, y=33
+        pixel_data[33][35] = 4'b0010; // x=35, y=33
+        pixel_data[33][36] = 4'b0101; // x=36, y=33
+        pixel_data[33][37] = 4'b1010; // x=37, y=33
+        pixel_data[33][38] = 4'b0010; // x=38, y=33
+        pixel_data[33][39] = 4'b0010; // x=39, y=33
+        pixel_data[33][40] = 4'b0010; // x=40, y=33
+        pixel_data[33][41] = 4'b0010; // x=41, y=33
+        pixel_data[33][42] = 4'b0010; // x=42, y=33
+        pixel_data[33][43] = 4'b0010; // x=43, y=33
+        pixel_data[33][44] = 4'b0010; // x=44, y=33
+        pixel_data[33][45] = 4'b0010; // x=45, y=33
+        pixel_data[33][46] = 4'b0010; // x=46, y=33
+        pixel_data[33][47] = 4'b0010; // x=47, y=33
+        pixel_data[33][48] = 4'b0010; // x=48, y=33
+        pixel_data[33][49] = 4'b0010; // x=49, y=33
+        pixel_data[33][50] = 4'b0010; // x=50, y=33
+        pixel_data[33][51] = 4'b1010; // x=51, y=33
+        pixel_data[33][52] = 4'b0100; // x=52, y=33
+        pixel_data[33][53] = 4'b0001; // x=53, y=33
+        pixel_data[33][54] = 4'b0001; // x=54, y=33
+        pixel_data[33][55] = 4'b1001; // x=55, y=33
+        pixel_data[33][56] = 4'b1110; // x=56, y=33
+        pixel_data[33][57] = 4'b0000; // x=57, y=33
         pixel_data[33][58] = 4'b0000; // x=58, y=33
-        pixel_data[33][59] = 4'b0000; // x=59, y=33
         pixel_data[34][0] = 4'b0000; // x=0, y=34
         pixel_data[34][1] = 4'b0000; // x=1, y=34
-        pixel_data[34][2] = 4'b1001; // x=2, y=34
-        pixel_data[34][3] = 4'b0101; // x=3, y=34
-        pixel_data[34][4] = 4'b0101; // x=4, y=34
-        pixel_data[34][5] = 4'b1000; // x=5, y=34
-        pixel_data[34][6] = 4'b0010; // x=6, y=34
-        pixel_data[34][7] = 4'b0010; // x=7, y=34
-        pixel_data[34][8] = 4'b0010; // x=8, y=34
-        pixel_data[34][9] = 4'b0010; // x=9, y=34
-        pixel_data[34][10] = 4'b0010; // x=10, y=34
-        pixel_data[34][11] = 4'b0010; // x=11, y=34
-        pixel_data[34][12] = 4'b0010; // x=12, y=34
-        pixel_data[34][13] = 4'b0010; // x=13, y=34
-        pixel_data[34][14] = 4'b0010; // x=14, y=34
-        pixel_data[34][15] = 4'b0010; // x=15, y=34
-        pixel_data[34][16] = 4'b1001; // x=16, y=34
-        pixel_data[34][17] = 4'b1011; // x=17, y=34
-        pixel_data[34][18] = 4'b1110; // x=18, y=34
-        pixel_data[34][19] = 4'b1010; // x=19, y=34
+        pixel_data[34][2] = 4'b0000; // x=2, y=34
+        pixel_data[34][3] = 4'b1001; // x=3, y=34
+        pixel_data[34][4] = 4'b1001; // x=4, y=34
+        pixel_data[34][5] = 4'b1110; // x=5, y=34
+        pixel_data[34][6] = 4'b0001; // x=6, y=34
+        pixel_data[34][7] = 4'b0001; // x=7, y=34
+        pixel_data[34][8] = 4'b0001; // x=8, y=34
+        pixel_data[34][9] = 4'b0001; // x=9, y=34
+        pixel_data[34][10] = 4'b0001; // x=10, y=34
+        pixel_data[34][11] = 4'b0001; // x=11, y=34
+        pixel_data[34][12] = 4'b0001; // x=12, y=34
+        pixel_data[34][13] = 4'b0001; // x=13, y=34
+        pixel_data[34][14] = 4'b0001; // x=14, y=34
+        pixel_data[34][15] = 4'b0001; // x=15, y=34
+        pixel_data[34][16] = 4'b0001; // x=16, y=34
+        pixel_data[34][17] = 4'b1111; // x=17, y=34
+        pixel_data[34][18] = 4'b0101; // x=18, y=34
+        pixel_data[34][19] = 4'b0010; // x=19, y=34
         pixel_data[34][20] = 4'b0011; // x=20, y=34
         pixel_data[34][21] = 4'b0011; // x=21, y=34
         pixel_data[34][22] = 4'b0011; // x=22, y=34
@@ -2067,59 +2033,58 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[34][24] = 4'b0011; // x=24, y=34
         pixel_data[34][25] = 4'b0011; // x=25, y=34
         pixel_data[34][26] = 4'b0011; // x=26, y=34
-        pixel_data[34][27] = 4'b1010; // x=27, y=34
-        pixel_data[34][28] = 4'b1010; // x=28, y=34
-        pixel_data[34][29] = 4'b0001; // x=29, y=34
-        pixel_data[34][30] = 4'b0001; // x=30, y=34
-        pixel_data[34][31] = 4'b0001; // x=31, y=34
-        pixel_data[34][32] = 4'b0001; // x=32, y=34
-        pixel_data[34][33] = 4'b0001; // x=33, y=34
-        pixel_data[34][34] = 4'b0001; // x=34, y=34
-        pixel_data[34][35] = 4'b0001; // x=35, y=34
-        pixel_data[34][36] = 4'b1010; // x=36, y=34
-        pixel_data[34][37] = 4'b1110; // x=37, y=34
-        pixel_data[34][38] = 4'b0001; // x=38, y=34
-        pixel_data[34][39] = 4'b0001; // x=39, y=34
-        pixel_data[34][40] = 4'b0001; // x=40, y=34
-        pixel_data[34][41] = 4'b0001; // x=41, y=34
-        pixel_data[34][42] = 4'b0001; // x=42, y=34
-        pixel_data[34][43] = 4'b0001; // x=43, y=34
-        pixel_data[34][44] = 4'b0001; // x=44, y=34
-        pixel_data[34][45] = 4'b0001; // x=45, y=34
-        pixel_data[34][46] = 4'b0001; // x=46, y=34
-        pixel_data[34][47] = 4'b0001; // x=47, y=34
-        pixel_data[34][48] = 4'b0001; // x=48, y=34
-        pixel_data[34][49] = 4'b0001; // x=49, y=34
-        pixel_data[34][50] = 4'b0001; // x=50, y=34
-        pixel_data[34][51] = 4'b0001; // x=51, y=34
-        pixel_data[34][52] = 4'b1010; // x=52, y=34
-        pixel_data[34][53] = 4'b0101; // x=53, y=34
-        pixel_data[34][54] = 4'b1001; // x=54, y=34
-        pixel_data[34][55] = 4'b1000; // x=55, y=34
-        pixel_data[34][56] = 4'b0101; // x=56, y=34
-        pixel_data[34][57] = 4'b0010; // x=57, y=34
+        pixel_data[34][27] = 4'b1000; // x=27, y=34
+        pixel_data[34][28] = 4'b0010; // x=28, y=34
+        pixel_data[34][29] = 4'b0010; // x=29, y=34
+        pixel_data[34][30] = 4'b0010; // x=30, y=34
+        pixel_data[34][31] = 4'b0010; // x=31, y=34
+        pixel_data[34][32] = 4'b0010; // x=32, y=34
+        pixel_data[34][33] = 4'b0010; // x=33, y=34
+        pixel_data[34][34] = 4'b0010; // x=34, y=34
+        pixel_data[34][35] = 4'b0010; // x=35, y=34
+        pixel_data[34][36] = 4'b0101; // x=36, y=34
+        pixel_data[34][37] = 4'b1010; // x=37, y=34
+        pixel_data[34][38] = 4'b0010; // x=38, y=34
+        pixel_data[34][39] = 4'b0010; // x=39, y=34
+        pixel_data[34][40] = 4'b0010; // x=40, y=34
+        pixel_data[34][41] = 4'b0010; // x=41, y=34
+        pixel_data[34][42] = 4'b0010; // x=42, y=34
+        pixel_data[34][43] = 4'b0010; // x=43, y=34
+        pixel_data[34][44] = 4'b0010; // x=44, y=34
+        pixel_data[34][45] = 4'b0010; // x=45, y=34
+        pixel_data[34][46] = 4'b0010; // x=46, y=34
+        pixel_data[34][47] = 4'b0010; // x=47, y=34
+        pixel_data[34][48] = 4'b0010; // x=48, y=34
+        pixel_data[34][49] = 4'b0010; // x=49, y=34
+        pixel_data[34][50] = 4'b0010; // x=50, y=34
+        pixel_data[34][51] = 4'b1010; // x=51, y=34
+        pixel_data[34][52] = 4'b0100; // x=52, y=34
+        pixel_data[34][53] = 4'b0001; // x=53, y=34
+        pixel_data[34][54] = 4'b1110; // x=54, y=34
+        pixel_data[34][55] = 4'b1001; // x=55, y=34
+        pixel_data[34][56] = 4'b0000; // x=56, y=34
+        pixel_data[34][57] = 4'b0000; // x=57, y=34
         pixel_data[34][58] = 4'b0000; // x=58, y=34
-        pixel_data[34][59] = 4'b0000; // x=59, y=34
         pixel_data[35][0] = 4'b0000; // x=0, y=35
         pixel_data[35][1] = 4'b0000; // x=1, y=35
         pixel_data[35][2] = 4'b0000; // x=2, y=35
-        pixel_data[35][3] = 4'b0101; // x=3, y=35
-        pixel_data[35][4] = 4'b0101; // x=4, y=35
-        pixel_data[35][5] = 4'b1111; // x=5, y=35
-        pixel_data[35][6] = 4'b0010; // x=6, y=35
-        pixel_data[35][7] = 4'b0010; // x=7, y=35
-        pixel_data[35][8] = 4'b0010; // x=8, y=35
-        pixel_data[35][9] = 4'b0010; // x=9, y=35
-        pixel_data[35][10] = 4'b0010; // x=10, y=35
-        pixel_data[35][11] = 4'b0010; // x=11, y=35
-        pixel_data[35][12] = 4'b0010; // x=12, y=35
-        pixel_data[35][13] = 4'b0010; // x=13, y=35
-        pixel_data[35][14] = 4'b0010; // x=14, y=35
-        pixel_data[35][15] = 4'b0010; // x=15, y=35
-        pixel_data[35][16] = 4'b1001; // x=16, y=35
-        pixel_data[35][17] = 4'b0101; // x=17, y=35
-        pixel_data[35][18] = 4'b0110; // x=18, y=35
-        pixel_data[35][19] = 4'b0110; // x=19, y=35
+        pixel_data[35][3] = 4'b1001; // x=3, y=35
+        pixel_data[35][4] = 4'b1001; // x=4, y=35
+        pixel_data[35][5] = 4'b1001; // x=5, y=35
+        pixel_data[35][6] = 4'b0110; // x=6, y=35
+        pixel_data[35][7] = 4'b0110; // x=7, y=35
+        pixel_data[35][8] = 4'b0110; // x=8, y=35
+        pixel_data[35][9] = 4'b0110; // x=9, y=35
+        pixel_data[35][10] = 4'b1110; // x=10, y=35
+        pixel_data[35][11] = 4'b1110; // x=11, y=35
+        pixel_data[35][12] = 4'b1110; // x=12, y=35
+        pixel_data[35][13] = 4'b1110; // x=13, y=35
+        pixel_data[35][14] = 4'b1110; // x=14, y=35
+        pixel_data[35][15] = 4'b1110; // x=15, y=35
+        pixel_data[35][16] = 4'b1110; // x=16, y=35
+        pixel_data[35][17] = 4'b0100; // x=17, y=35
+        pixel_data[35][18] = 4'b0101; // x=18, y=35
+        pixel_data[35][19] = 4'b1010; // x=19, y=35
         pixel_data[35][20] = 4'b0011; // x=20, y=35
         pixel_data[35][21] = 4'b0011; // x=21, y=35
         pixel_data[35][22] = 4'b0011; // x=22, y=35
@@ -2127,119 +2092,117 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[35][24] = 4'b0011; // x=24, y=35
         pixel_data[35][25] = 4'b0011; // x=25, y=35
         pixel_data[35][26] = 4'b0011; // x=26, y=35
-        pixel_data[35][27] = 4'b1100; // x=27, y=35
-        pixel_data[35][28] = 4'b0110; // x=28, y=35
-        pixel_data[35][29] = 4'b0001; // x=29, y=35
-        pixel_data[35][30] = 4'b0001; // x=30, y=35
-        pixel_data[35][31] = 4'b0001; // x=31, y=35
-        pixel_data[35][32] = 4'b0001; // x=32, y=35
-        pixel_data[35][33] = 4'b0001; // x=33, y=35
-        pixel_data[35][34] = 4'b0001; // x=34, y=35
-        pixel_data[35][35] = 4'b0001; // x=35, y=35
-        pixel_data[35][36] = 4'b1010; // x=36, y=35
-        pixel_data[35][37] = 4'b1110; // x=37, y=35
-        pixel_data[35][38] = 4'b0001; // x=38, y=35
-        pixel_data[35][39] = 4'b0001; // x=39, y=35
-        pixel_data[35][40] = 4'b0001; // x=40, y=35
-        pixel_data[35][41] = 4'b0001; // x=41, y=35
-        pixel_data[35][42] = 4'b0001; // x=42, y=35
-        pixel_data[35][43] = 4'b0001; // x=43, y=35
-        pixel_data[35][44] = 4'b0001; // x=44, y=35
-        pixel_data[35][45] = 4'b0001; // x=45, y=35
-        pixel_data[35][46] = 4'b0001; // x=46, y=35
-        pixel_data[35][47] = 4'b0001; // x=47, y=35
-        pixel_data[35][48] = 4'b0001; // x=48, y=35
-        pixel_data[35][49] = 4'b0001; // x=49, y=35
-        pixel_data[35][50] = 4'b0001; // x=50, y=35
-        pixel_data[35][51] = 4'b0001; // x=51, y=35
-        pixel_data[35][52] = 4'b0001; // x=52, y=35
-        pixel_data[35][53] = 4'b0101; // x=53, y=35
-        pixel_data[35][54] = 4'b1001; // x=54, y=35
-        pixel_data[35][55] = 4'b1000; // x=55, y=35
-        pixel_data[35][56] = 4'b0101; // x=56, y=35
+        pixel_data[35][27] = 4'b1010; // x=27, y=35
+        pixel_data[35][28] = 4'b1010; // x=28, y=35
+        pixel_data[35][29] = 4'b0010; // x=29, y=35
+        pixel_data[35][30] = 4'b0010; // x=30, y=35
+        pixel_data[35][31] = 4'b0010; // x=31, y=35
+        pixel_data[35][32] = 4'b0010; // x=32, y=35
+        pixel_data[35][33] = 4'b0010; // x=33, y=35
+        pixel_data[35][34] = 4'b0010; // x=34, y=35
+        pixel_data[35][35] = 4'b0010; // x=35, y=35
+        pixel_data[35][36] = 4'b0101; // x=36, y=35
+        pixel_data[35][37] = 4'b1010; // x=37, y=35
+        pixel_data[35][38] = 4'b0010; // x=38, y=35
+        pixel_data[35][39] = 4'b0010; // x=39, y=35
+        pixel_data[35][40] = 4'b0010; // x=40, y=35
+        pixel_data[35][41] = 4'b0010; // x=41, y=35
+        pixel_data[35][42] = 4'b0010; // x=42, y=35
+        pixel_data[35][43] = 4'b0010; // x=43, y=35
+        pixel_data[35][44] = 4'b0010; // x=44, y=35
+        pixel_data[35][45] = 4'b0010; // x=45, y=35
+        pixel_data[35][46] = 4'b0010; // x=46, y=35
+        pixel_data[35][47] = 4'b0010; // x=47, y=35
+        pixel_data[35][48] = 4'b0010; // x=48, y=35
+        pixel_data[35][49] = 4'b0010; // x=49, y=35
+        pixel_data[35][50] = 4'b0010; // x=50, y=35
+        pixel_data[35][51] = 4'b1010; // x=51, y=35
+        pixel_data[35][52] = 4'b0100; // x=52, y=35
+        pixel_data[35][53] = 4'b0001; // x=53, y=35
+        pixel_data[35][54] = 4'b0110; // x=54, y=35
+        pixel_data[35][55] = 4'b1001; // x=55, y=35
+        pixel_data[35][56] = 4'b0000; // x=56, y=35
         pixel_data[35][57] = 4'b0000; // x=57, y=35
         pixel_data[35][58] = 4'b0000; // x=58, y=35
-        pixel_data[35][59] = 4'b0000; // x=59, y=35
         pixel_data[36][0] = 4'b0000; // x=0, y=36
         pixel_data[36][1] = 4'b0000; // x=1, y=36
         pixel_data[36][2] = 4'b0000; // x=2, y=36
-        pixel_data[36][3] = 4'b1111; // x=3, y=36
-        pixel_data[36][4] = 4'b0101; // x=4, y=36
-        pixel_data[36][5] = 4'b0101; // x=5, y=36
-        pixel_data[36][6] = 4'b1111; // x=6, y=36
-        pixel_data[36][7] = 4'b1111; // x=7, y=36
-        pixel_data[36][8] = 4'b1111; // x=8, y=36
-        pixel_data[36][9] = 4'b1111; // x=9, y=36
-        pixel_data[36][10] = 4'b1111; // x=10, y=36
-        pixel_data[36][11] = 4'b1111; // x=11, y=36
-        pixel_data[36][12] = 4'b1111; // x=12, y=36
-        pixel_data[36][13] = 4'b1111; // x=13, y=36
-        pixel_data[36][14] = 4'b1111; // x=14, y=36
-        pixel_data[36][15] = 4'b1111; // x=15, y=36
-        pixel_data[36][16] = 4'b1111; // x=16, y=36
-        pixel_data[36][17] = 4'b1111; // x=17, y=36
-        pixel_data[36][18] = 4'b1100; // x=18, y=36
-        pixel_data[36][19] = 4'b1110; // x=19, y=36
-        pixel_data[36][20] = 4'b1100; // x=20, y=36
+        pixel_data[36][3] = 4'b1110; // x=3, y=36
+        pixel_data[36][4] = 4'b1001; // x=4, y=36
+        pixel_data[36][5] = 4'b1001; // x=5, y=36
+        pixel_data[36][6] = 4'b1110; // x=6, y=36
+        pixel_data[36][7] = 4'b1110; // x=7, y=36
+        pixel_data[36][8] = 4'b1110; // x=8, y=36
+        pixel_data[36][9] = 4'b1110; // x=9, y=36
+        pixel_data[36][10] = 4'b1110; // x=10, y=36
+        pixel_data[36][11] = 4'b1110; // x=11, y=36
+        pixel_data[36][12] = 4'b1110; // x=12, y=36
+        pixel_data[36][13] = 4'b0110; // x=13, y=36
+        pixel_data[36][14] = 4'b1110; // x=14, y=36
+        pixel_data[36][15] = 4'b1110; // x=15, y=36
+        pixel_data[36][16] = 4'b1110; // x=16, y=36
+        pixel_data[36][17] = 4'b0001; // x=17, y=36
+        pixel_data[36][18] = 4'b1101; // x=18, y=36
+        pixel_data[36][19] = 4'b0101; // x=19, y=36
+        pixel_data[36][20] = 4'b0011; // x=20, y=36
         pixel_data[36][21] = 4'b0011; // x=21, y=36
         pixel_data[36][22] = 4'b0011; // x=22, y=36
         pixel_data[36][23] = 4'b0011; // x=23, y=36
         pixel_data[36][24] = 4'b0011; // x=24, y=36
         pixel_data[36][25] = 4'b0011; // x=25, y=36
         pixel_data[36][26] = 4'b0011; // x=26, y=36
-        pixel_data[36][27] = 4'b0011; // x=27, y=36
-        pixel_data[36][28] = 4'b0110; // x=28, y=36
-        pixel_data[36][29] = 4'b0001; // x=29, y=36
-        pixel_data[36][30] = 4'b0001; // x=30, y=36
-        pixel_data[36][31] = 4'b0001; // x=31, y=36
-        pixel_data[36][32] = 4'b0001; // x=32, y=36
-        pixel_data[36][33] = 4'b0001; // x=33, y=36
-        pixel_data[36][34] = 4'b0001; // x=34, y=36
-        pixel_data[36][35] = 4'b0001; // x=35, y=36
-        pixel_data[36][36] = 4'b1010; // x=36, y=36
-        pixel_data[36][37] = 4'b1110; // x=37, y=36
-        pixel_data[36][38] = 4'b0001; // x=38, y=36
-        pixel_data[36][39] = 4'b0001; // x=39, y=36
-        pixel_data[36][40] = 4'b0001; // x=40, y=36
-        pixel_data[36][41] = 4'b0001; // x=41, y=36
-        pixel_data[36][42] = 4'b0001; // x=42, y=36
-        pixel_data[36][43] = 4'b0001; // x=43, y=36
-        pixel_data[36][44] = 4'b0001; // x=44, y=36
-        pixel_data[36][45] = 4'b0001; // x=45, y=36
-        pixel_data[36][46] = 4'b0001; // x=46, y=36
-        pixel_data[36][47] = 4'b0001; // x=47, y=36
-        pixel_data[36][48] = 4'b0001; // x=48, y=36
-        pixel_data[36][49] = 4'b1010; // x=49, y=36
-        pixel_data[36][50] = 4'b1010; // x=50, y=36
-        pixel_data[36][51] = 4'b0110; // x=51, y=36
-        pixel_data[36][52] = 4'b1110; // x=52, y=36
-        pixel_data[36][53] = 4'b0101; // x=53, y=36
+        pixel_data[36][27] = 4'b1101; // x=27, y=36
+        pixel_data[36][28] = 4'b0101; // x=28, y=36
+        pixel_data[36][29] = 4'b1010; // x=29, y=36
+        pixel_data[36][30] = 4'b1010; // x=30, y=36
+        pixel_data[36][31] = 4'b1010; // x=31, y=36
+        pixel_data[36][32] = 4'b1010; // x=32, y=36
+        pixel_data[36][33] = 4'b1010; // x=33, y=36
+        pixel_data[36][34] = 4'b1010; // x=34, y=36
+        pixel_data[36][35] = 4'b1010; // x=35, y=36
+        pixel_data[36][36] = 4'b1011; // x=36, y=36
+        pixel_data[36][37] = 4'b1000; // x=37, y=36
+        pixel_data[36][38] = 4'b1010; // x=38, y=36
+        pixel_data[36][39] = 4'b1010; // x=39, y=36
+        pixel_data[36][40] = 4'b1010; // x=40, y=36
+        pixel_data[36][41] = 4'b1010; // x=41, y=36
+        pixel_data[36][42] = 4'b1010; // x=42, y=36
+        pixel_data[36][43] = 4'b1010; // x=43, y=36
+        pixel_data[36][44] = 4'b1010; // x=44, y=36
+        pixel_data[36][45] = 4'b1000; // x=45, y=36
+        pixel_data[36][46] = 4'b0101; // x=46, y=36
+        pixel_data[36][47] = 4'b0101; // x=47, y=36
+        pixel_data[36][48] = 4'b1011; // x=48, y=36
+        pixel_data[36][49] = 4'b1011; // x=49, y=36
+        pixel_data[36][50] = 4'b1011; // x=50, y=36
+        pixel_data[36][51] = 4'b0101; // x=51, y=36
+        pixel_data[36][52] = 4'b0111; // x=52, y=36
+        pixel_data[36][53] = 4'b1110; // x=53, y=36
         pixel_data[36][54] = 4'b1001; // x=54, y=36
-        pixel_data[36][55] = 4'b1111; // x=55, y=36
-        pixel_data[36][56] = 4'b0101; // x=56, y=36
+        pixel_data[36][55] = 4'b0110; // x=55, y=36
+        pixel_data[36][56] = 4'b0000; // x=56, y=36
         pixel_data[36][57] = 4'b0000; // x=57, y=36
         pixel_data[36][58] = 4'b0000; // x=58, y=36
-        pixel_data[36][59] = 4'b0000; // x=59, y=36
         pixel_data[37][0] = 4'b0000; // x=0, y=37
         pixel_data[37][1] = 4'b0000; // x=1, y=37
         pixel_data[37][2] = 4'b0000; // x=2, y=37
-        pixel_data[37][3] = 4'b0010; // x=3, y=37
-        pixel_data[37][4] = 4'b0101; // x=4, y=37
-        pixel_data[37][5] = 4'b0101; // x=5, y=37
-        pixel_data[37][6] = 4'b0010; // x=6, y=37
-        pixel_data[37][7] = 4'b0010; // x=7, y=37
-        pixel_data[37][8] = 4'b0010; // x=8, y=37
-        pixel_data[37][9] = 4'b0010; // x=9, y=37
-        pixel_data[37][10] = 4'b0010; // x=10, y=37
-        pixel_data[37][11] = 4'b0010; // x=11, y=37
-        pixel_data[37][12] = 4'b0010; // x=12, y=37
-        pixel_data[37][13] = 4'b0010; // x=13, y=37
-        pixel_data[37][14] = 4'b0010; // x=14, y=37
-        pixel_data[37][15] = 4'b0010; // x=15, y=37
-        pixel_data[37][16] = 4'b0010; // x=16, y=37
-        pixel_data[37][17] = 4'b1001; // x=17, y=37
-        pixel_data[37][18] = 4'b1101; // x=18, y=37
-        pixel_data[37][19] = 4'b1110; // x=19, y=37
+        pixel_data[37][3] = 4'b0000; // x=3, y=37
+        pixel_data[37][4] = 4'b1001; // x=4, y=37
+        pixel_data[37][5] = 4'b1001; // x=5, y=37
+        pixel_data[37][6] = 4'b1110; // x=6, y=37
+        pixel_data[37][7] = 4'b0001; // x=7, y=37
+        pixel_data[37][8] = 4'b0001; // x=8, y=37
+        pixel_data[37][9] = 4'b0001; // x=9, y=37
+        pixel_data[37][10] = 4'b0001; // x=10, y=37
+        pixel_data[37][11] = 4'b0001; // x=11, y=37
+        pixel_data[37][12] = 4'b0001; // x=12, y=37
+        pixel_data[37][13] = 4'b0001; // x=13, y=37
+        pixel_data[37][14] = 4'b0001; // x=14, y=37
+        pixel_data[37][15] = 4'b0001; // x=15, y=37
+        pixel_data[37][16] = 4'b0001; // x=16, y=37
+        pixel_data[37][17] = 4'b0001; // x=17, y=37
+        pixel_data[37][18] = 4'b1001; // x=18, y=37
+        pixel_data[37][19] = 4'b0101; // x=19, y=37
         pixel_data[37][20] = 4'b1010; // x=20, y=37
         pixel_data[37][21] = 4'b0011; // x=21, y=37
         pixel_data[37][22] = 4'b0011; // x=22, y=37
@@ -2248,218 +2211,214 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[37][25] = 4'b0011; // x=25, y=37
         pixel_data[37][26] = 4'b0011; // x=26, y=37
         pixel_data[37][27] = 4'b0011; // x=27, y=37
-        pixel_data[37][28] = 4'b1010; // x=28, y=37
-        pixel_data[37][29] = 4'b1110; // x=29, y=37
-        pixel_data[37][30] = 4'b1110; // x=30, y=37
-        pixel_data[37][31] = 4'b1110; // x=31, y=37
-        pixel_data[37][32] = 4'b1110; // x=32, y=37
-        pixel_data[37][33] = 4'b1110; // x=33, y=37
-        pixel_data[37][34] = 4'b1110; // x=34, y=37
-        pixel_data[37][35] = 4'b1110; // x=35, y=37
-        pixel_data[37][36] = 4'b1110; // x=36, y=37
-        pixel_data[37][37] = 4'b0100; // x=37, y=37
-        pixel_data[37][38] = 4'b1110; // x=38, y=37
-        pixel_data[37][39] = 4'b1110; // x=39, y=37
-        pixel_data[37][40] = 4'b1110; // x=40, y=37
-        pixel_data[37][41] = 4'b1110; // x=41, y=37
-        pixel_data[37][42] = 4'b1110; // x=42, y=37
-        pixel_data[37][43] = 4'b1110; // x=43, y=37
-        pixel_data[37][44] = 4'b1110; // x=44, y=37
-        pixel_data[37][45] = 4'b1110; // x=45, y=37
-        pixel_data[37][46] = 4'b0100; // x=46, y=37
-        pixel_data[37][47] = 4'b0100; // x=47, y=37
-        pixel_data[37][48] = 4'b0100; // x=48, y=37
-        pixel_data[37][49] = 4'b0100; // x=49, y=37
-        pixel_data[37][50] = 4'b1110; // x=50, y=37
-        pixel_data[37][51] = 4'b1010; // x=51, y=37
-        pixel_data[37][52] = 4'b1100; // x=52, y=37
-        pixel_data[37][53] = 4'b1101; // x=53, y=37
-        pixel_data[37][54] = 4'b0101; // x=54, y=37
-        pixel_data[37][55] = 4'b1101; // x=55, y=37
-        pixel_data[37][56] = 4'b1000; // x=56, y=37
+        pixel_data[37][28] = 4'b1000; // x=28, y=37
+        pixel_data[37][29] = 4'b1011; // x=29, y=37
+        pixel_data[37][30] = 4'b1011; // x=30, y=37
+        pixel_data[37][31] = 4'b1011; // x=31, y=37
+        pixel_data[37][32] = 4'b1011; // x=32, y=37
+        pixel_data[37][33] = 4'b1011; // x=33, y=37
+        pixel_data[37][34] = 4'b1011; // x=34, y=37
+        pixel_data[37][35] = 4'b1011; // x=35, y=37
+        pixel_data[37][36] = 4'b1011; // x=36, y=37
+        pixel_data[37][37] = 4'b1011; // x=37, y=37
+        pixel_data[37][38] = 4'b1011; // x=38, y=37
+        pixel_data[37][39] = 4'b1011; // x=39, y=37
+        pixel_data[37][40] = 4'b1011; // x=40, y=37
+        pixel_data[37][41] = 4'b1011; // x=41, y=37
+        pixel_data[37][42] = 4'b1011; // x=42, y=37
+        pixel_data[37][43] = 4'b1011; // x=43, y=37
+        pixel_data[37][44] = 4'b1011; // x=44, y=37
+        pixel_data[37][45] = 4'b0101; // x=45, y=37
+        pixel_data[37][46] = 4'b1010; // x=46, y=37
+        pixel_data[37][47] = 4'b1101; // x=47, y=37
+        pixel_data[37][48] = 4'b1111; // x=48, y=37
+        pixel_data[37][49] = 4'b0111; // x=49, y=37
+        pixel_data[37][50] = 4'b1001; // x=50, y=37
+        pixel_data[37][51] = 4'b0110; // x=51, y=37
+        pixel_data[37][52] = 4'b1110; // x=52, y=37
+        pixel_data[37][53] = 4'b0100; // x=53, y=37
+        pixel_data[37][54] = 4'b0111; // x=54, y=37
+        pixel_data[37][55] = 4'b0001; // x=55, y=37
+        pixel_data[37][56] = 4'b0000; // x=56, y=37
         pixel_data[37][57] = 4'b0000; // x=57, y=37
         pixel_data[37][58] = 4'b0000; // x=58, y=37
-        pixel_data[37][59] = 4'b0000; // x=59, y=37
         pixel_data[38][0] = 4'b0000; // x=0, y=38
         pixel_data[38][1] = 4'b0000; // x=1, y=38
         pixel_data[38][2] = 4'b0000; // x=2, y=38
         pixel_data[38][3] = 4'b0000; // x=3, y=38
-        pixel_data[38][4] = 4'b0101; // x=4, y=38
-        pixel_data[38][5] = 4'b0101; // x=5, y=38
-        pixel_data[38][6] = 4'b1111; // x=6, y=38
-        pixel_data[38][7] = 4'b0010; // x=7, y=38
-        pixel_data[38][8] = 4'b0010; // x=8, y=38
-        pixel_data[38][9] = 4'b0010; // x=9, y=38
-        pixel_data[38][10] = 4'b0010; // x=10, y=38
-        pixel_data[38][11] = 4'b0010; // x=11, y=38
-        pixel_data[38][12] = 4'b0010; // x=12, y=38
-        pixel_data[38][13] = 4'b0010; // x=13, y=38
-        pixel_data[38][14] = 4'b0010; // x=14, y=38
-        pixel_data[38][15] = 4'b0010; // x=15, y=38
-        pixel_data[38][16] = 4'b0010; // x=16, y=38
-        pixel_data[38][17] = 4'b0010; // x=17, y=38
-        pixel_data[38][18] = 4'b0010; // x=18, y=38
-        pixel_data[38][19] = 4'b0011; // x=19, y=38
-        pixel_data[38][20] = 4'b1110; // x=20, y=38
-        pixel_data[38][21] = 4'b0011; // x=21, y=38
+        pixel_data[38][4] = 4'b0110; // x=4, y=38
+        pixel_data[38][5] = 4'b1001; // x=5, y=38
+        pixel_data[38][6] = 4'b1001; // x=6, y=38
+        pixel_data[38][7] = 4'b1110; // x=7, y=38
+        pixel_data[38][8] = 4'b0001; // x=8, y=38
+        pixel_data[38][9] = 4'b0001; // x=9, y=38
+        pixel_data[38][10] = 4'b0001; // x=10, y=38
+        pixel_data[38][11] = 4'b0001; // x=11, y=38
+        pixel_data[38][12] = 4'b0001; // x=12, y=38
+        pixel_data[38][13] = 4'b0001; // x=13, y=38
+        pixel_data[38][14] = 4'b0001; // x=14, y=38
+        pixel_data[38][15] = 4'b0001; // x=15, y=38
+        pixel_data[38][16] = 4'b0001; // x=16, y=38
+        pixel_data[38][17] = 4'b0001; // x=17, y=38
+        pixel_data[38][18] = 4'b0001; // x=18, y=38
+        pixel_data[38][19] = 4'b1111; // x=19, y=38
+        pixel_data[38][20] = 4'b0101; // x=20, y=38
+        pixel_data[38][21] = 4'b1101; // x=21, y=38
         pixel_data[38][22] = 4'b0011; // x=22, y=38
         pixel_data[38][23] = 4'b0011; // x=23, y=38
         pixel_data[38][24] = 4'b0011; // x=24, y=38
-        pixel_data[38][25] = 4'b0011; // x=25, y=38
-        pixel_data[38][26] = 4'b0011; // x=26, y=38
-        pixel_data[38][27] = 4'b0011; // x=27, y=38
-        pixel_data[38][28] = 4'b0011; // x=28, y=38
-        pixel_data[38][29] = 4'b0001; // x=29, y=38
-        pixel_data[38][30] = 4'b1010; // x=30, y=38
-        pixel_data[38][31] = 4'b1010; // x=31, y=38
-        pixel_data[38][32] = 4'b1010; // x=32, y=38
-        pixel_data[38][33] = 4'b1010; // x=33, y=38
-        pixel_data[38][34] = 4'b1010; // x=34, y=38
-        pixel_data[38][35] = 4'b1010; // x=35, y=38
-        pixel_data[38][36] = 4'b1010; // x=36, y=38
-        pixel_data[38][37] = 4'b1010; // x=37, y=38
-        pixel_data[38][38] = 4'b0110; // x=38, y=38
-        pixel_data[38][39] = 4'b0110; // x=39, y=38
-        pixel_data[38][40] = 4'b0110; // x=40, y=38
-        pixel_data[38][41] = 4'b0110; // x=41, y=38
-        pixel_data[38][42] = 4'b1010; // x=42, y=38
-        pixel_data[38][43] = 4'b1010; // x=43, y=38
-        pixel_data[38][44] = 4'b1010; // x=44, y=38
-        pixel_data[38][45] = 4'b1100; // x=45, y=38
-        pixel_data[38][46] = 4'b0011; // x=46, y=38
-        pixel_data[38][47] = 4'b0111; // x=47, y=38
-        pixel_data[38][48] = 4'b1101; // x=48, y=38
-        pixel_data[38][49] = 4'b1111; // x=49, y=38
-        pixel_data[38][50] = 4'b1000; // x=50, y=38
-        pixel_data[38][51] = 4'b0010; // x=51, y=38
-        pixel_data[38][52] = 4'b1001; // x=52, y=38
-        pixel_data[38][53] = 4'b0010; // x=53, y=38
-        pixel_data[38][54] = 4'b0101; // x=54, y=38
-        pixel_data[38][55] = 4'b1101; // x=55, y=38
+        pixel_data[38][25] = 4'b1111; // x=25, y=38
+        pixel_data[38][26] = 4'b1111; // x=26, y=38
+        pixel_data[38][27] = 4'b0111; // x=27, y=38
+        pixel_data[38][28] = 4'b0111; // x=28, y=38
+        pixel_data[38][29] = 4'b1111; // x=29, y=38
+        pixel_data[38][30] = 4'b0011; // x=30, y=38
+        pixel_data[38][31] = 4'b0011; // x=31, y=38
+        pixel_data[38][32] = 4'b0011; // x=32, y=38
+        pixel_data[38][33] = 4'b0011; // x=33, y=38
+        pixel_data[38][34] = 4'b1101; // x=34, y=38
+        pixel_data[38][35] = 4'b0011; // x=35, y=38
+        pixel_data[38][36] = 4'b1111; // x=36, y=38
+        pixel_data[38][37] = 4'b1101; // x=37, y=38
+        pixel_data[38][38] = 4'b0010; // x=38, y=38
+        pixel_data[38][39] = 4'b1010; // x=39, y=38
+        pixel_data[38][40] = 4'b1101; // x=40, y=38
+        pixel_data[38][41] = 4'b1101; // x=41, y=38
+        pixel_data[38][42] = 4'b1101; // x=42, y=38
+        pixel_data[38][43] = 4'b0011; // x=43, y=38
+        pixel_data[38][44] = 4'b0100; // x=44, y=38
+        pixel_data[38][45] = 4'b1001; // x=45, y=38
+        pixel_data[38][46] = 4'b0110; // x=46, y=38
+        pixel_data[38][47] = 4'b1110; // x=47, y=38
+        pixel_data[38][48] = 4'b0001; // x=48, y=38
+        pixel_data[38][49] = 4'b0001; // x=49, y=38
+        pixel_data[38][50] = 4'b0001; // x=50, y=38
+        pixel_data[38][51] = 4'b1110; // x=51, y=38
+        pixel_data[38][52] = 4'b1110; // x=52, y=38
+        pixel_data[38][53] = 4'b1001; // x=53, y=38
+        pixel_data[38][54] = 4'b0110; // x=54, y=38
+        pixel_data[38][55] = 4'b0000; // x=55, y=38
         pixel_data[38][56] = 4'b0000; // x=56, y=38
         pixel_data[38][57] = 4'b0000; // x=57, y=38
         pixel_data[38][58] = 4'b0000; // x=58, y=38
-        pixel_data[38][59] = 4'b0000; // x=59, y=38
         pixel_data[39][0] = 4'b0000; // x=0, y=39
         pixel_data[39][1] = 4'b0000; // x=1, y=39
         pixel_data[39][2] = 4'b0000; // x=2, y=39
         pixel_data[39][3] = 4'b0000; // x=3, y=39
         pixel_data[39][4] = 4'b0000; // x=4, y=39
-        pixel_data[39][5] = 4'b0101; // x=5, y=39
-        pixel_data[39][6] = 4'b0101; // x=6, y=39
-        pixel_data[39][7] = 4'b1111; // x=7, y=39
-        pixel_data[39][8] = 4'b1000; // x=8, y=39
-        pixel_data[39][9] = 4'b0010; // x=9, y=39
-        pixel_data[39][10] = 4'b0010; // x=10, y=39
-        pixel_data[39][11] = 4'b0010; // x=11, y=39
-        pixel_data[39][12] = 4'b0010; // x=12, y=39
-        pixel_data[39][13] = 4'b0010; // x=13, y=39
-        pixel_data[39][14] = 4'b0010; // x=14, y=39
-        pixel_data[39][15] = 4'b0010; // x=15, y=39
-        pixel_data[39][16] = 4'b0010; // x=16, y=39
-        pixel_data[39][17] = 4'b0010; // x=17, y=39
-        pixel_data[39][18] = 4'b1001; // x=18, y=39
-        pixel_data[39][19] = 4'b1111; // x=19, y=39
-        pixel_data[39][20] = 4'b1010; // x=20, y=39
-        pixel_data[39][21] = 4'b1010; // x=21, y=39
-        pixel_data[39][22] = 4'b0011; // x=22, y=39
-        pixel_data[39][23] = 4'b0011; // x=23, y=39
-        pixel_data[39][24] = 4'b1011; // x=24, y=39
-        pixel_data[39][25] = 4'b0111; // x=25, y=39
-        pixel_data[39][26] = 4'b0111; // x=26, y=39
-        pixel_data[39][27] = 4'b0111; // x=27, y=39
-        pixel_data[39][28] = 4'b1011; // x=28, y=39
-        pixel_data[39][29] = 4'b1011; // x=29, y=39
-        pixel_data[39][30] = 4'b0011; // x=30, y=39
-        pixel_data[39][31] = 4'b1100; // x=31, y=39
-        pixel_data[39][32] = 4'b1100; // x=32, y=39
-        pixel_data[39][33] = 4'b1100; // x=33, y=39
-        pixel_data[39][34] = 4'b0001; // x=34, y=39
-        pixel_data[39][35] = 4'b1010; // x=35, y=39
-        pixel_data[39][36] = 4'b1011; // x=36, y=39
-        pixel_data[39][37] = 4'b0011; // x=37, y=39
-        pixel_data[39][38] = 4'b0001; // x=38, y=39
-        pixel_data[39][39] = 4'b1010; // x=39, y=39
-        pixel_data[39][40] = 4'b0110; // x=40, y=39
-        pixel_data[39][41] = 4'b1100; // x=41, y=39
-        pixel_data[39][42] = 4'b1100; // x=42, y=39
-        pixel_data[39][43] = 4'b1100; // x=43, y=39
-        pixel_data[39][44] = 4'b1100; // x=44, y=39
-        pixel_data[39][45] = 4'b1101; // x=45, y=39
-        pixel_data[39][46] = 4'b1111; // x=46, y=39
-        pixel_data[39][47] = 4'b1111; // x=47, y=39
-        pixel_data[39][48] = 4'b1111; // x=48, y=39
-        pixel_data[39][49] = 4'b1000; // x=49, y=39
-        pixel_data[39][50] = 4'b1000; // x=50, y=39
-        pixel_data[39][51] = 4'b1000; // x=51, y=39
-        pixel_data[39][52] = 4'b1111; // x=52, y=39
-        pixel_data[39][53] = 4'b1111; // x=53, y=39
-        pixel_data[39][54] = 4'b0101; // x=54, y=39
-        pixel_data[39][55] = 4'b0010; // x=55, y=39
+        pixel_data[39][5] = 4'b1110; // x=5, y=39
+        pixel_data[39][6] = 4'b1001; // x=6, y=39
+        pixel_data[39][7] = 4'b1001; // x=7, y=39
+        pixel_data[39][8] = 4'b1001; // x=8, y=39
+        pixel_data[39][9] = 4'b1110; // x=9, y=39
+        pixel_data[39][10] = 4'b1110; // x=10, y=39
+        pixel_data[39][11] = 4'b1110; // x=11, y=39
+        pixel_data[39][12] = 4'b1110; // x=12, y=39
+        pixel_data[39][13] = 4'b0001; // x=13, y=39
+        pixel_data[39][14] = 4'b0001; // x=14, y=39
+        pixel_data[39][15] = 4'b0001; // x=15, y=39
+        pixel_data[39][16] = 4'b0001; // x=16, y=39
+        pixel_data[39][17] = 4'b0001; // x=17, y=39
+        pixel_data[39][18] = 4'b0001; // x=18, y=39
+        pixel_data[39][19] = 4'b0110; // x=19, y=39
+        pixel_data[39][20] = 4'b1111; // x=20, y=39
+        pixel_data[39][21] = 4'b0111; // x=21, y=39
+        pixel_data[39][22] = 4'b1111; // x=22, y=39
+        pixel_data[39][23] = 4'b1111; // x=23, y=39
+        pixel_data[39][24] = 4'b1111; // x=24, y=39
+        pixel_data[39][25] = 4'b0011; // x=25, y=39
+        pixel_data[39][26] = 4'b1101; // x=26, y=39
+        pixel_data[39][27] = 4'b1010; // x=27, y=39
+        pixel_data[39][28] = 4'b1000; // x=28, y=39
+        pixel_data[39][29] = 4'b1000; // x=29, y=39
+        pixel_data[39][30] = 4'b1000; // x=30, y=39
+        pixel_data[39][31] = 4'b1000; // x=31, y=39
+        pixel_data[39][32] = 4'b1000; // x=32, y=39
+        pixel_data[39][33] = 4'b1000; // x=33, y=39
+        pixel_data[39][34] = 4'b1011; // x=34, y=39
+        pixel_data[39][35] = 4'b0101; // x=35, y=39
+        pixel_data[39][36] = 4'b1101; // x=36, y=39
+        pixel_data[39][37] = 4'b1000; // x=37, y=39
+        pixel_data[39][38] = 4'b1000; // x=38, y=39
+        pixel_data[39][39] = 4'b1011; // x=39, y=39
+        pixel_data[39][40] = 4'b1011; // x=40, y=39
+        pixel_data[39][41] = 4'b1000; // x=41, y=39
+        pixel_data[39][42] = 4'b1000; // x=42, y=39
+        pixel_data[39][43] = 4'b1000; // x=43, y=39
+        pixel_data[39][44] = 4'b1010; // x=44, y=39
+        pixel_data[39][45] = 4'b0111; // x=45, y=39
+        pixel_data[39][46] = 4'b1001; // x=46, y=39
+        pixel_data[39][47] = 4'b1001; // x=47, y=39
+        pixel_data[39][48] = 4'b1001; // x=48, y=39
+        pixel_data[39][49] = 4'b1001; // x=49, y=39
+        pixel_data[39][50] = 4'b1001; // x=50, y=39
+        pixel_data[39][51] = 4'b1001; // x=51, y=39
+        pixel_data[39][52] = 4'b1001; // x=52, y=39
+        pixel_data[39][53] = 4'b0110; // x=53, y=39
+        pixel_data[39][54] = 4'b0000; // x=54, y=39
+        pixel_data[39][55] = 4'b0000; // x=55, y=39
         pixel_data[39][56] = 4'b0000; // x=56, y=39
         pixel_data[39][57] = 4'b0000; // x=57, y=39
         pixel_data[39][58] = 4'b0000; // x=58, y=39
-        pixel_data[39][59] = 4'b0000; // x=59, y=39
         pixel_data[40][0] = 4'b0000; // x=0, y=40
         pixel_data[40][1] = 4'b0000; // x=1, y=40
         pixel_data[40][2] = 4'b0000; // x=2, y=40
         pixel_data[40][3] = 4'b0000; // x=3, y=40
         pixel_data[40][4] = 4'b0000; // x=4, y=40
         pixel_data[40][5] = 4'b0000; // x=5, y=40
-        pixel_data[40][6] = 4'b1111; // x=6, y=40
-        pixel_data[40][7] = 4'b0101; // x=7, y=40
-        pixel_data[40][8] = 4'b0101; // x=8, y=40
-        pixel_data[40][9] = 4'b1111; // x=9, y=40
-        pixel_data[40][10] = 4'b1111; // x=10, y=40
-        pixel_data[40][11] = 4'b1000; // x=11, y=40
-        pixel_data[40][12] = 4'b1000; // x=12, y=40
-        pixel_data[40][13] = 4'b1000; // x=13, y=40
-        pixel_data[40][14] = 4'b1000; // x=14, y=40
-        pixel_data[40][15] = 4'b1000; // x=15, y=40
-        pixel_data[40][16] = 4'b1000; // x=16, y=40
-        pixel_data[40][17] = 4'b1000; // x=17, y=40
-        pixel_data[40][18] = 4'b1000; // x=18, y=40
-        pixel_data[40][19] = 4'b1000; // x=19, y=40
-        pixel_data[40][20] = 4'b0101; // x=20, y=40
-        pixel_data[40][21] = 4'b1101; // x=21, y=40
-        pixel_data[40][22] = 4'b1011; // x=22, y=40
+        pixel_data[40][6] = 4'b0000; // x=6, y=40
+        pixel_data[40][7] = 4'b1110; // x=7, y=40
+        pixel_data[40][8] = 4'b1110; // x=8, y=40
+        pixel_data[40][9] = 4'b0110; // x=9, y=40
+        pixel_data[40][10] = 4'b0110; // x=10, y=40
+        pixel_data[40][11] = 4'b0110; // x=11, y=40
+        pixel_data[40][12] = 4'b0110; // x=12, y=40
+        pixel_data[40][13] = 4'b1001; // x=13, y=40
+        pixel_data[40][14] = 4'b0110; // x=14, y=40
+        pixel_data[40][15] = 4'b0110; // x=15, y=40
+        pixel_data[40][16] = 4'b0110; // x=16, y=40
+        pixel_data[40][17] = 4'b1001; // x=17, y=40
+        pixel_data[40][18] = 4'b1001; // x=18, y=40
+        pixel_data[40][19] = 4'b1001; // x=19, y=40
+        pixel_data[40][20] = 4'b0110; // x=20, y=40
+        pixel_data[40][21] = 4'b1001; // x=21, y=40
+        pixel_data[40][22] = 4'b0111; // x=22, y=40
         pixel_data[40][23] = 4'b0011; // x=23, y=40
-        pixel_data[40][24] = 4'b0011; // x=24, y=40
-        pixel_data[40][25] = 4'b0001; // x=25, y=40
-        pixel_data[40][26] = 4'b1010; // x=26, y=40
-        pixel_data[40][27] = 4'b0110; // x=27, y=40
-        pixel_data[40][28] = 4'b1110; // x=28, y=40
-        pixel_data[40][29] = 4'b1110; // x=29, y=40
-        pixel_data[40][30] = 4'b1110; // x=30, y=40
-        pixel_data[40][31] = 4'b0110; // x=31, y=40
-        pixel_data[40][32] = 4'b0110; // x=32, y=40
-        pixel_data[40][33] = 4'b0110; // x=33, y=40
-        pixel_data[40][34] = 4'b1110; // x=34, y=40
-        pixel_data[40][35] = 4'b0100; // x=35, y=40
-        pixel_data[40][36] = 4'b1010; // x=36, y=40
-        pixel_data[40][37] = 4'b1010; // x=37, y=40
-        pixel_data[40][38] = 4'b1110; // x=38, y=40
-        pixel_data[40][39] = 4'b0110; // x=39, y=40
-        pixel_data[40][40] = 4'b0100; // x=40, y=40
-        pixel_data[40][41] = 4'b0100; // x=41, y=40
-        pixel_data[40][42] = 4'b0110; // x=42, y=40
-        pixel_data[40][43] = 4'b1110; // x=43, y=40
-        pixel_data[40][44] = 4'b1110; // x=44, y=40
-        pixel_data[40][45] = 4'b0110; // x=45, y=40
-        pixel_data[40][46] = 4'b0111; // x=46, y=40
-        pixel_data[40][47] = 4'b0101; // x=47, y=40
-        pixel_data[40][48] = 4'b0101; // x=48, y=40
-        pixel_data[40][49] = 4'b0101; // x=49, y=40
-        pixel_data[40][50] = 4'b0101; // x=50, y=40
-        pixel_data[40][51] = 4'b0101; // x=51, y=40
-        pixel_data[40][52] = 4'b1111; // x=52, y=40
-        pixel_data[40][53] = 4'b1000; // x=53, y=40
-        pixel_data[40][54] = 4'b1001; // x=54, y=40
+        pixel_data[40][24] = 4'b1111; // x=24, y=40
+        pixel_data[40][25] = 4'b0011; // x=25, y=40
+        pixel_data[40][26] = 4'b0011; // x=26, y=40
+        pixel_data[40][27] = 4'b0011; // x=27, y=40
+        pixel_data[40][28] = 4'b1101; // x=28, y=40
+        pixel_data[40][29] = 4'b1101; // x=29, y=40
+        pixel_data[40][30] = 4'b1101; // x=30, y=40
+        pixel_data[40][31] = 4'b1101; // x=31, y=40
+        pixel_data[40][32] = 4'b1101; // x=32, y=40
+        pixel_data[40][33] = 4'b1010; // x=33, y=40
+        pixel_data[40][34] = 4'b1010; // x=34, y=40
+        pixel_data[40][35] = 4'b0010; // x=35, y=40
+        pixel_data[40][36] = 4'b1101; // x=36, y=40
+        pixel_data[40][37] = 4'b0010; // x=37, y=40
+        pixel_data[40][38] = 4'b1000; // x=38, y=40
+        pixel_data[40][39] = 4'b0010; // x=39, y=40
+        pixel_data[40][40] = 4'b0010; // x=40, y=40
+        pixel_data[40][41] = 4'b1101; // x=41, y=40
+        pixel_data[40][42] = 4'b1101; // x=42, y=40
+        pixel_data[40][43] = 4'b0011; // x=43, y=40
+        pixel_data[40][44] = 4'b1111; // x=44, y=40
+        pixel_data[40][45] = 4'b0100; // x=45, y=40
+        pixel_data[40][46] = 4'b0110; // x=46, y=40
+        pixel_data[40][47] = 4'b1110; // x=47, y=40
+        pixel_data[40][48] = 4'b1110; // x=48, y=40
+        pixel_data[40][49] = 4'b0001; // x=49, y=40
+        pixel_data[40][50] = 4'b0001; // x=50, y=40
+        pixel_data[40][51] = 4'b0000; // x=51, y=40
+        pixel_data[40][52] = 4'b0000; // x=52, y=40
+        pixel_data[40][53] = 4'b0000; // x=53, y=40
+        pixel_data[40][54] = 4'b0000; // x=54, y=40
         pixel_data[40][55] = 4'b0000; // x=55, y=40
         pixel_data[40][56] = 4'b0000; // x=56, y=40
         pixel_data[40][57] = 4'b0000; // x=57, y=40
         pixel_data[40][58] = 4'b0000; // x=58, y=40
-        pixel_data[40][59] = 4'b0000; // x=59, y=40
         pixel_data[41][0] = 4'b0000; // x=0, y=41
         pixel_data[41][1] = 4'b0000; // x=1, y=41
         pixel_data[41][2] = 4'b0000; // x=2, y=41
@@ -2468,49 +2427,49 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[41][5] = 4'b0000; // x=5, y=41
         pixel_data[41][6] = 4'b0000; // x=6, y=41
         pixel_data[41][7] = 4'b0000; // x=7, y=41
-        pixel_data[41][8] = 4'b1001; // x=8, y=41
-        pixel_data[41][9] = 4'b0010; // x=9, y=41
-        pixel_data[41][10] = 4'b0010; // x=10, y=41
-        pixel_data[41][11] = 4'b1000; // x=11, y=41
-        pixel_data[41][12] = 4'b1000; // x=12, y=41
-        pixel_data[41][13] = 4'b1000; // x=13, y=41
-        pixel_data[41][14] = 4'b1000; // x=14, y=41
-        pixel_data[41][15] = 4'b1000; // x=15, y=41
-        pixel_data[41][16] = 4'b1000; // x=16, y=41
-        pixel_data[41][17] = 4'b1000; // x=17, y=41
-        pixel_data[41][18] = 4'b1000; // x=18, y=41
-        pixel_data[41][19] = 4'b1000; // x=19, y=41
-        pixel_data[41][20] = 4'b1000; // x=20, y=41
-        pixel_data[41][21] = 4'b1000; // x=21, y=41
-        pixel_data[41][22] = 4'b1111; // x=22, y=41
-        pixel_data[41][23] = 4'b1101; // x=23, y=41
-        pixel_data[41][24] = 4'b0111; // x=24, y=41
-        pixel_data[41][25] = 4'b1101; // x=25, y=41
-        pixel_data[41][26] = 4'b1101; // x=26, y=41
-        pixel_data[41][27] = 4'b1101; // x=27, y=41
-        pixel_data[41][28] = 4'b1101; // x=28, y=41
-        pixel_data[41][29] = 4'b0111; // x=29, y=41
-        pixel_data[41][30] = 4'b0111; // x=30, y=41
-        pixel_data[41][31] = 4'b0111; // x=31, y=41
-        pixel_data[41][32] = 4'b0111; // x=32, y=41
-        pixel_data[41][33] = 4'b0111; // x=33, y=41
-        pixel_data[41][34] = 4'b1100; // x=34, y=41
-        pixel_data[41][35] = 4'b1011; // x=35, y=41
-        pixel_data[41][36] = 4'b0111; // x=36, y=41
-        pixel_data[41][37] = 4'b0111; // x=37, y=41
-        pixel_data[41][38] = 4'b0011; // x=38, y=41
-        pixel_data[41][39] = 4'b1100; // x=39, y=41
-        pixel_data[41][40] = 4'b0111; // x=40, y=41
-        pixel_data[41][41] = 4'b0111; // x=41, y=41
-        pixel_data[41][42] = 4'b0111; // x=42, y=41
-        pixel_data[41][43] = 4'b1101; // x=43, y=41
-        pixel_data[41][44] = 4'b1101; // x=44, y=41
-        pixel_data[41][45] = 4'b0101; // x=45, y=41
-        pixel_data[41][46] = 4'b1000; // x=46, y=41
-        pixel_data[41][47] = 4'b0010; // x=47, y=41
-        pixel_data[41][48] = 4'b1001; // x=48, y=41
-        pixel_data[41][49] = 4'b1001; // x=49, y=41
-        pixel_data[41][50] = 4'b1001; // x=50, y=41
+        pixel_data[41][8] = 4'b0000; // x=8, y=41
+        pixel_data[41][9] = 4'b0000; // x=9, y=41
+        pixel_data[41][10] = 4'b0000; // x=10, y=41
+        pixel_data[41][11] = 4'b0000; // x=11, y=41
+        pixel_data[41][12] = 4'b0000; // x=12, y=41
+        pixel_data[41][13] = 4'b0000; // x=13, y=41
+        pixel_data[41][14] = 4'b0000; // x=14, y=41
+        pixel_data[41][15] = 4'b0000; // x=15, y=41
+        pixel_data[41][16] = 4'b0000; // x=16, y=41
+        pixel_data[41][17] = 4'b0000; // x=17, y=41
+        pixel_data[41][18] = 4'b0000; // x=18, y=41
+        pixel_data[41][19] = 4'b0000; // x=19, y=41
+        pixel_data[41][20] = 4'b0000; // x=20, y=41
+        pixel_data[41][21] = 4'b0000; // x=21, y=41
+        pixel_data[41][22] = 4'b0000; // x=22, y=41
+        pixel_data[41][23] = 4'b0100; // x=23, y=41
+        pixel_data[41][24] = 4'b0000; // x=24, y=41
+        pixel_data[41][25] = 4'b0000; // x=25, y=41
+        pixel_data[41][26] = 4'b0000; // x=26, y=41
+        pixel_data[41][27] = 4'b0000; // x=27, y=41
+        pixel_data[41][28] = 4'b0000; // x=28, y=41
+        pixel_data[41][29] = 4'b0000; // x=29, y=41
+        pixel_data[41][30] = 4'b0000; // x=30, y=41
+        pixel_data[41][31] = 4'b0000; // x=31, y=41
+        pixel_data[41][32] = 4'b0000; // x=32, y=41
+        pixel_data[41][33] = 4'b0000; // x=33, y=41
+        pixel_data[41][34] = 4'b0000; // x=34, y=41
+        pixel_data[41][35] = 4'b0000; // x=35, y=41
+        pixel_data[41][36] = 4'b0000; // x=36, y=41
+        pixel_data[41][37] = 4'b0000; // x=37, y=41
+        pixel_data[41][38] = 4'b0000; // x=38, y=41
+        pixel_data[41][39] = 4'b0000; // x=39, y=41
+        pixel_data[41][40] = 4'b0000; // x=40, y=41
+        pixel_data[41][41] = 4'b0000; // x=41, y=41
+        pixel_data[41][42] = 4'b0000; // x=42, y=41
+        pixel_data[41][43] = 4'b0000; // x=43, y=41
+        pixel_data[41][44] = 4'b0000; // x=44, y=41
+        pixel_data[41][45] = 4'b0000; // x=45, y=41
+        pixel_data[41][46] = 4'b0000; // x=46, y=41
+        pixel_data[41][47] = 4'b0000; // x=47, y=41
+        pixel_data[41][48] = 4'b0000; // x=48, y=41
+        pixel_data[41][49] = 4'b0000; // x=49, y=41
+        pixel_data[41][50] = 4'b0000; // x=50, y=41
         pixel_data[41][51] = 4'b0000; // x=51, y=41
         pixel_data[41][52] = 4'b0000; // x=52, y=41
         pixel_data[41][53] = 4'b0000; // x=53, y=41
@@ -2519,7 +2478,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[41][56] = 4'b0000; // x=56, y=41
         pixel_data[41][57] = 4'b0000; // x=57, y=41
         pixel_data[41][58] = 4'b0000; // x=58, y=41
-        pixel_data[41][59] = 4'b0000; // x=59, y=41
         pixel_data[42][0] = 4'b0000; // x=0, y=42
         pixel_data[42][1] = 4'b0000; // x=1, y=42
         pixel_data[42][2] = 4'b0000; // x=2, y=42
@@ -2542,9 +2500,9 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[42][19] = 4'b0000; // x=19, y=42
         pixel_data[42][20] = 4'b0000; // x=20, y=42
         pixel_data[42][21] = 4'b0000; // x=21, y=42
-        pixel_data[42][22] = 4'b1001; // x=22, y=42
-        pixel_data[42][23] = 4'b1000; // x=23, y=42
-        pixel_data[42][24] = 4'b0101; // x=24, y=42
+        pixel_data[42][22] = 4'b0000; // x=22, y=42
+        pixel_data[42][23] = 4'b0000; // x=23, y=42
+        pixel_data[42][24] = 4'b0000; // x=24, y=42
         pixel_data[42][25] = 4'b0000; // x=25, y=42
         pixel_data[42][26] = 4'b0000; // x=26, y=42
         pixel_data[42][27] = 4'b0000; // x=27, y=42
@@ -2579,7 +2537,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[42][56] = 4'b0000; // x=56, y=42
         pixel_data[42][57] = 4'b0000; // x=57, y=42
         pixel_data[42][58] = 4'b0000; // x=58, y=42
-        pixel_data[42][59] = 4'b0000; // x=59, y=42
         pixel_data[43][0] = 4'b0000; // x=0, y=43
         pixel_data[43][1] = 4'b0000; // x=1, y=43
         pixel_data[43][2] = 4'b0000; // x=2, y=43
@@ -2603,8 +2560,8 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[43][20] = 4'b0000; // x=20, y=43
         pixel_data[43][21] = 4'b0000; // x=21, y=43
         pixel_data[43][22] = 4'b0000; // x=22, y=43
-        pixel_data[43][23] = 4'b0010; // x=23, y=43
-        pixel_data[43][24] = 4'b1101; // x=24, y=43
+        pixel_data[43][23] = 4'b0000; // x=23, y=43
+        pixel_data[43][24] = 4'b0000; // x=24, y=43
         pixel_data[43][25] = 4'b0000; // x=25, y=43
         pixel_data[43][26] = 4'b0000; // x=26, y=43
         pixel_data[43][27] = 4'b0000; // x=27, y=43
@@ -2639,7 +2596,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[43][56] = 4'b0000; // x=56, y=43
         pixel_data[43][57] = 4'b0000; // x=57, y=43
         pixel_data[43][58] = 4'b0000; // x=58, y=43
-        pixel_data[43][59] = 4'b0000; // x=59, y=43
         pixel_data[44][0] = 4'b0000; // x=0, y=44
         pixel_data[44][1] = 4'b0000; // x=1, y=44
         pixel_data[44][2] = 4'b0000; // x=2, y=44
@@ -2699,7 +2655,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[44][56] = 4'b0000; // x=56, y=44
         pixel_data[44][57] = 4'b0000; // x=57, y=44
         pixel_data[44][58] = 4'b0000; // x=58, y=44
-        pixel_data[44][59] = 4'b0000; // x=59, y=44
         pixel_data[45][0] = 4'b0000; // x=0, y=45
         pixel_data[45][1] = 4'b0000; // x=1, y=45
         pixel_data[45][2] = 4'b0000; // x=2, y=45
@@ -2759,7 +2714,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[45][56] = 4'b0000; // x=56, y=45
         pixel_data[45][57] = 4'b0000; // x=57, y=45
         pixel_data[45][58] = 4'b0000; // x=58, y=45
-        pixel_data[45][59] = 4'b0000; // x=59, y=45
         pixel_data[46][0] = 4'b0000; // x=0, y=46
         pixel_data[46][1] = 4'b0000; // x=1, y=46
         pixel_data[46][2] = 4'b0000; // x=2, y=46
@@ -2819,7 +2773,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[46][56] = 4'b0000; // x=56, y=46
         pixel_data[46][57] = 4'b0000; // x=57, y=46
         pixel_data[46][58] = 4'b0000; // x=58, y=46
-        pixel_data[46][59] = 4'b0000; // x=59, y=46
         pixel_data[47][0] = 4'b0000; // x=0, y=47
         pixel_data[47][1] = 4'b0000; // x=1, y=47
         pixel_data[47][2] = 4'b0000; // x=2, y=47
@@ -2879,7 +2832,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[47][56] = 4'b0000; // x=56, y=47
         pixel_data[47][57] = 4'b0000; // x=57, y=47
         pixel_data[47][58] = 4'b0000; // x=58, y=47
-        pixel_data[47][59] = 4'b0000; // x=59, y=47
         pixel_data[48][0] = 4'b0000; // x=0, y=48
         pixel_data[48][1] = 4'b0000; // x=1, y=48
         pixel_data[48][2] = 4'b0000; // x=2, y=48
@@ -2939,7 +2891,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[48][56] = 4'b0000; // x=56, y=48
         pixel_data[48][57] = 4'b0000; // x=57, y=48
         pixel_data[48][58] = 4'b0000; // x=58, y=48
-        pixel_data[48][59] = 4'b0000; // x=59, y=48
         pixel_data[49][0] = 4'b0000; // x=0, y=49
         pixel_data[49][1] = 4'b0000; // x=1, y=49
         pixel_data[49][2] = 4'b0000; // x=2, y=49
@@ -2999,7 +2950,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[49][56] = 4'b0000; // x=56, y=49
         pixel_data[49][57] = 4'b0000; // x=57, y=49
         pixel_data[49][58] = 4'b0000; // x=58, y=49
-        pixel_data[49][59] = 4'b0000; // x=59, y=49
         pixel_data[50][0] = 4'b0000; // x=0, y=50
         pixel_data[50][1] = 4'b0000; // x=1, y=50
         pixel_data[50][2] = 4'b0000; // x=2, y=50
@@ -3059,7 +3009,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[50][56] = 4'b0000; // x=56, y=50
         pixel_data[50][57] = 4'b0000; // x=57, y=50
         pixel_data[50][58] = 4'b0000; // x=58, y=50
-        pixel_data[50][59] = 4'b0000; // x=59, y=50
         pixel_data[51][0] = 4'b0000; // x=0, y=51
         pixel_data[51][1] = 4'b0000; // x=1, y=51
         pixel_data[51][2] = 4'b0000; // x=2, y=51
@@ -3119,7 +3068,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[51][56] = 4'b0000; // x=56, y=51
         pixel_data[51][57] = 4'b0000; // x=57, y=51
         pixel_data[51][58] = 4'b0000; // x=58, y=51
-        pixel_data[51][59] = 4'b0000; // x=59, y=51
         pixel_data[52][0] = 4'b0000; // x=0, y=52
         pixel_data[52][1] = 4'b0000; // x=1, y=52
         pixel_data[52][2] = 4'b0000; // x=2, y=52
@@ -3179,7 +3127,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[52][56] = 4'b0000; // x=56, y=52
         pixel_data[52][57] = 4'b0000; // x=57, y=52
         pixel_data[52][58] = 4'b0000; // x=58, y=52
-        pixel_data[52][59] = 4'b0000; // x=59, y=52
         pixel_data[53][0] = 4'b0000; // x=0, y=53
         pixel_data[53][1] = 4'b0000; // x=1, y=53
         pixel_data[53][2] = 4'b0000; // x=2, y=53
@@ -3239,7 +3186,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[53][56] = 4'b0000; // x=56, y=53
         pixel_data[53][57] = 4'b0000; // x=57, y=53
         pixel_data[53][58] = 4'b0000; // x=58, y=53
-        pixel_data[53][59] = 4'b0000; // x=59, y=53
         pixel_data[54][0] = 4'b0000; // x=0, y=54
         pixel_data[54][1] = 4'b0000; // x=1, y=54
         pixel_data[54][2] = 4'b0000; // x=2, y=54
@@ -3299,7 +3245,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[54][56] = 4'b0000; // x=56, y=54
         pixel_data[54][57] = 4'b0000; // x=57, y=54
         pixel_data[54][58] = 4'b0000; // x=58, y=54
-        pixel_data[54][59] = 4'b0000; // x=59, y=54
         pixel_data[55][0] = 4'b0000; // x=0, y=55
         pixel_data[55][1] = 4'b0000; // x=1, y=55
         pixel_data[55][2] = 4'b0000; // x=2, y=55
@@ -3359,7 +3304,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[55][56] = 4'b0000; // x=56, y=55
         pixel_data[55][57] = 4'b0000; // x=57, y=55
         pixel_data[55][58] = 4'b0000; // x=58, y=55
-        pixel_data[55][59] = 4'b0000; // x=59, y=55
         pixel_data[56][0] = 4'b0000; // x=0, y=56
         pixel_data[56][1] = 4'b0000; // x=1, y=56
         pixel_data[56][2] = 4'b0000; // x=2, y=56
@@ -3419,7 +3363,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[56][56] = 4'b0000; // x=56, y=56
         pixel_data[56][57] = 4'b0000; // x=57, y=56
         pixel_data[56][58] = 4'b0000; // x=58, y=56
-        pixel_data[56][59] = 4'b0000; // x=59, y=56
         pixel_data[57][0] = 4'b0000; // x=0, y=57
         pixel_data[57][1] = 4'b0000; // x=1, y=57
         pixel_data[57][2] = 4'b0000; // x=2, y=57
@@ -3479,7 +3422,6 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[57][56] = 4'b0000; // x=56, y=57
         pixel_data[57][57] = 4'b0000; // x=57, y=57
         pixel_data[57][58] = 4'b0000; // x=58, y=57
-        pixel_data[57][59] = 4'b0000; // x=59, y=57
         pixel_data[58][0] = 4'b0000; // x=0, y=58
         pixel_data[58][1] = 4'b0000; // x=1, y=58
         pixel_data[58][2] = 4'b0000; // x=2, y=58
@@ -3539,66 +3481,5 @@ module image_data(output reg [3:0] pixel_data [0:59][0:59]);
         pixel_data[58][56] = 4'b0000; // x=56, y=58
         pixel_data[58][57] = 4'b0000; // x=57, y=58
         pixel_data[58][58] = 4'b0000; // x=58, y=58
-        pixel_data[58][59] = 4'b0000; // x=59, y=58
-        pixel_data[59][0] = 4'b0000; // x=0, y=59
-        pixel_data[59][1] = 4'b0000; // x=1, y=59
-        pixel_data[59][2] = 4'b0000; // x=2, y=59
-        pixel_data[59][3] = 4'b0000; // x=3, y=59
-        pixel_data[59][4] = 4'b0000; // x=4, y=59
-        pixel_data[59][5] = 4'b0000; // x=5, y=59
-        pixel_data[59][6] = 4'b0000; // x=6, y=59
-        pixel_data[59][7] = 4'b0000; // x=7, y=59
-        pixel_data[59][8] = 4'b0000; // x=8, y=59
-        pixel_data[59][9] = 4'b0000; // x=9, y=59
-        pixel_data[59][10] = 4'b0000; // x=10, y=59
-        pixel_data[59][11] = 4'b0000; // x=11, y=59
-        pixel_data[59][12] = 4'b0000; // x=12, y=59
-        pixel_data[59][13] = 4'b0000; // x=13, y=59
-        pixel_data[59][14] = 4'b0000; // x=14, y=59
-        pixel_data[59][15] = 4'b0000; // x=15, y=59
-        pixel_data[59][16] = 4'b0000; // x=16, y=59
-        pixel_data[59][17] = 4'b0000; // x=17, y=59
-        pixel_data[59][18] = 4'b0000; // x=18, y=59
-        pixel_data[59][19] = 4'b0000; // x=19, y=59
-        pixel_data[59][20] = 4'b0000; // x=20, y=59
-        pixel_data[59][21] = 4'b0000; // x=21, y=59
-        pixel_data[59][22] = 4'b0000; // x=22, y=59
-        pixel_data[59][23] = 4'b0000; // x=23, y=59
-        pixel_data[59][24] = 4'b0000; // x=24, y=59
-        pixel_data[59][25] = 4'b0000; // x=25, y=59
-        pixel_data[59][26] = 4'b0000; // x=26, y=59
-        pixel_data[59][27] = 4'b0000; // x=27, y=59
-        pixel_data[59][28] = 4'b0000; // x=28, y=59
-        pixel_data[59][29] = 4'b0000; // x=29, y=59
-        pixel_data[59][30] = 4'b0000; // x=30, y=59
-        pixel_data[59][31] = 4'b0000; // x=31, y=59
-        pixel_data[59][32] = 4'b0000; // x=32, y=59
-        pixel_data[59][33] = 4'b0000; // x=33, y=59
-        pixel_data[59][34] = 4'b0000; // x=34, y=59
-        pixel_data[59][35] = 4'b0000; // x=35, y=59
-        pixel_data[59][36] = 4'b0000; // x=36, y=59
-        pixel_data[59][37] = 4'b0000; // x=37, y=59
-        pixel_data[59][38] = 4'b0000; // x=38, y=59
-        pixel_data[59][39] = 4'b0000; // x=39, y=59
-        pixel_data[59][40] = 4'b0000; // x=40, y=59
-        pixel_data[59][41] = 4'b0000; // x=41, y=59
-        pixel_data[59][42] = 4'b0000; // x=42, y=59
-        pixel_data[59][43] = 4'b0000; // x=43, y=59
-        pixel_data[59][44] = 4'b0000; // x=44, y=59
-        pixel_data[59][45] = 4'b0000; // x=45, y=59
-        pixel_data[59][46] = 4'b0000; // x=46, y=59
-        pixel_data[59][47] = 4'b0000; // x=47, y=59
-        pixel_data[59][48] = 4'b0000; // x=48, y=59
-        pixel_data[59][49] = 4'b0000; // x=49, y=59
-        pixel_data[59][50] = 4'b0000; // x=50, y=59
-        pixel_data[59][51] = 4'b0000; // x=51, y=59
-        pixel_data[59][52] = 4'b0000; // x=52, y=59
-        pixel_data[59][53] = 4'b0000; // x=53, y=59
-        pixel_data[59][54] = 4'b0000; // x=54, y=59
-        pixel_data[59][55] = 4'b0000; // x=55, y=59
-        pixel_data[59][56] = 4'b0000; // x=56, y=59
-        pixel_data[59][57] = 4'b0000; // x=57, y=59
-        pixel_data[59][58] = 4'b0000; // x=58, y=59
-        pixel_data[59][59] = 4'b0000; // x=59, y=59
     end
 endmodule
