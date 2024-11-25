@@ -219,30 +219,14 @@ Top top0(
 	.o_ledr(LEDR) // [17:0]
 );
 
-SevenHexDecoder seven_dec0(
-	.i_hex(o_time),			// time
-	.o_seven_ten(HEX1),
-	.o_seven_one(HEX0)
-);
-
-SevenHexDecoder seven_dec1(
-	.i_hex(SW[2:0]+1),		// speed
-	.o_seven_one(HEX4)
-);
-
-SevenHexDecoder seven_dec2(
-	.i_hex(SW[4]),			// slow mode
-	.o_seven_one(HEX6)
-);
-
 // comment those are use for display
-// assign HEX0 = '1;
-// assign HEX1 = '1;
+assign HEX0 = '1;
+assign HEX1 = '1;
 assign HEX2 = '1;
 assign HEX3 = '1;
-// assign HEX4 = '1;
-// assign HEX5 = '1;
-// assign HEX6 = '1;
+assign HEX4 = '1;
+assign HEX5 = '1;
+assign HEX6 = '1;
 assign HEX7 = '1;
 
 endmodule

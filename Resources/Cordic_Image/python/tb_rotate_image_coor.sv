@@ -11,9 +11,9 @@ module tb;
     reg [`IMAGE_COOR_BIT-1:0] i_H, i_V;
     reg signed [`ANG_WIDTH-1:0] i_angle;
     wire [`IMAGE_COOR_BIT-1:0] o_H, o_V;
-    wire o_done, o_outOfRange;
+    wire o_valid, o_outOfRange;
 
-    RotateImage #(
+    RotateImageCoor #(
         .IMAGE_SIZE(`IMAGE_SIZE),
         .IMAGE_COOR_BIT(`IMAGE_COOR_BIT),
         .ANG_WIDTH(`ANG_WIDTH)
@@ -26,7 +26,7 @@ module tb;
         .i_angle(i_angle),
         .o_H(o_H),
         .o_V(o_V),
-        .o_done(o_done),
+        .o_valid(o_valid),
         .o_outOfRange(o_outOfRange)
     );
 
@@ -40,7 +40,7 @@ module tb;
     end
 
     always @(posedge i_clk) begin
-        if(o_done) begin
+        if(o_valid) begin
             $display("i_H = %d, i_V = %d, i_angle = %d", i_H, i_V, i_angle);
             $display("o_H = %d, o_V = %d, o_outOfRange = %b\n", o_H, o_V, o_outOfRange);
         end
@@ -50,9 +50,9 @@ module tb;
         i_rst_n = 1'b0;
         i_start = 1'b0;
 
-        i_H = 0;
-        i_V = 30;
-        i_angle = 45;
+        i_H = 60;
+        i_V = 38;
+        i_angle = 177;
 
         #(`CYCLE*3) i_rst_n = 1'b1;
         #(`CYCLE*3) i_start = 1'b1;
@@ -60,7 +60,7 @@ module tb;
     end
 
     initial begin
-        $dumpfile("tb_rotate_image.vcd");
+        $dumpfile("tb_rotate_image_coor.vcd");
         $dumpvars;
     end
 
