@@ -7,7 +7,7 @@ PADDING = 30
 BAR_WIDTH = 100
 CAR_WIDTH = 60
 TRACK_CAR_RATIO = 4
-TRACK_WIDTH = CAR_WIDTH * TRACK_CAR_RATIO
+TRACK_WIDTH = CAR_WIDTH * TRACK_CAR_RATIO / 2
 INNER_RADIUS = 100
 TRACK_BORDER = 5
 
@@ -22,7 +22,7 @@ TRACK_ORDINARY_COLOR = [1, 1, 1]
 TRACK_SAND_COLOR = [210, 180, 140]
 TRACK_ROCK_COLOR = [100, 100, 100]
 TRACK_RANDOM_COLOR_RATIO = 10
-TRACK_NUM_OF_RANDOM_COLORS = 1
+TRACK_NUM_OF_RANDOM_COLORS = 3
 
 class CircleRegion:
     def __init__(self, x_min, x_max, y_min, y_max, x0, y0, r_inner_min, r_inner_max, r_outer_min, r_outer_max, border_color=BORDER_COLOR, track_color=TRACK_ORDINARY_COLOR):

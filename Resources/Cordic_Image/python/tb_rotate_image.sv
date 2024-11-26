@@ -36,7 +36,7 @@ module tb;
         i_rst_n = 1'b0;
         i_start = 1'b0;
 
-        i_angle = 71;
+        i_angle = 150;
 
         #(`CYCLE*3) i_rst_n = 1'b1;
         #(`CYCLE*3) i_start = 1'b1;

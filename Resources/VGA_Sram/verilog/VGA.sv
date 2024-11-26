@@ -25,17 +25,18 @@ module VGA (
     input i_rst_n,
 
     input [23:0] i_color,
-    output [10:0] o_H_pos, // next pixel horizontal position (0 to 1599)
-    output [9:0] o_V_pos, // next pixe veritcal position (0 to 899)
-    output o_pos_valid,
 
     output o_H_sync, 
     output o_V_sync,
-    output [7:0] o_R, 
-    output [7:0] o_G, 
-    output [7:0] o_B,
+
+    output [23:0] o_RGB,
     output o_RGB_valid,
-    output [31:0] o_frame_counter
+
+    output [31:0] o_frame_counter,
+
+    output [11:0] o_H_to_be_rendered,
+    output [10:0] o_V_to_be_rendered,
+    output o_to_be_rendered_valid
 );
 
     parameter S_B = 0; // back porch
@@ -45,9 +46,7 @@ module VGA (
 
 
     reg [23:0] RGB, RGB_nxt;
-    assign o_R = RGB[23:16];
-    assign o_G = RGB[15: 8];
-    assign o_B = RGB[ 7: 0];
+    assign o_RGB = RGB;
 
     reg [1:0] H_STATE, H_STATE_nxt;
     reg [10:0] H_counter, H_counter_nxt;
@@ -65,12 +64,12 @@ module VGA (
     reg [31:0] frame_counter, frame_counter_nxt;
     assign o_frame_counter = frame_counter;
 
-    reg [10:0] H_pos, H_pos_nxt;
-    reg [9:0] V_pos, V_pos_nxt;
-    reg pos_valid, pos_valid_nxt;
-    assign o_H_pos = H_pos;
-    assign o_V_pos = V_pos;
-    assign o_pos_valid = pos_valid;
+    // three cycles before setting RGB output
+    reg [10:0] H_to_be_rendered, H_to_be_rendered_nxt;
+    reg to_be_rendered_valid, to_be_rendered_valid_nxt;
+    assign o_H_to_be_rendered = H_to_be_rendered;
+    assign o_V_to_be_rendered = V_counter;
+    assign o_to_be_rendered_valid = to_be_rendered_valid;
 
     // RGB logic
     always @(*) begin
@@ -82,13 +81,36 @@ module VGA (
         end
     end
 
-    // position logic
-    // set two cylces before setting RGB output
+    // to be rendered logic
+    // 2 cylces before setting RGB output
+    // set (H,V)=(1,1) when (H_STATE, V_STATE) = (S_B, S_C), (H_counter, V_counter) = (H_B-2, V_B)
     always @(*) begin
-        H_pos_nxt = H_pos;
-        V_pos_nxt = V_pos;
-        pos_valid_nxt = pos_valid;
+        H_to_be_rendered_nxt = 0;
 
+        if (H_to_be_rendered == `H_SIZE) begin
+            H_to_be_rendered_nxt = 0;
+        end
+        else begin
+            H_to_be_rendered_nxt = H_to_be_rendered + 1;
+        end
+
+        if (H_STATE == S_B) begin
+            if (H_counter == `H_B-2) begin
+                H_to_be_rendered_nxt = 1;
+            end
+        end
+    end
+
+    always @(*) begin
+        to_be_rendered_valid_nxt = to_be_rendered_valid;
+        if (H_STATE == S_B && V_STATE == S_C) begin
+            if (H_counter == `H_B-2 && V_counter == 1) begin
+                to_be_rendered_valid_nxt = 1;
+            end
+        end
+        if (H_to_be_rendered == `H_SIZE && V_counter == `V_SIZE) begin
+            to_be_rendered_valid_nxt = 0;
+        end
     end
 
 
@@ -177,12 +199,14 @@ module VGA (
             V_STATE <= S_B;
             V_counter <= 1;
             V_sync <= 1;
+
             RGB <= 0;
-            frame_counter <= 0;
             RGB_valid <= 0;
-            H_pos <= 0;
-            V_pos <= 0;
-            pos_valid <= 0;
+
+            frame_counter <= 0;
+
+            H_to_be_rendered <= 0;
+            to_be_rendered_valid <= 0;
         end
         else begin
             H_STATE <= H_STATE_nxt;
@@ -191,12 +215,14 @@ module VGA (
             V_STATE <= V_STATE_nxt;
             V_counter <= V_counter_nxt;
             V_sync <= V_sync_nxt;
+
             RGB <= RGB_nxt;
-            frame_counter <= frame_counter_nxt;
             RGB_valid <= RGB_valid_nxt;
-            H_pos <= H_pos_nxt;
-            V_pos <= V_pos_nxt;
-            pos_valid <= pos_valid_nxt;
+
+            frame_counter <= frame_counter_nxt;
+
+            H_to_be_rendered <= H_to_be_rendered_nxt;
+            to_be_rendered_valid <= to_be_rendered_valid_nxt;
         end
     end
 

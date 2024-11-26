@@ -82,7 +82,7 @@ def output_verilog(bits_per_pixel, input_img, colors_output_path, encode_output_
 bits_per_pixel = 4
 input_file = '../doc/去背的car_resized.png'
 input_img = Image.open(input_file)
-colors_output = '../src/nextFrameEncoder/car/car_palette.sv'
-encode_output = '../src/nextFrameEncoder/car/car_lut.sv'
+colors_output = '../src/nextFrameEncoder/car/carPalette.sv'
+encode_output = '../src/nextFrameEncoder/car/carLUT.sv'
 compressed_img_output = input_file.replace('.png', '_compressed.png')
 output_verilog(bits_per_pixel, input_img, colors_output, encode_output, compressed_img_output)
