@@ -2,7 +2,7 @@
 `define DEFAULT_COLOR_WIDTH 4
 `define DEFAULT_COUNTER_WIDTH 2
 
-module SramDecoder #(
+module SramDataDecoder #(
     parameter PIXEL_PER_ADDR = `DEFAULT_PIXEL_PER_ADDR,
     parameter COLOR_WIDTH = `DEFAULT_COLOR_WIDTH,
     parameter COUNTER_WIDTH = `DEFAULT_COUNTER_WIDTH

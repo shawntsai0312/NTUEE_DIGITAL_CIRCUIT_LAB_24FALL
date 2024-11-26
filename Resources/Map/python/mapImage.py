@@ -17,7 +17,7 @@ Y_MAX = HEIGHT // 2
 Y_MIN = -Y_MAX
 
 BORDER_COLOR = [255, 0, 0]
-BACKGROUND_COLOR = [255, 255, 255]
+BACKGROUND_COLOR = [123, 200, 47]
 TRACK_ORDINARY_COLOR = [1, 1, 1]
 TRACK_SAND_COLOR = [210, 180, 140]
 TRACK_ROCK_COLOR = [100, 100, 100]
@@ -144,7 +144,7 @@ def render_image(circleRegions, rectangleXRegions, regtangleYRegions):
         for x in range(width):
             if np.array_equal(img[y, x], [0, 0, 0]):
                 # 沒有被繪製的像素點，設定為白色
-                img[y, x] = BACKGROUND_COLOR  # 白色
+                img[y, x] = np.clip(np.array(BACKGROUND_COLOR) + random_gray_color(), 0, 255)  # 白色
     
     return Image.fromarray(img)
 
@@ -268,7 +268,10 @@ rectangleYRegions = [
             track_color=TRACK_ROCK_COLOR
     )
 ]
-
+import time
+start = time.time()
 image = render_image(circleRegions, rectangleXRegions, rectangleYRegions)
+end = time.time()
+print(f'Time: {end-start}')
 # image.show()
 image.save(f'track_{TRACK_NUM_OF_RANDOM_COLORS}.png')

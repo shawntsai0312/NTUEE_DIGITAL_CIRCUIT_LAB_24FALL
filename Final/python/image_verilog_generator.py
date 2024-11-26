@@ -2,7 +2,7 @@ from PIL import Image
 from sklearn.cluster import KMeans
 import numpy as np
 
-def output_verilog(bits_per_pixel, input_img, colors_output_path, encode_output_path, compressed_img_output_path):
+def output_verilog(bits_per_pixel, input_name, input_img, colors_output_path, encode_output_path, compressed_img_output_path):
     num_colors = 2**bits_per_pixel - 1
 
     # 確保 input_img 是 RGBA 模式
@@ -51,7 +51,7 @@ def output_verilog(bits_per_pixel, input_img, colors_output_path, encode_output_
     # compressed_img.save(compressed_img_output_path)
 
     with open(colors_output_path, 'w') as verilog_file:
-        verilog_file.write(f"module car_palette(output reg [23:0] color_map [0:{num_colors}]);\n")
+        verilog_file.write(f"module {input_name}_palette(output reg [23:0] color_map [0:{num_colors}]);\n")
         verilog_file.write("    initial begin\n")
         verilog_file.write(f"        // use pure black(0,0,0) as the transparent color\n")
         verilog_file.write(f"        color_map[0] = 24'h000000; // Transparent color\n")
@@ -63,7 +63,7 @@ def output_verilog(bits_per_pixel, input_img, colors_output_path, encode_output_
     
     # Save each pixel's encoded number to a Verilog file
     with open(encode_output_path, 'w') as encode_file:
-        encode_file.write(f"module car_lut(output reg [{bits_per_pixel-1}:0] pixel_data [0:{height-1}][0:{width-1}]);\n")
+        encode_file.write(f"module {input_name}_lut(output reg [{bits_per_pixel-1}:0] pixel_data [0:{height-1}][0:{width-1}]);\n")
         encode_file.write("    initial begin\n")
         for y in range(height):
             for x in range(width):
@@ -75,14 +75,17 @@ def output_verilog(bits_per_pixel, input_img, colors_output_path, encode_output_
                 else:
                     printData = sorted_color_map[pixel[:3]]
                     encode_file.write(f"        pixel_data[{y}][{x}] = {printData}; // x={x}, y={y}, {pixel[:3]}\n")
-                print(f"{printData:0{bits_per_pixel}b}")
+                # print(f"{printData:0{bits_per_pixel}b}")
         encode_file.write("    end\n")
         encode_file.write("endmodule\n")
 
 bits_per_pixel = 4
-input_file = '../doc/去背的car_resized.png'
+input_name = 'car1'
+# input_name = 'car2'
+input_file = '../doc/去背的'+input_name+'_resized.png'
+colors_output = '../src/currFrameDecoder/palette/'+input_name+'Palette.sv'
+encode_output = '../src/nextFrameEncoder/lut/'+input_name+'LUT.sv'
 input_img = Image.open(input_file)
-colors_output = '../src/nextFrameEncoder/car/carPalette.sv'
-encode_output = '../src/nextFrameEncoder/car/carLUT.sv'
 compressed_img_output = input_file.replace('.png', '_compressed.png')
-output_verilog(bits_per_pixel, input_img, colors_output, encode_output, compressed_img_output)
+output_verilog(bits_per_pixel, input_name, input_img, colors_output, encode_output, compressed_img_output)
+

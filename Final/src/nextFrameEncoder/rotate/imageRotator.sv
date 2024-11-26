@@ -1,14 +1,17 @@
-`define IMAGE_SIZE 60 // H,V from 0 to 59
-`define IMAGE_COOR_BIT 6
+`define DEFAULT_IMAGE_SIZE 60 // H,V from 0 to 59
+`define DEFAULT_IMAGE_COOR_BIT 6
 `define DEFAULT_ANG_WIDTH 9
 
-module CarGenerator #(
+module ImageRotator #(
+    parameter IMAGE_SIZE = `DEFAULT_IMAGE_SIZE,
+    parameter IMAGE_COOR_BIT = `DEFAULT_IMAGE_COOR_BIT,
     parameter ANG_WIDTH = `DEFAULT_ANG_WIDTH
 )(
     input i_clk,
     input i_rst_n,
     input i_start,
     input signed [ANG_WIDTH-1:0] i_angle,
+    input [3:0] pixel_data [0:`IMAGE_SIZE-1][0:`IMAGE_SIZE-1],
     output reg [3:0] o_encoded_pixel,
     output [`IMAGE_COOR_BIT-1:0] o_H_transformed,
     output [`IMAGE_COOR_BIT-1:0] o_V_transformed,
@@ -38,11 +41,6 @@ module CarGenerator #(
         .o_V                  (V_transformed),
         .o_outOfRange         (outOfRange),
         .o_valid              (o_valid)
-    );
-
-    wire [3:0] pixel_data [0:`IMAGE_SIZE-1][0:`IMAGE_SIZE-1];
-    car_lut u_car_lut (
-        .pixel_data    (pixel_data)
     );
 
     always @(*) begin

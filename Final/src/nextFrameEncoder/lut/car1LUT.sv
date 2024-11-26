@@ -1,4 +1,4 @@
-module car_lut(output reg [3:0] pixel_data [0:59][0:59]);
+module car1_lut(output reg [3:0] pixel_data [0:59][0:59]);
     initial begin
         pixel_data[0][0] = 0; // x=0, y=0, transparent
         pixel_data[0][1] = 0; // x=1, y=0, transparent

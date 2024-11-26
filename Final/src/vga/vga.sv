@@ -66,10 +66,9 @@ module VGA (
 
     // three cycles before setting RGB output
     reg [10:0] H_to_be_rendered, H_to_be_rendered_nxt;
-    reg [9:0] V_to_be_rendered, V_to_be_rendered_nxt;
     reg to_be_rendered_valid, to_be_rendered_valid_nxt;
     assign o_H_to_be_rendered = H_to_be_rendered;
-    assign o_V_to_be_rendered = V_to_be_rendered;
+    assign o_V_to_be_rendered = V_counter;
     assign o_to_be_rendered_valid = to_be_rendered_valid;
 
     // RGB logic
@@ -83,38 +82,34 @@ module VGA (
     end
 
     // to be rendered logic
-    // three cylces before setting RGB output
+    // 2 cylces before setting RGB output
     // set (H,V)=(1,1) when (H_STATE, V_STATE) = (S_B, S_C), (H_counter, V_counter) = (H_B-2, V_B)
     always @(*) begin
-        H_to_be_rendered_nxt = H_to_be_rendered;
-        V_to_be_rendered_nxt = V_to_be_rendered;
-        to_be_rendered_valid_nxt = to_be_rendered_valid;
+        H_to_be_rendered_nxt = 0;
 
-        if (H_STATE == S_B && V_STATE == S_C) begin
-            if (H_counter == `H_B-2 && V_counter == `V_B) begin
+        if (H_to_be_rendered == `H_SIZE) begin
+            H_to_be_rendered_nxt = 0;
+        end
+        else begin
+            H_to_be_rendered_nxt = H_to_be_rendered + 1;
+        end
+
+        if (H_STATE == S_B) begin
+            if (H_counter == `H_B-2) begin
                 H_to_be_rendered_nxt = 1;
-                V_to_be_rendered_nxt = 1;
+            end
+        end
+    end
+
+    always @(*) begin
+        to_be_rendered_valid_nxt = to_be_rendered_valid;
+        if (H_STATE == S_B && V_STATE == S_C) begin
+            if (H_counter == `H_B-2 && V_counter == 1) begin
                 to_be_rendered_valid_nxt = 1;
             end
         end
-        else begin
-            if (H_to_be_rendered == `H_SIZE) begin
-                if (V_to_be_rendered == `V_SIZE) begin
-                    H_to_be_rendered_nxt = 1;
-                    V_to_be_rendered_nxt = 1;
-                    to_be_rendered_valid_nxt = 0;
-                end
-                else begin
-                    H_to_be_rendered_nxt = 1;
-                    V_to_be_rendered_nxt = V_to_be_rendered + 1;
-                    to_be_rendered_valid_nxt = 1;
-                end
-            end
-            else begin
-                H_to_be_rendered_nxt = H_to_be_rendered + 1;
-                V_to_be_rendered_nxt = V_to_be_rendered;
-                to_be_rendered_valid_nxt = 1;
-            end
+        if (H_to_be_rendered == `H_SIZE && V_counter == `V_SIZE) begin
+            to_be_rendered_valid_nxt = 0;
         end
     end
 
@@ -211,7 +206,6 @@ module VGA (
             frame_counter <= 0;
 
             H_to_be_rendered <= 0;
-            V_to_be_rendered <= 0;
             to_be_rendered_valid <= 0;
         end
         else begin
@@ -228,7 +222,6 @@ module VGA (
             frame_counter <= frame_counter_nxt;
 
             H_to_be_rendered <= H_to_be_rendered_nxt;
-            V_to_be_rendered <= V_to_be_rendered_nxt;
             to_be_rendered_valid <= to_be_rendered_valid_nxt;
         end
     end

@@ -1,4 +1,4 @@
-module car_palette(output reg [23:0] color_map [0:15]);
+module car1_palette(output reg [23:0] color_map [0:15]);
     initial begin
         // use pure black(0,0,0) as the transparent color
         color_map[0] = 24'h000000; // Transparent color
