@@ -57,7 +57,7 @@ module tb;
         #(`CYCLE*3) i_start = 1'b1;
         i_car1_angle = 0;
         i_car2_angle = 90;
-        #(`CYCLE*1000) i_start = 1'b0;
+        #(`CYCLE*10000) i_start = 1'b0;
     end
 
     integer cycle_count = 0;

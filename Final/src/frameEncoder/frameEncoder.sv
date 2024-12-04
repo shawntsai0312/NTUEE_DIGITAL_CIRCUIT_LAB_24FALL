@@ -29,6 +29,8 @@ module FrameEncoder (
     reg [object_pkg::OBJECT_OPACITY_NUM_WIDTH-1:0] proc_counter_r, proc_counter_w;
     assign o_proc_counter = proc_counter_r;
 
+    reg start_rotator_r, start_rotator_w;
+
     reg [2*sram_pkg::IMAGE_COOR_WIDTH-1:0] pixel_counter_r, pixel_counter_w;
     assign o_pixel_counter = pixel_counter_r;
     
@@ -52,7 +54,9 @@ module FrameEncoder (
     );
 
     wire [sram_pkg::COLOR_WIDTH-1:0] encoded_pixel;
-    // wire opacity_transformed;
+    
+    wire [sram_pkg::IMAGE_COOR_WIDTH-1:0] H_to_be_processed;
+    wire [sram_pkg::IMAGE_COOR_WIDTH-1:0] V_to_be_processed;
     wire [sram_pkg::IMAGE_COOR_WIDTH-1:0] H_transformed;
     wire [sram_pkg::IMAGE_COOR_WIDTH-1:0] V_transformed;
     
@@ -62,16 +66,18 @@ module FrameEncoder (
     ImageRotator #(
         .ANG_WIDTH          (sram_pkg::ANG_WIDTH)
     ) u_ImageRotator (
-        .i_clk              (i_clk),
-        .i_rst_n            (i_rst_n),
-        .i_start            (o_opacity_valid),
-        .i_angle            (angle_r),
-        .i_lut_data         (lut_data_r),
-        .o_encoded_pixel    (encoded_pixel),
-        .o_opacity          (o_opacity),
-        .o_H_transformed    (H_transformed),
-        .o_V_transformed    (V_transformed),
-        .o_valid            (pixel_rotate_done)
+        .i_clk                  (i_clk),
+        .i_rst_n                (i_rst_n),
+        .i_start                (start_rotator_r),
+        .i_angle                (angle_r),
+        .i_lut_data             (lut_data_r),
+        .o_encoded_pixel        (encoded_pixel),
+        .o_opacity              (o_opacity),
+        .o_H_to_be_processed    (H_to_be_processed),
+        .o_V_to_be_processed    (V_to_be_processed),
+        .o_H_transformed        (H_transformed),
+        .o_V_transformed        (V_transformed),
+        .o_valid                (pixel_rotate_done)
     );
 
     SramEncoder u_SramEncoder (
@@ -104,7 +110,7 @@ module FrameEncoder (
                 if(proc_counter_r == object_pkg::OBJECT_OPACITY_NUM)    state_w = S_DONE;
                 else                                                    state_w = S_PROC;
             end
-            S_DONE: state_w = S_IDLE;
+            S_DONE: if(!i_start) state_w = S_IDLE;
         endcase
     end
 
@@ -124,9 +130,42 @@ module FrameEncoder (
                         proc_counter_w = proc_counter_r + 1;
                     end
                 end
+                else begin
+                    proc_counter_w = proc_counter_r;
+                end
             end
             S_DONE: begin
                 proc_counter_w = 0;
+            end
+        endcase
+    end
+
+    // start rotator logic
+    always @(*) begin
+        start_rotator_w = start_rotator_r;
+        case (state_r)
+            S_IDLE: begin
+                start_rotator_w = 0;
+            end
+            S_PROC: begin
+                if (proc_counter_r < object_pkg::OBJECT_OPACITY_NUM) begin
+                    if (pixel_rotate_done) begin
+                        if (H_to_be_processed == sram_pkg::IMAGE_SIZE-1 && V_to_be_processed == sram_pkg::IMAGE_SIZE-1) begin
+                            start_rotator_w = 0;
+                        end
+                    end
+                    else begin
+                        if (H_to_be_processed == 0 && V_to_be_processed == 0) begin
+                            start_rotator_w = 1;
+                        end
+                    end
+                end
+                else begin
+                    start_rotator_w = 0;
+                end
+            end
+            S_DONE: begin
+                start_rotator_w = 0;
             end
         endcase
     end
@@ -215,6 +254,7 @@ module FrameEncoder (
             proc_counter_r <= 0;
             pixel_counter_r <= 0;
             angle_r <= 0;
+            start_rotator_r <= 0;
             for (integer i = 0; i < sram_pkg::IMAGE_SIZE; i = i + 1) begin
                 for (integer j = 0; j < sram_pkg::IMAGE_SIZE; j = j + 1) begin
                     lut_data_r[i][j] <= 0;
@@ -226,6 +266,7 @@ module FrameEncoder (
             proc_counter_r <= proc_counter_w;
             pixel_counter_r <= pixel_counter_w;
             angle_r <= angle_w;
+            start_rotator_r <= start_rotator_w;
             for (integer i = 0; i < sram_pkg::IMAGE_SIZE; i = i + 1) begin
                 for (integer j = 0; j < sram_pkg::IMAGE_SIZE; j = j + 1) begin
                     lut_data_r[i][j] <= lut_data_w[i][j];
