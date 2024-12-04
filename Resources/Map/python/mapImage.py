@@ -21,8 +21,8 @@ BACKGROUND_COLOR = [123, 200, 47]
 TRACK_ORDINARY_COLOR = [1, 1, 1]
 TRACK_SAND_COLOR = [210, 180, 140]
 TRACK_ROCK_COLOR = [100, 100, 100]
-TRACK_RANDOM_COLOR_RATIO = 10
-TRACK_NUM_OF_RANDOM_COLORS = 3
+TRACK_RANDOM_COLOR_RATIO = 5
+TRACK_NUM_OF_RANDOM_COLORS = 10
 
 class CircleRegion:
     def __init__(self, x_min, x_max, y_min, y_max, x0, y0, r_inner_min, r_inner_max, r_outer_min, r_outer_max, border_color=BORDER_COLOR, track_color=TRACK_ORDINARY_COLOR):

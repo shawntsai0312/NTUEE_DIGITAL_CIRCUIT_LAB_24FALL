@@ -3,6 +3,9 @@ from PIL import Image
 import cv2
 
 # 設定框架大小
+# frame_width = 1600
+# frame_height = 900
+
 frame_width = 1600
 frame_height = 900
 

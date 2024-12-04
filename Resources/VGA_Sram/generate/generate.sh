@@ -1,10 +1,11 @@
 #!/bin/zsh
-
+rm sim.out output.bin tb_vga.vcd
+rm -r output/
 start_time=$(date +%s)
 
 # Compile
 compile_start=$(date +%s)
-iverilog -g2005-sv -o sim.out tb_video.sv ../verilog/.sv ../verilog/car_lut.sv ../verilog/color_palette.sv
+iverilog -g2005-sv -o sim.out tb_video.sv ../verilog/vga.sv
 compile_end=$(date +%s)
 compile_time=$((compile_end - compile_start))
 echo -e "\e[32mCompiling done in $compile_time seconds\e[0m"

@@ -1,5 +1,5 @@
-import object_pkg;
-import sram_pkg;
+import object_pkg::*;
+import sram_pkg::*;
 
 module SramEncoder (
     input i_clk,
@@ -27,7 +27,8 @@ module SramEncoder (
     end
 
     always @(*) begin
-        sram_data_w = (sram_data_r << 4) + i_encoded_color;
+        // sram_data_w = (sram_data_r >> 4) + i_encoded_color
+        sram_data_w = {i_encoded_color, sram_data_r[sram_pkg::SRAM_DATA_WIDTH-1:sram_pkg::COLOR_WIDTH]};
     end
 
     always @(posedge i_clk or negedge i_rst_n) begin
@@ -37,7 +38,7 @@ module SramEncoder (
         end
         else begin
             sram_addr_r <= sram_addr_w;
-            sram_addr_r <= sram_data_w;
+            sram_data_r <= sram_data_w;
         end
     end
 

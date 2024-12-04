@@ -135,7 +135,7 @@ module RotateXY #(
     genvar i;
     generate
         for (i = 0; i < ITERATIONS-1; i = i + 1) begin : update_stage
-            always @(*) begin
+            always @(x_next[i], y_next[i], angle_next[i]) begin
                 x_pipe_w[i+1] = x_next[i];
                 y_pipe_w[i+1] = y_next[i];
                 angle_pipe_w[i+1] = angle_next[i];
@@ -221,7 +221,7 @@ module SubRotateXY #(
         .atan_table(atan_table)
     );
 
-    always @(*) begin
+    always @(i_angle_error, i_x, i_y, i_stage) begin
         if(i_angle_error[ANG_PROCESS_WIDTH-1]) begin
             // angle_error_r < 0
             o_x = i_x + (i_y >>> i_stage);
@@ -233,7 +233,7 @@ module SubRotateXY #(
             o_y = i_y + (i_x >>> i_stage);
             o_angle_error = i_angle_error - $signed({1'b0,atan_table[i_stage]});
         end
-    end 
+    end
 endmodule
 
 module CordicGain #(

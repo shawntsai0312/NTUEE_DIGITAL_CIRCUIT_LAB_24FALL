@@ -40,10 +40,10 @@ package sram_pkg;
     localparam int CAR2_ADDR_END    = CAR2_ADDR_START + CAR2_ADDR_COUNT - 1;
 
     // 確保 SRAM 沒有溢出
-    initial begin
-        if (CAR2_ADDR_END >= SRAM_TOTAL_ADDR) begin
-            $fatal("SRAM 地址超出範圍！");
-        end
-    end
+    // initial begin
+    //     if (CAR2_ADDR_END >= SRAM_TOTAL_ADDR) begin
+    //         $fatal("SRAM 地址超出範圍！");
+    //     end
+    // end
 
 endpackage

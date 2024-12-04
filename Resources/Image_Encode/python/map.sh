@@ -1,0 +1,2 @@
+python3 map_verilog_generator.py
+python3 decodeMap.py

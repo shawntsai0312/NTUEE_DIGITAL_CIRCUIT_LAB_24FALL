@@ -1,10 +1,10 @@
 `define DEFAULT_ANG_WIDTH 9
 
-import object_pkg;
-import sram_pkg;
+import object_pkg::*;
+import sram_pkg::*;
 
 module ImageRotator #(
-    parameter ANG_WIDTH = `DEFAULT_ANG_WIDTH;
+    parameter ANG_WIDTH = `DEFAULT_ANG_WIDTH
 )(
     input i_clk,
     input i_rst_n,
@@ -27,9 +27,7 @@ module ImageRotator #(
     assign o_V_transformed = V_transformed;
 
     RotateImageCoor #(
-        .IMAGE_SIZE           (sram_pkg::IMAGE_SIZE),
-        .IMAGE_COOR_WIDTH       (sram_pkg::IMAGE_COOR_WIDTH),
-        .ANG_WIDTH            (ANG_WIDTH)
+        .ANG_WIDTH            (sram_pkg::ANG_WIDTH)
     ) u_RotateImageCoor (
         .i_clk                (i_clk),
         .i_rst_n              (i_rst_n),
@@ -47,6 +45,11 @@ module ImageRotator #(
     reg opacity;
     assign o_encoded_pixel = encoded_pixel;
     assign o_opacity = opacity;
+
+    // reg [sram_pkg::COLOR_WIDTH-1:0] temp;
+    // assign temp = i_lut_data[14][24];
+    // assign temp = i_lut_data[0][0];
+
     always @(*) begin
         encoded_pixel = 0;
         opacity = 0;

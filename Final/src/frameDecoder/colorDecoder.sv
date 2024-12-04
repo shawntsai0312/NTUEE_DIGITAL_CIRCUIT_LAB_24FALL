@@ -1,5 +1,5 @@
-import object_pkg;
-import sram_pkg;
+import object_pkg::*;
+import sram_pkg::*;
 
 module ColorDecoder (
     input object_pkg::ObjectID i_object_id,

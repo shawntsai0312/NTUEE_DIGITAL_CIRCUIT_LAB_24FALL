@@ -15,8 +15,7 @@ def load_color_lut(sv_filepath):
                 color_lut[index] = rgb
     return color_lut
 
-def decode_image(txt_filepath, sv_filepath, output_image_path):
-    width, height = 60, 60
+def decode_image(width, height, txt_filepath, sv_filepath, output_image_path):
     image = Image.new('RGBA', (width, height))
     pixels = image.load()
 
@@ -46,6 +45,12 @@ def decode_image(txt_filepath, sv_filepath, output_image_path):
 
 if __name__ == "__main__":
     txt_path = "result.txt"
-    sv_path = "../verilog/car_palette.sv"
+    sv_path = "../verilog/carPalette.sv"
+    width, height = 60, 60
+
+    # txt_path = "map_result.txt"
+    # sv_path = "../verilog/mapPalette.sv"
+    # width, height = 1600, 800
+
     output_path = "output.png"
-    decode_image(txt_path, sv_path, output_path)
+    decode_image(width, height, txt_path, sv_path, output_path)
