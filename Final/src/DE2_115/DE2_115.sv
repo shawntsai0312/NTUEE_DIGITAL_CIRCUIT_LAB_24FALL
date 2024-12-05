@@ -136,37 +136,63 @@ module DE2_115 (
 	inout [6:0] EX_IO
 );
 
-logic key0down, key1down, key2down, key3down;
-logic CLK_12M, CLK_100K, CLK_800K;
+	logic key0down, key1down, key2down, key3down;
+	logic clk_108m;
 
-wire [5:0] o_time;
+	wire [31:0] frame_counter;
+	wire [31:0] timer;
+	assign timer = frame_counter / 60;
 
-assign AUD_XCK = CLK_12M;
+	assign AUD_XCK = CLK_12M;
 
-Altpll pll0( // generate with qsys, please follow lab2 tutorials
-	.clk_clk(CLOCK_50),
-	.reset_reset_n(key3down),
-	.altpll_12m_clk(CLK_12M),
-	.altpll_100k_clk(CLK_100K),
-	.altpll_800k_clk(CLK_800K)
-);
+	Altpll pll0( // generate with qsys, please follow lab2 tutorials
+		.clk_clk(CLOCK_50),
+		.reset_reset_n(KEY[3]),
+		.altpll_108m_clk(clk_108m),
+	);
 
-// you can decide key down settings on your own, below is just an example
-// Debounce deb0(
-// 	.i_in(KEY[0]), // Record/Pause
-// 	.i_rst_n(KEY[3]),
-// 	.i_clk(CLK_12M),
-// 	.o_neg(key0down) 
-// );
+	// you can decide key down settings on your own, below is just an example
+	// Debounce deb0(
+	// 	.i_in(KEY[0]), // Record/Pause
+	// 	.i_rst_n(KEY[3]),
+	// 	.i_clk(clk_108m),
+	// 	.o_neg(key0down) 
+	// );
 
-// comment those are use for display
-assign HEX0 = '1;
-assign HEX1 = '1;
-assign HEX2 = '1;
-assign HEX3 = '1;
-assign HEX4 = '1;
-assign HEX5 = '1;
-assign HEX6 = '1;
-assign HEX7 = '1;
+	assign VGA_SYNC_N  = 1'b0;
+	assign VGA_BLANK_N = 1'b1;
+	assign VGA_CLK = clk_108m;
+
+	assign o_SRAM_CE_N = 1'b0;
+	assign o_SRAM_OE_N = 1'b0;
+	assign o_SRAM_LB_N = 1'b0;
+	assign o_SRAM_UB_N = 1'b0;
+
+	Main u_Main (
+		.i_clk              (clk_108m),
+		.i_rst_n            (KEY[3]),
+		.o_SRAM_ADDR        (SRAM_ADDR),
+		.io_SRAM_DQ         (SRAM_DQ),
+		.o_SRAM_WE_N        (SRAM_WE_N),
+		.o_H_sync           (VGA_HS),
+		.o_V_sync           (VGA_VS),
+		.o_RGB              ({VGA_R, VGA_G, VGA_B}),
+		.o_frame_counter	(frame_counter)
+	);
+
+	// comment those are use for display
+	SevenHexDecoder seven_dec0(
+		.i_hex(timer),			// time
+		.o_seven_ten(HEX1),
+		.o_seven_one(HEX0)
+	);
+	// assign HEX0 = '1;
+	// assign HEX1 = '1;
+	assign HEX2 = '1;
+	assign HEX3 = '1;
+	assign HEX4 = '1;
+	assign HEX5 = '1;
+	assign HEX6 = '1;
+	assign HEX7 = '1;
 
 endmodule

@@ -19,10 +19,14 @@ module SramEncoder (
     assign o_sram_data = sram_data_r;
 
     always @(*) begin
+        sram_addr_w = sram_addr_r;
         case(i_object_id)
-            object_pkg::OBJECT_MAP:  sram_addr_w = sram_pkg::MAP_ADDR_START + (i_object_pixel_counter >> 2);
-            object_pkg::OBJECT_CAR1: sram_addr_w = sram_pkg::CAR1_ADDR_START + (i_object_pixel_counter >> 2);
-            object_pkg::OBJECT_CAR2: sram_addr_w = sram_pkg::CAR2_ADDR_START + (i_object_pixel_counter >> 2);
+            object_pkg::OBJECT_CAR1: begin
+                sram_addr_w = sram_pkg::CAR1_ADDR_START + (i_object_pixel_counter >> 2);
+            end
+            object_pkg::OBJECT_CAR2: begin
+                sram_addr_w = sram_pkg::CAR2_ADDR_START + (i_object_pixel_counter >> 2);
+            end
         endcase
     end
 

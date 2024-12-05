@@ -13,12 +13,12 @@ module ColorDecoder (
 
     wire [23:0] car1_color [0:15];
     car1_palette u_car1_palette (
-        .color_map    (color_map)
+        .color_map    (car1_color)
     );
 
     wire [23:0] car2_color [0:15];
     car2_palette u_car2_palette (
-        .color_map    (color_map)
+        .color_map    (car2_color)
     );
 
     reg [23:0] decoded_color;

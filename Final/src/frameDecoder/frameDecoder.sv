@@ -10,8 +10,8 @@ module FrameDecoder(
     input signed [sram_pkg::MAP_H_WIDTH-1:0] i_car2_x,
     input signed [sram_pkg::MAP_V_WIDTH-1:0] i_car2_y,
     
-    input i_car1_opacity_map [0:sram_pkg::IMAGE_COOR_WIDTH-1][0:sram_pkg::IMAGE_COOR_WIDTH-1], // 1 for transparent, 0 for opaque
-    input i_car2_opacity_map [0:sram_pkg::IMAGE_COOR_WIDTH-1][0:sram_pkg::IMAGE_COOR_WIDTH-1],
+    input i_car1_opacity_map [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1], // 1 for transparent, 0 for opaque
+    input i_car2_opacity_map [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1],
 
     input [sram_pkg::MAP_H_WIDTH-1:0] i_VGA_H,
     input [sram_pkg::MAP_V_WIDTH-1:0] i_VGA_V,
@@ -23,14 +23,14 @@ module FrameDecoder(
 );
 
     // pixel id and flip-flop
-    wire object_pkg::ObjectID object_id_before_sram;
-    reg object_pkg::ObjectID object_id_during_sram;
-    reg object_pkg::ObjectID object_id_after_sram;
+    object_pkg::ObjectID object_id_before_sram;
+    object_pkg::ObjectID object_id_during_sram;
+    object_pkg::ObjectID object_id_after_sram;
 
     // pixel index and flip-flop
-    wire [sram_pkg::MAP_H_WIDTH*sram_pkg::MAP_V_WIDTH-1:0] object_pixel_index_before_sram;
-    reg [sram_pkg::MAP_H_WIDTH*sram_pkg::MAP_V_WIDTH-1:0] object_pixel_index_during_sram;
-    reg [sram_pkg::MAP_H_WIDTH*sram_pkg::MAP_V_WIDTH-1:0] object_pixel_index_after_sram;
+    wire [sram_pkg::MAP_H_WIDTH+sram_pkg::MAP_V_WIDTH-1:0] object_pixel_index_before_sram;
+    reg [sram_pkg::MAP_H_WIDTH+sram_pkg::MAP_V_WIDTH-1:0] object_pixel_index_during_sram;
+    reg [sram_pkg::MAP_H_WIDTH+sram_pkg::MAP_V_WIDTH-1:0] object_pixel_index_after_sram;
 
     PixelDecoder u_PixelDecoder (
         .i_car1_x                (i_car1_x),
@@ -48,6 +48,7 @@ module FrameDecoder(
     SramAddrEncoder u_SramAddrEncoder (
         .i_clk                   (i_clk),
         .i_rst_n                 (i_rst_n),
+        .i_object_id             (object_id_before_sram),
         .i_object_pixel_index    (object_pixel_index_before_sram),
         .o_sram_addr             (o_sram_addr)
     );
@@ -69,8 +70,8 @@ module FrameDecoder(
 
     always @(posedge i_clk or negedge i_rst_n) begin
         if (!i_rst_n) begin
-            object_id_during_sram <= 0;
-            object_id_after_sram <= 0;
+            object_id_during_sram <= object_pkg::OBJECT_MAP;
+            object_id_after_sram <= object_pkg::OBJECT_MAP;
 
             object_pixel_index_during_sram <= 0;
             object_pixel_index_after_sram <= 0;

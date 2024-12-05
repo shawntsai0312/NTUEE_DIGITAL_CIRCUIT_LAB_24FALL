@@ -15,8 +15,6 @@ module ImageRotator #(
     output o_opacity,
     output [sram_pkg::IMAGE_COOR_WIDTH-1:0] o_H_to_be_processed,
     output [sram_pkg::IMAGE_COOR_WIDTH-1:0] o_V_to_be_processed,
-    output [sram_pkg::IMAGE_COOR_WIDTH-1:0] o_H_transformed,
-    output [sram_pkg::IMAGE_COOR_WIDTH-1:0] o_V_transformed,
     output o_valid
 );
 
@@ -28,8 +26,6 @@ module ImageRotator #(
 
     wire [sram_pkg::IMAGE_COOR_WIDTH-1:0] H_transformed, V_transformed;
     wire outOfRange;
-    assign o_H_transformed = H_transformed;
-    assign o_V_transformed = V_transformed;
 
     RotateImageCoor #(
         .ANG_WIDTH            (sram_pkg::ANG_WIDTH)
@@ -50,10 +46,6 @@ module ImageRotator #(
     reg opacity;
     assign o_encoded_pixel = encoded_pixel;
     assign o_opacity = opacity;
-
-    // reg [sram_pkg::COLOR_WIDTH-1:0] temp;
-    // assign temp = i_lut_data[14][24];
-    // assign temp = i_lut_data[0][0];
 
     always @(*) begin
         encoded_pixel = 0;

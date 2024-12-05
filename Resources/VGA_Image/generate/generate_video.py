@@ -7,11 +7,14 @@ frame_width = 1600
 frame_height = 900
 
 # 創建輸出目錄
-output_dir = 'output'
+# output_dir = 'output'
+# input_bin = 'output.bin'
+output_dir = 'vga_video'
+input_bin = 'vga_video.bin'
 os.makedirs(output_dir, exist_ok=True)
 
 # 讀取輸出文件
-with open('output.bin', 'rb') as file:
+with open(input_bin, 'rb') as file:
     data = file.read()
 
 # 計算總幀數

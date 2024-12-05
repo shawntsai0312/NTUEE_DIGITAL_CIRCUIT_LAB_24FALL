@@ -222,10 +222,10 @@ module VGA #(
         
     always_ff @(posedge i_clk or negedge i_rst_n) begin 
         if (!i_rst_n) begin
-            H_state <= S_B;
+            H_state <= S_D;
             H_counter <= 1;
             H_sync <= 1;
-            V_state <= S_B;
+            V_state <= S_D;
             V_counter <= 1;
             V_sync <= 1;
 
