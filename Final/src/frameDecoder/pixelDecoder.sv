@@ -7,8 +7,8 @@ module PixelDecoder (
     input signed [sram_pkg::MAP_H_WIDTH-1:0] i_car2_x,
     input signed [sram_pkg::MAP_V_WIDTH-1:0] i_car2_y,
 
-    input i_car1_opacity_map [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1], // 1 for transparent, 0 for opaque
-    input i_car2_opacity_map [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1],
+    input i_car1_opacity_mask [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1], // 1 for transparent, 0 for opaque
+    input i_car2_opacity_mask [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1],
 
     input [sram_pkg::MAP_H_WIDTH-1:0] i_VGA_H, // from 1 to 1600
     input [sram_pkg::MAP_V_WIDTH-1:0] i_VGA_V, // from 1 to 900
@@ -48,8 +48,8 @@ module PixelDecoder (
             if (i_VGA_H >= o_car1_H_min && i_VGA_H <= o_car1_H_max && i_VGA_V >= o_car1_V_min && i_VGA_V <= o_car1_V_max) begin
                 H_rel = i_VGA_H - o_car1_H_min;
                 V_rel = i_VGA_V - o_car1_V_min;
-                opacity = i_car1_opacity_map[V_rel][H_rel];
-                if (i_car1_opacity_map[i_VGA_V - o_car1_V_min][i_VGA_H - o_car1_H_min]) begin
+                opacity = i_car1_opacity_mask[V_rel][H_rel];
+                if (i_car1_opacity_mask[i_VGA_V - o_car1_V_min][i_VGA_H - o_car1_H_min]) begin
                     // not transparent, render car1
                     // $display("render car1 at (%d, %d)", i_VGA_H, i_VGA_V);
                     o_object_id = object_pkg::OBJECT_CAR1;
@@ -62,7 +62,7 @@ module PixelDecoder (
                 end
             end
             else if (i_VGA_H >= o_car2_H_min && i_VGA_H <= o_car2_H_max && i_VGA_V >= o_car2_V_min && i_VGA_V <= o_car2_V_max) begin
-                if (i_car2_opacity_map[i_VGA_V - o_car2_V_min][i_VGA_H - o_car2_H_min]) begin
+                if (i_car2_opacity_mask[i_VGA_V - o_car2_V_min][i_VGA_H - o_car2_H_min]) begin
                     // not transparent, render car2
                     // $display("render car2 at (%d, %d)", i_VGA_H, i_VGA_V);
                     o_object_id = object_pkg::OBJECT_CAR2;

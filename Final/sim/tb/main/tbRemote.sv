@@ -1,9 +1,13 @@
 `timescale 1ns/10ps
 `define CYCLE 10
 `define HCYCLE 5
-// `define SIM_CYCLE (108000000 / 60 + 100) // 1 frames, 100 for margin
+`define SIM_CYCLE (108000000 / 60 + 100) // 1 frames, 100 for margin
 // `define SIM_CYCLE 220000 // test only, enough for prepare 1 frame
-`define SIM_CYCLE 7500 // test only, enough for image rotation
+// `define SIM_CYCLE 7500 // test only, enough for image rotation
+
+// `define SIM_CYCLE (108000000 + 100) // 60 frames, 100 for margin
+
+`define PRINT_PROGRESS_CYCLE 100000
 
 module tb;
 
@@ -18,8 +22,8 @@ module tb;
 
     wire o_render_clk;
 
-    wire o_car1_opacity_map [0:59][0:59];
-    wire o_car2_opacity_map [0:59][0:59];
+    // wire o_car1_opacity_mask [0:59][0:59];
+    // wire o_car2_opacity_mask [0:59][0:59];
 
     // Main module instantiation
     Main u_Main (
@@ -28,11 +32,11 @@ module tb;
         .o_SRAM_ADDR        (addr),
         .io_SRAM_DQ         (data),
         .o_SRAM_WE_N        (we_n),
+        // .o_car1_opacity_mask (o_car1_opacity_mask),
+        // .o_car2_opacity_mask (o_car2_opacity_mask),
         .o_RGB              (o_RGB),
         .o_RGB_valid        (o_RGB_valid),
-        .o_render_clk       (o_render_clk),
-        .o_car1_opacity_map (o_car1_opacity_map),
-        .o_car2_opacity_map (o_car2_opacity_map)
+        .o_render_clk       (o_render_clk)
     );
 
     // SRAM module instantiation
@@ -72,20 +76,6 @@ module tb;
         sim_cycle_counter = 0;
     end
 
-    always @(posedge we_n) begin
-        #(`CYCLE)
-        for (int i = 0; i < 60; i = i + 1) begin
-            for (int j = 0; j < 60; j = j + 1) begin
-                $display("o_car1_opacity_map[%2d][%2d] = %2d", i, j, o_car1_opacity_map[i][j]);
-            end
-        end
-        for (int i = 0; i < 60; i = i + 1) begin
-            for (int j = 0; j < 60; j = j + 1) begin
-                $display("o_car2_opacity_map[%2d][%2d] = %2d", i, j, o_car2_opacity_map[i][j]);
-            end
-        end
-    end
-
     always @(posedge i_clk) begin
         sim_cycle_counter = sim_cycle_counter + 1;
 
@@ -93,7 +83,7 @@ module tb;
         progress_percentage = (sim_cycle_counter * 100.0) / `SIM_CYCLE;
 
         // Print progress every 10,000 cycles (or choose your interval)
-        if (sim_cycle_counter % 10000 == 0 || sim_cycle_counter == `SIM_CYCLE) begin
+        if (sim_cycle_counter % `PRINT_PROGRESS_CYCLE == 0 || sim_cycle_counter == `SIM_CYCLE) begin
             $display("Simulation cycle: %8d/%8d (%.2f%%)", sim_cycle_counter, `SIM_CYCLE, progress_percentage);
         end
 

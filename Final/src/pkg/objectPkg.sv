@@ -8,18 +8,3 @@ package object_pkg;
         OBJECT_CAR2 = 4'd3
     } ObjectID;
 endpackage
-
-// usage:
-// import object_pkg::*;
-
-// module example_module (
-//     input ObjectID id
-// );
-//     always @(*) begin
-//         case (id)
-//             OBJECT_MAP:  $display("Map selected");
-//             OBJECT_CAR1: $display("Car1 selected");
-//             OBJECT_CAR2: $display("Car2 selected");
-//         endcase
-//     end
-// endmodule

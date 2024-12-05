@@ -34,17 +34,17 @@ def output_verilog(bits_per_pixel, input_name, input_img, colors_output_path, en
         verilog_file.write("endmodule\n")
     
     # Save each pixel's encoded number to a Verilog file
-    with open(encode_output_path, 'w') as encode_file:
-        encode_file.write(f"module {input_name}_lut(output reg [{bits_per_pixel-1}:0] pixel_data [0:{height-1}][0:{width-1}]);\n")
-        encode_file.write("    initial begin\n")
-        for y in range(height):
-            for x in range(width):
-                pixel = input_img.getpixel((x, y))
-                printData = sorted_color_map[tuple(palette[pixel])]-1
-                encode_file.write(f"        pixel_data[{y}][{x}] = {printData}; // x={x}, y={y}, {tuple(palette[pixel])}\n")
-                # print(f"{printData:0{bits_per_pixel}b}")
-        encode_file.write("    end\n")
-        encode_file.write("endmodule\n")
+    # with open(encode_output_path, 'w') as encode_file:
+    #     encode_file.write(f"module {input_name}_lut(output reg [{bits_per_pixel-1}:0] pixel_data [0:{height-1}][0:{width-1}]);\n")
+    #     encode_file.write("    initial begin\n")
+    #     for y in range(height):
+    #         for x in range(width):
+    #             pixel = input_img.getpixel((x, y))
+    #             printData = sorted_color_map[tuple(palette[pixel])]-1
+    #             encode_file.write(f"        pixel_data[{y}][{x}] = {printData}; // x={x}, y={y}, {tuple(palette[pixel])}\n")
+    #             # print(f"{printData:0{bits_per_pixel}b}")
+    #     encode_file.write("    end\n")
+    #     encode_file.write("endmodule\n")
     
     # Save each pixel's encoded number to a binary file
     bin_output_path = encode_output_path.replace('.sv', '.bin')

@@ -9,15 +9,15 @@ module Main (
 	inout  [sram_pkg::SRAM_DATA_WIDTH-1:0] io_SRAM_DQ,
 	output o_SRAM_WE_N,
 
+    // output o_car1_opacity_mask [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1],
+    // output o_car2_opacity_mask [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1]
+
     output o_H_sync,
     output o_V_sync,
     output [23:0] o_RGB,
     output o_RGB_valid,
     output [31:0] o_frame_counter,
-    output o_render_clk,
-
-    output o_car1_opacity_map [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1],
-    output o_car2_opacity_map [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1]
+    output o_render_clk
 );
 
     wire render_clk;
@@ -55,11 +55,11 @@ module Main (
 
     wire pixel_opacity, pixel_opacity_valid, frameEncode_done;
 
-    reg car1_opacity_map_r [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1];
-    reg car1_opacity_map_w [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1];
+    reg car1_opacity_mask_r [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1];
+    reg car1_opacity_mask_w [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1];
 
-    reg car2_opacity_map_r [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1];
-    reg car2_opacity_map_w [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1];
+    reg car2_opacity_mask_r [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1];
+    reg car2_opacity_mask_w [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1];
     
 
     GameControl u_GameControl (
@@ -96,8 +96,8 @@ module Main (
         .i_car1_y               (car1_y_frameDecoder_input),
         .i_car2_x               (car2_x_frameDecoder_input),
         .i_car2_y               (car2_y_frameDecoder_input),
-        .i_car1_opacity_map     (car1_opacity_map_r),
-        .i_car2_opacity_map     (car2_opacity_map_r),
+        .i_car1_opacity_mask     (car1_opacity_mask_r),
+        .i_car2_opacity_mask     (car2_opacity_mask_r),
         .i_VGA_H                (H_to_be_rendered),
         .i_VGA_V                (V_to_be_rendered),
         .o_sram_addr            (addr_decode),
@@ -122,41 +122,41 @@ module Main (
     // opacity map combinatorial logic
     genvar i, j;
     generate
-        for (i = 0; i < sram_pkg::IMAGE_SIZE; i = i + 1) begin: opacity_map_generate_i
-            for (j = 0; j < sram_pkg::IMAGE_SIZE; j = j + 1) begin: opacity_map_generate_j
-                assign car1_opacity_map_w[i][j] = ( H_frameEncoder_output == i &&
-                                                    V_frameEncoder_output == j &&
+        for (i = 0; i < sram_pkg::IMAGE_SIZE; i = i + 1) begin: opacity_mask_generate_i
+            for (j = 0; j < sram_pkg::IMAGE_SIZE; j = j + 1) begin: opacity_mask_generate_j
+                assign car1_opacity_mask_w[i][j] = ( V_frameEncoder_output == i &&
+                                                    H_frameEncoder_output == j &&
                                                     pixel_object_id == object_pkg::OBJECT_CAR1 &&
                                                     pixel_opacity_valid ) ? 
-                                                    pixel_opacity : car1_opacity_map_r[i][j];
-                assign car2_opacity_map_w[i][j] = ( H_frameEncoder_output == i &&
-                                                    V_frameEncoder_output == j &&
+                                                    pixel_opacity : car1_opacity_mask_r[i][j];
+                assign car2_opacity_mask_w[i][j] = ( V_frameEncoder_output == i &&
+                                                    H_frameEncoder_output == j &&
                                                     pixel_object_id == object_pkg::OBJECT_CAR2 &&
                                                     pixel_opacity_valid ) ? 
-                                                    pixel_opacity : car2_opacity_map_r[i][j];
+                                                    pixel_opacity : car2_opacity_mask_r[i][j];
             end
         end
     endgenerate
 
     // opacity map output assignment
-    assign o_car1_opacity_map = car1_opacity_map_r;
-    assign o_car2_opacity_map = car2_opacity_map_r;
+    // assign o_car1_opacity_mask = car1_opacity_mask_r;
+    // assign o_car2_opacity_mask = car2_opacity_mask_r;
 
     // opacity map sequential logic
     always @(posedge i_clk or negedge i_rst_n) begin
         if (!i_rst_n) begin
             for (integer i = 0; i < sram_pkg::IMAGE_SIZE; i = i + 1) begin
                 for (integer j = 0; j < sram_pkg::IMAGE_SIZE; j = j + 1) begin
-                        car1_opacity_map_r[i][j] <= 0;
-                        car2_opacity_map_r[i][j] <= 0;
+                        car1_opacity_mask_r[i][j] <= 0;
+                        car2_opacity_mask_r[i][j] <= 0;
                 end
             end
         end
         else begin
             for (integer i = 0; i < sram_pkg::IMAGE_SIZE; i = i + 1) begin
                 for (integer j = 0; j < sram_pkg::IMAGE_SIZE; j = j + 1) begin
-                    car1_opacity_map_r[i][j] <= car1_opacity_map_w[i][j];
-                    car2_opacity_map_r[i][j] <= car2_opacity_map_w[i][j];
+                    car1_opacity_mask_r[i][j] <= car1_opacity_mask_w[i][j];
+                    car2_opacity_mask_r[i][j] <= car2_opacity_mask_w[i][j];
                 end
             end
         end
