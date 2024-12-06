@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy
+ date="2024.10.01.17:02:35"
+ outputDirectory="C:/Users/user/Desktop/LAB2_3/rsa_qsys/">
+ <perimeter>
+  <parameter
+     name="AUTO_GENERATION_ID"
+     type="Integer"
+     defaultValue="0"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_UNIQUE_ID"
+     type="String"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_FAMILY"
+     type="String"
+     defaultValue="Cyclone IV E"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE"
+     type="String"
+     defaultValue="EP4CE115F29C7"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_SPEEDGRADE"
+     type="String"
+     defaultValue="7"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLK_CLOCK_RATE"
+     type="Long"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLK_CLOCK_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLK_RESET_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <interface name="clk" kind="clock" start="0">
+   <property name="clockRate" value="50000000" />
+   <property name="externallyDriven" value="false" />
+   <property name="ptfSchematicName" value="" />
+   <port name="clk_clk" direction="input" role="clk" width="1" />
+  </interface>
+  <interface name="reset" kind="reset" start="0">
+   <property name="associatedClock" value="" />
+   <property name="synchronousEdges" value="NONE" />
+   <port name="reset_reset_n" direction="input" role="reset_n" width="1" />
+  </interface>
+  <interface name="uart_0_external_connection" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <port
+       name="uart_0_external_connection_rxd"
+       direction="input"
+       role="rxd"
+       width="1" />
+   <port
+       name="uart_0_external_connection_txd"
+       direction="output"
+       role="txd"
+       width="1" />
+  </interface>
+ </perimeter>
+ <entity
+   path=""
+   parameterizationKey="rsa_qsys:1.0:AUTO_CLK_CLOCK_DOMAIN=-1,AUTO_CLK_CLOCK_RATE=-1,AUTO_CLK_RESET_DOMAIN=-1,AUTO_DEVICE=EP4CE115F29C7,AUTO_DEVICE_FAMILY=Cyclone IV E,AUTO_DEVICE_SPEEDGRADE=7,AUTO_GENERATION_ID=1727773344,AUTO_UNIQUE_ID=(Rsa_Wrapper:1.0:)(altpll:15.0:AUTO_DEVICE_FAMILY=Cyclone IV E,AUTO_INCLK_INTERFACE_CLOCK_RATE=50000000,AVALON_USE_SEPARATE_SYSCLK=NO,BANDWIDTH=,BANDWIDTH_TYPE=AUTO,CLK0_DIVIDE_BY=2,CLK0_DUTY_CYCLE=50,CLK0_MULTIPLY_BY=1,CLK0_PHASE_SHIFT=0,CLK1_DIVIDE_BY=,CLK1_DUTY_CYCLE=,CLK1_MULTIPLY_BY=,CLK1_PHASE_SHIFT=,CLK2_DIVIDE_BY=,CLK2_DUTY_CYCLE=,CLK2_MULTIPLY_BY=,CLK2_PHASE_SHIFT=,CLK3_DIVIDE_BY=,CLK3_DUTY_CYCLE=,CLK3_MULTIPLY_BY=,CLK3_PHASE_SHIFT=,CLK4_DIVIDE_BY=,CLK4_DUTY_CYCLE=,CLK4_MULTIPLY_BY=,CLK4_PHASE_SHIFT=,CLK5_DIVIDE_BY=,CLK5_DUTY_CYCLE=,CLK5_MULTIPLY_BY=,CLK5_PHASE_SHIFT=,CLK6_DIVIDE_BY=,CLK6_DUTY_CYCLE=,CLK6_MULTIPLY_BY=,CLK6_PHASE_SHIFT=,CLK7_DIVIDE_BY=,CLK7_DUTY_CYCLE=,CLK7_MULTIPLY_BY=,CLK7_PHASE_SHIFT=,CLK8_DIVIDE_BY=,CLK8_DUTY_CYCLE=,CLK8_MULTIPLY_BY=,CLK8_PHASE_SHIFT=,CLK9_DIVIDE_BY=,CLK9_DUTY_CYCLE=,CLK9_MULTIPLY_BY=,CLK9_PHASE_SHIFT=,COMPENSATE_CLOCK=CLK0,DOWN_SPREAD=,DPA_DIVIDER=,DPA_DIVIDE_BY=,DPA_MULTIPLY_BY=,ENABLE_SWITCH_OVER_COUNTER=,EXTCLK0_DIVIDE_BY=,EXTCLK0_DUTY_CYCLE=,EXTCLK0_MULTIPLY_BY=,EXTCLK0_PHASE_SHIFT=,EXTCLK1_DIVIDE_BY=,EXTCLK1_DUTY_CYCLE=,EXTCLK1_MULTIPLY_BY=,EXTCLK1_PHASE_SHIFT=,EXTCLK2_DIVIDE_BY=,EXTCLK2_DUTY_CYCLE=,EXTCLK2_MULTIPLY_BY=,EXTCLK2_PHASE_SHIFT=,EXTCLK3_DIVIDE_BY=,EXTCLK3_DUTY_CYCLE=,EXTCLK3_MULTIPLY_BY=,EXTCLK3_PHASE_SHIFT=,FEEDBACK_SOURCE=,GATE_LOCK_COUNTER=,GATE_LOCK_SIGNAL=,HIDDEN_CONSTANTS=CT#PORT_clk5 PORT_UNUSED CT#PORT_clk4 PORT_UNUSED CT#PORT_clk3 PORT_UNUSED CT#PORT_clk2 PORT_UNUSED CT#PORT_clk1 PORT_UNUSED CT#PORT_clk0 PORT_USED CT#CLK0_MULTIPLY_BY 1 CT#PORT_SCANWRITE PORT_UNUSED CT#PORT_SCANACLR PORT_UNUSED CT#PORT_PFDENA PORT_UNUSED CT#PORT_PLLENA PORT_UNUSED CT#PORT_SCANDATA PORT_UNUSED CT#PORT_SCANCLKENA PORT_UNUSED CT#WIDTH_CLOCK 5 CT#PORT_SCANDATAOUT PORT_UNUSED CT#LPM_TYPE altpll CT#PLL_TYPE AUTO CT#CLK0_PHASE_SHIFT 0 CT#PORT_PHASEDONE PORT_UNUSED CT#OPERATION_MODE NORMAL CT#PORT_CONFIGUPDATE PORT_UNUSED CT#COMPENSATE_CLOCK CLK0 CT#PORT_CLKSWITCH PORT_UNUSED CT#INCLK0_INPUT_FREQUENCY 20000 CT#PORT_SCANDONE PORT_UNUSED CT#PORT_CLKLOSS PORT_UNUSED CT#PORT_INCLK1 PORT_UNUSED CT#AVALON_USE_SEPARATE_SYSCLK NO CT#PORT_INCLK0 PORT_USED CT#PORT_clkena5 PORT_UNUSED CT#PORT_clkena4 PORT_UNUSED CT#PORT_clkena3 PORT_UNUSED CT#PORT_clkena2 PORT_UNUSED CT#PORT_clkena1 PORT_UNUSED CT#PORT_clkena0 PORT_UNUSED CT#PORT_ARESET PORT_USED CT#BANDWIDTH_TYPE AUTO CT#INTENDED_DEVICE_FAMILY {Cyclone IV E} CT#PORT_SCANREAD PORT_UNUSED CT#PORT_PHASESTEP PORT_UNUSED CT#PORT_SCANCLK PORT_UNUSED CT#PORT_CLKBAD1 PORT_UNUSED CT#PORT_CLKBAD0 PORT_UNUSED CT#PORT_FBIN PORT_UNUSED CT#PORT_PHASEUPDOWN PORT_UNUSED CT#PORT_extclk3 PORT_UNUSED CT#PORT_extclk2 PORT_UNUSED CT#PORT_extclk1 PORT_UNUSED CT#PORT_PHASECOUNTERSELECT PORT_UNUSED CT#PORT_extclk0 PORT_UNUSED CT#PORT_ACTIVECLOCK PORT_UNUSED CT#CLK0_DUTY_CYCLE 50 CT#CLK0_DIVIDE_BY 2 CT#PORT_LOCKED PORT_USED,HIDDEN_CUSTOM_ELABORATION=altpll_avalon_elaboration,HIDDEN_CUSTOM_POST_EDIT=altpll_avalon_post_edit,HIDDEN_IF_PORTS=IF#locked {output 0} IF#reset {input 0} IF#clk {input 0} IF#readdata {output 32} IF#write {input 0} IF#phasedone {output 0} IF#address {input 2} IF#c0 {output 0} IF#writedata {input 32} IF#read {input 0} IF#areset {input 0},HIDDEN_IS_FIRST_EDIT=0,HIDDEN_IS_NUMERIC=IN#WIDTH_CLOCK 1 IN#CLK0_DUTY_CYCLE 1 IN#PLL_TARGET_HARCOPY_CHECK 1 IN#SWITCHOVER_COUNT_EDIT 1 IN#INCLK0_INPUT_FREQUENCY 1 IN#PLL_LVDS_PLL_CHECK 1 IN#PLL_AUTOPLL_CHECK 1 IN#PLL_FASTPLL_CHECK 1 IN#PLL_ENHPLL_CHECK 1 IN#DIV_FACTOR0 1 IN#LVDS_MODE_DATA_RATE_DIRTY 1 IN#GLOCK_COUNTER_EDIT 1 IN#CLK0_DIVIDE_BY 1 IN#MULT_FACTOR0 1 IN#CLK0_MULTIPLY_BY 1 IN#USE_MIL_SPEED_GRADE 1,HIDDEN_MF_PORTS=MF#areset 1 MF#clk 1 MF#locked 1 MF#inclk 1,HIDDEN_PRIVATES=PT#GLOCKED_FEATURE_ENABLED 0 PT#SPREAD_FEATURE_ENABLED 0 PT#BANDWIDTH_FREQ_UNIT MHz PT#CUR_DEDICATED_CLK c0 PT#INCLK0_FREQ_EDIT 50.000 PT#BANDWIDTH_PRESET Low PT#PLL_LVDS_PLL_CHECK 0 PT#BANDWIDTH_USE_PRESET 0 PT#AVALON_USE_SEPARATE_SYSCLK NO PT#PLL_ENHPLL_CHECK 0 PT#OUTPUT_FREQ_UNIT0 MHz PT#PHASE_RECONFIG_FEATURE_ENABLED 1 PT#CREATE_CLKBAD_CHECK 0 PT#CLKSWITCH_CHECK 0 PT#INCLK1_FREQ_EDIT 100.000 PT#NORMAL_MODE_RADIO 1 PT#SRC_SYNCH_COMP_RADIO 0 PT#PLL_ARESET_CHECK 1 PT#LONG_SCAN_RADIO 1 PT#SCAN_FEATURE_ENABLED 1 PT#PHASE_RECONFIG_INPUTS_CHECK 0 PT#USE_CLK0 1 PT#PRIMARY_CLK_COMBO inclk0 PT#BANDWIDTH 1.000 PT#GLOCKED_COUNTER_EDIT_CHANGED 1 PT#PLL_FASTPLL_CHECK 0 PT#SPREAD_FREQ_UNIT KHz PT#PLL_AUTOPLL_CHECK 1 PT#LVDS_PHASE_SHIFT_UNIT0 deg PT#SWITCHOVER_FEATURE_ENABLED 0 PT#MIG_DEVICE_SPEED_GRADE Any PT#OUTPUT_FREQ_MODE0 1 PT#BANDWIDTH_FEATURE_ENABLED 1 PT#INCLK0_FREQ_UNIT_COMBO MHz PT#ZERO_DELAY_RADIO 0 PT#OUTPUT_FREQ0 25.00000000 PT#SHORT_SCAN_RADIO 0 PT#LVDS_MODE_DATA_RATE_DIRTY 0 PT#CUR_FBIN_CLK c0 PT#PLL_ADVANCED_PARAM_CHECK 0 PT#CLKBAD_SWITCHOVER_CHECK 0 PT#PHASE_SHIFT_STEP_ENABLED_CHECK 0 PT#DEVICE_SPEED_GRADE Any PT#PLL_FBMIMIC_CHECK 0 PT#LVDS_MODE_DATA_RATE {Not Available} PT#LOCKED_OUTPUT_CHECK 1 PT#SPREAD_PERCENT 0.500 PT#PHASE_SHIFT0 0.00000000 PT#DIV_FACTOR0 1 PT#CNX_NO_COMPENSATE_RADIO 0 PT#USE_CLKENA0 0 PT#CREATE_INCLK1_CHECK 0 PT#GLOCK_COUNTER_EDIT 1048575 PT#INCLK1_FREQ_UNIT_COMBO MHz PT#EFF_OUTPUT_FREQ_VALUE0 25.000000 PT#SPREAD_FREQ 50.000 PT#USE_MIL_SPEED_GRADE 0 PT#EXPLICIT_SWITCHOVER_COUNTER 0 PT#STICKY_CLK0 1 PT#EXT_FEEDBACK_RADIO 0 PT#MIRROR_CLK0 0 PT#SWITCHOVER_COUNT_EDIT 1 PT#SELF_RESET_LOCK_LOSS 0 PT#PLL_PFDENA_CHECK 0 PT#INT_FEEDBACK__MODE_RADIO 1 PT#INCLK1_FREQ_EDIT_CHANGED 1 PT#CLKLOSS_CHECK 0 PT#SYNTH_WRAPPER_GEN_POSTFIX 0 PT#PHASE_SHIFT_UNIT0 deg PT#BANDWIDTH_USE_AUTO 1 PT#HAS_MANUAL_SWITCHOVER 1 PT#MULT_FACTOR0 1 PT#SPREAD_USE 0 PT#GLOCKED_MODE_CHECK 0 PT#SACN_INPUTS_CHECK 0 PT#DUTY_CYCLE0 50.00000000 PT#INTENDED_DEVICE_FAMILY {Cyclone IV E} PT#PLL_TARGET_HARCOPY_CHECK 0 PT#INCLK1_FREQ_UNIT_CHANGED 1 PT#RECONFIG_FILE ALTPLL1727771440072325.mif PT#ACTIVECLK_CHECK 0,HIDDEN_USED_PORTS=UP#locked used UP#c0 used UP#areset used UP#inclk0 used,INCLK0_INPUT_FREQUENCY=20000,INCLK1_INPUT_FREQUENCY=,INTENDED_DEVICE_FAMILY=Cyclone IV E,INVALID_LOCK_MULTIPLIER=,LOCK_HIGH=,LOCK_LOW=,OPERATION_MODE=NORMAL,PLL_TYPE=AUTO,PORT_ACTIVECLOCK=PORT_UNUSED,PORT_ARESET=PORT_USED,PORT_CLKBAD0=PORT_UNUSED,PORT_CLKBAD1=PORT_UNUSED,PORT_CLKLOSS=PORT_UNUSED,PORT_CLKSWITCH=PORT_UNUSED,PORT_CONFIGUPDATE=PORT_UNUSED,PORT_ENABLE0=,PORT_ENABLE1=,PORT_FBIN=PORT_UNUSED,PORT_FBOUT=,PORT_INCLK0=PORT_USED,PORT_INCLK1=PORT_UNUSED,PORT_LOCKED=PORT_USED,PORT_PFDENA=PORT_UNUSED,PORT_PHASECOUNTERSELECT=PORT_UNUSED,PORT_PHASEDONE=PORT_UNUSED,PORT_PHASESTEP=PORT_UNUSED,PORT_PHASEUPDOWN=PORT_UNUSED,PORT_PLLENA=PORT_UNUSED,PORT_SCANACLR=PORT_UNUSED,PORT_SCANCLK=PORT_UNUSED,PORT_SCANCLKENA=PORT_UNUSED,PORT_SCANDATA=PORT_UNUSED,PORT_SCANDATAOUT=PORT_UNUSED,PORT_SCANDONE=PORT_UNUSED,PORT_SCANREAD=PORT_UNUSED,PORT_SCANWRITE=PORT_UNUSED,PORT_SCLKOUT0=,PORT_SCLKOUT1=,PORT_VCOOVERRANGE=,PORT_VCOUNDERRANGE=,PORT_clk0=PORT_USED,PORT_clk1=PORT_UNUSED,PORT_clk2=PORT_UNUSED,PORT_clk3=PORT_UNUSED,PORT_clk4=PORT_UNUSED,PORT_clk5=PORT_UNUSED,PORT_clk6=,PORT_clk7=,PORT_clk8=,PORT_clk9=,PORT_clkena0=PORT_UNUSED,PORT_clkena1=PORT_UNUSED,PORT_clkena2=PORT_UNUSED,PORT_clkena3=PORT_UNUSED,PORT_clkena4=PORT_UNUSED,PORT_clkena5=PORT_UNUSED,PORT_extclk0=PORT_UNUSED,PORT_extclk1=PORT_UNUSED,PORT_extclk2=PORT_UNUSED,PORT_extclk3=PORT_UNUSED,PORT_extclkena0=,PORT_extclkena1=,PORT_extclkena2=,PORT_extclkena3=,PRIMARY_CLOCK=,QUALIFY_CONF_DONE=,SCAN_CHAIN=,SCAN_CHAIN_MIF_FILE=,SCLKOUT0_PHASE_SHIFT=,SCLKOUT1_PHASE_SHIFT=,SELF_RESET_ON_GATED_LOSS_LOCK=,SELF_RESET_ON_LOSS_LOCK=,SKIP_VCO=,SPREAD_FREQUENCY=,SWITCH_OVER_COUNTER=,SWITCH_OVER_ON_GATED_LOCK=,SWITCH_OVER_ON_LOSSCLK=,SWITCH_OVER_TYPE=,USING_FBMIMICBIDIR_PORT=,VALID_LOCK_MULTIPLIER=,VCO_DIVIDE_BY=,VCO_FREQUENCY_CONTROL=,VCO_MULTIPLY_BY=,VCO_PHASE_SHIFT_STEP=,WIDTH_CLOCK=5,WIDTH_PHASECOUNTERSELECT=)(clock_source:15.0:clockFrequency=50000000,clockFrequencyKnown=true,inputClockFrequency=0,resetSynchronousEdges=NONE)(altera_avalon_uart:15.0:baud=115200,baudError=0.01,clockRate=25000000,dataBits=8,fixedBaud=true,parity=NONE,parityFisrtChar=N,simCharStream=,simInteractiveInputEnable=false,simInteractiveOutputEnable=false,simTrueBaud=false,stopBits=1,syncRegDepth=2,useCtsRts=false,useEopRegister=false,useRelativePathForSimFile=false)(avalon:15.0:arbitrationPriority=1,baseAddress=0x0000,defaultConnection=false)(clock:15.0:)(clock:15.0:)(clock:15.0:)(reset:15.0:)(reset:15.0:)(reset:15.0:)"
+   instancePathKey="rsa_qsys"
+   kind="rsa_qsys"
+   version="1.0"
+   name="rsa_qsys">
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_GENERATION_ID" value="1727773344" />
+  <parameter name="AUTO_DEVICE" value="EP4CE115F29C7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="-1" />
+  <parameter name="AUTO_UNIQUE_ID" value="" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <generatedFiles>
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/rsa_qsys.v"
+       type="VERILOG" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/Rsa256Core.sv"
+       type="SYSTEM_VERILOG"
+       attributes="" />
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/Rsa256Wrapper.sv"
+       type="SYSTEM_VERILOG"
+       attributes="TOP_LEVEL_FILE" />
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/rsa_qsys_altpll_0.v"
+       type="VERILOG" />
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/rsa_qsys_uart_0.v"
+       type="VERILOG"
+       attributes="" />
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/rsa_qsys_mm_interconnect_0.v"
+       type="VERILOG" />
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/altera_merlin_master_translator.sv"
+       type="SYSTEM_VERILOG"
+       attributes="" />
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/altera_merlin_slave_translator.sv"
+       type="SYSTEM_VERILOG"
+       attributes="" />
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/altera_reset_controller.v"
+       type="VERILOG"
+       attributes="" />
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/altera_reset_synchronizer.v"
+       type="VERILOG"
+       attributes="" />
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/altera_reset_controller.sdc"
+       type="SDC"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file path="C:/Users/user/Desktop/LAB2_3/rsa_qsys.qsys" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file path="C:/Users/user/Desktop/LAB2_3/Rsa_Wrapper_hw.tcl" />
+   <file
+       path="C:/altera/15.0/ip/altera/sopc_builder_ip/altera_avalon_altpll/altera_avalon_altpll_hw.tcl" />
+   <file
+       path="C:/altera/15.0/ip/altera/sopc_builder_ip/altera_avalon_uart/altera_avalon_uart_hw.tcl" />
+   <file
+       path="C:/altera/15.0/ip/altera/merlin/altera_mm_interconnect/altera_mm_interconnect_hw.tcl" />
+   <file
+       path="C:/altera/15.0/ip/altera/merlin/altera_merlin_master_translator/altera_merlin_master_translator_hw.tcl" />
+   <file
+       path="C:/altera/15.0/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
+   <file
+       path="C:/altera/15.0/ip/altera/merlin/altera_reset_controller/altera_reset_controller_hw.tcl" />
+  </childSourceFiles>
+  <messages>
+   <message level="Debug" culprit="rsa_qsys">queue size: 0 starting:rsa_qsys "rsa_qsys"</message>
+   <message level="Progress" culprit="min"></message>
+   <message level="Progress" culprit="max"></message>
+   <message level="Progress" culprit="current"></message>
+   <message level="Debug">Transform: CustomInstructionTransform</message>
+   <message level="Debug">No custom instruction connections, skipping transform </message>
+   <message level="Debug" culprit="merlin_custom_instruction_transform"><![CDATA[After transform: <b>4</b> modules, <b>7</b> connections]]></message>
+   <message level="Debug">Transform: MMTransform</message>
+   <message level="Debug">Transform: InitialInterconnectTransform</message>
+   <message level="Info">Interconnect is inserted between master Rsa_Wrapper_0.avalon_master_0 and slave uart_0.s1 because the master has address signal 5 bit wide, but the slave is 3 bit wide.</message>
+   <message level="Info">Interconnect is inserted between master Rsa_Wrapper_0.avalon_master_0 and slave uart_0.s1 because the master has readdata signal 32 bit wide, but the slave is 16 bit wide.</message>
+   <message level="Info">Interconnect is inserted between master Rsa_Wrapper_0.avalon_master_0 and slave uart_0.s1 because the master has writedata signal 32 bit wide, but the slave is 16 bit wide.</message>
+   <message level="Info">Interconnect is inserted between master Rsa_Wrapper_0.avalon_master_0 and slave uart_0.s1 because the master has waitrequest signal 1 bit wide, but the slave is 0 bit wide.</message>
+   <message level="Debug" culprit="merlin_initial_interconnect_transform"><![CDATA[After transform: <b>4</b> modules, <b>5</b> connections]]></message>
+   <message level="Debug">Transform: TerminalIdAssignmentUpdateTransform</message>
+   <message level="Debug">Transform: DefaultSlaveTransform</message>
+   <message level="Debug">Transform: TranslatorTransform</message>
+   <message level="Progress" culprit="min"></message>
+   <message level="Progress" culprit="max"></message>
+   <message level="Progress" culprit="current"></message>
+   <message level="Progress" culprit="min"></message>
+   <message level="Progress" culprit="max"></message>
+   <message level="Progress" culprit="current"></message>
+   <message level="Debug" culprit="merlin_translator_transform"><![CDATA[After transform: <b>6</b> modules, <b>11</b> connections]]></message>
+   <message level="Debug">Transform: IDPadTransform</message>
+   <message level="Debug">Transform: DomainTransform</message>
+   <message level="Debug">Transform merlin_domain_transform not run on matched interfaces Rsa_Wrapper_0.avalon_master_0 and Rsa_Wrapper_0_avalon_master_0_translator.avalon_anti_master_0</message>
+   <message level="Debug">Transform merlin_domain_transform not run on matched interfaces Rsa_Wrapper_0_avalon_master_0_translator.avalon_universal_master_0 and uart_0_s1_translator.avalon_universal_slave_0</message>
+   <message level="Debug">Transform merlin_domain_transform not run on matched interfaces uart_0_s1_translator.avalon_anti_slave_0 and uart_0.s1</message>
+   <message level="Debug">Transform: RouterTransform</message>
+   <message level="Debug">Transform: TrafficLimiterTransform</message>
+   <message level="Debug">Transform: BurstTransform</message>
+   <message level="Debug">Transform: TreeTransform</message>
+   <message level="Debug">Transform: NetworkToSwitchTransform</message>
+   <message level="Debug">Transform: WidthTransform</message>
+   <message level="Debug">Transform: RouterTableTransform</message>
+   <message level="Debug">Transform: ThreadIDMappingTableTransform</message>
+   <message level="Debug">Transform: ClockCrossingTransform</message>
+   <message level="Debug">Transform: PipelineTransform</message>
+   <message level="Debug">Transform: SpotPipelineTransform</message>
+   <message level="Debug">Transform: PerformanceMonitorTransform</message>
+   <message level="Debug">Transform: TrafficLimiterUpdateTransform</message>
+   <message level="Debug">Transform: InsertClockAndResetBridgesTransform</message>
+   <message level="Progress" culprit="min"></message>
+   <message level="Progress" culprit="max"></message>
+   <message level="Progress" culprit="current"></message>
+   <message level="Progress" culprit="min"></message>
+   <message level="Progress" culprit="max"></message>
+   <message level="Progress" culprit="current"></message>
+   <message level="Debug" culprit="merlin_clock_and_reset_bridge_transform"><![CDATA[After transform: <b>8</b> modules, <b>17</b> connections]]></message>
+   <message level="Debug">Transform: InterconnectConnectionsTagger</message>
+   <message level="Debug">Transform: HierarchyTransform</message>
+   <message level="Progress" culprit="min"></message>
+   <message level="Progress" culprit="max"></message>
+   <message level="Progress" culprit="current"></message>
+   <message level="Debug" culprit="merlin_hierarchy_transform"><![CDATA[After transform: <b>5</b> modules, <b>10</b> connections]]></message>
+   <message level="Debug" culprit="merlin_mm_transform"><![CDATA[After transform: <b>5</b> modules, <b>10</b> connections]]></message>
+   <message level="Debug">Transform: InterruptMapperTransform</message>
+   <message level="Debug">Transform: InterruptSyncTransform</message>
+   <message level="Debug">Transform: InterruptFanoutTransform</message>
+   <message level="Debug">Transform: AvalonStreamingTransform</message>
+   <message level="Debug">Transform: ResetAdaptation</message>
+   <message level="Progress" culprit="min"></message>
+   <message level="Progress" culprit="max"></message>
+   <message level="Progress" culprit="current"></message>
+   <message level="Progress" culprit="min"></message>
+   <message level="Progress" culprit="max"></message>
+   <message level="Progress" culprit="current"></message>
+   <message level="Debug" culprit="reset_adaptation_transform"><![CDATA[After transform: <b>7</b> modules, <b>14</b> connections]]></message>
+   <message level="Warning" culprit="rsa_qsys">"No matching role found for uart_0:s1:dataavailable (dataavailable)"</message>
+   <message level="Warning" culprit="rsa_qsys">"No matching role found for uart_0:s1:readyfordata (readyfordata)"</message>
+   <message level="Debug" culprit="rsa_qsys"><![CDATA["<b>rsa_qsys</b>" reuses <b>Rsa_Wrapper</b> "<b>submodules/Rsa256Wrapper</b>"]]></message>
+   <message level="Debug" culprit="rsa_qsys"><![CDATA["<b>rsa_qsys</b>" reuses <b>altpll</b> "<b>submodules/rsa_qsys_altpll_0</b>"]]></message>
+   <message level="Debug" culprit="rsa_qsys"><![CDATA["<b>rsa_qsys</b>" reuses <b>altera_avalon_uart</b> "<b>submodules/rsa_qsys_uart_0</b>"]]></message>
+   <message level="Debug" culprit="rsa_qsys"><![CDATA["<b>rsa_qsys</b>" reuses <b>altera_mm_interconnect</b> "<b>submodules/rsa_qsys_mm_interconnect_0</b>"]]></message>
+   <message level="Debug" culprit="rsa_qsys"><![CDATA["<b>rsa_qsys</b>" reuses <b>altera_reset_controller</b> "<b>submodules/altera_reset_controller</b>"]]></message>
+   <message level="Debug" culprit="rsa_qsys"><![CDATA["<b>rsa_qsys</b>" reuses <b>altera_reset_controller</b> "<b>submodules/altera_reset_controller</b>"]]></message>
+   <message level="Debug" culprit="rsa_qsys">queue size: 5 starting:Rsa_Wrapper "submodules/Rsa256Wrapper"</message>
+   <message level="Info" culprit="Rsa_Wrapper_0"><![CDATA["<b>rsa_qsys</b>" instantiated <b>Rsa_Wrapper</b> "<b>Rsa_Wrapper_0</b>"]]></message>
+   <message level="Debug" culprit="rsa_qsys">queue size: 4 starting:altpll "submodules/rsa_qsys_altpll_0"</message>
+   <message level="Debug">set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files</message>
+   <message level="Debug">Command: C:/altera/15.0/quartus\bin64/quartus_map.exe not_a_project --generate_hdl_interface=C:/Users/user/AppData/Local/Temp/alt9997_2457555045676444825.dir/0004_sopcgen/rsa_qsys_altpll_0.v --source=C:/Users/user/AppData/Local/Temp/alt9997_2457555045676444825.dir/0004_sopcgen/rsa_qsys_altpll_0.v --set=HDL_INTERFACE_OUTPUT_PATH=C:/Users/user/AppData/Local/Temp/alt9997_2457555045676444825.dir/0005_sopcqmap/ --ini=disable_check_quartus_compatibility_qsys_only=on</message>
+   <message level="Debug">Command took 4.976s</message>
+   <message level="Info" culprit="altpll_0"><![CDATA["<b>rsa_qsys</b>" instantiated <b>altpll</b> "<b>altpll_0</b>"]]></message>
+   <message level="Debug" culprit="rsa_qsys">queue size: 3 starting:altera_avalon_uart "submodules/rsa_qsys_uart_0"</message>
+   <message level="Info" culprit="uart_0">Starting RTL generation for module 'rsa_qsys_uart_0'</message>
+   <message level="Info" culprit="uart_0">  Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_uart -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_uart/generate_rtl.pl --name=rsa_qsys_uart_0 --dir=C:/Users/user/AppData/Local/Temp/alt9997_2457555045676444825.dir/0006_uart_0_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/user/AppData/Local/Temp/alt9997_2457555045676444825.dir/0006_uart_0_gen//rsa_qsys_uart_0_component_configuration.pl  --do_build_sim=0  ]</message>
+   <message level="Info" culprit="uart_0">Done RTL generation for module 'rsa_qsys_uart_0'</message>
+   <message level="Info" culprit="uart_0"><![CDATA["<b>rsa_qsys</b>" instantiated <b>altera_avalon_uart</b> "<b>uart_0</b>"]]></message>
+   <message level="Debug" culprit="rsa_qsys">queue size: 2 starting:altera_mm_interconnect "submodules/rsa_qsys_mm_interconnect_0"</message>
+   <message level="Progress" culprit="min"></message>
+   <message level="Progress" culprit="max"></message>
+   <message level="Progress" culprit="current"></message>
+   <message level="Debug">Transform: CustomInstructionTransform</message>
+   <message level="Debug">No custom instruction connections, skipping transform </message>
+   <message level="Debug" culprit="merlin_custom_instruction_transform"><![CDATA[After transform: <b>4</b> modules, <b>6</b> connections]]></message>
+   <message level="Debug">Transform: MMTransform</message>
+   <message level="Debug">Transform: InitialInterconnectTransform</message>
+   <message level="Debug" culprit="merlin_initial_interconnect_transform"><![CDATA[After transform: <b>0</b> modules, <b>0</b> connections]]></message>
+   <message level="Debug">Transform: TerminalIdAssignmentUpdateTransform</message>
+   <message level="Debug">Transform: DefaultSlaveTransform</message>
+   <message level="Debug">Transform: TranslatorTransform</message>
+   <message level="Debug">No Avalon connections, skipping transform </message>
+   <message level="Debug">Transform: IDPadTransform</message>
+   <message level="Debug">Transform: DomainTransform</message>
+   <message level="Debug">Transform: RouterTransform</message>
+   <message level="Debug">Transform: TrafficLimiterTransform</message>
+   <message level="Debug">Transform: BurstTransform</message>
+   <message level="Debug">Transform: TreeTransform</message>
+   <message level="Debug">Transform: NetworkToSwitchTransform</message>
+   <message level="Debug">Transform: WidthTransform</message>
+   <message level="Debug">Transform: RouterTableTransform</message>
+   <message level="Debug">Transform: ThreadIDMappingTableTransform</message>
+   <message level="Debug">Transform: ClockCrossingTransform</message>
+   <message level="Debug">Transform: PipelineTransform</message>
+   <message level="Debug">Transform: SpotPipelineTransform</message>
+   <message level="Debug">Transform: PerformanceMonitorTransform</message>
+   <message level="Debug">Transform: TrafficLimiterUpdateTransform</message>
+   <message level="Debug">Transform: InsertClockAndResetBridgesTransform</message>
+   <message level="Debug">Transform: InterconnectConnectionsTagger</message>
+   <message level="Debug">Transform: HierarchyTransform</message>
+   <message level="Debug" culprit="merlin_hierarchy_transform"><![CDATA[After transform: <b>4</b> modules, <b>6</b> connections]]></message>
+   <message level="Debug">Transform: InterruptMapperTransform</message>
+   <message level="Debug">Transform: InterruptSyncTransform</message>
+   <message level="Debug">Transform: InterruptFanoutTransform</message>
+   <message level="Debug">Transform: AvalonStreamingTransform</message>
+   <message level="Debug">Transform: ResetAdaptation</message>
+   <message level="Debug" culprit="mm_interconnect_0"><![CDATA["<b>mm_interconnect_0</b>" reuses <b>altera_merlin_master_translator</b> "<b>submodules/altera_merlin_master_translator</b>"]]></message>
+   <message level="Debug" culprit="mm_interconnect_0"><![CDATA["<b>mm_interconnect_0</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"]]></message>
+   <message level="Info" culprit="mm_interconnect_0"><![CDATA["<b>rsa_qsys</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_0</b>"]]></message>
+   <message level="Debug" culprit="rsa_qsys">queue size: 1 starting:altera_merlin_master_translator "submodules/altera_merlin_master_translator"</message>
+   <message level="Info" culprit="Rsa_Wrapper_0_avalon_master_0_translator"><![CDATA["<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_master_translator</b> "<b>Rsa_Wrapper_0_avalon_master_0_translator</b>"]]></message>
+   <message level="Debug" culprit="rsa_qsys">queue size: 0 starting:altera_merlin_slave_translator "submodules/altera_merlin_slave_translator"</message>
+   <message level="Info" culprit="uart_0_s1_translator"><![CDATA["<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_slave_translator</b> "<b>uart_0_s1_translator</b>"]]></message>
+   <message level="Debug" culprit="rsa_qsys">queue size: 3 starting:altera_reset_controller "submodules/altera_reset_controller"</message>
+   <message level="Info" culprit="rst_controller"><![CDATA["<b>rsa_qsys</b>" instantiated <b>altera_reset_controller</b> "<b>rst_controller</b>"]]></message>
+  </messages>
+ </entity>
+ <entity
+   path="submodules/"
+   parameterizationKey="Rsa_Wrapper:1.0:"
+   instancePathKey="rsa_qsys:.:Rsa_Wrapper_0"
+   kind="Rsa_Wrapper"
+   version="1.0"
+   name="Rsa256Wrapper">
+  <generatedFiles>
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/Rsa256Core.sv"
+       type="SYSTEM_VERILOG"
+       attributes="" />
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/Rsa256Wrapper.sv"
+       type="SYSTEM_VERILOG"
+       attributes="TOP_LEVEL_FILE" />
+  </generatedFiles>
+  <childGeneratedFiles/>
+  <sourceFiles>
+   <file path="C:/Users/user/Desktop/LAB2_3/Rsa_Wrapper_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator instantiator="rsa_qsys" as="Rsa_Wrapper_0" />
+  <messages>
+   <message level="Debug" culprit="rsa_qsys">queue size: 5 starting:Rsa_Wrapper "submodules/Rsa256Wrapper"</message>
+   <message level="Info" culprit="Rsa_Wrapper_0"><![CDATA["<b>rsa_qsys</b>" instantiated <b>Rsa_Wrapper</b> "<b>Rsa_Wrapper_0</b>"]]></message>
+  </messages>
+ </entity>
+ <entity
+   path="submodules/"
+   parameterizationKey="altpll:15.0:AUTO_DEVICE_FAMILY=Cyclone IV E,AUTO_INCLK_INTERFACE_CLOCK_RATE=50000000,AVALON_USE_SEPARATE_SYSCLK=NO,BANDWIDTH=,BANDWIDTH_TYPE=AUTO,CLK0_DIVIDE_BY=2,CLK0_DUTY_CYCLE=50,CLK0_MULTIPLY_BY=1,CLK0_PHASE_SHIFT=0,CLK1_DIVIDE_BY=,CLK1_DUTY_CYCLE=,CLK1_MULTIPLY_BY=,CLK1_PHASE_SHIFT=,CLK2_DIVIDE_BY=,CLK2_DUTY_CYCLE=,CLK2_MULTIPLY_BY=,CLK2_PHASE_SHIFT=,CLK3_DIVIDE_BY=,CLK3_DUTY_CYCLE=,CLK3_MULTIPLY_BY=,CLK3_PHASE_SHIFT=,CLK4_DIVIDE_BY=,CLK4_DUTY_CYCLE=,CLK4_MULTIPLY_BY=,CLK4_PHASE_SHIFT=,CLK5_DIVIDE_BY=,CLK5_DUTY_CYCLE=,CLK5_MULTIPLY_BY=,CLK5_PHASE_SHIFT=,CLK6_DIVIDE_BY=,CLK6_DUTY_CYCLE=,CLK6_MULTIPLY_BY=,CLK6_PHASE_SHIFT=,CLK7_DIVIDE_BY=,CLK7_DUTY_CYCLE=,CLK7_MULTIPLY_BY=,CLK7_PHASE_SHIFT=,CLK8_DIVIDE_BY=,CLK8_DUTY_CYCLE=,CLK8_MULTIPLY_BY=,CLK8_PHASE_SHIFT=,CLK9_DIVIDE_BY=,CLK9_DUTY_CYCLE=,CLK9_MULTIPLY_BY=,CLK9_PHASE_SHIFT=,COMPENSATE_CLOCK=CLK0,DOWN_SPREAD=,DPA_DIVIDER=,DPA_DIVIDE_BY=,DPA_MULTIPLY_BY=,ENABLE_SWITCH_OVER_COUNTER=,EXTCLK0_DIVIDE_BY=,EXTCLK0_DUTY_CYCLE=,EXTCLK0_MULTIPLY_BY=,EXTCLK0_PHASE_SHIFT=,EXTCLK1_DIVIDE_BY=,EXTCLK1_DUTY_CYCLE=,EXTCLK1_MULTIPLY_BY=,EXTCLK1_PHASE_SHIFT=,EXTCLK2_DIVIDE_BY=,EXTCLK2_DUTY_CYCLE=,EXTCLK2_MULTIPLY_BY=,EXTCLK2_PHASE_SHIFT=,EXTCLK3_DIVIDE_BY=,EXTCLK3_DUTY_CYCLE=,EXTCLK3_MULTIPLY_BY=,EXTCLK3_PHASE_SHIFT=,FEEDBACK_SOURCE=,GATE_LOCK_COUNTER=,GATE_LOCK_SIGNAL=,HIDDEN_CONSTANTS=CT#PORT_clk5 PORT_UNUSED CT#PORT_clk4 PORT_UNUSED CT#PORT_clk3 PORT_UNUSED CT#PORT_clk2 PORT_UNUSED CT#PORT_clk1 PORT_UNUSED CT#PORT_clk0 PORT_USED CT#CLK0_MULTIPLY_BY 1 CT#PORT_SCANWRITE PORT_UNUSED CT#PORT_SCANACLR PORT_UNUSED CT#PORT_PFDENA PORT_UNUSED CT#PORT_PLLENA PORT_UNUSED CT#PORT_SCANDATA PORT_UNUSED CT#PORT_SCANCLKENA PORT_UNUSED CT#WIDTH_CLOCK 5 CT#PORT_SCANDATAOUT PORT_UNUSED CT#LPM_TYPE altpll CT#PLL_TYPE AUTO CT#CLK0_PHASE_SHIFT 0 CT#PORT_PHASEDONE PORT_UNUSED CT#OPERATION_MODE NORMAL CT#PORT_CONFIGUPDATE PORT_UNUSED CT#COMPENSATE_CLOCK CLK0 CT#PORT_CLKSWITCH PORT_UNUSED CT#INCLK0_INPUT_FREQUENCY 20000 CT#PORT_SCANDONE PORT_UNUSED CT#PORT_CLKLOSS PORT_UNUSED CT#PORT_INCLK1 PORT_UNUSED CT#AVALON_USE_SEPARATE_SYSCLK NO CT#PORT_INCLK0 PORT_USED CT#PORT_clkena5 PORT_UNUSED CT#PORT_clkena4 PORT_UNUSED CT#PORT_clkena3 PORT_UNUSED CT#PORT_clkena2 PORT_UNUSED CT#PORT_clkena1 PORT_UNUSED CT#PORT_clkena0 PORT_UNUSED CT#PORT_ARESET PORT_USED CT#BANDWIDTH_TYPE AUTO CT#INTENDED_DEVICE_FAMILY {Cyclone IV E} CT#PORT_SCANREAD PORT_UNUSED CT#PORT_PHASESTEP PORT_UNUSED CT#PORT_SCANCLK PORT_UNUSED CT#PORT_CLKBAD1 PORT_UNUSED CT#PORT_CLKBAD0 PORT_UNUSED CT#PORT_FBIN PORT_UNUSED CT#PORT_PHASEUPDOWN PORT_UNUSED CT#PORT_extclk3 PORT_UNUSED CT#PORT_extclk2 PORT_UNUSED CT#PORT_extclk1 PORT_UNUSED CT#PORT_PHASECOUNTERSELECT PORT_UNUSED CT#PORT_extclk0 PORT_UNUSED CT#PORT_ACTIVECLOCK PORT_UNUSED CT#CLK0_DUTY_CYCLE 50 CT#CLK0_DIVIDE_BY 2 CT#PORT_LOCKED PORT_USED,HIDDEN_CUSTOM_ELABORATION=altpll_avalon_elaboration,HIDDEN_CUSTOM_POST_EDIT=altpll_avalon_post_edit,HIDDEN_IF_PORTS=IF#locked {output 0} IF#reset {input 0} IF#clk {input 0} IF#readdata {output 32} IF#write {input 0} IF#phasedone {output 0} IF#address {input 2} IF#c0 {output 0} IF#writedata {input 32} IF#read {input 0} IF#areset {input 0},HIDDEN_IS_FIRST_EDIT=0,HIDDEN_IS_NUMERIC=IN#WIDTH_CLOCK 1 IN#CLK0_DUTY_CYCLE 1 IN#PLL_TARGET_HARCOPY_CHECK 1 IN#SWITCHOVER_COUNT_EDIT 1 IN#INCLK0_INPUT_FREQUENCY 1 IN#PLL_LVDS_PLL_CHECK 1 IN#PLL_AUTOPLL_CHECK 1 IN#PLL_FASTPLL_CHECK 1 IN#PLL_ENHPLL_CHECK 1 IN#DIV_FACTOR0 1 IN#LVDS_MODE_DATA_RATE_DIRTY 1 IN#GLOCK_COUNTER_EDIT 1 IN#CLK0_DIVIDE_BY 1 IN#MULT_FACTOR0 1 IN#CLK0_MULTIPLY_BY 1 IN#USE_MIL_SPEED_GRADE 1,HIDDEN_MF_PORTS=MF#areset 1 MF#clk 1 MF#locked 1 MF#inclk 1,HIDDEN_PRIVATES=PT#GLOCKED_FEATURE_ENABLED 0 PT#SPREAD_FEATURE_ENABLED 0 PT#BANDWIDTH_FREQ_UNIT MHz PT#CUR_DEDICATED_CLK c0 PT#INCLK0_FREQ_EDIT 50.000 PT#BANDWIDTH_PRESET Low PT#PLL_LVDS_PLL_CHECK 0 PT#BANDWIDTH_USE_PRESET 0 PT#AVALON_USE_SEPARATE_SYSCLK NO PT#PLL_ENHPLL_CHECK 0 PT#OUTPUT_FREQ_UNIT0 MHz PT#PHASE_RECONFIG_FEATURE_ENABLED 1 PT#CREATE_CLKBAD_CHECK 0 PT#CLKSWITCH_CHECK 0 PT#INCLK1_FREQ_EDIT 100.000 PT#NORMAL_MODE_RADIO 1 PT#SRC_SYNCH_COMP_RADIO 0 PT#PLL_ARESET_CHECK 1 PT#LONG_SCAN_RADIO 1 PT#SCAN_FEATURE_ENABLED 1 PT#PHASE_RECONFIG_INPUTS_CHECK 0 PT#USE_CLK0 1 PT#PRIMARY_CLK_COMBO inclk0 PT#BANDWIDTH 1.000 PT#GLOCKED_COUNTER_EDIT_CHANGED 1 PT#PLL_FASTPLL_CHECK 0 PT#SPREAD_FREQ_UNIT KHz PT#PLL_AUTOPLL_CHECK 1 PT#LVDS_PHASE_SHIFT_UNIT0 deg PT#SWITCHOVER_FEATURE_ENABLED 0 PT#MIG_DEVICE_SPEED_GRADE Any PT#OUTPUT_FREQ_MODE0 1 PT#BANDWIDTH_FEATURE_ENABLED 1 PT#INCLK0_FREQ_UNIT_COMBO MHz PT#ZERO_DELAY_RADIO 0 PT#OUTPUT_FREQ0 25.00000000 PT#SHORT_SCAN_RADIO 0 PT#LVDS_MODE_DATA_RATE_DIRTY 0 PT#CUR_FBIN_CLK c0 PT#PLL_ADVANCED_PARAM_CHECK 0 PT#CLKBAD_SWITCHOVER_CHECK 0 PT#PHASE_SHIFT_STEP_ENABLED_CHECK 0 PT#DEVICE_SPEED_GRADE Any PT#PLL_FBMIMIC_CHECK 0 PT#LVDS_MODE_DATA_RATE {Not Available} PT#LOCKED_OUTPUT_CHECK 1 PT#SPREAD_PERCENT 0.500 PT#PHASE_SHIFT0 0.00000000 PT#DIV_FACTOR0 1 PT#CNX_NO_COMPENSATE_RADIO 0 PT#USE_CLKENA0 0 PT#CREATE_INCLK1_CHECK 0 PT#GLOCK_COUNTER_EDIT 1048575 PT#INCLK1_FREQ_UNIT_COMBO MHz PT#EFF_OUTPUT_FREQ_VALUE0 25.000000 PT#SPREAD_FREQ 50.000 PT#USE_MIL_SPEED_GRADE 0 PT#EXPLICIT_SWITCHOVER_COUNTER 0 PT#STICKY_CLK0 1 PT#EXT_FEEDBACK_RADIO 0 PT#MIRROR_CLK0 0 PT#SWITCHOVER_COUNT_EDIT 1 PT#SELF_RESET_LOCK_LOSS 0 PT#PLL_PFDENA_CHECK 0 PT#INT_FEEDBACK__MODE_RADIO 1 PT#INCLK1_FREQ_EDIT_CHANGED 1 PT#CLKLOSS_CHECK 0 PT#SYNTH_WRAPPER_GEN_POSTFIX 0 PT#PHASE_SHIFT_UNIT0 deg PT#BANDWIDTH_USE_AUTO 1 PT#HAS_MANUAL_SWITCHOVER 1 PT#MULT_FACTOR0 1 PT#SPREAD_USE 0 PT#GLOCKED_MODE_CHECK 0 PT#SACN_INPUTS_CHECK 0 PT#DUTY_CYCLE0 50.00000000 PT#INTENDED_DEVICE_FAMILY {Cyclone IV E} PT#PLL_TARGET_HARCOPY_CHECK 0 PT#INCLK1_FREQ_UNIT_CHANGED 1 PT#RECONFIG_FILE ALTPLL1727771440072325.mif PT#ACTIVECLK_CHECK 0,HIDDEN_USED_PORTS=UP#locked used UP#c0 used UP#areset used UP#inclk0 used,INCLK0_INPUT_FREQUENCY=20000,INCLK1_INPUT_FREQUENCY=,INTENDED_DEVICE_FAMILY=Cyclone IV E,INVALID_LOCK_MULTIPLIER=,LOCK_HIGH=,LOCK_LOW=,OPERATION_MODE=NORMAL,PLL_TYPE=AUTO,PORT_ACTIVECLOCK=PORT_UNUSED,PORT_ARESET=PORT_USED,PORT_CLKBAD0=PORT_UNUSED,PORT_CLKBAD1=PORT_UNUSED,PORT_CLKLOSS=PORT_UNUSED,PORT_CLKSWITCH=PORT_UNUSED,PORT_CONFIGUPDATE=PORT_UNUSED,PORT_ENABLE0=,PORT_ENABLE1=,PORT_FBIN=PORT_UNUSED,PORT_FBOUT=,PORT_INCLK0=PORT_USED,PORT_INCLK1=PORT_UNUSED,PORT_LOCKED=PORT_USED,PORT_PFDENA=PORT_UNUSED,PORT_PHASECOUNTERSELECT=PORT_UNUSED,PORT_PHASEDONE=PORT_UNUSED,PORT_PHASESTEP=PORT_UNUSED,PORT_PHASEUPDOWN=PORT_UNUSED,PORT_PLLENA=PORT_UNUSED,PORT_SCANACLR=PORT_UNUSED,PORT_SCANCLK=PORT_UNUSED,PORT_SCANCLKENA=PORT_UNUSED,PORT_SCANDATA=PORT_UNUSED,PORT_SCANDATAOUT=PORT_UNUSED,PORT_SCANDONE=PORT_UNUSED,PORT_SCANREAD=PORT_UNUSED,PORT_SCANWRITE=PORT_UNUSED,PORT_SCLKOUT0=,PORT_SCLKOUT1=,PORT_VCOOVERRANGE=,PORT_VCOUNDERRANGE=,PORT_clk0=PORT_USED,PORT_clk1=PORT_UNUSED,PORT_clk2=PORT_UNUSED,PORT_clk3=PORT_UNUSED,PORT_clk4=PORT_UNUSED,PORT_clk5=PORT_UNUSED,PORT_clk6=,PORT_clk7=,PORT_clk8=,PORT_clk9=,PORT_clkena0=PORT_UNUSED,PORT_clkena1=PORT_UNUSED,PORT_clkena2=PORT_UNUSED,PORT_clkena3=PORT_UNUSED,PORT_clkena4=PORT_UNUSED,PORT_clkena5=PORT_UNUSED,PORT_extclk0=PORT_UNUSED,PORT_extclk1=PORT_UNUSED,PORT_extclk2=PORT_UNUSED,PORT_extclk3=PORT_UNUSED,PORT_extclkena0=,PORT_extclkena1=,PORT_extclkena2=,PORT_extclkena3=,PRIMARY_CLOCK=,QUALIFY_CONF_DONE=,SCAN_CHAIN=,SCAN_CHAIN_MIF_FILE=,SCLKOUT0_PHASE_SHIFT=,SCLKOUT1_PHASE_SHIFT=,SELF_RESET_ON_GATED_LOSS_LOCK=,SELF_RESET_ON_LOSS_LOCK=,SKIP_VCO=,SPREAD_FREQUENCY=,SWITCH_OVER_COUNTER=,SWITCH_OVER_ON_GATED_LOCK=,SWITCH_OVER_ON_LOSSCLK=,SWITCH_OVER_TYPE=,USING_FBMIMICBIDIR_PORT=,VALID_LOCK_MULTIPLIER=,VCO_DIVIDE_BY=,VCO_FREQUENCY_CONTROL=,VCO_MULTIPLY_BY=,VCO_PHASE_SHIFT_STEP=,WIDTH_CLOCK=5,WIDTH_PHASECOUNTERSELECT="
+   instancePathKey="rsa_qsys:.:altpll_0"
+   kind="altpll"
+   version="15.0"
+   name="rsa_qsys_altpll_0">
+  <parameter name="CLK3_PHASE_SHIFT" value="" />
+  <parameter name="PORT_LOCKED" value="PORT_USED" />
+  <parameter name="CLK2_PHASE_SHIFT" value="" />
+  <parameter name="CLK4_PHASE_SHIFT" value="" />
+  <parameter name="CLK5_DUTY_CYCLE" value="" />
+  <parameter name="PORT_SCANDATAOUT" value="PORT_UNUSED" />
+  <parameter name="CLK1_PHASE_SHIFT" value="" />
+  <parameter name="CLK5_PHASE_SHIFT" value="" />
+  <parameter name="HIDDEN_CUSTOM_ELABORATION" value="altpll_avalon_elaboration" />
+  <parameter name="CLK8_DUTY_CYCLE" value="" />
+  <parameter name="CLK0_DIVIDE_BY" value="2" />
+  <parameter name="CLK7_PHASE_SHIFT" value="" />
+  <parameter name="CLK0_PHASE_SHIFT" value="0" />
+  <parameter name="CLK6_PHASE_SHIFT" value="" />
+  <parameter name="CLK8_PHASE_SHIFT" value="" />
+  <parameter name="PORT_clk8" value="" />
+  <parameter name="INVALID_LOCK_MULTIPLIER" value="" />
+  <parameter name="PORT_clk9" value="" />
+  <parameter name="PORT_clk6" value="" />
+  <parameter name="PORT_clk7" value="" />
+  <parameter name="EXTCLK2_DIVIDE_BY" value="" />
+  <parameter name="PORT_clk4" value="PORT_UNUSED" />
+  <parameter name="PORT_clk5" value="PORT_UNUSED" />
+  <parameter name="PORT_clk2" value="PORT_UNUSED" />
+  <parameter name="EXTCLK3_DUTY_CYCLE" value="" />
+  <parameter name="PORT_clk3" value="PORT_UNUSED" />
+  <parameter name="PORT_clk0" value="PORT_USED" />
+  <parameter name="PORT_clk1" value="PORT_UNUSED" />
+  <parameter name="INCLK0_INPUT_FREQUENCY" value="20000" />
+  <parameter name="PORT_extclkena0" value="" />
+  <parameter name="SKIP_VCO" value="" />
+  <parameter name="PORT_extclkena1" value="" />
+  <parameter name="PORT_extclkena2" value="" />
+  <parameter name="CLK2_DUTY_CYCLE" value="" />
+  <parameter name="PORT_extclkena3" value="" />
+  <parameter name="PORT_CONFIGUPDATE" value="PORT_UNUSED" />
+  <parameter name="GATE_LOCK_SIGNAL" value="" />
+  <parameter name="CLK7_DIVIDE_BY" value="" />
+  <parameter name="CLK8_DIVIDE_BY" value="" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
+  <parameter name="AUTO_INCLK_INTERFACE_CLOCK_RATE" value="50000000" />
+  <parameter name="PORT_ENABLE1" value="" />
+  <parameter name="PORT_VCOUNDERRANGE" value="" />
+  <parameter name="GATE_LOCK_COUNTER" value="" />
+  <parameter name="ENABLE_SWITCH_OVER_COUNTER" value="" />
+  <parameter name="SWITCH_OVER_TYPE" value="" />
+  <parameter name="PORT_ENABLE0" value="" />
+  <parameter name="EXTCLK3_DIVIDE_BY" value="" />
+  <parameter name="PORT_SCANACLR" value="PORT_UNUSED" />
+  <parameter name="CLK1_DIVIDE_BY" value="" />
+  <parameter name="CLK9_DIVIDE_BY" value="" />
+  <parameter name="FEEDBACK_SOURCE" value="" />
+  <parameter name="CLK1_DUTY_CYCLE" value="" />
+  <parameter name="BANDWIDTH_TYPE" value="AUTO" />
+  <parameter name="SPREAD_FREQUENCY" value="" />
+  <parameter name="PORT_PLLENA" value="PORT_UNUSED" />
+  <parameter name="LOCK_HIGH" value="" />
+  <parameter
+     name="HIDDEN_USED_PORTS"
+     value="UP#locked used UP#c0 used UP#areset used UP#inclk0 used" />
+  <parameter name="EXTCLK1_DIVIDE_BY" value="" />
+  <parameter name="DOWN_SPREAD" value="" />
+  <parameter name="PORT_SCANDONE" value="PORT_UNUSED" />
+  <parameter name="SWITCH_OVER_ON_LOSSCLK" value="" />
+  <parameter name="PORT_SCANCLKENA" value="PORT_UNUSED" />
+  <parameter name="PORT_FBOUT" value="" />
+  <parameter name="VCO_FREQUENCY_CONTROL" value="" />
+  <parameter
+     name="HIDDEN_IF_PORTS"
+     value="IF#locked {output 0} IF#reset {input 0} IF#clk {input 0} IF#readdata {output 32} IF#write {input 0} IF#phasedone {output 0} IF#address {input 2} IF#c0 {output 0} IF#writedata {input 32} IF#read {input 0} IF#areset {input 0}" />
+  <parameter
+     name="HIDDEN_MF_PORTS"
+     value="MF#areset 1 MF#clk 1 MF#locked 1 MF#inclk 1" />
+  <parameter name="CLK9_PHASE_SHIFT" value="" />
+  <parameter name="CLK6_DIVIDE_BY" value="" />
+  <parameter name="CLK3_DIVIDE_BY" value="" />
+  <parameter name="EXTCLK0_MULTIPLY_BY" value="" />
+  <parameter name="PORT_PHASEUPDOWN" value="PORT_UNUSED" />
+  <parameter name="BANDWIDTH" value="" />
+  <parameter name="CLK0_DUTY_CYCLE" value="50" />
+  <parameter name="WIDTH_CLOCK" value="5" />
+  <parameter name="EXTCLK1_MULTIPLY_BY" value="" />
+  <parameter name="VCO_PHASE_SHIFT_STEP" value="" />
+  <parameter name="PLL_TYPE" value="AUTO" />
+  <parameter name="EXTCLK2_MULTIPLY_BY" value="" />
+  <parameter name="EXTCLK3_MULTIPLY_BY" value="" />
+  <parameter name="CLK4_DIVIDE_BY" value="" />
+  <parameter name="PORT_FBIN" value="PORT_UNUSED" />
+  <parameter name="SWITCH_OVER_ON_GATED_LOCK" value="" />
+  <parameter name="PORT_PHASECOUNTERSELECT" value="PORT_UNUSED" />
+  <parameter name="PORT_VCOOVERRANGE" value="" />
+  <parameter name="DPA_DIVIDE_BY" value="" />
+  <parameter
+     name="HIDDEN_PRIVATES"
+     value="PT#GLOCKED_FEATURE_ENABLED 0 PT#SPREAD_FEATURE_ENABLED 0 PT#BANDWIDTH_FREQ_UNIT MHz PT#CUR_DEDICATED_CLK c0 PT#INCLK0_FREQ_EDIT 50.000 PT#BANDWIDTH_PRESET Low PT#PLL_LVDS_PLL_CHECK 0 PT#BANDWIDTH_USE_PRESET 0 PT#AVALON_USE_SEPARATE_SYSCLK NO PT#PLL_ENHPLL_CHECK 0 PT#OUTPUT_FREQ_UNIT0 MHz PT#PHASE_RECONFIG_FEATURE_ENABLED 1 PT#CREATE_CLKBAD_CHECK 0 PT#CLKSWITCH_CHECK 0 PT#INCLK1_FREQ_EDIT 100.000 PT#NORMAL_MODE_RADIO 1 PT#SRC_SYNCH_COMP_RADIO 0 PT#PLL_ARESET_CHECK 1 PT#LONG_SCAN_RADIO 1 PT#SCAN_FEATURE_ENABLED 1 PT#PHASE_RECONFIG_INPUTS_CHECK 0 PT#USE_CLK0 1 PT#PRIMARY_CLK_COMBO inclk0 PT#BANDWIDTH 1.000 PT#GLOCKED_COUNTER_EDIT_CHANGED 1 PT#PLL_FASTPLL_CHECK 0 PT#SPREAD_FREQ_UNIT KHz PT#PLL_AUTOPLL_CHECK 1 PT#LVDS_PHASE_SHIFT_UNIT0 deg PT#SWITCHOVER_FEATURE_ENABLED 0 PT#MIG_DEVICE_SPEED_GRADE Any PT#OUTPUT_FREQ_MODE0 1 PT#BANDWIDTH_FEATURE_ENABLED 1 PT#INCLK0_FREQ_UNIT_COMBO MHz PT#ZERO_DELAY_RADIO 0 PT#OUTPUT_FREQ0 25.00000000 PT#SHORT_SCAN_RADIO 0 PT#LVDS_MODE_DATA_RATE_DIRTY 0 PT#CUR_FBIN_CLK c0 PT#PLL_ADVANCED_PARAM_CHECK 0 PT#CLKBAD_SWITCHOVER_CHECK 0 PT#PHASE_SHIFT_STEP_ENABLED_CHECK 0 PT#DEVICE_SPEED_GRADE Any PT#PLL_FBMIMIC_CHECK 0 PT#LVDS_MODE_DATA_RATE {Not Available} PT#LOCKED_OUTPUT_CHECK 1 PT#SPREAD_PERCENT 0.500 PT#PHASE_SHIFT0 0.00000000 PT#DIV_FACTOR0 1 PT#CNX_NO_COMPENSATE_RADIO 0 PT#USE_CLKENA0 0 PT#CREATE_INCLK1_CHECK 0 PT#GLOCK_COUNTER_EDIT 1048575 PT#INCLK1_FREQ_UNIT_COMBO MHz PT#EFF_OUTPUT_FREQ_VALUE0 25.000000 PT#SPREAD_FREQ 50.000 PT#USE_MIL_SPEED_GRADE 0 PT#EXPLICIT_SWITCHOVER_COUNTER 0 PT#STICKY_CLK0 1 PT#EXT_FEEDBACK_RADIO 0 PT#MIRROR_CLK0 0 PT#SWITCHOVER_COUNT_EDIT 1 PT#SELF_RESET_LOCK_LOSS 0 PT#PLL_PFDENA_CHECK 0 PT#INT_FEEDBACK__MODE_RADIO 1 PT#INCLK1_FREQ_EDIT_CHANGED 1 PT#CLKLOSS_CHECK 0 PT#SYNTH_WRAPPER_GEN_POSTFIX 0 PT#PHASE_SHIFT_UNIT0 deg PT#BANDWIDTH_USE_AUTO 1 PT#HAS_MANUAL_SWITCHOVER 1 PT#MULT_FACTOR0 1 PT#SPREAD_USE 0 PT#GLOCKED_MODE_CHECK 0 PT#SACN_INPUTS_CHECK 0 PT#DUTY_CYCLE0 50.00000000 PT#INTENDED_DEVICE_FAMILY {Cyclone IV E} PT#PLL_TARGET_HARCOPY_CHECK 0 PT#INCLK1_FREQ_UNIT_CHANGED 1 PT#RECONFIG_FILE ALTPLL1727771440072325.mif PT#ACTIVECLK_CHECK 0" />
+  <parameter name="VCO_DIVIDE_BY" value="" />
+  <parameter name="CLK3_DUTY_CYCLE" value="" />
+  <parameter name="SCAN_CHAIN" value="" />
+  <parameter name="LOCK_LOW" value="" />
+  <parameter name="CLK0_MULTIPLY_BY" value="1" />
+  <parameter name="PORT_SCANWRITE" value="PORT_UNUSED" />
+  <parameter name="CLK1_MULTIPLY_BY" value="" />
+  <parameter name="PORT_SCLKOUT1" value="" />
+  <parameter
+     name="HIDDEN_IS_NUMERIC"
+     value="IN#WIDTH_CLOCK 1 IN#CLK0_DUTY_CYCLE 1 IN#PLL_TARGET_HARCOPY_CHECK 1 IN#SWITCHOVER_COUNT_EDIT 1 IN#INCLK0_INPUT_FREQUENCY 1 IN#PLL_LVDS_PLL_CHECK 1 IN#PLL_AUTOPLL_CHECK 1 IN#PLL_FASTPLL_CHECK 1 IN#PLL_ENHPLL_CHECK 1 IN#DIV_FACTOR0 1 IN#LVDS_MODE_DATA_RATE_DIRTY 1 IN#GLOCK_COUNTER_EDIT 1 IN#CLK0_DIVIDE_BY 1 IN#MULT_FACTOR0 1 IN#CLK0_MULTIPLY_BY 1 IN#USE_MIL_SPEED_GRADE 1" />
+  <parameter name="CLK3_MULTIPLY_BY" value="" />
+  <parameter name="PORT_CLKLOSS" value="PORT_UNUSED" />
+  <parameter name="CLK2_MULTIPLY_BY" value="" />
+  <parameter name="CLK4_MULTIPLY_BY" value="" />
+  <parameter name="PORT_SCLKOUT0" value="" />
+  <parameter name="PORT_SCANREAD" value="PORT_UNUSED" />
+  <parameter name="CLK4_DUTY_CYCLE" value="" />
+  <parameter name="PORT_clkena0" value="PORT_UNUSED" />
+  <parameter name="PORT_PHASEDONE" value="PORT_UNUSED" />
+  <parameter name="PORT_clkena1" value="PORT_UNUSED" />
+  <parameter name="PORT_clkena2" value="PORT_UNUSED" />
+  <parameter name="PORT_PFDENA" value="PORT_UNUSED" />
+  <parameter name="PORT_clkena3" value="PORT_UNUSED" />
+  <parameter name="PORT_SCANDATA" value="PORT_UNUSED" />
+  <parameter name="CLK6_MULTIPLY_BY" value="" />
+  <parameter name="EXTCLK0_DIVIDE_BY" value="" />
+  <parameter name="CLK5_MULTIPLY_BY" value="" />
+  <parameter name="INTENDED_DEVICE_FAMILY" value="Cyclone IV E" />
+  <parameter name="OPERATION_MODE" value="NORMAL" />
+  <parameter name="EXTCLK2_DUTY_CYCLE" value="" />
+  <parameter name="WIDTH_PHASECOUNTERSELECT" value="" />
+  <parameter name="SWITCH_OVER_COUNTER" value="" />
+  <parameter name="CLK7_MULTIPLY_BY" value="" />
+  <parameter name="PORT_clkena4" value="PORT_UNUSED" />
+  <parameter name="PORT_clkena5" value="PORT_UNUSED" />
+  <parameter name="SCAN_CHAIN_MIF_FILE" value="" />
+  <parameter name="CLK8_MULTIPLY_BY" value="" />
+  <parameter name="CLK9_MULTIPLY_BY" value="" />
+  <parameter name="EXTCLK2_PHASE_SHIFT" value="" />
+  <parameter name="COMPENSATE_CLOCK" value="CLK0" />
+  <parameter name="PORT_INCLK0" value="PORT_USED" />
+  <parameter name="PORT_CLKSWITCH" value="PORT_UNUSED" />
+  <parameter name="EXTCLK3_PHASE_SHIFT" value="" />
+  <parameter name="PORT_INCLK1" value="PORT_UNUSED" />
+  <parameter name="CLK5_DIVIDE_BY" value="" />
+  <parameter name="CLK9_DUTY_CYCLE" value="" />
+  <parameter name="CLK6_DUTY_CYCLE" value="" />
+  <parameter name="DPA_DIVIDER" value="" />
+  <parameter name="VCO_MULTIPLY_BY" value="" />
+  <parameter name="EXTCLK1_PHASE_SHIFT" value="" />
+  <parameter
+     name="HIDDEN_CONSTANTS"
+     value="CT#PORT_clk5 PORT_UNUSED CT#PORT_clk4 PORT_UNUSED CT#PORT_clk3 PORT_UNUSED CT#PORT_clk2 PORT_UNUSED CT#PORT_clk1 PORT_UNUSED CT#PORT_clk0 PORT_USED CT#CLK0_MULTIPLY_BY 1 CT#PORT_SCANWRITE PORT_UNUSED CT#PORT_SCANACLR PORT_UNUSED CT#PORT_PFDENA PORT_UNUSED CT#PORT_PLLENA PORT_UNUSED CT#PORT_SCANDATA PORT_UNUSED CT#PORT_SCANCLKENA PORT_UNUSED CT#WIDTH_CLOCK 5 CT#PORT_SCANDATAOUT PORT_UNUSED CT#LPM_TYPE altpll CT#PLL_TYPE AUTO CT#CLK0_PHASE_SHIFT 0 CT#PORT_PHASEDONE PORT_UNUSED CT#OPERATION_MODE NORMAL CT#PORT_CONFIGUPDATE PORT_UNUSED CT#COMPENSATE_CLOCK CLK0 CT#PORT_CLKSWITCH PORT_UNUSED CT#INCLK0_INPUT_FREQUENCY 20000 CT#PORT_SCANDONE PORT_UNUSED CT#PORT_CLKLOSS PORT_UNUSED CT#PORT_INCLK1 PORT_UNUSED CT#AVALON_USE_SEPARATE_SYSCLK NO CT#PORT_INCLK0 PORT_USED CT#PORT_clkena5 PORT_UNUSED CT#PORT_clkena4 PORT_UNUSED CT#PORT_clkena3 PORT_UNUSED CT#PORT_clkena2 PORT_UNUSED CT#PORT_clkena1 PORT_UNUSED CT#PORT_clkena0 PORT_UNUSED CT#PORT_ARESET PORT_USED CT#BANDWIDTH_TYPE AUTO CT#INTENDED_DEVICE_FAMILY {Cyclone IV E} CT#PORT_SCANREAD PORT_UNUSED CT#PORT_PHASESTEP PORT_UNUSED CT#PORT_SCANCLK PORT_UNUSED CT#PORT_CLKBAD1 PORT_UNUSED CT#PORT_CLKBAD0 PORT_UNUSED CT#PORT_FBIN PORT_UNUSED CT#PORT_PHASEUPDOWN PORT_UNUSED CT#PORT_extclk3 PORT_UNUSED CT#PORT_extclk2 PORT_UNUSED CT#PORT_extclk1 PORT_UNUSED CT#PORT_PHASECOUNTERSELECT PORT_UNUSED CT#PORT_extclk0 PORT_UNUSED CT#PORT_ACTIVECLOCK PORT_UNUSED CT#CLK0_DUTY_CYCLE 50 CT#CLK0_DIVIDE_BY 2 CT#PORT_LOCKED PORT_USED" />
+  <parameter name="EXTCLK0_PHASE_SHIFT" value="" />
+  <parameter name="AVALON_USE_SEPARATE_SYSCLK" value="NO" />
+  <parameter name="SELF_RESET_ON_LOSS_LOCK" value="" />
+  <parameter name="CLK2_DIVIDE_BY" value="" />
+  <parameter name="PORT_PHASESTEP" value="PORT_UNUSED" />
+  <parameter name="USING_FBMIMICBIDIR_PORT" value="" />
+  <parameter name="PORT_CLKBAD1" value="PORT_UNUSED" />
+  <parameter name="QUALIFY_CONF_DONE" value="" />
+  <parameter name="PORT_ARESET" value="PORT_USED" />
+  <parameter name="DPA_MULTIPLY_BY" value="" />
+  <parameter name="INCLK1_INPUT_FREQUENCY" value="" />
+  <parameter name="CLK7_DUTY_CYCLE" value="" />
+  <parameter name="EXTCLK0_DUTY_CYCLE" value="" />
+  <parameter name="HIDDEN_CUSTOM_POST_EDIT" value="altpll_avalon_post_edit" />
+  <parameter name="HIDDEN_IS_FIRST_EDIT" value="0" />
+  <parameter name="VALID_LOCK_MULTIPLIER" value="" />
+  <parameter name="PRIMARY_CLOCK" value="" />
+  <parameter name="SELF_RESET_ON_GATED_LOSS_LOCK" value="" />
+  <parameter name="SCLKOUT0_PHASE_SHIFT" value="" />
+  <parameter name="PORT_ACTIVECLOCK" value="PORT_UNUSED" />
+  <parameter name="PORT_SCANCLK" value="PORT_UNUSED" />
+  <parameter name="SCLKOUT1_PHASE_SHIFT" value="" />
+  <parameter name="PORT_extclk3" value="PORT_UNUSED" />
+  <parameter name="EXTCLK1_DUTY_CYCLE" value="" />
+  <parameter name="PORT_extclk0" value="PORT_UNUSED" />
+  <parameter name="PORT_CLKBAD0" value="PORT_UNUSED" />
+  <parameter name="PORT_extclk2" value="PORT_UNUSED" />
+  <parameter name="PORT_extclk1" value="PORT_UNUSED" />
+  <generatedFiles>
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/rsa_qsys_altpll_0.v"
+       type="VERILOG" />
+  </generatedFiles>
+  <childGeneratedFiles/>
+  <sourceFiles>
+   <file
+       path="C:/altera/15.0/ip/altera/sopc_builder_ip/altera_avalon_altpll/altera_avalon_altpll_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator instantiator="rsa_qsys" as="altpll_0" />
+  <messages>
+   <message level="Debug" culprit="rsa_qsys">queue size: 4 starting:altpll "submodules/rsa_qsys_altpll_0"</message>
+   <message level="Debug">set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files</message>
+   <message level="Debug">Command: C:/altera/15.0/quartus\bin64/quartus_map.exe not_a_project --generate_hdl_interface=C:/Users/user/AppData/Local/Temp/alt9997_2457555045676444825.dir/0004_sopcgen/rsa_qsys_altpll_0.v --source=C:/Users/user/AppData/Local/Temp/alt9997_2457555045676444825.dir/0004_sopcgen/rsa_qsys_altpll_0.v --set=HDL_INTERFACE_OUTPUT_PATH=C:/Users/user/AppData/Local/Temp/alt9997_2457555045676444825.dir/0005_sopcqmap/ --ini=disable_check_quartus_compatibility_qsys_only=on</message>
+   <message level="Debug">Command took 4.976s</message>
+   <message level="Info" culprit="altpll_0"><![CDATA["<b>rsa_qsys</b>" instantiated <b>altpll</b> "<b>altpll_0</b>"]]></message>
+  </messages>
+ </entity>
+ <entity
+   path="submodules/"
+   parameterizationKey="altera_avalon_uart:15.0:baud=115200,baudError=0.01,clockRate=25000000,dataBits=8,fixedBaud=true,parity=NONE,parityFisrtChar=N,simCharStream=,simInteractiveInputEnable=false,simInteractiveOutputEnable=false,simTrueBaud=false,stopBits=1,syncRegDepth=2,useCtsRts=false,useEopRegister=false,useRelativePathForSimFile=false"
+   instancePathKey="rsa_qsys:.:uart_0"
+   kind="altera_avalon_uart"
+   version="15.0"
+   name="rsa_qsys_uart_0">
+  <parameter name="baud" value="115200" />
+  <parameter name="simInteractiveInputEnable" value="false" />
+  <parameter name="useRelativePathForSimFile" value="false" />
+  <parameter name="stopBits" value="1" />
+  <parameter name="parityFisrtChar" value="N" />
+  <parameter name="parity" value="NONE" />
+  <parameter name="useCtsRts" value="false" />
+  <parameter name="fixedBaud" value="true" />
+  <parameter name="dataBits" value="8" />
+  <parameter name="clockRate" value="25000000" />
+  <parameter name="simTrueBaud" value="false" />
+  <parameter name="useEopRegister" value="false" />
+  <parameter name="simInteractiveOutputEnable" value="false" />
+  <parameter name="syncRegDepth" value="2" />
+  <parameter name="simCharStream" value="" />
+  <parameter name="baudError" value="0.01" />
+  <generatedFiles>
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/rsa_qsys_uart_0.v"
+       type="VERILOG"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles/>
+  <sourceFiles>
+   <file
+       path="C:/altera/15.0/ip/altera/sopc_builder_ip/altera_avalon_uart/altera_avalon_uart_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator instantiator="rsa_qsys" as="uart_0" />
+  <messages>
+   <message level="Debug" culprit="rsa_qsys">queue size: 3 starting:altera_avalon_uart "submodules/rsa_qsys_uart_0"</message>
+   <message level="Info" culprit="uart_0">Starting RTL generation for module 'rsa_qsys_uart_0'</message>
+   <message level="Info" culprit="uart_0">  Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_uart -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_uart/generate_rtl.pl --name=rsa_qsys_uart_0 --dir=C:/Users/user/AppData/Local/Temp/alt9997_2457555045676444825.dir/0006_uart_0_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/user/AppData/Local/Temp/alt9997_2457555045676444825.dir/0006_uart_0_gen//rsa_qsys_uart_0_component_configuration.pl  --do_build_sim=0  ]</message>
+   <message level="Info" culprit="uart_0">Done RTL generation for module 'rsa_qsys_uart_0'</message>
+   <message level="Info" culprit="uart_0"><![CDATA["<b>rsa_qsys</b>" instantiated <b>altera_avalon_uart</b> "<b>uart_0</b>"]]></message>
+  </messages>
+ </entity>
+ <entity
+   path="submodules/"
+   parameterizationKey="altera_mm_interconnect:15.0:AUTO_DEVICE=EP4CE115F29C7,AUTO_DEVICE_FAMILY=Cyclone IV E,AUTO_DEVICE_SPEEDGRADE=,COMPOSE_CONTENTS=add_instance {Rsa_Wrapper_0_avalon_master_0_translator} {altera_merlin_master_translator};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_ADDRESS_W} {5};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_DATA_W} {32};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_BURSTCOUNT_W} {1};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_BYTEENABLE_W} {4};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {UAV_ADDRESS_W} {5};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {UAV_BURSTCOUNT_W} {3};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_READLATENCY} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_WRITE_WAIT} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_READ_WAIT} {1};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_DATA_HOLD} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_SETUP_WAIT} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_READDATA} {1};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_WRITEDATA} {1};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_READ} {1};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_WRITE} {1};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_BEGINBURSTTRANSFER} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_BEGINTRANSFER} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_BYTEENABLE} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_CHIPSELECT} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_ADDRESS} {1};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_BURSTCOUNT} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_DEBUGACCESS} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_CLKEN} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_READDATAVALID} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_WAITREQUEST} {1};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_LOCK} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_READRESPONSE} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_WRITERESPONSE} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_SYMBOLS_PER_WORD} {4};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_ADDRESS_SYMBOLS} {1};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_BURSTCOUNT_SYMBOLS} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {UAV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_LINEWRAPBURSTS} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_MAX_PENDING_READ_TRANSACTIONS} {64};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_BURSTBOUNDARIES} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_INTERLEAVEBURSTS} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_BITS_PER_SYMBOL} {8};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_ISBIGENDIAN} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_ADDRESSGROUP} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {UAV_ADDRESSGROUP} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_REGISTEROUTGOINGSIGNALS} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_REGISTERINCOMINGSIGNALS} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_ALWAYSBURSTMAXBURST} {0};add_instance {uart_0_s1_translator} {altera_merlin_slave_translator};set_instance_parameter_value {uart_0_s1_translator} {AV_ADDRESS_W} {3};set_instance_parameter_value {uart_0_s1_translator} {AV_DATA_W} {16};set_instance_parameter_value {uart_0_s1_translator} {UAV_DATA_W} {32};set_instance_parameter_value {uart_0_s1_translator} {AV_BURSTCOUNT_W} {1};set_instance_parameter_value {uart_0_s1_translator} {AV_BYTEENABLE_W} {1};set_instance_parameter_value {uart_0_s1_translator} {UAV_BYTEENABLE_W} {4};set_instance_parameter_value {uart_0_s1_translator} {UAV_ADDRESS_W} {5};set_instance_parameter_value {uart_0_s1_translator} {UAV_BURSTCOUNT_W} {3};set_instance_parameter_value {uart_0_s1_translator} {AV_READLATENCY} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_SETUP_WAIT} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_WRITE_WAIT} {1};set_instance_parameter_value {uart_0_s1_translator} {AV_READ_WAIT} {1};set_instance_parameter_value {uart_0_s1_translator} {AV_DATA_HOLD} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_TIMING_UNITS} {1};set_instance_parameter_value {uart_0_s1_translator} {USE_READDATA} {1};set_instance_parameter_value {uart_0_s1_translator} {USE_WRITEDATA} {1};set_instance_parameter_value {uart_0_s1_translator} {USE_READ} {1};set_instance_parameter_value {uart_0_s1_translator} {USE_WRITE} {1};set_instance_parameter_value {uart_0_s1_translator} {USE_BEGINBURSTTRANSFER} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_BEGINTRANSFER} {1};set_instance_parameter_value {uart_0_s1_translator} {USE_BYTEENABLE} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_CHIPSELECT} {1};set_instance_parameter_value {uart_0_s1_translator} {USE_ADDRESS} {1};set_instance_parameter_value {uart_0_s1_translator} {USE_BURSTCOUNT} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_READDATAVALID} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_WAITREQUEST} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_WRITEBYTEENABLE} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_LOCK} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_AV_CLKEN} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_UAV_CLKEN} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_OUTPUTENABLE} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_DEBUGACCESS} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_READRESPONSE} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_WRITERESPONSE} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_SYMBOLS_PER_WORD} {4};set_instance_parameter_value {uart_0_s1_translator} {AV_ADDRESS_SYMBOLS} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_BURSTCOUNT_SYMBOLS} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {uart_0_s1_translator} {UAV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_REQUIRE_UNALIGNED_ADDRESSES} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_LINEWRAPBURSTS} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_MAX_PENDING_READ_TRANSACTIONS} {1};set_instance_parameter_value {uart_0_s1_translator} {AV_MAX_PENDING_WRITE_TRANSACTIONS} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_BURSTBOUNDARIES} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_INTERLEAVEBURSTS} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_BITS_PER_SYMBOL} {8};set_instance_parameter_value {uart_0_s1_translator} {AV_ISBIGENDIAN} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_ADDRESSGROUP} {0};set_instance_parameter_value {uart_0_s1_translator} {UAV_ADDRESSGROUP} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_REGISTEROUTGOINGSIGNALS} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_REGISTERINCOMINGSIGNALS} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_ALWAYSBURSTMAXBURST} {0};set_instance_parameter_value {uart_0_s1_translator} {CHIPSELECT_THROUGH_READLATENCY} {0};add_instance {Rsa_Wrapper_0_reset_sink_reset_bridge} {altera_reset_bridge};set_instance_parameter_value {Rsa_Wrapper_0_reset_sink_reset_bridge} {ACTIVE_LOW_RESET} {0};set_instance_parameter_value {Rsa_Wrapper_0_reset_sink_reset_bridge} {SYNCHRONOUS_EDGES} {deassert};set_instance_parameter_value {Rsa_Wrapper_0_reset_sink_reset_bridge} {NUM_RESET_OUTPUTS} {1};set_instance_parameter_value {Rsa_Wrapper_0_reset_sink_reset_bridge} {USE_RESET_REQUEST} {0};add_instance {altpll_0_c0_clock_bridge} {altera_clock_bridge};set_instance_parameter_value {altpll_0_c0_clock_bridge} {EXPLICIT_CLOCK_RATE} {25000000};set_instance_parameter_value {altpll_0_c0_clock_bridge} {NUM_CLOCK_OUTPUTS} {1};add_connection {Rsa_Wrapper_0_avalon_master_0_translator.avalon_universal_master_0} {uart_0_s1_translator.avalon_universal_slave_0} {avalon};set_connection_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator.avalon_universal_master_0/uart_0_s1_translator.avalon_universal_slave_0} {arbitrationPriority} {1};set_connection_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator.avalon_universal_master_0/uart_0_s1_translator.avalon_universal_slave_0} {baseAddress} {0x0000};set_connection_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator.avalon_universal_master_0/uart_0_s1_translator.avalon_universal_slave_0} {defaultConnection} {false};add_connection {Rsa_Wrapper_0_reset_sink_reset_bridge.out_reset} {Rsa_Wrapper_0_avalon_master_0_translator.reset} {reset};add_connection {Rsa_Wrapper_0_reset_sink_reset_bridge.out_reset} {uart_0_s1_translator.reset} {reset};add_connection {altpll_0_c0_clock_bridge.out_clk} {Rsa_Wrapper_0_avalon_master_0_translator.clk} {clock};add_connection {altpll_0_c0_clock_bridge.out_clk} {uart_0_s1_translator.clk} {clock};add_connection {altpll_0_c0_clock_bridge.out_clk} {Rsa_Wrapper_0_reset_sink_reset_bridge.clk} {clock};add_interface {altpll_0_c0} {clock} {slave};set_interface_property {altpll_0_c0} {EXPORT_OF} {altpll_0_c0_clock_bridge.in_clk};add_interface {Rsa_Wrapper_0_reset_sink_reset_bridge_in_reset} {reset} {slave};set_interface_property {Rsa_Wrapper_0_reset_sink_reset_bridge_in_reset} {EXPORT_OF} {Rsa_Wrapper_0_reset_sink_reset_bridge.in_reset};add_interface {Rsa_Wrapper_0_avalon_master_0} {avalon} {slave};set_interface_property {Rsa_Wrapper_0_avalon_master_0} {EXPORT_OF} {Rsa_Wrapper_0_avalon_master_0_translator.avalon_anti_master_0};add_interface {uart_0_s1} {avalon} {master};set_interface_property {uart_0_s1} {EXPORT_OF} {uart_0_s1_translator.avalon_anti_slave_0};set_module_assignment {interconnect_id.Rsa_Wrapper_0.avalon_master_0} {0};set_module_assignment {interconnect_id.uart_0.s1} {0};(altera_merlin_master_translator:15.0:AV_ADDRESSGROUP=0,AV_ADDRESS_SYMBOLS=1,AV_ADDRESS_W=5,AV_ALWAYSBURSTMAXBURST=0,AV_BITS_PER_SYMBOL=8,AV_BURSTBOUNDARIES=0,AV_BURSTCOUNT_SYMBOLS=0,AV_BURSTCOUNT_W=1,AV_BYTEENABLE_W=4,AV_CONSTANT_BURST_BEHAVIOR=0,AV_DATA_HOLD=0,AV_DATA_W=32,AV_INTERLEAVEBURSTS=0,AV_ISBIGENDIAN=0,AV_LINEWRAPBURSTS=0,AV_MAX_PENDING_READ_TRANSACTIONS=64,AV_READLATENCY=0,AV_READ_WAIT=1,AV_REGISTERINCOMINGSIGNALS=0,AV_REGISTEROUTGOINGSIGNALS=0,AV_SETUP_WAIT=0,AV_SYMBOLS_PER_WORD=4,AV_WRITE_WAIT=0,UAV_ADDRESSGROUP=0,UAV_ADDRESS_W=5,UAV_BURSTCOUNT_W=3,UAV_CONSTANT_BURST_BEHAVIOR=0,USE_ADDRESS=1,USE_BEGINBURSTTRANSFER=0,USE_BEGINTRANSFER=0,USE_BURSTCOUNT=0,USE_BYTEENABLE=0,USE_CHIPSELECT=0,USE_CLKEN=0,USE_DEBUGACCESS=0,USE_LOCK=0,USE_READ=1,USE_READDATA=1,USE_READDATAVALID=0,USE_READRESPONSE=0,USE_WAITREQUEST=1,USE_WRITE=1,USE_WRITEDATA=1,USE_WRITERESPONSE=0)(altera_merlin_slave_translator:15.0:AV_ADDRESSGROUP=0,AV_ADDRESS_SYMBOLS=0,AV_ADDRESS_W=3,AV_ALWAYSBURSTMAXBURST=0,AV_BITS_PER_SYMBOL=8,AV_BURSTBOUNDARIES=0,AV_BURSTCOUNT_SYMBOLS=0,AV_BURSTCOUNT_W=1,AV_BYTEENABLE_W=1,AV_CONSTANT_BURST_BEHAVIOR=0,AV_DATA_HOLD=0,AV_DATA_HOLD_CYCLES=0,AV_DATA_W=16,AV_INTERLEAVEBURSTS=0,AV_ISBIGENDIAN=0,AV_LINEWRAPBURSTS=0,AV_MAX_PENDING_READ_TRANSACTIONS=1,AV_MAX_PENDING_WRITE_TRANSACTIONS=0,AV_READLATENCY=0,AV_READ_WAIT=1,AV_READ_WAIT_CYCLES=1,AV_REGISTERINCOMINGSIGNALS=0,AV_REGISTEROUTGOINGSIGNALS=0,AV_REQUIRE_UNALIGNED_ADDRESSES=0,AV_SETUP_WAIT=0,AV_SETUP_WAIT_CYCLES=0,AV_SYMBOLS_PER_WORD=4,AV_TIMING_UNITS=1,AV_WRITE_WAIT=1,AV_WRITE_WAIT_CYCLES=1,CHIPSELECT_THROUGH_READLATENCY=0,CLOCK_RATE=25000000,UAV_ADDRESSGROUP=0,UAV_ADDRESS_W=5,UAV_BURSTCOUNT_W=3,UAV_BYTEENABLE_W=4,UAV_CONSTANT_BURST_BEHAVIOR=0,UAV_DATA_W=32,USE_ADDRESS=1,USE_AV_CLKEN=0,USE_BEGINBURSTTRANSFER=0,USE_BEGINTRANSFER=1,USE_BURSTCOUNT=0,USE_BYTEENABLE=0,USE_CHIPSELECT=1,USE_DEBUGACCESS=0,USE_LOCK=0,USE_OUTPUTENABLE=0,USE_READ=1,USE_READDATA=1,USE_READDATAVALID=0,USE_READRESPONSE=0,USE_UAV_CLKEN=0,USE_WAITREQUEST=0,USE_WRITE=1,USE_WRITEBYTEENABLE=0,USE_WRITEDATA=1,USE_WRITERESPONSE=0)(altera_reset_bridge:15.0:ACTIVE_LOW_RESET=0,AUTO_CLK_CLOCK_RATE=25000000,NUM_RESET_OUTPUTS=1,SYNCHRONOUS_EDGES=deassert,USE_RESET_REQUEST=0)(altera_clock_bridge:15.0:DERIVED_CLOCK_RATE=0,EXPLICIT_CLOCK_RATE=25000000,NUM_CLOCK_OUTPUTS=1)(avalon:15.0:arbitrationPriority=1,baseAddress=0x0000,defaultConnection=false)(reset:15.0:)(reset:15.0:)(clock:15.0:)(clock:15.0:)(clock:15.0:)"
+   instancePathKey="rsa_qsys:.:mm_interconnect_0"
+   kind="altera_mm_interconnect"
+   version="15.0"
+   name="rsa_qsys_mm_interconnect_0">
+  <parameter name="AUTO_DEVICE" value="EP4CE115F29C7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="" />
+  <parameter
+     name="COMPOSE_CONTENTS"
+     value="add_instance {Rsa_Wrapper_0_avalon_master_0_translator} {altera_merlin_master_translator};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_ADDRESS_W} {5};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_DATA_W} {32};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_BURSTCOUNT_W} {1};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_BYTEENABLE_W} {4};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {UAV_ADDRESS_W} {5};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {UAV_BURSTCOUNT_W} {3};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_READLATENCY} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_WRITE_WAIT} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_READ_WAIT} {1};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_DATA_HOLD} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_SETUP_WAIT} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_READDATA} {1};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_WRITEDATA} {1};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_READ} {1};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_WRITE} {1};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_BEGINBURSTTRANSFER} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_BEGINTRANSFER} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_BYTEENABLE} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_CHIPSELECT} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_ADDRESS} {1};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_BURSTCOUNT} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_DEBUGACCESS} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_CLKEN} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_READDATAVALID} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_WAITREQUEST} {1};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_LOCK} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_READRESPONSE} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {USE_WRITERESPONSE} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_SYMBOLS_PER_WORD} {4};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_ADDRESS_SYMBOLS} {1};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_BURSTCOUNT_SYMBOLS} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {UAV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_LINEWRAPBURSTS} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_MAX_PENDING_READ_TRANSACTIONS} {64};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_BURSTBOUNDARIES} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_INTERLEAVEBURSTS} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_BITS_PER_SYMBOL} {8};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_ISBIGENDIAN} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_ADDRESSGROUP} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {UAV_ADDRESSGROUP} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_REGISTEROUTGOINGSIGNALS} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_REGISTERINCOMINGSIGNALS} {0};set_instance_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator} {AV_ALWAYSBURSTMAXBURST} {0};add_instance {uart_0_s1_translator} {altera_merlin_slave_translator};set_instance_parameter_value {uart_0_s1_translator} {AV_ADDRESS_W} {3};set_instance_parameter_value {uart_0_s1_translator} {AV_DATA_W} {16};set_instance_parameter_value {uart_0_s1_translator} {UAV_DATA_W} {32};set_instance_parameter_value {uart_0_s1_translator} {AV_BURSTCOUNT_W} {1};set_instance_parameter_value {uart_0_s1_translator} {AV_BYTEENABLE_W} {1};set_instance_parameter_value {uart_0_s1_translator} {UAV_BYTEENABLE_W} {4};set_instance_parameter_value {uart_0_s1_translator} {UAV_ADDRESS_W} {5};set_instance_parameter_value {uart_0_s1_translator} {UAV_BURSTCOUNT_W} {3};set_instance_parameter_value {uart_0_s1_translator} {AV_READLATENCY} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_SETUP_WAIT} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_WRITE_WAIT} {1};set_instance_parameter_value {uart_0_s1_translator} {AV_READ_WAIT} {1};set_instance_parameter_value {uart_0_s1_translator} {AV_DATA_HOLD} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_TIMING_UNITS} {1};set_instance_parameter_value {uart_0_s1_translator} {USE_READDATA} {1};set_instance_parameter_value {uart_0_s1_translator} {USE_WRITEDATA} {1};set_instance_parameter_value {uart_0_s1_translator} {USE_READ} {1};set_instance_parameter_value {uart_0_s1_translator} {USE_WRITE} {1};set_instance_parameter_value {uart_0_s1_translator} {USE_BEGINBURSTTRANSFER} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_BEGINTRANSFER} {1};set_instance_parameter_value {uart_0_s1_translator} {USE_BYTEENABLE} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_CHIPSELECT} {1};set_instance_parameter_value {uart_0_s1_translator} {USE_ADDRESS} {1};set_instance_parameter_value {uart_0_s1_translator} {USE_BURSTCOUNT} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_READDATAVALID} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_WAITREQUEST} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_WRITEBYTEENABLE} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_LOCK} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_AV_CLKEN} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_UAV_CLKEN} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_OUTPUTENABLE} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_DEBUGACCESS} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_READRESPONSE} {0};set_instance_parameter_value {uart_0_s1_translator} {USE_WRITERESPONSE} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_SYMBOLS_PER_WORD} {4};set_instance_parameter_value {uart_0_s1_translator} {AV_ADDRESS_SYMBOLS} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_BURSTCOUNT_SYMBOLS} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {uart_0_s1_translator} {UAV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_REQUIRE_UNALIGNED_ADDRESSES} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_LINEWRAPBURSTS} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_MAX_PENDING_READ_TRANSACTIONS} {1};set_instance_parameter_value {uart_0_s1_translator} {AV_MAX_PENDING_WRITE_TRANSACTIONS} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_BURSTBOUNDARIES} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_INTERLEAVEBURSTS} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_BITS_PER_SYMBOL} {8};set_instance_parameter_value {uart_0_s1_translator} {AV_ISBIGENDIAN} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_ADDRESSGROUP} {0};set_instance_parameter_value {uart_0_s1_translator} {UAV_ADDRESSGROUP} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_REGISTEROUTGOINGSIGNALS} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_REGISTERINCOMINGSIGNALS} {0};set_instance_parameter_value {uart_0_s1_translator} {AV_ALWAYSBURSTMAXBURST} {0};set_instance_parameter_value {uart_0_s1_translator} {CHIPSELECT_THROUGH_READLATENCY} {0};add_instance {Rsa_Wrapper_0_reset_sink_reset_bridge} {altera_reset_bridge};set_instance_parameter_value {Rsa_Wrapper_0_reset_sink_reset_bridge} {ACTIVE_LOW_RESET} {0};set_instance_parameter_value {Rsa_Wrapper_0_reset_sink_reset_bridge} {SYNCHRONOUS_EDGES} {deassert};set_instance_parameter_value {Rsa_Wrapper_0_reset_sink_reset_bridge} {NUM_RESET_OUTPUTS} {1};set_instance_parameter_value {Rsa_Wrapper_0_reset_sink_reset_bridge} {USE_RESET_REQUEST} {0};add_instance {altpll_0_c0_clock_bridge} {altera_clock_bridge};set_instance_parameter_value {altpll_0_c0_clock_bridge} {EXPLICIT_CLOCK_RATE} {25000000};set_instance_parameter_value {altpll_0_c0_clock_bridge} {NUM_CLOCK_OUTPUTS} {1};add_connection {Rsa_Wrapper_0_avalon_master_0_translator.avalon_universal_master_0} {uart_0_s1_translator.avalon_universal_slave_0} {avalon};set_connection_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator.avalon_universal_master_0/uart_0_s1_translator.avalon_universal_slave_0} {arbitrationPriority} {1};set_connection_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator.avalon_universal_master_0/uart_0_s1_translator.avalon_universal_slave_0} {baseAddress} {0x0000};set_connection_parameter_value {Rsa_Wrapper_0_avalon_master_0_translator.avalon_universal_master_0/uart_0_s1_translator.avalon_universal_slave_0} {defaultConnection} {false};add_connection {Rsa_Wrapper_0_reset_sink_reset_bridge.out_reset} {Rsa_Wrapper_0_avalon_master_0_translator.reset} {reset};add_connection {Rsa_Wrapper_0_reset_sink_reset_bridge.out_reset} {uart_0_s1_translator.reset} {reset};add_connection {altpll_0_c0_clock_bridge.out_clk} {Rsa_Wrapper_0_avalon_master_0_translator.clk} {clock};add_connection {altpll_0_c0_clock_bridge.out_clk} {uart_0_s1_translator.clk} {clock};add_connection {altpll_0_c0_clock_bridge.out_clk} {Rsa_Wrapper_0_reset_sink_reset_bridge.clk} {clock};add_interface {altpll_0_c0} {clock} {slave};set_interface_property {altpll_0_c0} {EXPORT_OF} {altpll_0_c0_clock_bridge.in_clk};add_interface {Rsa_Wrapper_0_reset_sink_reset_bridge_in_reset} {reset} {slave};set_interface_property {Rsa_Wrapper_0_reset_sink_reset_bridge_in_reset} {EXPORT_OF} {Rsa_Wrapper_0_reset_sink_reset_bridge.in_reset};add_interface {Rsa_Wrapper_0_avalon_master_0} {avalon} {slave};set_interface_property {Rsa_Wrapper_0_avalon_master_0} {EXPORT_OF} {Rsa_Wrapper_0_avalon_master_0_translator.avalon_anti_master_0};add_interface {uart_0_s1} {avalon} {master};set_interface_property {uart_0_s1} {EXPORT_OF} {uart_0_s1_translator.avalon_anti_slave_0};set_module_assignment {interconnect_id.Rsa_Wrapper_0.avalon_master_0} {0};set_module_assignment {interconnect_id.uart_0.s1} {0};" />
+  <generatedFiles>
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/rsa_qsys_mm_interconnect_0.v"
+       type="VERILOG" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/altera_merlin_master_translator.sv"
+       type="SYSTEM_VERILOG"
+       attributes="" />
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/altera_merlin_slave_translator.sv"
+       type="SYSTEM_VERILOG"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="C:/altera/15.0/ip/altera/merlin/altera_mm_interconnect/altera_mm_interconnect_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="C:/altera/15.0/ip/altera/merlin/altera_merlin_master_translator/altera_merlin_master_translator_hw.tcl" />
+   <file
+       path="C:/altera/15.0/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
+  </childSourceFiles>
+  <instantiator instantiator="rsa_qsys" as="mm_interconnect_0" />
+  <messages>
+   <message level="Debug" culprit="rsa_qsys">queue size: 2 starting:altera_mm_interconnect "submodules/rsa_qsys_mm_interconnect_0"</message>
+   <message level="Progress" culprit="min"></message>
+   <message level="Progress" culprit="max"></message>
+   <message level="Progress" culprit="current"></message>
+   <message level="Debug">Transform: CustomInstructionTransform</message>
+   <message level="Debug">No custom instruction connections, skipping transform </message>
+   <message level="Debug" culprit="merlin_custom_instruction_transform"><![CDATA[After transform: <b>4</b> modules, <b>6</b> connections]]></message>
+   <message level="Debug">Transform: MMTransform</message>
+   <message level="Debug">Transform: InitialInterconnectTransform</message>
+   <message level="Debug" culprit="merlin_initial_interconnect_transform"><![CDATA[After transform: <b>0</b> modules, <b>0</b> connections]]></message>
+   <message level="Debug">Transform: TerminalIdAssignmentUpdateTransform</message>
+   <message level="Debug">Transform: DefaultSlaveTransform</message>
+   <message level="Debug">Transform: TranslatorTransform</message>
+   <message level="Debug">No Avalon connections, skipping transform </message>
+   <message level="Debug">Transform: IDPadTransform</message>
+   <message level="Debug">Transform: DomainTransform</message>
+   <message level="Debug">Transform: RouterTransform</message>
+   <message level="Debug">Transform: TrafficLimiterTransform</message>
+   <message level="Debug">Transform: BurstTransform</message>
+   <message level="Debug">Transform: TreeTransform</message>
+   <message level="Debug">Transform: NetworkToSwitchTransform</message>
+   <message level="Debug">Transform: WidthTransform</message>
+   <message level="Debug">Transform: RouterTableTransform</message>
+   <message level="Debug">Transform: ThreadIDMappingTableTransform</message>
+   <message level="Debug">Transform: ClockCrossingTransform</message>
+   <message level="Debug">Transform: PipelineTransform</message>
+   <message level="Debug">Transform: SpotPipelineTransform</message>
+   <message level="Debug">Transform: PerformanceMonitorTransform</message>
+   <message level="Debug">Transform: TrafficLimiterUpdateTransform</message>
+   <message level="Debug">Transform: InsertClockAndResetBridgesTransform</message>
+   <message level="Debug">Transform: InterconnectConnectionsTagger</message>
+   <message level="Debug">Transform: HierarchyTransform</message>
+   <message level="Debug" culprit="merlin_hierarchy_transform"><![CDATA[After transform: <b>4</b> modules, <b>6</b> connections]]></message>
+   <message level="Debug">Transform: InterruptMapperTransform</message>
+   <message level="Debug">Transform: InterruptSyncTransform</message>
+   <message level="Debug">Transform: InterruptFanoutTransform</message>
+   <message level="Debug">Transform: AvalonStreamingTransform</message>
+   <message level="Debug">Transform: ResetAdaptation</message>
+   <message level="Debug" culprit="mm_interconnect_0"><![CDATA["<b>mm_interconnect_0</b>" reuses <b>altera_merlin_master_translator</b> "<b>submodules/altera_merlin_master_translator</b>"]]></message>
+   <message level="Debug" culprit="mm_interconnect_0"><![CDATA["<b>mm_interconnect_0</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"]]></message>
+   <message level="Info" culprit="mm_interconnect_0"><![CDATA["<b>rsa_qsys</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_0</b>"]]></message>
+   <message level="Debug" culprit="rsa_qsys">queue size: 1 starting:altera_merlin_master_translator "submodules/altera_merlin_master_translator"</message>
+   <message level="Info" culprit="Rsa_Wrapper_0_avalon_master_0_translator"><![CDATA["<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_master_translator</b> "<b>Rsa_Wrapper_0_avalon_master_0_translator</b>"]]></message>
+   <message level="Debug" culprit="rsa_qsys">queue size: 0 starting:altera_merlin_slave_translator "submodules/altera_merlin_slave_translator"</message>
+   <message level="Info" culprit="uart_0_s1_translator"><![CDATA["<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_slave_translator</b> "<b>uart_0_s1_translator</b>"]]></message>
+  </messages>
+ </entity>
+ <entity
+   path="submodules/"
+   parameterizationKey="altera_reset_controller:15.0:ADAPT_RESET_REQUEST=0,MIN_RST_ASSERTION_TIME=3,NUM_RESET_INPUTS=1,OUTPUT_RESET_SYNC_EDGES=deassert,RESET_REQUEST_PRESENT=0,RESET_REQ_EARLY_DSRT_TIME=1,RESET_REQ_WAIT_TIME=1,SYNC_DEPTH=2,USE_RESET_REQUEST_IN0=0,USE_RESET_REQUEST_IN1=0,USE_RESET_REQUEST_IN10=0,USE_RESET_REQUEST_IN11=0,USE_RESET_REQUEST_IN12=0,USE_RESET_REQUEST_IN13=0,USE_RESET_REQUEST_IN14=0,USE_RESET_REQUEST_IN15=0,USE_RESET_REQUEST_IN2=0,USE_RESET_REQUEST_IN3=0,USE_RESET_REQUEST_IN4=0,USE_RESET_REQUEST_IN5=0,USE_RESET_REQUEST_IN6=0,USE_RESET_REQUEST_IN7=0,USE_RESET_REQUEST_IN8=0,USE_RESET_REQUEST_IN9=0,USE_RESET_REQUEST_INPUT=0"
+   instancePathKey="rsa_qsys:.:rst_controller"
+   kind="altera_reset_controller"
+   version="15.0"
+   name="altera_reset_controller">
+  <generatedFiles>
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/altera_reset_controller.v"
+       type="VERILOG"
+       attributes="" />
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/altera_reset_synchronizer.v"
+       type="VERILOG"
+       attributes="" />
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/altera_reset_controller.sdc"
+       type="SDC"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles/>
+  <sourceFiles>
+   <file
+       path="C:/altera/15.0/ip/altera/merlin/altera_reset_controller/altera_reset_controller_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator instantiator="rsa_qsys" as="rst_controller,rst_controller_001" />
+  <messages>
+   <message level="Debug" culprit="rsa_qsys">queue size: 3 starting:altera_reset_controller "submodules/altera_reset_controller"</message>
+   <message level="Info" culprit="rst_controller"><![CDATA["<b>rsa_qsys</b>" instantiated <b>altera_reset_controller</b> "<b>rst_controller</b>"]]></message>
+  </messages>
+ </entity>
+ <entity
+   path="submodules/"
+   parameterizationKey="altera_merlin_master_translator:15.0:AV_ADDRESSGROUP=0,AV_ADDRESS_SYMBOLS=1,AV_ADDRESS_W=5,AV_ALWAYSBURSTMAXBURST=0,AV_BITS_PER_SYMBOL=8,AV_BURSTBOUNDARIES=0,AV_BURSTCOUNT_SYMBOLS=0,AV_BURSTCOUNT_W=1,AV_BYTEENABLE_W=4,AV_CONSTANT_BURST_BEHAVIOR=0,AV_DATA_HOLD=0,AV_DATA_W=32,AV_INTERLEAVEBURSTS=0,AV_ISBIGENDIAN=0,AV_LINEWRAPBURSTS=0,AV_MAX_PENDING_READ_TRANSACTIONS=64,AV_READLATENCY=0,AV_READ_WAIT=1,AV_REGISTERINCOMINGSIGNALS=0,AV_REGISTEROUTGOINGSIGNALS=0,AV_SETUP_WAIT=0,AV_SYMBOLS_PER_WORD=4,AV_WRITE_WAIT=0,UAV_ADDRESSGROUP=0,UAV_ADDRESS_W=5,UAV_BURSTCOUNT_W=3,UAV_CONSTANT_BURST_BEHAVIOR=0,USE_ADDRESS=1,USE_BEGINBURSTTRANSFER=0,USE_BEGINTRANSFER=0,USE_BURSTCOUNT=0,USE_BYTEENABLE=0,USE_CHIPSELECT=0,USE_CLKEN=0,USE_DEBUGACCESS=0,USE_LOCK=0,USE_READ=1,USE_READDATA=1,USE_READDATAVALID=0,USE_READRESPONSE=0,USE_WAITREQUEST=1,USE_WRITE=1,USE_WRITEDATA=1,USE_WRITERESPONSE=0"
+   instancePathKey="rsa_qsys:.:mm_interconnect_0:.:Rsa_Wrapper_0_avalon_master_0_translator"
+   kind="altera_merlin_master_translator"
+   version="15.0"
+   name="altera_merlin_master_translator">
+  <generatedFiles>
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/altera_merlin_master_translator.sv"
+       type="SYSTEM_VERILOG"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles/>
+  <sourceFiles>
+   <file
+       path="C:/altera/15.0/ip/altera/merlin/altera_merlin_master_translator/altera_merlin_master_translator_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator
+     instantiator="rsa_qsys_mm_interconnect_0"
+     as="Rsa_Wrapper_0_avalon_master_0_translator" />
+  <messages>
+   <message level="Debug" culprit="rsa_qsys">queue size: 1 starting:altera_merlin_master_translator "submodules/altera_merlin_master_translator"</message>
+   <message level="Info" culprit="Rsa_Wrapper_0_avalon_master_0_translator"><![CDATA["<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_master_translator</b> "<b>Rsa_Wrapper_0_avalon_master_0_translator</b>"]]></message>
+  </messages>
+ </entity>
+ <entity
+   path="submodules/"
+   parameterizationKey="altera_merlin_slave_translator:15.0:AV_ADDRESSGROUP=0,AV_ADDRESS_SYMBOLS=0,AV_ADDRESS_W=3,AV_ALWAYSBURSTMAXBURST=0,AV_BITS_PER_SYMBOL=8,AV_BURSTBOUNDARIES=0,AV_BURSTCOUNT_SYMBOLS=0,AV_BURSTCOUNT_W=1,AV_BYTEENABLE_W=1,AV_CONSTANT_BURST_BEHAVIOR=0,AV_DATA_HOLD=0,AV_DATA_HOLD_CYCLES=0,AV_DATA_W=16,AV_INTERLEAVEBURSTS=0,AV_ISBIGENDIAN=0,AV_LINEWRAPBURSTS=0,AV_MAX_PENDING_READ_TRANSACTIONS=1,AV_MAX_PENDING_WRITE_TRANSACTIONS=0,AV_READLATENCY=0,AV_READ_WAIT=1,AV_READ_WAIT_CYCLES=1,AV_REGISTERINCOMINGSIGNALS=0,AV_REGISTEROUTGOINGSIGNALS=0,AV_REQUIRE_UNALIGNED_ADDRESSES=0,AV_SETUP_WAIT=0,AV_SETUP_WAIT_CYCLES=0,AV_SYMBOLS_PER_WORD=4,AV_TIMING_UNITS=1,AV_WRITE_WAIT=1,AV_WRITE_WAIT_CYCLES=1,CHIPSELECT_THROUGH_READLATENCY=0,CLOCK_RATE=25000000,UAV_ADDRESSGROUP=0,UAV_ADDRESS_W=5,UAV_BURSTCOUNT_W=3,UAV_BYTEENABLE_W=4,UAV_CONSTANT_BURST_BEHAVIOR=0,UAV_DATA_W=32,USE_ADDRESS=1,USE_AV_CLKEN=0,USE_BEGINBURSTTRANSFER=0,USE_BEGINTRANSFER=1,USE_BURSTCOUNT=0,USE_BYTEENABLE=0,USE_CHIPSELECT=1,USE_DEBUGACCESS=0,USE_LOCK=0,USE_OUTPUTENABLE=0,USE_READ=1,USE_READDATA=1,USE_READDATAVALID=0,USE_READRESPONSE=0,USE_UAV_CLKEN=0,USE_WAITREQUEST=0,USE_WRITE=1,USE_WRITEBYTEENABLE=0,USE_WRITEDATA=1,USE_WRITERESPONSE=0"
+   instancePathKey="rsa_qsys:.:mm_interconnect_0:.:uart_0_s1_translator"
+   kind="altera_merlin_slave_translator"
+   version="15.0"
+   name="altera_merlin_slave_translator">
+  <generatedFiles>
+   <file
+       path="C:/Users/user/Desktop/LAB2_3/rsa_qsys/synthesis/submodules/altera_merlin_slave_translator.sv"
+       type="SYSTEM_VERILOG"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles/>
+  <sourceFiles>
+   <file
+       path="C:/altera/15.0/ip/altera/merlin/altera_merlin_slave_translator/altera_merlin_slave_translator_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator instantiator="rsa_qsys_mm_interconnect_0" as="uart_0_s1_translator" />
+  <messages>
+   <message level="Debug" culprit="rsa_qsys">queue size: 0 starting:altera_merlin_slave_translator "submodules/altera_merlin_slave_translator"</message>
+   <message level="Info" culprit="uart_0_s1_translator"><![CDATA["<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_slave_translator</b> "<b>uart_0_s1_translator</b>"]]></message>
+  </messages>
+ </entity>
+</deploy>

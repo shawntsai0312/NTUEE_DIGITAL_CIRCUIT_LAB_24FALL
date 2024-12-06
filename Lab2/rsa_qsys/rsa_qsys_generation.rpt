@@ -1,0 +1,65 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate C:\Users\user\Desktop\LAB2_3\rsa_qsys.qsys --block-symbol-file --output-directory=C:\Users\user\Desktop\LAB2_3\rsa_qsys --family="Cyclone IV E" --part=EP4CE115F29C7
+Progress: Loading LAB2_3/rsa_qsys.qsys
+Progress: Reading input file
+Progress: Adding Rsa_Wrapper_0 [Rsa_Wrapper 1.0]
+Progress: Parameterizing module Rsa_Wrapper_0
+Progress: Adding altpll_0 [altpll 15.0]
+Progress: Parameterizing module altpll_0
+Progress: Adding clk_0 [clock_source 15.0]
+Progress: Parameterizing module clk_0
+Progress: Adding uart_0 [altera_avalon_uart 15.0]
+Progress: Parameterizing module uart_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: rsa_qsys.altpll_0: altpll_0.areset_conduit must be exported, or connected to a matching conduit.
+Warning: rsa_qsys.altpll_0: altpll_0.locked_conduit must be exported, or connected to a matching conduit.
+Warning: rsa_qsys.altpll_0: altpll_0.phasedone_conduit must be exported, or connected to a matching conduit.
+Warning: rsa_qsys.uart_0: Interrupt sender uart_0.irq is not connected to an interrupt receiver
+Warning: rsa_qsys.altpll_0: altpll_0.pll_slave must be connected to an Avalon-MM master
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate C:\Users\user\Desktop\LAB2_3\rsa_qsys.qsys --synthesis=VERILOG --output-directory=C:\Users\user\Desktop\LAB2_3\rsa_qsys\synthesis --family="Cyclone IV E" --part=EP4CE115F29C7
+Progress: Loading LAB2_3/rsa_qsys.qsys
+Progress: Reading input file
+Progress: Adding Rsa_Wrapper_0 [Rsa_Wrapper 1.0]
+Progress: Parameterizing module Rsa_Wrapper_0
+Progress: Adding altpll_0 [altpll 15.0]
+Progress: Parameterizing module altpll_0
+Progress: Adding clk_0 [clock_source 15.0]
+Progress: Parameterizing module clk_0
+Progress: Adding uart_0 [altera_avalon_uart 15.0]
+Progress: Parameterizing module uart_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: rsa_qsys.altpll_0: altpll_0.areset_conduit must be exported, or connected to a matching conduit.
+Warning: rsa_qsys.altpll_0: altpll_0.locked_conduit must be exported, or connected to a matching conduit.
+Warning: rsa_qsys.altpll_0: altpll_0.phasedone_conduit must be exported, or connected to a matching conduit.
+Warning: rsa_qsys.uart_0: Interrupt sender uart_0.irq is not connected to an interrupt receiver
+Warning: rsa_qsys.altpll_0: altpll_0.pll_slave must be connected to an Avalon-MM master
+Info: rsa_qsys: Generating rsa_qsys "rsa_qsys" for QUARTUS_SYNTH
+Info: Interconnect is inserted between master Rsa_Wrapper_0.avalon_master_0 and slave uart_0.s1 because the master has address signal 5 bit wide, but the slave is 3 bit wide.
+Info: Interconnect is inserted between master Rsa_Wrapper_0.avalon_master_0 and slave uart_0.s1 because the master has readdata signal 32 bit wide, but the slave is 16 bit wide.
+Info: Interconnect is inserted between master Rsa_Wrapper_0.avalon_master_0 and slave uart_0.s1 because the master has writedata signal 32 bit wide, but the slave is 16 bit wide.
+Info: Interconnect is inserted between master Rsa_Wrapper_0.avalon_master_0 and slave uart_0.s1 because the master has waitrequest signal 1 bit wide, but the slave is 0 bit wide.
+Warning: rsa_qsys: "No matching role found for uart_0:s1:dataavailable (dataavailable)"
+Warning: rsa_qsys: "No matching role found for uart_0:s1:readyfordata (readyfordata)"
+Info: Rsa_Wrapper_0: "rsa_qsys" instantiated Rsa_Wrapper "Rsa_Wrapper_0"
+Info: altpll_0: "rsa_qsys" instantiated altpll "altpll_0"
+Info: uart_0: Starting RTL generation for module 'rsa_qsys_uart_0'
+Info: uart_0:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_uart -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_uart/generate_rtl.pl --name=rsa_qsys_uart_0 --dir=C:/Users/user/AppData/Local/Temp/alt9997_2457555045676444825.dir/0006_uart_0_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/user/AppData/Local/Temp/alt9997_2457555045676444825.dir/0006_uart_0_gen//rsa_qsys_uart_0_component_configuration.pl  --do_build_sim=0  ]
+Info: uart_0: Done RTL generation for module 'rsa_qsys_uart_0'
+Info: uart_0: "rsa_qsys" instantiated altera_avalon_uart "uart_0"
+Info: mm_interconnect_0: "rsa_qsys" instantiated altera_mm_interconnect "mm_interconnect_0"
+Info: rst_controller: "rsa_qsys" instantiated altera_reset_controller "rst_controller"
+Info: Rsa_Wrapper_0_avalon_master_0_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "Rsa_Wrapper_0_avalon_master_0_translator"
+Info: uart_0_s1_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "uart_0_s1_translator"
+Info: rsa_qsys: Done "rsa_qsys" with 8 modules, 11 files
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

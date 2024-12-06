@@ -57,7 +57,7 @@ def output_verilog(bits_per_pixel, input_name, input_img, colors_output_path, en
 
 bits_per_pixel = 4
 input_name = 'map'
-input_file = 'track_10.png'
+input_file = '../doc/track_10.png'
 colors_output = '../src/currFrameDecoder/palette/'+input_name+'Palette.sv'
 encode_output = '../sim/sram/'+input_name+'LUT.sv'
 input_img = Image.open(input_file)

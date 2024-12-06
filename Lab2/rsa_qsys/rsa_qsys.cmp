@@ -1,0 +1,9 @@
+	component rsa_qsys is
+		port (
+			clk_clk                        : in  std_logic := 'X'; -- clk
+			reset_reset_n                  : in  std_logic := 'X'; -- reset_n
+			uart_0_external_connection_rxd : in  std_logic := 'X'; -- rxd
+			uart_0_external_connection_txd : out std_logic         -- txd
+		);
+	end component rsa_qsys;
+

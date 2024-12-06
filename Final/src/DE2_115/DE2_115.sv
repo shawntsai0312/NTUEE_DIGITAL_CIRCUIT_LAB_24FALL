@@ -143,12 +143,10 @@ module DE2_115 (
 	wire [31:0] timer;
 	assign timer = frame_counter / 60;
 
-	assign AUD_XCK = CLK_12M;
-
-	Altpll pll0( // generate with qsys, please follow lab2 tutorials
+	altpll pll0( // generate with qsys, please follow lab2 tutorials
 		.clk_clk(CLOCK_50),
 		.reset_reset_n(KEY[3]),
-		.altpll_108m_clk(clk_108m),
+		.altpll_0_clk_108m_clk(clk_108m),
 	);
 
 	// you can decide key down settings on your own, below is just an example
@@ -168,6 +166,8 @@ module DE2_115 (
 	assign o_SRAM_LB_N = 1'b0;
 	assign o_SRAM_UB_N = 1'b0;
 
+	wire signed [sram_pkg::ANG_WIDTH-1:0] o_car1_angle, o_car2_angle;
+
 	Main u_Main (
 		.i_clk              (clk_108m),
 		.i_rst_n            (KEY[3]),
@@ -180,19 +180,35 @@ module DE2_115 (
 		.o_frame_counter	(frame_counter)
 	);
 
-	// comment those are use for display
-	SevenHexDecoder seven_dec0(
-		.i_hex(timer),			// time
-		.o_seven_ten(HEX1),
-		.o_seven_one(HEX0)
+	SignedAngleDecoder car1_angle (
+		.i_angle			(o_car1_angle),
+		.o_seven_sign		(HEX7),
+		.o_seven_hundred	(HEX6),
+		.o_seven_ten		(HEX5),
+		.o_seven_one		(HEX4)
 	);
+
+	SignedAngleDecoder car2_angle (
+		.i_angle			(o_car2_angle),
+		.o_seven_sign		(HEX3),
+		.o_seven_hundred	(HEX2),
+		.o_seven_ten		(HEX1),
+		.o_seven_one		(HEX0)
+	);
+
+	// comment those are use for display
+	// SevenHexDecoder seven_dec0(
+	// 	.i_hex(timer),			// time
+	// 	.o_seven_ten(HEX1),
+	// 	.o_seven_one(HEX0)
+	// );
 	// assign HEX0 = '1;
 	// assign HEX1 = '1;
-	assign HEX2 = '1;
-	assign HEX3 = '1;
-	assign HEX4 = '1;
-	assign HEX5 = '1;
-	assign HEX6 = '1;
-	assign HEX7 = '1;
+	// assign HEX2 = '1;
+	// assign HEX3 = '1;
+	// assign HEX4 = '1;
+	// assign HEX5 = '1;
+	// assign HEX6 = '1;
+	// assign HEX7 = '1;
 
 endmodule

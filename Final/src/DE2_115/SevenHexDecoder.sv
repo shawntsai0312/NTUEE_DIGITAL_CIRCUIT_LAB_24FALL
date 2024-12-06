@@ -127,3 +127,87 @@ always @(*) begin
 end
 
 endmodule
+
+
+module SignedAngleDecoder (
+	input signed [8:0] i_angle,
+	output logic [6:0] o_seven_sign,
+	output logic [6:0] o_seven_hundred,
+	output logic [6:0] o_seven_ten,
+	output logic [6:0] o_seven_one
+);
+
+/* The layout of seven segment display, 1: dark
+ *    00
+ *   5  1
+ *    66
+ *   4  2
+ *    33
+ */
+parameter D0 = 7'b1000000;
+parameter D1 = 7'b1111001;
+parameter D2 = 7'b0100100;
+parameter D3 = 7'b0110000;
+parameter D4 = 7'b0011001;
+parameter D5 = 7'b0010010;
+parameter D6 = 7'b0000010;
+parameter D7 = 7'b1011000;
+parameter D8 = 7'b0000000;
+parameter D9 = 7'b0010000;
+
+parameter D_pos = 7'b1111111;
+parameter D_neg = 7'b0111111;
+
+logic signed [8:0] abs_angle;
+assign abs_angle = (i_angle < 0)? -i_angle : i_angle;
+
+logic [8:0] hundred, ten, one;
+assign hundred = abs_angle / 100;
+assign ten = (abs_angle % 100) / 10;
+assign one = (abs_angle % 10);
+
+always @(*) begin
+	if (i_angle < 0)	o_seven_sign = D_neg;
+	else				o_seven_sign = D_pos;
+
+	case(hundred)
+		8'h0: begin o_seven_hundred = D0; end
+		8'h1: begin o_seven_hundred = D1; end
+		8'h2: begin o_seven_hundred = D2; end
+		8'h3: begin o_seven_hundred = D3; end
+		8'h4: begin o_seven_hundred = D4; end
+		8'h5: begin o_seven_hundred = D5; end
+		8'h6: begin o_seven_hundred = D6; end
+		8'h7: begin o_seven_hundred = D7; end
+		8'h8: begin o_seven_hundred = D8; end
+		8'h9: begin o_seven_hundred = D9; end
+	endcase
+
+	case(ten)
+		8'h0: begin o_seven_ten = D0; end
+		8'h1: begin o_seven_ten = D1; end
+		8'h2: begin o_seven_ten = D2; end
+		8'h3: begin o_seven_ten = D3; end
+		8'h4: begin o_seven_ten = D4; end
+		8'h5: begin o_seven_ten = D5; end
+		8'h6: begin o_seven_ten = D6; end
+		8'h7: begin o_seven_ten = D7; end
+		8'h8: begin o_seven_ten = D8; end
+		8'h9: begin o_seven_ten = D9; end
+	endcase
+
+	case(one)
+		8'h0: begin o_seven_one = D0; end
+		8'h1: begin o_seven_one = D1; end
+		8'h2: begin o_seven_one = D2; end
+		8'h3: begin o_seven_one = D3; end
+		8'h4: begin o_seven_one = D4; end
+		8'h5: begin o_seven_one = D5; end
+		8'h6: begin o_seven_one = D6; end
+		8'h7: begin o_seven_one = D7; end
+		8'h8: begin o_seven_one = D8; end
+		8'h9: begin o_seven_one = D9; end
+	endcase
+end
+
+endmodule

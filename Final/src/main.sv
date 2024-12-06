@@ -9,9 +9,6 @@ module Main (
 	inout  [sram_pkg::SRAM_DATA_WIDTH-1:0] io_SRAM_DQ,
 	output o_SRAM_WE_N,
 
-    // output o_car1_opacity_mask [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1],
-    // output o_car2_opacity_mask [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1]
-
     output o_H_sync,
     output o_V_sync,
     output [23:0] o_RGB,
@@ -137,10 +134,6 @@ module Main (
             end
         end
     endgenerate
-
-    // opacity map output assignment
-    // assign o_car1_opacity_mask = car1_opacity_mask_r;
-    // assign o_car2_opacity_mask = car2_opacity_mask_r;
 
     // opacity map sequential logic
     always @(posedge i_clk or negedge i_rst_n) begin

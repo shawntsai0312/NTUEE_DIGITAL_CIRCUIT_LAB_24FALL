@@ -12,8 +12,6 @@ module VGA #(
     input i_clk,
     input i_rst_n,
 
-    input [23:0] i_color,
-
     output o_H_sync, 
     output o_V_sync,
 
@@ -22,8 +20,10 @@ module VGA #(
 
     output [31:0] o_frame_counter,
 
-    output [sram_pkg::MAP_H_WIDTH-1:0] o_H_to_be_rendered,
-    output [sram_pkg::MAP_V_WIDTH-1:0] o_V_to_be_rendered,
+    input [23:0] i_color,                                   // two cycles prior to o_RGB, for vga setting
+    output [sram_pkg::MAP_H_WIDTH-1:0] o_H_to_be_rendered,  // two cycles prior to i_color, for sram reading
+    output [sram_pkg::MAP_V_WIDTH-1:0] o_V_to_be_rendered,  // two cycles prior to i_color, for sram reading
+
     output o_render_clk
 );
 
