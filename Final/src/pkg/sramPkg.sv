@@ -9,7 +9,7 @@ package sram_pkg;
     localparam int COLOR_WIDTH = 4;
     localparam int IMAGE_SIZE = 60;
     localparam int IMAGE_COOR_WIDTH = 6;
-    localparam int ANG_WIDTH = 9;
+    
     localparam int MAP_H = VGA_H;
     localparam int MAP_V = 800;
     localparam int MAP_H_WIDTH = 11;

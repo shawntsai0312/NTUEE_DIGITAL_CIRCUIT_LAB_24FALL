@@ -1,13 +1,13 @@
 `timescale 1ns/10ps
 `define CYCLE 10
 `define HCYCLE 5
-`define SIM_CYCLE (108000000 / 60 + 100) // 1 frames, 100 for margin
-// `define SIM_CYCLE 220000 // test only, enough for prepare 1 frame
+// `define SIM_CYCLE (108000000 / 60 + 100) // 1 frames, 100 for margin
+`define SIM_CYCLE 220000 // test only, enough for prepare 1 frame
 // `define SIM_CYCLE 7500 // test only, enough for image rotation
 
 // `define SIM_CYCLE (108000000 + 100) // 60 frames, 100 for margin
 
-`define PRINT_PROGRESS_CYCLE 100000
+`define PRINT_PROGRESS_CYCLE 10000
 
 module tb;
 

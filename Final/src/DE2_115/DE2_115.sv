@@ -1,3 +1,6 @@
+import game_pkg::*;
+import sram_pkg::*;
+
 module DE2_115 (
 	input CLOCK_50,
 	input CLOCK2_50,
@@ -166,11 +169,18 @@ module DE2_115 (
 	assign o_SRAM_LB_N = 1'b0;
 	assign o_SRAM_UB_N = 1'b0;
 
-	wire signed [sram_pkg::ANG_WIDTH-1:0] o_car1_angle, o_car2_angle;
+	// wire signed [game_pkg::ANG_WIDTH-1:0] o_car1_angle, o_car2_angle;
+	wire signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] car1_v_m, car2_v_m;
 
 	Main u_Main (
 		.i_clk              (clk_108m),
 		.i_rst_n            (KEY[3]),
+		.i_car1_acc         (SW[2:0]),
+		.i_car2_acc         (SW[15:13]),
+		.i_car1_omega	    (SW[4:3]),
+		.i_car2_omega	    (SW[17:16]),
+		.o_car1_v_m         (car1_v_m),
+		.o_car2_v_m         (car2_v_m),
 		.o_SRAM_ADDR        (SRAM_ADDR),
 		.io_SRAM_DQ         (SRAM_DQ),
 		.o_SRAM_WE_N        (SRAM_WE_N),
@@ -180,16 +190,16 @@ module DE2_115 (
 		.o_frame_counter	(frame_counter)
 	);
 
-	SignedAngleDecoder car1_angle (
-		.i_angle			(o_car1_angle),
+	SignedValueDecoder car2_value (
+		.i_value			(car2_v_m[game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-2:0]),
 		.o_seven_sign		(HEX7),
 		.o_seven_hundred	(HEX6),
 		.o_seven_ten		(HEX5),
 		.o_seven_one		(HEX4)
 	);
 
-	SignedAngleDecoder car2_angle (
-		.i_angle			(o_car2_angle),
+	SignedValueDecoder car1_value (
+		.i_value			(car1_v_m[game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-2:0]),
 		.o_seven_sign		(HEX3),
 		.o_seven_hundred	(HEX2),
 		.o_seven_ten		(HEX1),

@@ -1,9 +1,11 @@
-import object_pkg::*;
+import game_pkg::*;
 import sram_pkg::*;
 
 module ColorDecoder (
-    input object_pkg::ObjectID i_object_id,
+    input game_pkg::ObjectID i_object_id,
     input [sram_pkg::COLOR_WIDTH-1:0] i_encoded_color,
+    input [game_pkg::CAR_MASS_LEVEL_NUM_WIDTH-1:0] i_car1_mass_level,
+    input [game_pkg::CAR_MASS_LEVEL_NUM_WIDTH-1:0] i_car2_mass_level,
     output [23:0] o_decoded_color
 );
     wire [23:0] map_color [0:15];
@@ -21,14 +23,21 @@ module ColorDecoder (
         .color_map    (car2_color)
     );
 
+    wire [23:0] carCircle_color [0:15];
+    carCircle_palette u_carCircle_palette (
+        .color_map    (carCircle_color)
+    );
+
     reg [23:0] decoded_color;
     assign o_decoded_color = decoded_color;
     always @(*) begin
         decoded_color = 24'b0;
         case(i_object_id)
-            object_pkg::OBJECT_MAP  : decoded_color = map_color[i_encoded_color];
-            object_pkg::OBJECT_CAR1 : decoded_color = car1_color[i_encoded_color];
-            object_pkg::OBJECT_CAR2 : decoded_color = car2_color[i_encoded_color];
+            game_pkg::OBJECT_MAP  : decoded_color = map_color[i_encoded_color];
+            game_pkg::OBJECT_CAR1 : decoded_color = car1_color[i_encoded_color];
+            game_pkg::OBJECT_CAR2 : decoded_color = car2_color[i_encoded_color];
+            game_pkg::OBJECT_CAR1_CIRCLE : decoded_color = carCircle_color[i_encoded_color];
+            game_pkg::OBJECT_CAR2_CIRCLE : decoded_color = carCircle_color[i_encoded_color];
         endcase
         if(decoded_color == 24'b0) begin
             // $display("ColorDecoder: object_id %d, encoded_color %d", i_object_id, i_encoded_color);

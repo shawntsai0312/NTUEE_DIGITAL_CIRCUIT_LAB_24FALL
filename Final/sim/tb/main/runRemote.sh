@@ -2,7 +2,7 @@
 
 set start_time = `date +%s`
 vcs tbRemote.sv \
-    ../../../src/pkg/objectPkg.sv \
+    ../../../src/pkg/gamePkg.sv \
     ../../../src/pkg/sramPkg.sv \
     ../../sram/sram.sv \
     ../../../src/main.sv \
@@ -12,10 +12,10 @@ vcs tbRemote.sv \
     ../../../src/frameEncoder/sramEncoder.sv \
     ../../../src/frameEncoder/lut/car1LUT.sv \
     ../../../src/frameEncoder/lut/car2LUT.sv \
-    ../../../src/frameEncoder/rotate/atanLUT.sv \
-    ../../../src/frameEncoder/rotate/imageRotator.sv \
-    ../../../src/frameEncoder/rotate/rotateImageCoor.sv \
-    ../../../src/frameEncoder/rotate/rotateXY_pipelined.sv \
+    ../../../src/rotate/atanLUT.sv \
+    ../../../src/rotate/imageRotator.sv \
+    ../../../src/rotate/rotateImageCoor.sv \
+    ../../../src/rotate/rotateXY_pipelined.sv \
     ../../../src/frameDecoder/frameDecoder.sv \
     ../../../src/frameDecoder/colorDecoder.sv \
     ../../../src/frameDecoder/pixelDecoder.sv \
@@ -24,6 +24,7 @@ vcs tbRemote.sv \
     ../../../src/frameDecoder/palette/car1Palette.sv \
     ../../../src/frameDecoder/palette/car2Palette.sv \
     ../../../src/frameDecoder/palette/mapPalette.sv \
+    ../../../src/frameDecoder/palette/carCirclePalette.sv \
     -full64 -R -debug_access+all -sverilog -Xrerolloff +access+rw |& tee compile_log.txt
 set end_time = `date +%s`
 @ total_time = $end_time - $start_time

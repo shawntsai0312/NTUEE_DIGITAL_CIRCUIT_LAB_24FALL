@@ -1,6 +1,6 @@
 `define DEFAULT_ANG_WIDTH 9
 
-import object_pkg::*;
+import game_pkg::*;
 import sram_pkg::*;
 
 module ImageRotator #(
@@ -28,7 +28,7 @@ module ImageRotator #(
     wire outOfRange;
 
     RotateImageCoor #(
-        .ANG_WIDTH            (sram_pkg::ANG_WIDTH)
+        .ANG_WIDTH            (game_pkg::ANG_WIDTH)
     ) u_RotateImageCoor (
         .i_clk                (i_clk),
         .i_rst_n              (i_rst_n),

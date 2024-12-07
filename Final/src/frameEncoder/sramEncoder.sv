@@ -1,11 +1,11 @@
-import object_pkg::*;
+import game_pkg::*;
 import sram_pkg::*;
 
 module SramEncoder (
     input i_clk,
     input i_rst_n,
     input [sram_pkg::COLOR_WIDTH-1:0] i_encoded_color,
-    input object_pkg::ObjectID i_object_id,
+    input game_pkg::ObjectID i_object_id,
     input [2*sram_pkg::IMAGE_COOR_WIDTH-1:0] i_object_pixel_counter,
     output [sram_pkg::SRAM_ADDR_COUNT-1:0] o_sram_addr,
     output [sram_pkg::SRAM_DATA_WIDTH-1:0] o_sram_data
@@ -21,10 +21,10 @@ module SramEncoder (
     always @(*) begin
         sram_addr_w = sram_addr_r;
         case(i_object_id)
-            object_pkg::OBJECT_CAR1: begin
+            game_pkg::OBJECT_CAR1: begin
                 sram_addr_w = sram_pkg::CAR1_ADDR_START + (i_object_pixel_counter >> 2);
             end
-            object_pkg::OBJECT_CAR2: begin
+            game_pkg::OBJECT_CAR2: begin
                 sram_addr_w = sram_pkg::CAR2_ADDR_START + (i_object_pixel_counter >> 2);
             end
         endcase

@@ -1,16 +1,16 @@
-import object_pkg::*;
+import game_pkg::*;
 import sram_pkg::*;
 
 module FrameEncoder (
     input i_clk,
     input i_rst_n,
     input i_start,
-    input signed [sram_pkg::ANG_WIDTH-1:0] i_car1_angle,
-    input signed [sram_pkg::ANG_WIDTH-1:0] i_car2_angle,
+    input signed [game_pkg::ANG_WIDTH-1:0] i_car1_angle,
+    input signed [game_pkg::ANG_WIDTH-1:0] i_car2_angle,
     output [sram_pkg::SRAM_ADDR_COUNT-1:0] o_sram_addr,
     output [sram_pkg::SRAM_DATA_WIDTH-1:0] o_sram_data,
     output o_sram_writing,
-    output object_pkg::ObjectID o_object_id,
+    output game_pkg::ObjectID o_object_id,
     output [2*sram_pkg::IMAGE_COOR_WIDTH-1:0] o_pixel_counter,
     output o_opacity,
     output o_opacity_valid,
@@ -30,14 +30,14 @@ module FrameEncoder (
     reg sram_writing_r, sram_writing_w;
     assign o_sram_writing = sram_writing_r;
 
-    reg [object_pkg::OBJECT_OPACITY_NUM_WIDTH-1:0] proc_counter_r, proc_counter_w;
+    reg [game_pkg::OBJECT_OPACITY_NUM_WIDTH-1:0] proc_counter_r, proc_counter_w;
 
     reg start_rotator_r, start_rotator_w;
 
     reg [2*sram_pkg::IMAGE_COOR_WIDTH-1:0] pixel_counter_r, pixel_counter_w;
     assign o_pixel_counter = pixel_counter_r;
     
-    reg signed [sram_pkg::ANG_WIDTH-1:0] angle_r, angle_w;
+    reg signed [game_pkg::ANG_WIDTH-1:0] angle_r, angle_w;
 
     reg [sram_pkg::COLOR_WIDTH-1:0] lut_data_r [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1];
     reg [sram_pkg::COLOR_WIDTH-1:0] lut_data_w [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1];
@@ -57,12 +57,12 @@ module FrameEncoder (
     wire [sram_pkg::IMAGE_COOR_WIDTH-1:0] H_to_be_processed;
     wire [sram_pkg::IMAGE_COOR_WIDTH-1:0] V_to_be_processed;
     
-    object_pkg::ObjectID object_id;
+    game_pkg::ObjectID object_id;
     assign o_object_id = object_id;
 
 
     ImageRotator #(
-        .ANG_WIDTH          (sram_pkg::ANG_WIDTH)
+        .ANG_WIDTH          (game_pkg::ANG_WIDTH)
     ) u_ImageRotator (
         .i_clk                  (i_clk),
         .i_rst_n                (i_rst_n),
@@ -87,10 +87,10 @@ module FrameEncoder (
     );
 
     always @(*) begin
-        object_id = object_pkg::OBJECT_MAP;
+        object_id = game_pkg::OBJECT_MAP;
         case (proc_counter_r)
-            0: object_id = object_pkg::OBJECT_CAR1;
-            1: object_id = object_pkg::OBJECT_CAR2;
+            0: object_id = game_pkg::OBJECT_CAR1;
+            1: object_id = game_pkg::OBJECT_CAR2;
         endcase
     end
 
@@ -103,7 +103,7 @@ module FrameEncoder (
                 else        state_w = S_IDLE;
             end
             S_PROC: begin
-                if(proc_counter_r == object_pkg::OBJECT_OPACITY_NUM)    state_w = S_DONE;
+                if(proc_counter_r == game_pkg::OBJECT_OPACITY_NUM)    state_w = S_DONE;
                 else                                                    state_w = S_PROC;
             end
             S_DONE: if(!i_start) state_w = S_IDLE;
@@ -123,7 +123,7 @@ module FrameEncoder (
             end
             S_PROC: begin
                 if (pixel_counter_r == sram_pkg::IMAGE_SIZE*sram_pkg::IMAGE_SIZE - 1) begin
-                    if (proc_counter_r == object_pkg::OBJECT_OPACITY_NUM) begin
+                    if (proc_counter_r == game_pkg::OBJECT_OPACITY_NUM) begin
                         proc_counter_w = proc_counter_r;
                     end
                     else begin
@@ -148,7 +148,7 @@ module FrameEncoder (
                 start_rotator_w = 0;
             end
             S_PROC: begin
-                if (proc_counter_r < object_pkg::OBJECT_OPACITY_NUM) begin
+                if (proc_counter_r < game_pkg::OBJECT_OPACITY_NUM) begin
                     if (pixel_rotate_done) begin
                         if (H_to_be_processed == sram_pkg::IMAGE_SIZE-1 && V_to_be_processed == sram_pkg::IMAGE_SIZE-1) begin
                             start_rotator_w = 0;

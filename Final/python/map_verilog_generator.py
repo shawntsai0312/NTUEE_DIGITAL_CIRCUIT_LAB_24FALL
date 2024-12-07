@@ -17,7 +17,7 @@ def output_verilog(bits_per_pixel, input_name, input_img, colors_output_path, en
     palette = np.array(palette).reshape(-1, 3)[:num_colors]
 
     # 建立顏色映射並排序
-    color_map = {tuple(palette[i]): i + 1 for i in range(num_colors)}
+    color_map = {tuple(palette[i]): i + 1 for i in range(min(num_colors, len(palette)))}
     sorted_color_map = dict(sorted(color_map.items(), key=lambda item: item[1]))
 
     # 儲存壓縮完顏色的圖片
@@ -50,15 +50,18 @@ def output_verilog(bits_per_pixel, input_name, input_img, colors_output_path, en
     bin_output_path = encode_output_path.replace('.sv', '.bin')
     with open(bin_output_path, 'wb') as bin_file:
         for y in range(height):
-            for x in range(width):
-                pixel = input_img.getpixel((x, y))
-                printData = sorted_color_map[tuple(palette[pixel])]
-                bin_file.write(printData.to_bytes(1, byteorder='big'))
+            for x in range(0, width, 2):
+                pixel1 = input_img.getpixel((x, y))
+                pixel2 = input_img.getpixel((x+1, y)) if x+1 < width else 0
+                printData1 = sorted_color_map[tuple(palette[pixel1])]-1
+                printData2 = sorted_color_map[tuple(palette[pixel2])]-1
+                combined_data = (printData2 << 4) | printData1
+                bin_file.write(combined_data.to_bytes(1, byteorder='big'))
 
 bits_per_pixel = 4
 input_name = 'map'
-input_file = '../doc/track_10.png'
-colors_output = '../src/currFrameDecoder/palette/'+input_name+'Palette.sv'
+input_file = '../doc/track_3.png'
+colors_output = '../src/frameDecoder/palette/'+input_name+'Palette.sv'
 encode_output = '../sim/sram/'+input_name+'LUT.sv'
 input_img = Image.open(input_file)
 compressed_img_output = input_file.replace('.png', '_compressed.png')

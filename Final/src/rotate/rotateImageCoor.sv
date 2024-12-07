@@ -1,7 +1,7 @@
 `define DEFAULT_ANG_WIDTH 9
 `define DEFAULT_VEC_PROCESS_WIDTH 22
 
-import object_pkg::*;
+import game_pkg::*;
 import sram_pkg::*;
 
 module RotateImageCoor #(

@@ -9,7 +9,6 @@
 
 // Overflow problem doing cordic
 // Input vector valid range: -2^(VEC_WIDTH-1)*CordicGain*2 to (2^(VEC_WIDTH-1)-1)*CordicGain*2
-// 
 
 module RotateXY #(
     parameter VEC_WIDTH = `DEFAULT_VEC_WIDTH,

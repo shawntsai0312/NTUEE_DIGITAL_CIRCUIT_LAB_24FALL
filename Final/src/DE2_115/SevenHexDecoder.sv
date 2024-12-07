@@ -129,8 +129,8 @@ end
 endmodule
 
 
-module SignedAngleDecoder (
-	input signed [8:0] i_angle,
+module SignedValueDecoder (
+	input signed [31:0] i_value,
 	output logic [6:0] o_seven_sign,
 	output logic [6:0] o_seven_hundred,
 	output logic [6:0] o_seven_ten,
@@ -158,16 +158,16 @@ parameter D9 = 7'b0010000;
 parameter D_pos = 7'b1111111;
 parameter D_neg = 7'b0111111;
 
-logic signed [8:0] abs_angle;
-assign abs_angle = (i_angle < 0)? -i_angle : i_angle;
+logic signed [31:0] abs_value;
+assign abs_value = (i_value < 0)? -i_value : i_value;
 
-logic [8:0] hundred, ten, one;
-assign hundred = abs_angle / 100;
-assign ten = (abs_angle % 100) / 10;
-assign one = (abs_angle % 10);
+logic [31:0] hundred, ten, one;
+assign hundred = abs_value / 100;
+assign ten = (abs_value % 100) / 10;
+assign one = (abs_value % 10);
 
 always @(*) begin
-	if (i_angle < 0)	o_seven_sign = D_neg;
+	if (i_value < 0)	o_seven_sign = D_neg;
 	else				o_seven_sign = D_pos;
 
 	case(hundred)
