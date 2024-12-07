@@ -99,6 +99,7 @@ module GameControl (
         // car1_v_m_w = car1_v_m_r + ((i_car1_acc - game_pkg::FRICTION_ACCELERATION)<<game_pkg::ACCELERATION_FRACTION_WIDTH);
         // car2_v_m_w = car2_v_m_r + ((i_car2_acc - game_pkg::FRICTION_ACCELERATION)<<game_pkg::ACCELERATION_FRACTION_WIDTH);
         car1_v_m_w = (car1_v_m_r >>> game_pkg::FRICTION_SHIFT) + ((i_car1_acc)<<(game_pkg::VELOCITY_FRACTION_WIDTH-game_pkg::FRICTION_SHIFT));
+        car2_v_m_w = (car2_v_m_r >>> game_pkg::FRICTION_SHIFT) + ((i_car2_acc)<<(game_pkg::VELOCITY_FRACTION_WIDTH-game_pkg::FRICTION_SHIFT));
 
         // fix velocity, the range can only be [0, game_pkg::VELOCITY_MAX]
         if (car1_v_m_w < 0) car1_v_m_w = 0;
