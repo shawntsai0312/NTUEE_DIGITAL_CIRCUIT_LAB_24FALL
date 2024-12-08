@@ -39,7 +39,7 @@ module RotateImageCoor #(
 
     assign o_outOfRange = (x_new >= sram_pkg::IMAGE_SIZE) || (y_new >= sram_pkg::IMAGE_SIZE) || (x_new < -sram_pkg::IMAGE_SIZE) || (y_new < -sram_pkg::IMAGE_SIZE);
 
-    RotateXY #(
+    RotateXYfullPipelined #(
         .VEC_WIDTH(sram_pkg::IMAGE_COOR_WIDTH+1),
         .ANG_WIDTH(ANG_WIDTH),
         .VEC_PROCESS_WIDTH(VEC_PROCESS_WIDTH)

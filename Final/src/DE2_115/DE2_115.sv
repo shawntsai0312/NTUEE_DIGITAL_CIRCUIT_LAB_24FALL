@@ -146,10 +146,26 @@ module DE2_115 (
 	wire [31:0] timer;
 	assign timer = frame_counter / 60;
 
-	altpll pll0( // generate with qsys, please follow lab2 tutorials
-		.clk_clk(CLOCK_50),
-		.reset_reset_n(KEY[3]),
-		.altpll_0_clk_108m_clk(clk_108m),
+	qsys u_qsys (
+		.altpll_108m_clk                      (clk_108m),
+		.clk_clk                              (CLOCK_50),
+		.reset_reset_n                        (KEY[3]),
+		
+		// .usb_0_avalon_usb_slave_address       (),
+		// .usb_0_avalon_usb_slave_chipselect    (),
+		// .usb_0_avalon_usb_slave_read          (),
+		// .usb_0_avalon_usb_slave_write         (),
+		// .usb_0_avalon_usb_slave_writedata     (),
+		// .usb_0_avalon_usb_slave_readdata      (), // only this one is output
+
+		// .usb_0_external_interface_INT1        (), // i don't know what this is
+		.usb_0_external_interface_DATA        (OTG_DATA),
+		.usb_0_external_interface_RST_N       (OTG_RST_N),
+		.usb_0_external_interface_ADDR        (OTG_ADDR),
+		.usb_0_external_interface_CS_N        (OTG_CS_N),
+		.usb_0_external_interface_RD_N        (OTG_RD_N),
+		.usb_0_external_interface_WR_N        (OTG_WR_N),
+		.usb_0_external_interface_INT0        (OTG_INT)
 	);
 
 	// you can decide key down settings on your own, below is just an example
@@ -170,7 +186,7 @@ module DE2_115 (
 	assign o_SRAM_UB_N = 1'b0;
 
 	// wire signed [game_pkg::ANG_WIDTH-1:0] o_car1_angle, o_car2_angle;
-	wire signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] car1_v_m, car2_v_m;
+	wire [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-4:0] car1_v_m, car2_v_m;
 
 	Main u_Main (
 		.i_clk              (clk_108m),
@@ -191,7 +207,7 @@ module DE2_115 (
 	);
 
 	SignedValueDecoder car2_value (
-		.i_value			(car2_v_m[game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-2:0]),
+		.i_value			(car2_v_m),
 		.o_seven_sign		(HEX7),
 		.o_seven_hundred	(HEX6),
 		.o_seven_ten		(HEX5),
@@ -199,7 +215,7 @@ module DE2_115 (
 	);
 
 	SignedValueDecoder car1_value (
-		.i_value			(car1_v_m[game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-2:0]),
+		.i_value			(car1_v_m),
 		.o_seven_sign		(HEX3),
 		.o_seven_hundred	(HEX2),
 		.o_seven_ten		(HEX1),

@@ -1,0 +1,22 @@
+	component qsys is
+		port (
+			altpll_108m_clk                   : out   std_logic;                                        -- clk
+			clk_clk                           : in    std_logic                     := 'X';             -- clk
+			reset_reset_n                     : in    std_logic                     := 'X';             -- reset_n
+			usb_0_avalon_usb_slave_address    : in    std_logic_vector(1 downto 0)  := (others => 'X'); -- address
+			usb_0_avalon_usb_slave_chipselect : in    std_logic                     := 'X';             -- chipselect
+			usb_0_avalon_usb_slave_read       : in    std_logic                     := 'X';             -- read
+			usb_0_avalon_usb_slave_write      : in    std_logic                     := 'X';             -- write
+			usb_0_avalon_usb_slave_writedata  : in    std_logic_vector(15 downto 0) := (others => 'X'); -- writedata
+			usb_0_avalon_usb_slave_readdata   : out   std_logic_vector(15 downto 0);                    -- readdata
+			usb_0_external_interface_INT1     : in    std_logic                     := 'X';             -- INT1
+			usb_0_external_interface_DATA     : inout std_logic_vector(15 downto 0) := (others => 'X'); -- DATA
+			usb_0_external_interface_RST_N    : out   std_logic;                                        -- RST_N
+			usb_0_external_interface_ADDR     : out   std_logic_vector(1 downto 0);                     -- ADDR
+			usb_0_external_interface_CS_N     : out   std_logic;                                        -- CS_N
+			usb_0_external_interface_RD_N     : out   std_logic;                                        -- RD_N
+			usb_0_external_interface_WR_N     : out   std_logic;                                        -- WR_N
+			usb_0_external_interface_INT0     : in    std_logic                     := 'X'              -- INT0
+		);
+	end component qsys;
+

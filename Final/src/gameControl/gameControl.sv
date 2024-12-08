@@ -15,8 +15,8 @@ module GameControl (
     output signed [sram_pkg::MAP_V_WIDTH-1:0] o_car1_y,
     output signed [sram_pkg::MAP_H_WIDTH-1:0] o_car2_x,
     output signed [sram_pkg::MAP_V_WIDTH-1:0] o_car2_y,
-    output signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] o_car1_v_m,
-    output signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] o_car2_v_m,
+    output [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-4:0] o_car1_v_m,
+    output [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-4:0] o_car2_v_m,
     output [game_pkg::CAR_MASS_LEVEL_NUM_WIDTH-1:0] o_car1_mass_level,
     output [game_pkg::CAR_MASS_LEVEL_NUM_WIDTH-1:0] o_car2_mass_level
 );
@@ -56,10 +56,10 @@ module GameControl (
     reg signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] car1_v_m_r, car2_v_m_r, car1_v_m_w, car2_v_m_w;
     wire signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] car1_v_x, car1_v_y, car2_v_x, car2_v_y;
 
-    assign o_car1_v_m = car1_v_m_r;
-    assign o_car2_v_m = car2_v_m_r;
+    assign o_car1_v_m = car1_v_m_r[game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-2:2]; // no need to output the sign bit
+    assign o_car2_v_m = car2_v_m_r[game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-2:2]; // no need to output the sign bit
 
-    RotateXY #(
+    RotateXYnonPipelined #(
         .VEC_WIDTH            (game_pkg::VELOCITY_INTEGER_WIDTH + game_pkg::VELOCITY_FRACTION_WIDTH),
         .ANG_WIDTH            (game_pkg::ANG_WIDTH)
     ) u_Rotate_car1_v (
@@ -73,7 +73,7 @@ module GameControl (
         .o_y                  (car1_v_y)
     );
 
-    RotateXY #(
+    RotateXYnonPipelined #(
         .VEC_WIDTH            (game_pkg::VELOCITY_INTEGER_WIDTH + game_pkg::VELOCITY_FRACTION_WIDTH),
         .ANG_WIDTH            (game_pkg::ANG_WIDTH)
     ) u_Rotate_car2_v (
@@ -95,11 +95,19 @@ module GameControl (
     assign o_car2_mass_level = 1;
 
     // velocity update
+    reg signed [31:0] car1_v_temp_shift, car2_v_temp_shift; // prevent bit truncation
     always @(*) begin
         // car1_v_m_w = car1_v_m_r + ((i_car1_acc - game_pkg::FRICTION_ACCELERATION)<<game_pkg::ACCELERATION_FRACTION_WIDTH);
         // car2_v_m_w = car2_v_m_r + ((i_car2_acc - game_pkg::FRICTION_ACCELERATION)<<game_pkg::ACCELERATION_FRACTION_WIDTH);
-        car1_v_m_w = (car1_v_m_r >>> game_pkg::FRICTION_SHIFT) + ((i_car1_acc)<<(game_pkg::VELOCITY_FRACTION_WIDTH-game_pkg::FRICTION_SHIFT));
-        car2_v_m_w = (car2_v_m_r >>> game_pkg::FRICTION_SHIFT) + ((i_car2_acc)<<(game_pkg::VELOCITY_FRACTION_WIDTH-game_pkg::FRICTION_SHIFT));
+        car1_v_temp_shift = car1_v_m_r << game_pkg::FRICTION_CONSTANT_RECIPROCAL_REMAIN_SHIFT;
+        car2_v_temp_shift = car2_v_m_r << game_pkg::FRICTION_CONSTANT_RECIPROCAL_REMAIN_SHIFT;
+        car1_v_m_w = ((car1_v_temp_shift - car1_v_m_r) >>> game_pkg::FRICTION_CONSTANT_RECIPROCAL_REMAIN_SHIFT)
+                    + ((i_car1_acc)<<(game_pkg::VELOCITY_FRACTION_WIDTH-game_pkg::ACCELERATION_FRACTION_WIDTH));
+        car2_v_m_w = ((car2_v_temp_shift - car2_v_m_r) >>> game_pkg::FRICTION_CONSTANT_RECIPROCAL_REMAIN_SHIFT)
+                    + ((i_car2_acc)<<(game_pkg::VELOCITY_FRACTION_WIDTH-game_pkg::ACCELERATION_FRACTION_WIDTH));
+        // car2_v_m_w = car2_v_m_r
+        //             - (car2_v_m_r >>> game_pkg::FRICTION_CONSTANT_RECIPROCAL_REMAIN_SHIFT)
+        //             + ((i_car2_acc)<<(game_pkg::VELOCITY_FRACTION_WIDTH-game_pkg::ACCELERATION_FRACTION_WIDTH));
 
         // fix velocity, the range can only be [0, game_pkg::VELOCITY_MAX]
         if (car1_v_m_w < 0) car1_v_m_w = 0;
@@ -128,16 +136,16 @@ module GameControl (
 
     // angle update
     always @(*) begin
-        if (i_car1_omega[0]) car1_angle_w = car1_angle_w;
+        if (i_car1_omega[0]) car1_angle_w = car1_angle_r;
         else begin
-            if (i_car1_omega[1])    car1_angle_w = car1_angle_w + 1;
-            else                    car1_angle_w = car1_angle_w - 1;
+            if (i_car1_omega[1])    car1_angle_w = car1_angle_r + 1;
+            else                    car1_angle_w = car1_angle_r - 1;
         end
 
-        if (i_car2_omega[0]) car2_angle_w = car2_angle_w;
+        if (i_car2_omega[0]) car2_angle_w = car2_angle_r;
         else begin
-            if (i_car2_omega[1])    car2_angle_w = car2_angle_w + 1;
-            else                    car2_angle_w = car2_angle_w - 1;
+            if (i_car2_omega[1])    car2_angle_w = car2_angle_r + 1;
+            else                    car2_angle_w = car2_angle_r - 1;
         end
 
         // fix angle, the range can only be [-180, 180]

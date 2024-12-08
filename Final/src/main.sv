@@ -11,8 +11,8 @@ module Main (
     input [1:0] i_car1_omega,
     input [1:0] i_car2_omega,
 
-    output signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] o_car1_v_m,
-    output signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] o_car2_v_m,
+    output [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-4:0] o_car1_v_m,
+    output [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-4:0] o_car2_v_m,
 
     output [sram_pkg::SRAM_ADDR_COUNT-1:0] o_SRAM_ADDR,
 	inout  [sram_pkg::SRAM_DATA_WIDTH-1:0] io_SRAM_DQ,
@@ -64,7 +64,7 @@ module Main (
     reg car2_opacity_mask_r [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1];
     reg car2_opacity_mask_w [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1];
     
-    wire signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] car1_v_m, car2_v_m;
+    wire [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-4:0] car1_v_m, car2_v_m;
     assign o_car1_v_m = car1_v_m;
     assign o_car2_v_m = car2_v_m;
 

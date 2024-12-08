@@ -15,7 +15,7 @@ vcs tbRemote.sv \
     ../../../src/rotate/atanLUT.sv \
     ../../../src/rotate/imageRotator.sv \
     ../../../src/rotate/rotateImageCoor.sv \
-    ../../../src/rotate/rotateXY_pipelined.sv \
+    ../../../src/rotate/rotateXY.sv \
     ../../../src/frameDecoder/frameDecoder.sv \
     ../../../src/frameDecoder/colorDecoder.sv \
     ../../../src/frameDecoder/pixelDecoder.sv \

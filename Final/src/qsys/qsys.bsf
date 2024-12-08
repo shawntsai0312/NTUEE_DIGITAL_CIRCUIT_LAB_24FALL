@@ -1,0 +1,189 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2015 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus II License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 0 0 528 416)
+	(text "qsys" (rect 251 -1 271 11)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 400 20 412)(font "Arial" ))
+	(port
+		(pt 0 72)
+		(input)
+		(text "clk_clk" (rect 0 0 27 12)(font "Arial" (font_size 8)))
+		(text "clk_clk" (rect 4 61 46 72)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 224 72)(line_width 1))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "reset_reset_n" (rect 0 0 56 12)(font "Arial" (font_size 8)))
+		(text "reset_reset_n" (rect 4 101 82 112)(font "Arial" (font_size 8)))
+		(line (pt 0 112)(pt 224 112)(line_width 1))
+	)
+	(port
+		(pt 0 152)
+		(input)
+		(text "usb_0_avalon_usb_slave_address[1..0]" (rect 0 0 160 12)(font "Arial" (font_size 8)))
+		(text "usb_0_avalon_usb_slave_address[1..0]" (rect 4 141 220 152)(font "Arial" (font_size 8)))
+		(line (pt 0 152)(pt 224 152)(line_width 3))
+	)
+	(port
+		(pt 0 168)
+		(input)
+		(text "usb_0_avalon_usb_slave_chipselect" (rect 0 0 147 12)(font "Arial" (font_size 8)))
+		(text "usb_0_avalon_usb_slave_chipselect" (rect 4 157 202 168)(font "Arial" (font_size 8)))
+		(line (pt 0 168)(pt 224 168)(line_width 1))
+	)
+	(port
+		(pt 0 184)
+		(input)
+		(text "usb_0_avalon_usb_slave_read" (rect 0 0 127 12)(font "Arial" (font_size 8)))
+		(text "usb_0_avalon_usb_slave_read" (rect 4 173 166 184)(font "Arial" (font_size 8)))
+		(line (pt 0 184)(pt 224 184)(line_width 1))
+	)
+	(port
+		(pt 0 200)
+		(input)
+		(text "usb_0_avalon_usb_slave_write" (rect 0 0 127 12)(font "Arial" (font_size 8)))
+		(text "usb_0_avalon_usb_slave_write" (rect 4 189 172 200)(font "Arial" (font_size 8)))
+		(line (pt 0 200)(pt 224 200)(line_width 1))
+	)
+	(port
+		(pt 0 216)
+		(input)
+		(text "usb_0_avalon_usb_slave_writedata[15..0]" (rect 0 0 167 12)(font "Arial" (font_size 8)))
+		(text "usb_0_avalon_usb_slave_writedata[15..0]" (rect 4 205 238 216)(font "Arial" (font_size 8)))
+		(line (pt 0 216)(pt 224 216)(line_width 3))
+	)
+	(port
+		(pt 0 272)
+		(input)
+		(text "usb_0_external_interface_INT1" (rect 0 0 126 12)(font "Arial" (font_size 8)))
+		(text "usb_0_external_interface_INT1" (rect 4 261 178 272)(font "Arial" (font_size 8)))
+		(line (pt 0 272)(pt 224 272)(line_width 1))
+	)
+	(port
+		(pt 0 384)
+		(input)
+		(text "usb_0_external_interface_INT0" (rect 0 0 127 12)(font "Arial" (font_size 8)))
+		(text "usb_0_external_interface_INT0" (rect 4 373 178 384)(font "Arial" (font_size 8)))
+		(line (pt 0 384)(pt 224 384)(line_width 1))
+	)
+	(port
+		(pt 528 72)
+		(output)
+		(text "altpll_108m_clk" (rect 0 0 59 12)(font "Arial" (font_size 8)))
+		(text "altpll_108m_clk" (rect 454 61 544 72)(font "Arial" (font_size 8)))
+		(line (pt 528 72)(pt 304 72)(line_width 1))
+	)
+	(port
+		(pt 0 232)
+		(output)
+		(text "usb_0_avalon_usb_slave_readdata[15..0]" (rect 0 0 167 12)(font "Arial" (font_size 8)))
+		(text "usb_0_avalon_usb_slave_readdata[15..0]" (rect 4 221 232 232)(font "Arial" (font_size 8)))
+		(line (pt 0 232)(pt 224 232)(line_width 3))
+	)
+	(port
+		(pt 0 304)
+		(output)
+		(text "usb_0_external_interface_RST_N" (rect 0 0 140 12)(font "Arial" (font_size 8)))
+		(text "usb_0_external_interface_RST_N" (rect 4 293 184 304)(font "Arial" (font_size 8)))
+		(line (pt 0 304)(pt 224 304)(line_width 1))
+	)
+	(port
+		(pt 0 320)
+		(output)
+		(text "usb_0_external_interface_ADDR[1..0]" (rect 0 0 156 12)(font "Arial" (font_size 8)))
+		(text "usb_0_external_interface_ADDR[1..0]" (rect 4 309 214 320)(font "Arial" (font_size 8)))
+		(line (pt 0 320)(pt 224 320)(line_width 3))
+	)
+	(port
+		(pt 0 336)
+		(output)
+		(text "usb_0_external_interface_CS_N" (rect 0 0 133 12)(font "Arial" (font_size 8)))
+		(text "usb_0_external_interface_CS_N" (rect 4 325 178 336)(font "Arial" (font_size 8)))
+		(line (pt 0 336)(pt 224 336)(line_width 1))
+	)
+	(port
+		(pt 0 352)
+		(output)
+		(text "usb_0_external_interface_RD_N" (rect 0 0 135 12)(font "Arial" (font_size 8)))
+		(text "usb_0_external_interface_RD_N" (rect 4 341 178 352)(font "Arial" (font_size 8)))
+		(line (pt 0 352)(pt 224 352)(line_width 1))
+	)
+	(port
+		(pt 0 368)
+		(output)
+		(text "usb_0_external_interface_WR_N" (rect 0 0 139 12)(font "Arial" (font_size 8)))
+		(text "usb_0_external_interface_WR_N" (rect 4 357 178 368)(font "Arial" (font_size 8)))
+		(line (pt 0 368)(pt 224 368)(line_width 1))
+	)
+	(port
+		(pt 0 288)
+		(bidir)
+		(text "usb_0_external_interface_DATA[15..0]" (rect 0 0 160 12)(font "Arial" (font_size 8)))
+		(text "usb_0_external_interface_DATA[15..0]" (rect 4 277 220 288)(font "Arial" (font_size 8)))
+		(line (pt 0 288)(pt 224 288)(line_width 3))
+	)
+	(drawing
+		(text "altpll_108m" (rect 305 43 676 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 289 67 596 144)(font "Arial" (color 0 0 0)))
+		(text "clk" (rect 209 43 436 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 229 67 476 144)(font "Arial" (color 0 0 0)))
+		(text "reset" (rect 195 83 420 179)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "reset_n" (rect 229 107 500 224)(font "Arial" (color 0 0 0)))
+		(text "usb_0_avalon_usb_slave" (rect 77 123 286 259)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "address" (rect 229 147 500 304)(font "Arial" (color 0 0 0)))
+		(text "chipselect" (rect 229 163 518 336)(font "Arial" (color 0 0 0)))
+		(text "read" (rect 229 179 482 368)(font "Arial" (color 0 0 0)))
+		(text "write" (rect 229 195 488 400)(font "Arial" (color 0 0 0)))
+		(text "writedata" (rect 229 211 512 432)(font "Arial" (color 0 0 0)))
+		(text "readdata" (rect 229 227 506 464)(font "Arial" (color 0 0 0)))
+		(text "usb_0_external_interface" (rect 76 243 296 499)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "INT1" (rect 229 267 482 544)(font "Arial" (color 0 0 0)))
+		(text "DATA" (rect 229 283 482 576)(font "Arial" (color 0 0 0)))
+		(text "RST_N" (rect 229 299 488 608)(font "Arial" (color 0 0 0)))
+		(text "ADDR" (rect 229 315 482 640)(font "Arial" (color 0 0 0)))
+		(text "CS_N" (rect 229 331 482 672)(font "Arial" (color 0 0 0)))
+		(text "RD_N" (rect 229 347 482 704)(font "Arial" (color 0 0 0)))
+		(text "WR_N" (rect 229 363 482 736)(font "Arial" (color 0 0 0)))
+		(text "INT0" (rect 229 379 482 768)(font "Arial" (color 0 0 0)))
+		(text " qsys " (rect 504 400 1044 810)(font "Arial" ))
+		(line (pt 224 32)(pt 304 32)(line_width 1))
+		(line (pt 304 32)(pt 304 400)(line_width 1))
+		(line (pt 224 400)(pt 304 400)(line_width 1))
+		(line (pt 224 32)(pt 224 400)(line_width 1))
+		(line (pt 303 52)(pt 303 76)(line_width 1))
+		(line (pt 302 52)(pt 302 76)(line_width 1))
+		(line (pt 225 52)(pt 225 76)(line_width 1))
+		(line (pt 226 52)(pt 226 76)(line_width 1))
+		(line (pt 225 92)(pt 225 116)(line_width 1))
+		(line (pt 226 92)(pt 226 116)(line_width 1))
+		(line (pt 225 132)(pt 225 236)(line_width 1))
+		(line (pt 226 132)(pt 226 236)(line_width 1))
+		(line (pt 225 252)(pt 225 388)(line_width 1))
+		(line (pt 226 252)(pt 226 388)(line_width 1))
+		(line (pt 0 0)(pt 528 0)(line_width 1))
+		(line (pt 528 0)(pt 528 416)(line_width 1))
+		(line (pt 0 416)(pt 528 416)(line_width 1))
+		(line (pt 0 0)(pt 0 416)(line_width 1))
+	)
+)

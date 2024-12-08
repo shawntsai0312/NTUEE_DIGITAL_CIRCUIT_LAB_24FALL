@@ -10,7 +10,202 @@
 // Overflow problem doing cordic
 // Input vector valid range: -2^(VEC_WIDTH-1)*CordicGain*2 to (2^(VEC_WIDTH-1)-1)*CordicGain*2
 
-module RotateXY #(
+module RotateXYnonPipelined #(
+    parameter VEC_WIDTH = `DEFAULT_VEC_WIDTH,
+    parameter ANG_WIDTH = `DEFAULT_ANG_WIDTH,
+    parameter VEC_PROCESS_WIDTH = `DEFAULT_VEC_PROCESS_WIDTH,
+    parameter ANG_PROCESS_WIDTH = `DEFAULT_ANG_PROCESS_WIDTH,
+    parameter ITERATIONS = `DEFAULT_ITERATIONS,
+    parameter ANG_TABLE_WIDTH = `DEFAULT_ANG_TABLE_WIDTH
+)(
+    input i_clk,
+    input i_rst_n,
+    input i_start,
+
+    // vector, Integer
+    // note that the magnitude of the vector should also be able to be expressed in VEC_WIDTH bits 
+    input signed [VEC_WIDTH-1:0] i_x,  
+    input signed [VEC_WIDTH-1:0] i_y,
+
+    // angle, Integer, from -180 to 180 degrees
+    input signed [ANG_WIDTH-1:0] i_angle,
+
+    output signed [VEC_WIDTH-1:0] o_x, // Integer, no floating point
+    output signed [VEC_WIDTH-1:0] o_y, // Integer, no floating point
+    output o_done
+);
+
+    // need 16 cycles to do a full rotation
+
+    localparam S_IDLE = 2'd0,
+            S_ROTATE = 2'd1,
+            S_DONE = 2'd2;
+    reg [1:0] state_r, state_w;
+
+    reg [4:0] counter_r, counter_w;
+
+    reg signed [VEC_PROCESS_WIDTH-1:0] x_r, x_w, y_r, y_w;
+    reg signed [ANG_PROCESS_WIDTH-1:0] angle_error_r, angle_error_w;
+
+    wire [ANG_TABLE_WIDTH-1:0] atan_table [0:ITERATIONS-1];
+    atan_lut atan_lut_inst (
+        .atan_table(atan_table)
+    );
+
+    // input scaling
+    wire [VEC_PROCESS_WIDTH-1:0] i_x_extend, i_y_extend;
+    DataScaleUp #(
+        .INPUT_WIDTH(VEC_WIDTH),
+        .OUTPUT_WIDTH(VEC_PROCESS_WIDTH)
+    ) data_scale_up_inst_x (
+        .in_value(i_x),
+        .out_value(i_x_extend)
+    );
+    DataScaleUp #(
+        .INPUT_WIDTH(VEC_WIDTH),
+        .OUTPUT_WIDTH(VEC_PROCESS_WIDTH)
+    ) data_scale_up_inst_y (
+        .in_value(i_y),
+        .out_value(i_y_extend)
+    );
+
+    // gain scaling
+    wire [VEC_PROCESS_WIDTH-1:0] i_x_gain, i_y_gain;
+    CordicGain #(
+        .DATA_WIDTH(VEC_PROCESS_WIDTH)
+    ) cordic_gain_inst_x (
+        .input_value(i_x_extend),
+        .output_value(i_x_gain)
+    );
+    CordicGain #(
+        .DATA_WIDTH(VEC_PROCESS_WIDTH)
+    ) cordic_gain_inst_y (
+        .input_value(i_y_extend),
+        .output_value(i_y_gain)
+    );
+
+    // angle preprocess
+    wire [ANG_PROCESS_WIDTH-1:0] i_angle_preprocess;
+    wire need_flip;
+    AnglePreprocess #(
+        .INPUT_WIDTH(ANG_WIDTH),
+        .OUTPUT_WIDTH(ANG_PROCESS_WIDTH)
+    ) angle_preprocess_inst (
+        .i_angle(i_angle),
+        .o_angle(i_angle_preprocess),
+        .o_need_flip(need_flip)
+    );
+
+    // output scaling
+    wire [VEC_WIDTH-1:0] o_x_process, o_y_process;
+    DataScaleDown #(
+        .INPUT_WIDTH(VEC_PROCESS_WIDTH),
+        .OUTPUT_WIDTH(VEC_WIDTH)
+    ) data_scale_down_inst_x (
+        .in_value(x_r),
+        .out_value(o_x_process)
+    );
+    DataScaleDown #(
+        .INPUT_WIDTH(VEC_PROCESS_WIDTH),
+        .OUTPUT_WIDTH(VEC_WIDTH)
+    ) data_scale_down_inst_y (
+        .in_value(y_r),
+        .out_value(o_y_process)
+    );
+
+    // output flip and assignments
+    OutputFlip #(
+        .DATA_WIDTH(VEC_WIDTH)
+    ) output_flip_inst_x (
+        .i_data(o_x_process),
+        .need_flip(need_flip),
+        .o_data(o_x)
+    );
+    OutputFlip #(
+        .DATA_WIDTH(VEC_WIDTH)
+    ) output_flip_inst_y (
+        .i_data(o_y_process),
+        .need_flip(need_flip),
+        .o_data(o_y)
+    );
+    assign o_done = (state_r == S_DONE);
+
+    // state machine
+    always @(*) begin
+        state_w = state_r;
+        case(state_r)
+            S_IDLE: begin
+                if (i_start)    state_w = S_ROTATE;
+                else            state_w = S_IDLE;
+            end
+            S_ROTATE: begin
+                if (counter_r == ITERATIONS-1)      state_w = S_DONE;
+                else                                state_w = S_ROTATE;
+            end
+            S_DONE: begin
+                state_w = S_IDLE;
+            end
+        endcase
+    end
+
+    // counter logic
+    always @(*) begin
+        counter_w = counter_r;
+        case(state_r)
+            S_ROTATE: begin
+                if (counter_r == ITERATIONS-1)      counter_w = 0;
+                else                                counter_w = counter_r + 1;
+            end
+        endcase
+    end
+
+    // rotate logic
+    always @(*) begin
+        x_w = x_r;
+        y_w = y_r;
+        angle_error_w = angle_error_r;
+        case(state_r)
+            S_IDLE: begin
+                x_w = i_x_gain;
+                y_w = i_y_gain;
+                angle_error_w = i_angle_preprocess;
+            end
+            S_ROTATE: begin
+                if(angle_error_r[ANG_PROCESS_WIDTH-1]) begin
+                    // angle_error_r < 0
+                    x_w = x_r + (y_r >>> counter_r);
+                    y_w = y_r - (x_r >>> counter_r);
+                    angle_error_w = angle_error_r + $signed({1'b0,atan_table[counter_r]});
+                end else begin
+                    // angle_error_r >= 0
+                    x_w = x_r - (y_r >>> counter_r);
+                    y_w = y_r + (x_r >>> counter_r);
+                    angle_error_w = angle_error_r - $signed({1'b0,atan_table[counter_r]});
+                end
+            end
+        endcase
+    end
+
+    always_ff @(posedge i_clk or negedge i_rst_n) begin 
+        if (!i_rst_n) begin
+            state_r <= S_IDLE;
+            counter_r <= 0;
+            x_r <= 0;
+            y_r <= 0;
+            angle_error_r <= 0;
+        end else begin
+            state_r <= state_w;
+            counter_r <= counter_w;
+            x_r <= x_w;
+            y_r <= y_w;
+            angle_error_r <= angle_error_w;
+        end
+    end
+
+endmodule
+
+
+module RotateXYfullPipelined #(
     parameter VEC_WIDTH = `DEFAULT_VEC_WIDTH,
     parameter ANG_WIDTH = `DEFAULT_ANG_WIDTH,
     parameter VEC_PROCESS_WIDTH = `DEFAULT_VEC_PROCESS_WIDTH,
