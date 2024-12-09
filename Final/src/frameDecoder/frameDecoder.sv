@@ -16,6 +16,9 @@ module FrameDecoder(
     input i_car1_opacity_mask [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1], // 1 for transparent, 0 for opaque
     input i_car2_opacity_mask [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1],
 
+    input [game_pkg::VELOCITY_OUTPUT_WIDTH-1:0] i_car1_v_m,
+    input [game_pkg::VELOCITY_OUTPUT_WIDTH-1:0] i_car2_v_m,
+
     input [sram_pkg::MAP_H_WIDTH-1:0] i_VGA_H,
     input [sram_pkg::MAP_V_WIDTH-1:0] i_VGA_V,
 
@@ -43,8 +46,6 @@ module FrameDecoder(
     reg [game_pkg::CAR_MASS_LEVEL_NUM_WIDTH-1:0] car2_mass_level_during_sram;
     reg [game_pkg::CAR_MASS_LEVEL_NUM_WIDTH-1:0] car2_mass_level_after_sram;
 
-
-
     PixelDecoder u_PixelDecoder (
         .i_car1_x                (i_car1_x),
         .i_car1_y                (i_car1_y),
@@ -52,6 +53,8 @@ module FrameDecoder(
         .i_car2_y                (i_car2_y),
         .i_car1_opacity_mask     (i_car1_opacity_mask),
         .i_car2_opacity_mask     (i_car2_opacity_mask),
+        .i_car1_v_m              (i_car1_v_m),
+        .i_car2_v_m              (i_car2_v_m),
         .i_VGA_H                 (i_VGA_H),
         .i_VGA_V                 (i_VGA_V),
         .o_object_id             (object_id_before_sram),
@@ -69,7 +72,6 @@ module FrameDecoder(
     wire [sram_pkg::COLOR_WIDTH-1:0] encoded_color;
 
     SramDataDecoder u_SramDataDecoder (
-        .i_object_id             (object_id_before_sram),
         .i_object_pixel_index    (object_pixel_index_after_sram),
         .i_sram_data             (i_sram_data),
         .o_encoded_color         (encoded_color)

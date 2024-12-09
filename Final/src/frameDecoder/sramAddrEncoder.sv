@@ -13,10 +13,11 @@ module SramAddrEncoder (
 
     always @(*) begin
         case (i_object_id)
-            game_pkg::OBJECT_MAP:  sram_addr_w = sram_pkg::MAP_ADDR_START + (i_object_pixel_index >> 2);
-            game_pkg::OBJECT_BAR:  sram_addr_w = sram_pkg::BAR_ADDR_START + (i_object_pixel_index >> 2);
-            game_pkg::OBJECT_CAR1: sram_addr_w = sram_pkg::CAR1_ADDR_START + (i_object_pixel_index >> 2);
-            game_pkg::OBJECT_CAR2: sram_addr_w = sram_pkg::CAR2_ADDR_START + (i_object_pixel_index >> 2);
+            game_pkg::OBJECT_MAP:       sram_addr_w = sram_pkg::MAP_ADDR_START + (i_object_pixel_index >> 2);
+            game_pkg::OBJECT_BAR:       sram_addr_w = sram_pkg::BAR_ADDR_START + (i_object_pixel_index >> 2);
+            game_pkg::OBJECT_BAR_DIGIT: sram_addr_w = sram_pkg::BAR_DIGIT_ADDR_START + (i_object_pixel_index >> 2);
+            game_pkg::OBJECT_CAR1:      sram_addr_w = sram_pkg::CAR1_ADDR_START + (i_object_pixel_index >> 2);
+            game_pkg::OBJECT_CAR2:      sram_addr_w = sram_pkg::CAR2_ADDR_START + (i_object_pixel_index >> 2);
         endcase
     end
 

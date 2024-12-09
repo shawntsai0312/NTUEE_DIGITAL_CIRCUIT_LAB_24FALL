@@ -1,14 +1,17 @@
 package game_pkg;
+    import sram_pkg::*;
+
     localparam int OBJECT_OPACITY_NUM = 2; // no map and bar and ?blocks
     localparam int OBJECT_OPACITY_NUM_WIDTH = 2;
     
     typedef enum logic [3:0] {
         OBJECT_MAP  = 4'd0,
         OBJECT_BAR  = 4'd1,
-        OBJECT_CAR1 = 4'd2, 
-        OBJECT_CAR2 = 4'd3,
-        OBJECT_CAR1_CIRCLE = 4'd4,
-        OBJECT_CAR2_CIRCLE = 4'd5
+        OBJECT_BAR_DIGIT = 4'd2,
+        OBJECT_CAR1 = 4'd3, 
+        OBJECT_CAR2 = 4'd4,
+        OBJECT_CAR1_CIRCLE = 4'd5,
+        OBJECT_CAR2_CIRCLE = 4'd6
     } ObjectID;
 
     localparam int CAR_CIRCLE_PIXEL_WIDTH = 2;
@@ -23,8 +26,31 @@ package game_pkg;
 
     localparam int ACCELERATION_FRACTION_WIDTH = 6;
 
-    localparam int FRICTION_CONSTANT_RECIPROCAL = 1 - 1/64; // fraction_constant = 64/63
+    // localparam int FRICTION_CONSTANT_RECIPROCAL = 1 - 1/64; // fraction_constant = 64/63
     localparam int FRICTION_CONSTANT_RECIPROCAL_REMAIN_SHIFT = 6; // minus 1/64, so shift 6 bits to the right
+
+    localparam int VELOCITY_OUTPUT_WIDTH = VELOCITY_INTEGER_WIDTH + VELOCITY_FRACTION_WIDTH - 3;
     
-    
+
+    typedef enum logic [1:0] {
+        VELOCITY_DISPLAY_HUNDRED = 2'd0,
+        VELOCITY_DISPLAY_TEN = 2'd1,
+        VELOCITY_DISPLAY_ONE = 2'd2,
+        VELOCITY_DISPLAY_BG = 2'd3
+    } VelocityDisplayDigit;
+
+    localparam int VELOCITY_DISPLAY_V_POS_MIN = 61; // V start from 1
+    localparam int VELOCITY_DISPLAY_V_POS_MAX = 60 + sram_pkg::BAR_DIGIT_V - 1;
+
+     // LT pos of H, H is 1 based
+    localparam int CAR1_VELOCITY_DISPLAY_UNIT_H_POS = 339;
+    localparam int CAR1_VELOCITY_DISPLAY_ONE_H_POS = CAR1_VELOCITY_DISPLAY_UNIT_H_POS - sram_pkg::BAR_DIGIT_H;
+    localparam int CAR1_VELOCITY_DISPLAY_TEN_H_POS = CAR1_VELOCITY_DISPLAY_ONE_H_POS - sram_pkg::BAR_DIGIT_H;
+    localparam int CAR1_VELOCITY_DISPLAY_HUNDRED_H_POS = CAR1_VELOCITY_DISPLAY_TEN_H_POS - sram_pkg::BAR_DIGIT_H;
+
+     // LT pos of H, H start from 1
+    localparam int CAR2_VELOCITY_DISPLAY_UNIT_H_POS = 1364;
+    localparam int CAR2_VELOCITY_DISPLAY_ONE_H_POS = CAR2_VELOCITY_DISPLAY_HUNDRED_H_POS - sram_pkg::BAR_DIGIT_H;
+    localparam int CAR2_VELOCITY_DISPLAY_TEN_H_POS = CAR2_VELOCITY_DISPLAY_ONE_H_POS - sram_pkg::BAR_DIGIT_H;
+    localparam int CAR2_VELOCITY_DISPLAY_HUNDRED_H_POS = CAR2_VELOCITY_DISPLAY_TEN_H_POS - sram_pkg::BAR_DIGIT_H;
 endpackage

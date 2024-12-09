@@ -80,13 +80,11 @@ def output_verilog(bits_per_pixel, input_name, input_img, colors_output_path, en
         encode_file.write("endmodule\n")
 
 bits_per_pixel = 4
-input_name = 'car1'
-# input_name = 'car2'
-input_file = '../doc/去背的'+input_name+'_resized.png'
-# input_name = 'map'
-# input_file = '../doc/test_map.png'
-colors_output = '../src/currFrameDecoder/palette/'+input_name+'Palette.sv'
-encode_output = '../src/nextFrameEncoder/lut/'+input_name+'LUT.sv'
+# input_name = 'car1'
+input_name = 'car2'
+input_file = '../img/car/去背的'+input_name+'_resized_40.png'
+colors_output = '../src/frameDecoder/palette/'+input_name+'Palette.sv'
+encode_output = '../src/frameEncoder/lut/'+input_name+'LUT.sv'
 input_img = Image.open(input_file)
 compressed_img_output = input_file.replace('.png', '_compressed.png')
 output_verilog(bits_per_pixel, input_name, input_img, colors_output, encode_output, compressed_img_output)

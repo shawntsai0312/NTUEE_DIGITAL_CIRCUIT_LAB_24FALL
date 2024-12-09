@@ -15,8 +15,8 @@ module GameControl (
     output signed [sram_pkg::MAP_V_WIDTH-1:0] o_car1_y,
     output signed [sram_pkg::MAP_H_WIDTH-1:0] o_car2_x,
     output signed [sram_pkg::MAP_V_WIDTH-1:0] o_car2_y,
-    output [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-4:0] o_car1_v_m,
-    output [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-4:0] o_car2_v_m,
+    output [game_pkg::VELOCITY_OUTPUT_WIDTH-1:0] o_car1_v_m,
+    output [game_pkg::VELOCITY_OUTPUT_WIDTH-1:0] o_car2_v_m,
     output [game_pkg::CAR_MASS_LEVEL_NUM_WIDTH-1:0] o_car1_mass_level,
     output [game_pkg::CAR_MASS_LEVEL_NUM_WIDTH-1:0] o_car2_mass_level
 );

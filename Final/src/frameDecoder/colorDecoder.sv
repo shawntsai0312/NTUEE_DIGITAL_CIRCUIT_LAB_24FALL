@@ -13,6 +13,16 @@ module ColorDecoder (
         .color_map    (map_color)
     );
 
+    wire [23:0] bar_color [0:15];
+    bar_palette u_bar_palette (
+        .color_bar    (bar_color)
+    );
+
+    wire [23:0] bar_digit_color [0:15];
+    bar_digit_palette u_bar_digit_palette (
+        .color_map    (bar_digit_color)
+    );
+
     wire [23:0] car1_color [0:15];
     car1_palette u_car1_palette (
         .color_map    (car1_color)
@@ -31,17 +41,15 @@ module ColorDecoder (
     reg [23:0] decoded_color;
     assign o_decoded_color = decoded_color;
     always @(*) begin
-        decoded_color = 24'b0;
+        decoded_color = 24'hffffff;
         case(i_object_id)
-            game_pkg::OBJECT_MAP  : decoded_color = map_color[i_encoded_color];
-            game_pkg::OBJECT_CAR1 : decoded_color = car1_color[i_encoded_color];
-            game_pkg::OBJECT_CAR2 : decoded_color = car2_color[i_encoded_color];
-            game_pkg::OBJECT_CAR1_CIRCLE : decoded_color = carCircle_color[i_encoded_color];
-            game_pkg::OBJECT_CAR2_CIRCLE : decoded_color = carCircle_color[i_encoded_color];
+            game_pkg::OBJECT_MAP            : decoded_color = map_color[i_encoded_color];
+            game_pkg::OBJECT_BAR            : decoded_color = bar_color[i_encoded_color];
+            game_pkg::OBJECT_BAR_DIGIT      : decoded_color = bar_digit_color[i_encoded_color];
+            game_pkg::OBJECT_CAR1           : decoded_color = car1_color[i_encoded_color];
+            game_pkg::OBJECT_CAR2           : decoded_color = car2_color[i_encoded_color];
+            game_pkg::OBJECT_CAR1_CIRCLE    : decoded_color = carCircle_color[i_encoded_color];
+            game_pkg::OBJECT_CAR2_CIRCLE    : decoded_color = carCircle_color[i_encoded_color];
         endcase
-        if(decoded_color == 24'b0) begin
-            // $display("ColorDecoder: object_id %d, encoded_color %d", i_object_id, i_encoded_color);
-            decoded_color = 24'hffffff; // default background color
-        end
     end
 endmodule

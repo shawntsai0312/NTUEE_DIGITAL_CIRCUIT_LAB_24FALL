@@ -186,7 +186,7 @@ module DE2_115 (
 	assign o_SRAM_UB_N = 1'b0;
 
 	// wire signed [game_pkg::ANG_WIDTH-1:0] o_car1_angle, o_car2_angle;
-	wire [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-4:0] car1_v_m, car2_v_m;
+	wire [game_pkg::VELOCITY_OUTPUT_WIDTH-1:0] car1_v_m, car2_v_m;
 
 	Main u_Main (
 		.i_clk              (clk_108m),

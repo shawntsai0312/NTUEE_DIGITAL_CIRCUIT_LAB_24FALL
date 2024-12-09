@@ -10,13 +10,21 @@ module PixelDecoder (
     input i_car1_opacity_mask [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1], // 1 for transparent, 0 for opaque
     input i_car2_opacity_mask [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1],
 
+    input [game_pkg::VELOCITY_OUTPUT_WIDTH-1:0] i_car1_v_m,
+    input [game_pkg::VELOCITY_OUTPUT_WIDTH-1:0] i_car2_v_m,
+
     input [sram_pkg::MAP_H_WIDTH-1:0] i_VGA_H, // from 1 to 1600
     input [sram_pkg::MAP_V_WIDTH-1:0] i_VGA_V, // from 1 to 900
 
     output game_pkg::ObjectID o_object_id,
     output reg [sram_pkg::MAP_H_WIDTH+sram_pkg::MAP_V_WIDTH-1:0] o_object_pixel_index
 );
+    /*---------------------------------------------------- map/bar render ----------------------------------------------------*/
+    wire [sram_pkg::MAP_H_WIDTH+sram_pkg::MAP_V_WIDTH-1:0] render_map_index, render_bar_index;
+    assign render_map_index = (i_VGA_V - 1) * sram_pkg::MAP_H + i_VGA_H - 1;
+    assign render_bar_index = (i_VGA_V - 1 - sram_pkg::MAP_V) * sram_pkg::MAP_H + i_VGA_H - 1;
 
+    /*------------------------------------------------------ car render ------------------------------------------------------*/
     wire [sram_pkg::MAP_H_WIDTH-1:0] o_car1_H_min, o_car1_H_max;
     wire [sram_pkg::MAP_V_WIDTH-1:0] o_car1_V_min, o_car1_V_max;
     XYtoBoundaries u_CoorConverter_car1 (
@@ -39,6 +47,28 @@ module PixelDecoder (
         .o_V_max    (o_car2_V_max)
     );
 
+    wire render_car1, render_car2;
+    assign render_car1 = i_VGA_H >= o_car1_H_min 
+                        & i_VGA_H <= o_car1_H_max 
+                        & i_VGA_V >= o_car1_V_min 
+                        & i_VGA_V <= o_car1_V_max;
+    assign render_car2 = i_VGA_H >= o_car2_H_min 
+                        & i_VGA_H <= o_car2_H_max 
+                        & i_VGA_V >= o_car2_V_min 
+                        & i_VGA_V <= o_car2_V_max;
+
+    wire [sram_pkg::MAP_H_WIDTH-1:0] car1_rel_H, car2_rel_H;
+    wire [sram_pkg::MAP_V_WIDTH-1:0] car1_rel_V, car2_rel_V;
+    assign car1_rel_H = i_VGA_H - o_car1_H_min;
+    assign car1_rel_V = i_VGA_V - o_car1_V_min;
+    assign car2_rel_H = i_VGA_H - o_car2_H_min;
+    assign car2_rel_V = i_VGA_V - o_car2_V_min;
+
+    wire [sram_pkg::MAP_H_WIDTH+sram_pkg::MAP_V_WIDTH-1:0] render_car1_index, render_car2_index;
+    assign render_car1_index = car1_rel_V * sram_pkg::IMAGE_SIZE + car1_rel_H;
+    assign render_car2_index = car2_rel_V * sram_pkg::IMAGE_SIZE + car2_rel_H;
+
+    /*--------------------------------------------------- car circle render ---------------------------------------------------*/
     wire render_car1_circle, render_car2_circle;
     CarCircleGenerator u_CarCircleGenerator_car1 (
         .i_H_render    (i_VGA_H),
@@ -56,22 +86,42 @@ module PixelDecoder (
         .o_render      (render_car2_circle)
     );
 
-    wire render_car1, render_car2;
-    assign render_car1 = i_VGA_H >= o_car1_H_min & i_VGA_H <= o_car1_H_max & i_VGA_V >= o_car1_V_min & i_VGA_V <= o_car1_V_max;
-    assign render_car2 = i_VGA_H >= o_car2_H_min & i_VGA_H <= o_car2_H_max & i_VGA_V >= o_car2_V_min & i_VGA_V <= o_car2_V_max;
+    /*---------------------------------------------------- velocity render ----------------------------------------------------*/
+    game_pkg::VelocityDisplayDigit render_car1_digit, render_car2_digit;
+    wire [3:0] render_car1_digit_value, render_car2_digit_value;
+    reg [sram_pkg::MAP_H_WIDTH+sram_pkg::MAP_V_WIDTH-1:0] render_car1_digit_pixel_index, render_car2_digit_pixel_index;
 
-    wire [sram_pkg::MAP_H_WIDTH-1:0] car1_rel_H, car2_rel_H;
-    wire [sram_pkg::MAP_V_WIDTH-1:0] car1_rel_V, car2_rel_V;
-    assign car1_rel_H = i_VGA_H - o_car1_H_min;
-    assign car1_rel_V = i_VGA_V - o_car1_V_min;
-    assign car2_rel_H = i_VGA_H - o_car2_H_min;
-    assign car2_rel_V = i_VGA_V - o_car2_V_min;
+    VelocityDisplayDecoder u_VelocityDisplayDecoder_car1 (
+        .i_value                (i_car1_v_m),
+        .i_H_render             (i_VGA_H),
+        .i_V_render             (i_VGA_V),
+        .i_UNIT_H_LT            (game_pkg::CAR1_VELOCITY_DISPLAY_UNIT_H_POS),
+        .i_ONE_H_LT             (game_pkg::CAR1_VELOCITY_DISPLAY_ONE_H_POS),
+        .i_TEN_H_LT             (game_pkg::CAR1_VELOCITY_DISPLAY_TEN_H_POS),
+        .i_HUNDRED_H_LT         (game_pkg::CAR1_VELOCITY_DISPLAY_HUNDRED_H_POS),
+        .i_V_POS_MIN            (game_pkg::VELOCITY_DISPLAY_V_POS_MIN),
+        .i_V_POS_MAX            (game_pkg::VELOCITY_DISPLAY_V_POS_MAX),
+        .o_render_digit         (render_car1_digit),
+        .o_render_value         (render_car1_digit_value),
+        .o_object_pixel_index   (render_car1_digit_pixel_index)
+    );
 
-    wire [sram_pkg::MAP_H_WIDTH-1:0] map_rel_H;
-    wire [sram_pkg::MAP_V_WIDTH-1:0] map_rel_V;
-    assign map_rel_H = i_VGA_H - 1;
-    assign map_rel_V = i_VGA_V - 1;
-
+    VelocityDisplayDecoder u_VelocityDisplayDecoder_car2 (
+        .i_value                (i_car2_v_m),
+        .i_H_render             (i_VGA_H),
+        .i_V_render             (i_VGA_V),
+        .i_UNIT_H_LT            (game_pkg::CAR2_VELOCITY_DISPLAY_UNIT_H_POS),
+        .i_ONE_H_LT             (game_pkg::CAR2_VELOCITY_DISPLAY_ONE_H_POS),
+        .i_TEN_H_LT             (game_pkg::CAR2_VELOCITY_DISPLAY_TEN_H_POS),
+        .i_HUNDRED_H_LT         (game_pkg::CAR2_VELOCITY_DISPLAY_HUNDRED_H_POS),
+        .i_V_POS_MIN            (game_pkg::VELOCITY_DISPLAY_V_POS_MIN),
+        .i_V_POS_MAX            (game_pkg::VELOCITY_DISPLAY_V_POS_MAX),
+        .o_render_digit         (render_car2_digit),
+        .o_render_value         (render_car2_digit_value),
+        .o_object_pixel_index   (render_car2_digit_pixel_index)
+    );
+    
+    /*----------------------------------------------------- start render -----------------------------------------------------*/
     always @(*) begin
         if (i_VGA_V <= sram_pkg::MAP_V) begin
             if (render_car1_circle) begin
@@ -87,12 +137,12 @@ module PixelDecoder (
                     // not transparent, render car1
                     // $display("render car1 at (%d, %d)", i_VGA_H, i_VGA_V);
                     o_object_id = game_pkg::OBJECT_CAR1;
-                    o_object_pixel_index = (car1_rel_V) * sram_pkg::IMAGE_SIZE + (car1_rel_H); // VGA H and V start from 1, already handled in XYtoBoundaries
+                    o_object_pixel_index = render_car1_index; // VGA H and V start from 1, already handled in XYtoBoundaries
                 end
                 else begin
                     // transparent, render map
                     o_object_id = game_pkg::OBJECT_MAP;
-                    o_object_pixel_index = map_rel_V * sram_pkg::MAP_H + map_rel_H; // VGA H and V start from 1
+                    o_object_pixel_index = render_map_index; // VGA H and V start from 1
                 end
             end
             else if (render_car2) begin
@@ -100,24 +150,68 @@ module PixelDecoder (
                     // not transparent, render car2
                     // $display("render car2 at (%d, %d)", i_VGA_H, i_VGA_V);
                     o_object_id = game_pkg::OBJECT_CAR2;
-                    o_object_pixel_index = (car2_rel_V) * sram_pkg::IMAGE_SIZE + (car2_rel_H); // VGA H and V start from 1, already handled in XYtoBoundaries
+                    o_object_pixel_index = render_car2_index; // VGA H and V start from 1, already handled in XYtoBoundaries
                 end
                 else begin
                     // transparent, render map
                     o_object_id = game_pkg::OBJECT_MAP;
-                    o_object_pixel_index = map_rel_V * sram_pkg::MAP_H + map_rel_H; // VGA H and V start from 1
+                    o_object_pixel_index = render_map_index; // VGA H and V start from 1
                 end
             end
             else begin
                 // render map
                 o_object_id = game_pkg::OBJECT_MAP;
-                o_object_pixel_index = map_rel_V * sram_pkg::MAP_H + map_rel_H; // VGA H and V start from 1
+                o_object_pixel_index = render_map_index; // VGA H and V start from 1
             end
         end
         else begin
-            // render bar
-            o_object_id = game_pkg::OBJECT_BAR;
-            o_object_pixel_index = (map_rel_V - sram_pkg::MAP_V) * sram_pkg::MAP_H + map_rel_H; // VGA H and V start from 1
+            case (render_car1_digit)
+                game_pkg::VELOCITY_DISPLAY_HUNDRED: begin
+                    o_object_id = game_pkg::OBJECT_BAR_DIGIT;
+                    o_object_pixel_index = render_car1_digit_pixel_index;
+                end
+                game_pkg::VELOCITY_DISPLAY_TEN: begin
+                    o_object_id = game_pkg::OBJECT_BAR_DIGIT;
+                    o_object_pixel_index = render_car1_digit_pixel_index;
+                end
+                game_pkg::VELOCITY_DISPLAY_ONE: begin
+                    o_object_id = game_pkg::OBJECT_BAR_DIGIT;
+                    o_object_pixel_index = render_car1_digit_pixel_index;
+                end
+                game_pkg::VELOCITY_DISPLAY_BG: begin
+                    o_object_id = game_pkg::OBJECT_BAR;
+                    o_object_pixel_index = render_bar_index; // not important, just set to 0
+                end
+                default: begin
+                    o_object_id = game_pkg::OBJECT_BAR;
+                    o_object_pixel_index = render_bar_index; // not important, just set to 0
+                end
+            endcase
+            case (render_car2_digit)
+                game_pkg::VELOCITY_DISPLAY_HUNDRED: begin
+                    o_object_id = game_pkg::OBJECT_BAR_DIGIT;
+                    o_object_pixel_index = render_car2_digit_pixel_index;
+                end
+                game_pkg::VELOCITY_DISPLAY_TEN: begin
+                    o_object_id = game_pkg::OBJECT_BAR_DIGIT;
+                    o_object_pixel_index = render_car2_digit_pixel_index;
+                end
+                game_pkg::VELOCITY_DISPLAY_ONE: begin
+                    o_object_id = game_pkg::OBJECT_BAR_DIGIT;
+                    o_object_pixel_index = render_car2_digit_pixel_index;
+                end
+                game_pkg::VELOCITY_DISPLAY_BG: begin
+                    o_object_id = game_pkg::OBJECT_BAR;
+                    o_object_pixel_index = render_bar_index; // not important, just set to 0
+                end
+                default: begin
+                    o_object_id = game_pkg::OBJECT_BAR;
+                    o_object_pixel_index = render_bar_index; // not important, just set to 0
+                end
+            endcase
+            // // render bar
+            // o_object_id = game_pkg::OBJECT_BAR;
+            // o_object_pixel_index = render_bar_index; // VGA H and V start from 1
         end
     end
 endmodule
@@ -177,4 +271,60 @@ module CarCircleGenerator (
     assign upper_bound = sram_pkg::IMAGE_SIZE * sram_pkg::IMAGE_SIZE;
 
     assign o_render = (distance_square >= lower_bound) && (distance_square <= upper_bound);
+endmodule
+
+module VelocityDisplayDecoder (
+    input [game_pkg::VELOCITY_OUTPUT_WIDTH-1:0] i_value,
+    input [sram_pkg::MAP_H_WIDTH-1:0] i_H_render,
+    input [sram_pkg::MAP_V_WIDTH-1:0] i_V_render,
+
+    input [sram_pkg::MAP_H_WIDTH-1:0] i_UNIT_H_LT,
+    input [sram_pkg::MAP_H_WIDTH-1:0] i_ONE_H_LT,
+    input [sram_pkg::MAP_H_WIDTH-1:0] i_TEN_H_LT,
+    input [sram_pkg::MAP_H_WIDTH-1:0] i_HUNDRED_H_LT,
+
+    input [sram_pkg::MAP_V_WIDTH-1:0] i_V_POS_MIN,
+    input [sram_pkg::MAP_V_WIDTH-1:0] i_V_POS_MAX,
+
+    output game_pkg::VelocityDisplayDigit o_render_digit,
+    output [3:0] o_render_value,
+    output [sram_pkg::MAP_H_WIDTH+sram_pkg::MAP_V_WIDTH-1:0] o_object_pixel_index
+);
+    wire [3:0] hundred, ten, one;
+    assign hundred = i_value / 100;
+    assign ten = (i_value % 100) / 10;
+    assign one = (i_value % 10);
+
+    wire render_hundred, render_ten, render_one;
+    assign render_hundred = i_H_render >= i_HUNDRED_H_LT
+                            & i_H_render < i_TEN_H_LT
+                            & i_V_render >= i_V_POS_MIN
+                            & i_V_render <= i_V_POS_MAX;
+    assign render_ten = i_H_render >= i_TEN_H_LT
+                        & i_H_render < i_ONE_H_LT
+                        & i_V_render >= i_V_POS_MIN
+                        & i_V_render <= i_V_POS_MAX;
+    assign render_one = i_H_render >= i_ONE_H_LT
+                        & i_H_render < i_UNIT_H_LT
+                        & i_V_render >= i_V_POS_MIN
+                        & i_V_render <= i_V_POS_MAX;
+    always @(*) begin
+        if (render_hundred) begin
+            o_render_digit = game_pkg::VELOCITY_DISPLAY_HUNDRED;
+            o_render_value = hundred;
+        end
+        else if (render_ten) begin
+            o_render_digit = game_pkg::VELOCITY_DISPLAY_TEN;
+            o_render_value = ten;
+        end
+        else if (render_one) begin
+            o_render_digit = game_pkg::VELOCITY_DISPLAY_ONE;
+            o_render_value = one;
+        end
+        else begin
+            o_render_digit = game_pkg::VELOCITY_DISPLAY_BG;
+            o_render_value = 0;
+        end
+    end
+    assign o_object_pixel_index = (i_V_render - 1 - sram_pkg::MAP_V - o_render_value * sram_pkg::BAR_DIGIT_V) * sram_pkg::BAR_DIGIT_H + i_H_render - 1;
 endmodule

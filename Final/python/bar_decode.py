@@ -4,7 +4,7 @@ import re
 
 def load_color_lut(sv_filepath):
     color_lut = {}
-    pattern = re.compile(r"color_map\[(\d+)\]\s*=\s*24'h([0-9a-fA-F]{6});")
+    pattern = re.compile(r"color_bar\[(\d+)\]\s*=\s*24'h([0-9a-fA-F]{6});")
     with open(sv_filepath, 'r') as file:
         for line in file:
             match = pattern.search(line)
@@ -52,9 +52,9 @@ def decode_image(width, height, bin_filepath, sv_filepath, output_image_path):
     print(f"Image saved to {output_image_path}")
 
 if __name__ == "__main__":
-    bin_path = "../sim/sram/mapLUT.bin"
-    sv_path = "../src/frameDecoder/palette/mapPalette.sv"
-    width, height = 1600, 800
+    bin_path = "../sim/sram/barLUT.bin"
+    sv_path = "../src/frameDecoder/palette/barPalette.sv"
+    width, height = 1600, 100
 
-    output_path = "../img/map/map_decode_output.png"
+    output_path = "../img/bar/bar_decode_output.png"
     decode_image(width, height, bin_path, sv_path, output_path)

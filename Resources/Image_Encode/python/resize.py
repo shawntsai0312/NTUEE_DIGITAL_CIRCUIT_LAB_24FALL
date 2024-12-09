@@ -12,8 +12,6 @@ def resize_image(width, height, input_path, output_path):
 # Example usage:
 input = 'car.png'
 output = input.replace('.png', '_resized.png')
-colors_output = '../verilog/color_palette.sv'
-encode_output = '../verilog/car_lut.sv'
-width, height = 60, 60
+width, height = 40, 40
 
 resized_img = resize_image(width, height, input, output)
