@@ -165,53 +165,18 @@ module PixelDecoder (
             end
         end
         else begin
-            case (render_car1_digit)
-                game_pkg::VELOCITY_DISPLAY_HUNDRED: begin
-                    o_object_id = game_pkg::OBJECT_BAR_DIGIT;
-                    o_object_pixel_index = render_car1_digit_pixel_index;
-                end
-                game_pkg::VELOCITY_DISPLAY_TEN: begin
-                    o_object_id = game_pkg::OBJECT_BAR_DIGIT;
-                    o_object_pixel_index = render_car1_digit_pixel_index;
-                end
-                game_pkg::VELOCITY_DISPLAY_ONE: begin
-                    o_object_id = game_pkg::OBJECT_BAR_DIGIT;
-                    o_object_pixel_index = render_car1_digit_pixel_index;
-                end
-                game_pkg::VELOCITY_DISPLAY_BG: begin
-                    o_object_id = game_pkg::OBJECT_BAR;
-                    o_object_pixel_index = render_bar_index; // not important, just set to 0
-                end
-                default: begin
-                    o_object_id = game_pkg::OBJECT_BAR;
-                    o_object_pixel_index = render_bar_index; // not important, just set to 0
-                end
-            endcase
-            case (render_car2_digit)
-                game_pkg::VELOCITY_DISPLAY_HUNDRED: begin
-                    o_object_id = game_pkg::OBJECT_BAR_DIGIT;
-                    o_object_pixel_index = render_car2_digit_pixel_index;
-                end
-                game_pkg::VELOCITY_DISPLAY_TEN: begin
-                    o_object_id = game_pkg::OBJECT_BAR_DIGIT;
-                    o_object_pixel_index = render_car2_digit_pixel_index;
-                end
-                game_pkg::VELOCITY_DISPLAY_ONE: begin
-                    o_object_id = game_pkg::OBJECT_BAR_DIGIT;
-                    o_object_pixel_index = render_car2_digit_pixel_index;
-                end
-                game_pkg::VELOCITY_DISPLAY_BG: begin
-                    o_object_id = game_pkg::OBJECT_BAR;
-                    o_object_pixel_index = render_bar_index; // not important, just set to 0
-                end
-                default: begin
-                    o_object_id = game_pkg::OBJECT_BAR;
-                    o_object_pixel_index = render_bar_index; // not important, just set to 0
-                end
-            endcase
-            // // render bar
-            // o_object_id = game_pkg::OBJECT_BAR;
-            // o_object_pixel_index = render_bar_index; // VGA H and V start from 1
+            if (render_car1_digit != game_pkg::VELOCITY_DISPLAY_BG) begin
+                o_object_id = game_pkg::OBJECT_BAR_DIGIT;
+                o_object_pixel_index = render_car1_digit_pixel_index; // VGA H and V start from 1
+            end
+            else if (render_car2_digit != game_pkg::VELOCITY_DISPLAY_BG) begin
+                o_object_id = game_pkg::OBJECT_BAR_DIGIT;
+                o_object_pixel_index = render_car2_digit_pixel_index; // VGA H and V start from 1
+            end
+            else begin
+                o_object_id = game_pkg::OBJECT_BAR;
+                o_object_pixel_index = render_bar_index; // not important, just set to 0
+            end
         end
     end
 endmodule
@@ -312,19 +277,22 @@ module VelocityDisplayDecoder (
         if (render_hundred) begin
             o_render_digit = game_pkg::VELOCITY_DISPLAY_HUNDRED;
             o_render_value = hundred;
+            o_object_pixel_index = (i_V_render - i_V_POS_MIN + o_render_value * sram_pkg::BAR_DIGIT_V) * sram_pkg::BAR_DIGIT_H + (i_H_render - i_HUNDRED_H_LT);
         end
         else if (render_ten) begin
             o_render_digit = game_pkg::VELOCITY_DISPLAY_TEN;
             o_render_value = ten;
+            o_object_pixel_index = (i_V_render - i_V_POS_MIN + o_render_value * sram_pkg::BAR_DIGIT_V) * sram_pkg::BAR_DIGIT_H + (i_H_render - i_TEN_H_LT);
         end
         else if (render_one) begin
             o_render_digit = game_pkg::VELOCITY_DISPLAY_ONE;
             o_render_value = one;
+            o_object_pixel_index = (i_V_render - i_V_POS_MIN + o_render_value * sram_pkg::BAR_DIGIT_V) * sram_pkg::BAR_DIGIT_H + (i_H_render - i_ONE_H_LT);
         end
         else begin
             o_render_digit = game_pkg::VELOCITY_DISPLAY_BG;
             o_render_value = 0;
+            o_object_pixel_index = 0; // not important, just set to 0
         end
     end
-    assign o_object_pixel_index = (i_V_render - 1 - sram_pkg::MAP_V - o_render_value * sram_pkg::BAR_DIGIT_V) * sram_pkg::BAR_DIGIT_H + i_H_render - 1;
 endmodule

@@ -25,15 +25,15 @@ def output_verilog(bits_per_pixel, input_name, input_img, colors_output_path, en
     # print("Compression completed.")
 
     with open(colors_output_path, 'w') as verilog_file:
-        verilog_file.write(f"module {input_name}_palette(output reg [23:0] color_bar [0:{num_colors-1}]);\n")
+        verilog_file.write(f"module {input_name}_palette(output reg [23:0] color_map [0:{num_colors-1}]);\n")
         verilog_file.write("    initial begin\n")
         for i, (rgb, index) in enumerate(sorted_color_bar.items(), start=1):
             r, g, b = rgb
-            verilog_file.write(f"        color_bar[{index-1}] = 24'h{r:02x}{g:02x}{b:02x}; // ({r},{g},{b})\n")
+            verilog_file.write(f"        color_map[{index-1}] = 24'h{r:02x}{g:02x}{b:02x}; // ({r},{g},{b})\n")
         
         # 檢查並補上缺少的顏色
         for i in range(len(sorted_color_bar), num_colors):
-            verilog_file.write(f"        color_bar[{i}] = 24'h000000; // prevent quartus compile error\n")
+            verilog_file.write(f"        color_map[{i}] = 24'h000000; // prevent quartus compile error\n")
 
         verilog_file.write("    end\n")
         verilog_file.write("endmodule\n")

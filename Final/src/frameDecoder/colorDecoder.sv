@@ -15,12 +15,12 @@ module ColorDecoder (
 
     wire [23:0] bar_color [0:15];
     bar_palette u_bar_palette (
-        .color_bar    (bar_color)
+        .color_map    (bar_color)
     );
 
-    wire [23:0] bar_digit_color [0:15];
-    bar_digit_palette u_bar_digit_palette (
-        .color_map    (bar_digit_color)
+    wire [23:0] barDigit_color [0:15];
+    barDigit_palette u_barDigit_palette (
+        .color_map    (barDigit_color)
     );
 
     wire [23:0] car1_color [0:15];
@@ -45,7 +45,7 @@ module ColorDecoder (
         case(i_object_id)
             game_pkg::OBJECT_MAP            : decoded_color = map_color[i_encoded_color];
             game_pkg::OBJECT_BAR            : decoded_color = bar_color[i_encoded_color];
-            game_pkg::OBJECT_BAR_DIGIT      : decoded_color = bar_digit_color[i_encoded_color];
+            game_pkg::OBJECT_BAR_DIGIT      : decoded_color = barDigit_color[i_encoded_color];
             game_pkg::OBJECT_CAR1           : decoded_color = car1_color[i_encoded_color];
             game_pkg::OBJECT_CAR2           : decoded_color = car2_color[i_encoded_color];
             game_pkg::OBJECT_CAR1_CIRCLE    : decoded_color = carCircle_color[i_encoded_color];

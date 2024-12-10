@@ -191,10 +191,10 @@ module DE2_115 (
 	Main u_Main (
 		.i_clk              (clk_108m),
 		.i_rst_n            (KEY[3]),
-		.i_car1_acc         (SW[2:0]),
-		.i_car2_acc         (SW[15:13]),
-		.i_car1_omega	    (SW[4:3]),
-		.i_car2_omega	    (SW[17:16]),
+		.i_car2_acc         (SW[2:0]),
+		.i_car1_acc         (SW[15:13]),
+		.i_car2_omega	    (SW[4:3]),
+		.i_car1_omega	    (SW[17:16]),
 		.o_car1_v_m         (car1_v_m),
 		.o_car2_v_m         (car2_v_m),
 		.o_SRAM_ADDR        (SRAM_ADDR),
@@ -206,16 +206,16 @@ module DE2_115 (
 		.o_frame_counter	(frame_counter)
 	);
 
-	SignedValueDecoder car2_value (
-		.i_value			(car2_v_m),
+	SignedValueDecoder car1_value (
+		.i_value			(car1_v_m),
 		.o_seven_sign		(HEX7),
 		.o_seven_hundred	(HEX6),
 		.o_seven_ten		(HEX5),
 		.o_seven_one		(HEX4)
 	);
 
-	SignedValueDecoder car1_value (
-		.i_value			(car1_v_m),
+	SignedValueDecoder car2_value (
+		.i_value			(car2_v_m),
 		.o_seven_sign		(HEX3),
 		.o_seven_hundred	(HEX2),
 		.o_seven_ten		(HEX1),
