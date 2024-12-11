@@ -104,7 +104,7 @@ module FrameEncoder (
             end
             S_PROC: begin
                 if(proc_counter_r == game_pkg::OBJECT_OPACITY_NUM)    state_w = S_DONE;
-                else                                                    state_w = S_PROC;
+                else                                                  state_w = S_PROC;
             end
             S_DONE: if(!i_start) state_w = S_IDLE;
         endcase
