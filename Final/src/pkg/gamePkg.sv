@@ -39,18 +39,39 @@ package game_pkg;
         VELOCITY_DISPLAY_BG = 2'd3
     } VelocityDisplayDigit;
 
-    localparam int VELOCITY_DISPLAY_V_POS_MIN = 61 + sram_pkg::MAP_V; // V start from 1
-    localparam int VELOCITY_DISPLAY_V_POS_MAX = 61 + sram_pkg::MAP_V + sram_pkg::BAR_DIGIT_V - 1;
+    localparam int VELOCITY_DISPLAY_V_POS_MIN = 60 + sram_pkg::MAP_V; // V start from 1
+    localparam int VELOCITY_DISPLAY_V_POS_MAX = VELOCITY_DISPLAY_V_POS_MIN + sram_pkg::BAR_DIGIT_V - 1;
 
-     // LT pos of H, H is 1 based
+    // LT pos of H, H is 1 based
+    localparam int CAR1_LAP_DISPLAY_H_POS_MIN = 696;
+    localparam int CAR1_LAP_DISPLAY_H_POS_MAX = CAR1_LAP_DISPLAY_H_POS_MIN + sram_pkg::BAR_DIGIT_H - 1;
+
+    localparam int CAR1_LEVEL_DISPLAY_H_POS_MIN = 513;
+    localparam int CAR1_LEVEL_DISPLAY_H_POS_MAX = CAR1_LEVEL_DISPLAY_H_POS_MIN + sram_pkg::BAR_DIGIT_H - 1;
+
     localparam int CAR1_VELOCITY_DISPLAY_UNIT_H_POS = 301;
     localparam int CAR1_VELOCITY_DISPLAY_ONE_H_POS = CAR1_VELOCITY_DISPLAY_UNIT_H_POS - sram_pkg::BAR_DIGIT_H;
     localparam int CAR1_VELOCITY_DISPLAY_TEN_H_POS = CAR1_VELOCITY_DISPLAY_ONE_H_POS - sram_pkg::BAR_DIGIT_H;
     localparam int CAR1_VELOCITY_DISPLAY_HUNDRED_H_POS = CAR1_VELOCITY_DISPLAY_TEN_H_POS - sram_pkg::BAR_DIGIT_H;
 
-     // LT pos of H, H start from 1
+    // LT pos of H, H is 1 based
+    localparam int CAR2_LAP_DISPLAY_H_POS_MIN = 901;
+    localparam int CAR2_LAP_DISPLAY_H_POS_MAX = CAR2_LAP_DISPLAY_H_POS_MIN + sram_pkg::BAR_DIGIT_H - 1;
+
+    localparam int CAR2_LEVEL_DISPLAY_H_POS_MIN = 1087;
+    localparam int CAR2_LEVEL_DISPLAY_H_POS_MAX = CAR2_LEVEL_DISPLAY_H_POS_MIN + sram_pkg::BAR_DIGIT_H - 1;
+
     localparam int CAR2_VELOCITY_DISPLAY_UNIT_H_POS = 1326;
     localparam int CAR2_VELOCITY_DISPLAY_ONE_H_POS = CAR2_VELOCITY_DISPLAY_UNIT_H_POS - sram_pkg::BAR_DIGIT_H;
     localparam int CAR2_VELOCITY_DISPLAY_TEN_H_POS = CAR2_VELOCITY_DISPLAY_ONE_H_POS - sram_pkg::BAR_DIGIT_H;
     localparam int CAR2_VELOCITY_DISPLAY_HUNDRED_H_POS = CAR2_VELOCITY_DISPLAY_TEN_H_POS - sram_pkg::BAR_DIGIT_H;
+
+    localparam int CAR1_INIT_X = -450;
+    localparam int CAR1_INIT_Y = -250 - (sram_pkg::IMAGE_SIZE>>1) - 10;
+    localparam int CAR2_INIT_X = -450;
+    localparam int CAR2_INIT_Y = -365 + (sram_pkg::IMAGE_SIZE>>1) + 10;
+    localparam int CAR_INIT_ANGLE = 180;
+
+    localparam int LAP_MAX = 3;
+    localparam int SINGLE_DIGIT_WIDTH = 4;
 endpackage

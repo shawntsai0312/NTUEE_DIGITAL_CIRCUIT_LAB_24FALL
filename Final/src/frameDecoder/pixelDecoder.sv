@@ -13,6 +13,12 @@ module PixelDecoder (
     input [game_pkg::VELOCITY_OUTPUT_WIDTH-1:0] i_car1_v_m,
     input [game_pkg::VELOCITY_OUTPUT_WIDTH-1:0] i_car2_v_m,
 
+    input [game_pkg::CAR_MASS_LEVEL_NUM_WIDTH-1:0] i_car1_mass_level,
+    input [game_pkg::CAR_MASS_LEVEL_NUM_WIDTH-1:0] i_car2_mass_level,
+
+    input [game_pkg::SINGLE_DIGIT_WIDTH-1:0] i_car1_lap,
+    input [game_pkg::SINGLE_DIGIT_WIDTH-1:0] i_car2_lap,
+
     input [sram_pkg::MAP_H_WIDTH-1:0] i_VGA_H, // from 1 to 1600
     input [sram_pkg::MAP_V_WIDTH-1:0] i_VGA_V, // from 1 to 900
 
@@ -120,7 +126,62 @@ module PixelDecoder (
         .o_render_value         (render_car2_digit_value),
         .o_object_pixel_index   (render_car2_digit_pixel_index)
     );
-    
+
+    /*----------------------------------------------------- level render -----------------------------------------------------*/
+    wire render_car1_level, render_car2_level;
+    wire [sram_pkg::MAP_H_WIDTH+sram_pkg::MAP_V_WIDTH-1:0] render_car1_level_index, render_car2_level_index;
+    SingleDigitDisplayDecoder u_SingleDigitDisplayDecoder_car1_level (
+        .i_value                 (i_car1_mass_level),
+        .i_H_render              (i_VGA_H),
+        .i_V_render              (i_VGA_V),
+        .i_H_POS_MIN             (game_pkg::CAR1_LEVEL_DISPLAY_H_POS_MIN),
+        .i_H_POS_MAX             (game_pkg::CAR1_LEVEL_DISPLAY_H_POS_MAX),
+        .i_V_POS_MIN             (game_pkg::VELOCITY_DISPLAY_V_POS_MIN),
+        .i_V_POS_MAX             (game_pkg::VELOCITY_DISPLAY_V_POS_MAX),
+        .o_render                (render_car1_level),
+        .o_object_pixel_index    (render_car1_level_index)
+    );
+
+    SingleDigitDisplayDecoder u_SingleDigitDisplayDecoder_car2_level (
+        .i_value                 (i_car2_mass_level),
+        .i_H_render              (i_VGA_H),
+        .i_V_render              (i_VGA_V),
+        .i_H_POS_MIN             (game_pkg::CAR2_LEVEL_DISPLAY_H_POS_MIN),
+        .i_H_POS_MAX             (game_pkg::CAR2_LEVEL_DISPLAY_H_POS_MAX),
+        .i_V_POS_MIN             (game_pkg::VELOCITY_DISPLAY_V_POS_MIN),
+        .i_V_POS_MAX             (game_pkg::VELOCITY_DISPLAY_V_POS_MAX),
+        .o_render                (render_car2_level),
+        .o_object_pixel_index    (render_car2_level_index)
+    );
+
+    /*------------------------------------------------------ lap render ------------------------------------------------------*/
+    wire render_car1_lap, render_car2_lap;
+    wire [sram_pkg::MAP_H_WIDTH+sram_pkg::MAP_V_WIDTH-1:0] render_car1_lap_index, render_car2_lap_index;
+    SingleDigitDisplayDecoder u_SingleDigitDisplayDecoder_car1_lap (
+        .i_value                 (i_car1_lap),
+        .i_H_render              (i_VGA_H),
+        .i_V_render              (i_VGA_V),
+        .i_H_POS_MIN             (game_pkg::CAR1_LAP_DISPLAY_H_POS_MIN),
+        .i_H_POS_MAX             (game_pkg::CAR1_LAP_DISPLAY_H_POS_MAX),
+        .i_V_POS_MIN             (game_pkg::VELOCITY_DISPLAY_V_POS_MIN),
+        .i_V_POS_MAX             (game_pkg::VELOCITY_DISPLAY_V_POS_MAX),
+        .o_render                (render_car1_lap),
+        .o_object_pixel_index    (render_car1_lap_index)
+    );
+
+    SingleDigitDisplayDecoder u_SingleDigitDisplayDecoder_car2_lap (
+        .i_value                 (i_car2_lap),
+        .i_H_render              (i_VGA_H),
+        .i_V_render              (i_VGA_V),
+        .i_H_POS_MIN             (game_pkg::CAR2_LAP_DISPLAY_H_POS_MIN),
+        .i_H_POS_MAX             (game_pkg::CAR2_LAP_DISPLAY_H_POS_MAX),
+        .i_V_POS_MIN             (game_pkg::VELOCITY_DISPLAY_V_POS_MIN),
+        .i_V_POS_MAX             (game_pkg::VELOCITY_DISPLAY_V_POS_MAX),
+        .o_render                (render_car2_lap),
+        .o_object_pixel_index    (render_car2_lap_index)
+    );
+
+
     /*----------------------------------------------------- start render -----------------------------------------------------*/
     always @(*) begin
         if (i_VGA_V <= sram_pkg::MAP_V) begin
@@ -172,6 +233,22 @@ module PixelDecoder (
             else if (render_car2_digit != game_pkg::VELOCITY_DISPLAY_BG) begin
                 o_object_id = game_pkg::OBJECT_BAR_DIGIT;
                 o_object_pixel_index = render_car2_digit_pixel_index; // VGA H and V start from 1
+            end
+            else if (render_car1_level) begin
+                o_object_id = game_pkg::OBJECT_BAR_DIGIT;
+                o_object_pixel_index = render_car1_level_index; // VGA H and V start from 1
+            end
+            else if (render_car2_level) begin
+                o_object_id = game_pkg::OBJECT_BAR_DIGIT;
+                o_object_pixel_index = render_car2_level_index; // VGA H and V start from 1
+            end
+            else if (render_car1_lap) begin
+                o_object_id = game_pkg::OBJECT_BAR_DIGIT;
+                o_object_pixel_index = render_car1_lap_index; // VGA H and V start from 1
+            end
+            else if (render_car2_lap) begin
+                o_object_id = game_pkg::OBJECT_BAR_DIGIT;
+                o_object_pixel_index = render_car2_lap_index; // VGA H and V start from 1
             end
             else begin
                 o_object_id = game_pkg::OBJECT_BAR;
@@ -292,6 +369,36 @@ module VelocityDisplayDecoder (
         else begin
             o_render_digit = game_pkg::VELOCITY_DISPLAY_BG;
             o_render_value = 0;
+            o_object_pixel_index = 0; // not important, just set to 0
+        end
+    end
+endmodule
+
+module SingleDigitDisplayDecoder (
+    input [game_pkg::SINGLE_DIGIT_WIDTH-1:0] i_value,
+    input [sram_pkg::MAP_H_WIDTH-1:0] i_H_render,
+    input [sram_pkg::MAP_V_WIDTH-1:0] i_V_render,
+
+    input [sram_pkg::MAP_H_WIDTH-1:0] i_H_POS_MIN,
+    input [sram_pkg::MAP_H_WIDTH-1:0] i_H_POS_MAX,
+
+    input [sram_pkg::MAP_V_WIDTH-1:0] i_V_POS_MIN,
+    input [sram_pkg::MAP_V_WIDTH-1:0] i_V_POS_MAX,
+
+    output o_render,
+    output [sram_pkg::MAP_H_WIDTH+sram_pkg::MAP_V_WIDTH-1:0] o_object_pixel_index
+);
+    assign render = i_H_render >= i_H_POS_MIN
+                    & i_H_render <= i_H_POS_MAX
+                    & i_V_render >= i_V_POS_MIN
+                    & i_V_render <= i_V_POS_MAX;
+    assign o_render = render;
+
+    always @(*) begin
+        if (render) begin
+            o_object_pixel_index = (i_V_render - i_V_POS_MIN + i_value * sram_pkg::BAR_DIGIT_V) * sram_pkg::BAR_DIGIT_H + (i_H_render - i_H_POS_MIN);
+        end
+        else begin
             o_object_pixel_index = 0; // not important, just set to 0
         end
     end

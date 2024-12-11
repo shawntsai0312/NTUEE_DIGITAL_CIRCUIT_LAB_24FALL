@@ -70,6 +70,8 @@ module Main (
 
     wire [game_pkg::CAR_MASS_LEVEL_NUM_WIDTH-1:0] car1_mass_level, car2_mass_level;
 
+    wire [game_pkg::SINGLE_DIGIT_WIDTH-1:0] car1_lap, car2_lap;
+
     GameControl u_GameControl (
         .i_clk              (i_clk),
         .i_render_clk       (render_clk),
@@ -87,7 +89,9 @@ module Main (
         .o_car1_v_m         (car1_v_m),
         .o_car2_v_m         (car2_v_m),
         .o_car1_mass_level  (car1_mass_level),
-        .o_car2_mass_level  (car2_mass_level)
+        .o_car2_mass_level  (car2_mass_level),
+        .o_car1_lap         (car1_lap),
+        .o_car2_lap         (car2_lap),
     );
 
     FrameEncoder u_FrameEncoder (
@@ -115,6 +119,8 @@ module Main (
         .i_car2_y               (car2_y),
         .i_car1_mass_level      (car1_mass_level),
         .i_car2_mass_level      (car2_mass_level),
+        .i_car1_lap             (car1_lap),
+        .i_car2_lap             (car2_lap),
         .i_car1_opacity_mask    (car1_opacity_mask_r),
         .i_car2_opacity_mask    (car2_opacity_mask_r),
         .i_car1_v_m             (car1_v_m),

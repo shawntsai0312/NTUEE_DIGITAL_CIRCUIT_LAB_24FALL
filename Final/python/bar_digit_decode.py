@@ -52,9 +52,9 @@ def decode_image(width, height, bin_filepath, sv_filepath, output_image_path):
     print(f"Image saved to {output_image_path}")
 
 if __name__ == "__main__":
-    bin_path = "../sim/sram/barLUT.bin"
-    sv_path = "../src/frameDecoder/palette/barPalette.sv"
-    width, height = 1600, 100
+    bin_path = "../sim/sram/barDigitLUT.bin"
+    sv_path = "../src/frameDecoder/palette/barDigitPalette.sv"
+    width, height = 26, 380
 
-    output_path = "../img/bar/bar_decode_output.png"
+    output_path = "../img/bar/bar_digit_decode_output.png"
     decode_image(width, height, bin_path, sv_path, output_path)
