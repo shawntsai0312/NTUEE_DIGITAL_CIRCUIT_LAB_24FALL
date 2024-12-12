@@ -10,6 +10,8 @@ module TrackCollision (
     input signed [sram_pkg::IMAGE_COOR_WIDTH-1:0] i_radius,
     // output [track_pkg::TRACK_COUNT-1:0] o_collision_all,
     // output [track_pkg::TRACK_COUNT-1:0] o_in_region_all,
+    output reg o_in_track0,
+    output reg o_in_track1,
     output o_collision
 );
 
@@ -134,7 +136,7 @@ module TrackCollision (
         .i_y            (i_y),
         .i_v_y          (i_v_y),
         .i_radius       (i_radius),
-        // .o_in_region    (in_region[0]),
+        .o_in_region    (o_in_track0),
         .o_collision    (collision[0])
         
     );
@@ -146,7 +148,7 @@ module TrackCollision (
         .i_v_x          (i_v_x),
         .i_v_y          (i_v_y),
         .i_radius       (i_radius),
-        // .o_in_region    (in_region[1]),
+        .o_in_region    (o_in_track1),
         .o_collision    (collision[1])
     );
 

@@ -1,0 +1,1 @@
+vcs ../../../src/pkg/sramPkg.sv ../../../src/pkg/gamePkg.sv tb.sv ../../../src/gameControl/carCollision.sv -full64 -R -debug_access+all -sverilog -Xrerolloff +access+rw |& tee compile_log.txt

@@ -66,12 +66,16 @@ package game_pkg;
     localparam int CAR2_VELOCITY_DISPLAY_TEN_H_POS = CAR2_VELOCITY_DISPLAY_ONE_H_POS - sram_pkg::BAR_DIGIT_H;
     localparam int CAR2_VELOCITY_DISPLAY_HUNDRED_H_POS = CAR2_VELOCITY_DISPLAY_TEN_H_POS - sram_pkg::BAR_DIGIT_H;
 
-    localparam int CAR1_INIT_X = -450;
+    localparam int CAR1_INIT_X = -500;
     localparam int CAR1_INIT_Y = -250 - (sram_pkg::IMAGE_SIZE>>1) - 10;
-    localparam int CAR2_INIT_X = -450;
+    localparam int CAR2_INIT_X = -500;
     localparam int CAR2_INIT_Y = -365 + (sram_pkg::IMAGE_SIZE>>1) + 10;
     localparam int CAR_INIT_ANGLE = 180;
 
+    // localparam int FINISH_LINE_X = -538;
+
     localparam int LAP_MAX = 3;
     localparam int SINGLE_DIGIT_WIDTH = 4;
+
+    localparam int CAR_COLLISION_SEPARATE_CONST = 0;
 endpackage

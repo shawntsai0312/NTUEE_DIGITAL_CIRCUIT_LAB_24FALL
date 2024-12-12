@@ -1,12 +1,17 @@
 #!/bin/tcsh
 
 set start_time = `date +%s`
-vcs tbRemote.sv \
+vcs ../../../src/pkg/sramPkg.sv \
     ../../../src/pkg/gamePkg.sv \
-    ../../../src/pkg/sramPkg.sv \
+    ../../../src/pkg/trackPkg.sv \
+    tbRemote.sv \
     ../../../src/gameControl/gameControl.sv \
-    ../../../src/rotate/rotateXY.sv \
-    ../../../src/rotate/atanLUT.sv \
+    ../../../src/gameControl/carCollision.sv \
+    ../../../src/gameControl/trackCollision.sv \
+    ../../../src/gameControl/basicTrackCollision.sv \
+    ../../../src/math/sqrt.sv \
+    ../../../src/math/rotateXY.sv \
+    ../../../src/math/atanLUT.sv \
     -full64 -R -debug_access+all -sverilog -Xrerolloff +access+rw |& tee compile_log.txt
 set end_time = `date +%s`
 @ total_time = $end_time - $start_time
