@@ -7,6 +7,7 @@ module TrackCollision (
     input signed [sram_pkg::MAP_V_WIDTH-1:0] i_y,
     input signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_v_x,
     input signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_v_y,
+    input signed [sram_pkg::IMAGE_COOR_WIDTH-1:0] i_radius,
     // output [track_pkg::TRACK_COUNT-1:0] o_collision_all,
     // output [track_pkg::TRACK_COUNT-1:0] o_in_region_all,
     output o_collision
@@ -132,6 +133,7 @@ module TrackCollision (
         .i_x            (i_x),
         .i_y            (i_y),
         .i_v_y          (i_v_y),
+        .i_radius       (i_radius),
         // .o_in_region    (in_region[0]),
         .o_collision    (collision[0])
         
@@ -143,6 +145,7 @@ module TrackCollision (
         .i_y            (i_y),
         .i_v_x          (i_v_x),
         .i_v_y          (i_v_y),
+        .i_radius       (i_radius),
         // .o_in_region    (in_region[1]),
         .o_collision    (collision[1])
     );
@@ -152,6 +155,7 @@ module TrackCollision (
         .i_x            (i_x),
         .i_y            (i_y),
         .i_v_x          (i_v_x),
+        .i_radius       (i_radius),
         // .o_in_region    (in_region[2]),
         .o_collision    (collision[2])   
     );
@@ -162,6 +166,7 @@ module TrackCollision (
         .i_y            (i_y),
         .i_v_x          (i_v_x),
         .i_v_y          (i_v_y),
+        .i_radius       (i_radius),
         // .o_in_region    (in_region[3]),
         .o_collision    (collision[3])
     );
@@ -171,6 +176,7 @@ module TrackCollision (
         .i_x            (i_x),
         .i_y            (i_y),
         .i_v_x          (i_v_x),
+        .i_radius       (i_radius),
         // .o_in_region    (in_region[4]),
         .o_collision    (collision[4])
     );
@@ -181,6 +187,7 @@ module TrackCollision (
         .i_y            (i_y),
         .i_v_x          (i_v_x),
         .i_v_y          (i_v_y),
+        .i_radius       (i_radius),
         // .o_in_region    (in_region[5]),
         .o_collision    (collision[5])
     );
@@ -190,6 +197,7 @@ module TrackCollision (
         .i_x            (i_x),
         .i_y            (i_y),
         .i_v_x          (i_v_x),
+        .i_radius       (i_radius),
         // .o_in_region    (in_region[6]),
         .o_collision    (collision[6])
     );
@@ -200,6 +208,7 @@ module TrackCollision (
         .i_y            (i_y),
         .i_v_x          (i_v_x),
         .i_v_y          (i_v_y),
+        .i_radius       (i_radius),
         // .o_in_region    (in_region[7]),
         .o_collision    (collision[7])
     );
@@ -209,6 +218,7 @@ module TrackCollision (
         .i_x            (i_x),
         .i_y            (i_y),
         .i_v_y          (i_v_y),
+        .i_radius       (i_radius),
         // .o_in_region    (in_region[8]),
         .o_collision    (collision[8])
     );
@@ -219,6 +229,7 @@ module TrackCollision (
         .i_y            (i_y),
         .i_v_x          (i_v_x),
         .i_v_y          (i_v_y),
+        .i_radius       (i_radius),
         // .o_in_region    (in_region[9]),
         .o_collision    (collision[9])
     );
@@ -228,6 +239,7 @@ module TrackCollision (
         .i_x            (i_x),
         .i_y            (i_y),
         .i_v_x          (i_v_x),
+        .i_radius       (i_radius),
         // .o_in_region    (in_region[10]),
         .o_collision    (collision[10])
     );
@@ -238,6 +250,7 @@ module TrackCollision (
         .i_y            (i_y),
         .i_v_x          (i_v_x),
         .i_v_y          (i_v_y),
+        .i_radius       (i_radius),
         // .o_in_region    (in_region[11]),
         .o_collision    (collision[11])
     );

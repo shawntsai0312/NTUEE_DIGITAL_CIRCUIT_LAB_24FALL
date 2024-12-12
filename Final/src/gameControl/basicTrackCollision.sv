@@ -8,6 +8,7 @@ module HorizontalTrackCollision (
     input signed [sram_pkg::MAP_H_WIDTH-1:0] i_x,
     input signed [sram_pkg::MAP_V_WIDTH-1:0] i_y,
     input signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_v_y,
+    input signed [sram_pkg::IMAGE_COOR_WIDTH-1:0] i_radius,
     // output o_in_region,
     output o_collision
 );
@@ -24,8 +25,8 @@ module HorizontalTrackCollision (
     );
 
     wire signed [sram_pkg::MAP_V_WIDTH-1:0] distance_top_border, distance_bottom_border;
-    assign distance_top_border = i_track.y_top_border - i_y - (sram_pkg::IMAGE_SIZE>>1);
-    assign distance_bottom_border = i_y - (sram_pkg::IMAGE_SIZE>>1) - i_track.y_bottom_border;
+    assign distance_top_border = i_track.y_top_border - i_y - i_radius;
+    assign distance_bottom_border = i_y - i_radius - i_track.y_bottom_border;
 
     always @(*) begin
         if (in_region) begin
@@ -45,6 +46,7 @@ module VerticalTrackCollision (
     input signed [sram_pkg::MAP_H_WIDTH-1:0] i_x,
     input signed [sram_pkg::MAP_V_WIDTH-1:0] i_y,
     input signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_v_x,
+    input signed [sram_pkg::IMAGE_COOR_WIDTH-1:0] i_radius,
     // output o_in_region,
     output o_collision
 );
@@ -62,8 +64,8 @@ module VerticalTrackCollision (
     );
 
     wire signed [sram_pkg::MAP_H_WIDTH-1:0] distance_left_border, distance_right_border;
-    assign distance_left_border = i_x - (sram_pkg::IMAGE_SIZE>>1) - i_track.x_left_border;
-    assign distance_right_border = i_track.x_right_border - i_x - (sram_pkg::IMAGE_SIZE>>1);
+    assign distance_left_border = i_x - i_radius - i_track.x_left_border;
+    assign distance_right_border = i_track.x_right_border - i_x - i_radius;
 
     always @(*) begin
         if (in_region) begin
@@ -84,6 +86,7 @@ module CircleTrackCollision (
     input signed [sram_pkg::MAP_V_WIDTH-1:0] i_y,
     input signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_v_x,
     input signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_v_y,
+    input signed [sram_pkg::IMAGE_COOR_WIDTH-1:0] i_radius,
     // output o_in_region,
     output o_collision
 );
@@ -108,8 +111,8 @@ module CircleTrackCollision (
     assign displacement_center_square = displacement_center_x * displacement_center_x + displacement_center_y * displacement_center_y;
 
     wire signed [sram_pkg::MAP_H_WIDTH-1:0] distance_lowerBound, distance_upperBound;
-    assign distance_lowerBound = i_track.radius_inner + (sram_pkg::IMAGE_SIZE>>1);
-    assign distance_upperBound = i_track.radius_outer - (sram_pkg::IMAGE_SIZE>>1);
+    assign distance_lowerBound = i_track.radius_inner + i_radius;
+    assign distance_upperBound = i_track.radius_outer - i_radius;
 
     wire signed [2*sram_pkg::MAP_H_WIDTH-1:0] distance_lowerBound_square, distance_upperBound_square;
     assign distance_lowerBound_square = distance_lowerBound * distance_lowerBound;
