@@ -6,7 +6,7 @@ module SramEncoder (
     input i_rst_n,
     input [sram_pkg::COLOR_WIDTH-1:0] i_encoded_color,
     input game_pkg::ObjectID i_object_id,
-    input [2*sram_pkg::IMAGE_COOR_WIDTH-1:0] i_object_pixel_counter,
+    input [2*sram_pkg::CAR_COOR_WIDTH-1:0] i_object_pixel_counter,
     output [sram_pkg::SRAM_ADDR_COUNT-1:0] o_sram_addr,
     output [sram_pkg::SRAM_DATA_WIDTH-1:0] o_sram_data
 );

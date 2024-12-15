@@ -1,12 +1,21 @@
-def combineBin(bin1, bin2, bin3, outBin):
-    with open(bin1, 'rb') as f1, open(bin2, 'rb') as f2, open(bin3, 'rb') as f3, open(outBin, 'wb') as f:
-        f.write(f1.read())
-        f.write(f2.read())
-        f.write(f3.read())
+def combineBin(bin_files, outBin):
+    with open(outBin, 'wb') as f_out:
+        for bin_file in bin_files:
+            with open(bin_file, 'rb') as f:
+                f_out.write(f.read())
 
-mapBin = '../sim/sram/mapLUT.bin'
-barBin = '../sim/sram/barLUT.bin'
-barDigitBin = '../sim/sram/barDigitLUT.bin'
+bin_files = [
+    '../sim/sram/mapLUT.bin',
+    '../sim/sram/barLUT.bin',
+    '../sim/sram/barDigitLUT.bin',
+    '../sim/sram/startLUT.bin',
+    '../sim/sram/winLUT.bin',
+    '../sim/sram/loseLUT.bin',
+    '../sim/sram/idleBackgroundLUT.bin',
+    '../sim/sram/qBlockLUT.bin',
+    # 添加更多 bin 檔案
+]
+
 outBin = '../sim/sram/combinedLUT.bin'
 
-combineBin(mapBin, barBin, barDigitBin, outBin)
+combineBin(bin_files, outBin)

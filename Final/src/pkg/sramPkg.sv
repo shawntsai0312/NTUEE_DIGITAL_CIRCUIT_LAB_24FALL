@@ -7,8 +7,8 @@ package sram_pkg;
 
     // Image
     localparam int COLOR_WIDTH = 4;
-    localparam int IMAGE_SIZE = 40;
-    localparam int IMAGE_COOR_WIDTH = 6;
+    localparam int CAR_SIZE = 40;
+    localparam int CAR_COOR_WIDTH = 6;
     
     // Map
     localparam int MAP_H = VGA_H;
@@ -19,6 +19,18 @@ package sram_pkg;
     // Bar digit
     localparam int BAR_DIGIT_H = 26;
     localparam int BAR_DIGIT_V = 38;
+
+    // Start caption
+    localparam int START_CAPTION_H = 664;
+    localparam int START_CAPTION_V = 56;
+
+    // Win/Lose caption
+    localparam int WIN_LOSE_CAPTION_H = 200;
+    localparam int WIN_LOSE_CAPTION_V = 60;
+
+    // Question block
+    localparam int QBLOCK_SIZE = 40;
+    localparam int QBLOCK_COOR_WIDTH = 6;
 
     // SRAM 總大小
     localparam int SRAM_ADDR_COUNT = 20;
@@ -49,17 +61,48 @@ package sram_pkg;
     localparam int BAR_DIGIT_ADDR_START  = BAR_ADDR_END + 1;
     localparam int BAR_DIGIT_ADDR_END    = BAR_DIGIT_ADDR_START + BAR_DIGIT_ADDR_COUNT - 1;
 
+    // Start caption 區域
+    localparam int START_CAPTION_PIXEL_COUNT = START_CAPTION_H * START_CAPTION_V;
+    localparam int START_CAPTION_ADDR_COUNT  = START_CAPTION_PIXEL_COUNT / PIXELS_PER_ADDR;
+    localparam int START_CAPTION_ADDR_START  = BAR_DIGIT_ADDR_END + 1;
+    localparam int START_CAPTION_ADDR_END    = START_CAPTION_ADDR_START + START_CAPTION_ADDR_COUNT - 1;
+
+    // Win caption 區域
+    localparam int WIN_CAPTION_PIXEL_COUNT = WIN_LOSE_CAPTION_H * WIN_LOSE_CAPTION_V;
+    localparam int WIN_CAPTION_ADDR_COUNT  = WIN_CAPTION_PIXEL_COUNT / PIXELS_PER_ADDR;
+    localparam int WIN_CAPTION_ADDR_START  = START_CAPTION_ADDR_END + 1;
+    localparam int WIN_CAPTION_ADDR_END    = WIN_CAPTION_ADDR_START + WIN_CAPTION_ADDR_COUNT - 1;
+
+    // Lose caption 區域
+    localparam int LOSE_CAPTION_PIXEL_COUNT = WIN_LOSE_CAPTION_H * WIN_LOSE_CAPTION_V;
+    localparam int LOSE_CAPTION_ADDR_COUNT  = LOSE_CAPTION_PIXEL_COUNT / PIXELS_PER_ADDR;
+    localparam int LOSE_CAPTION_ADDR_START  = WIN_CAPTION_ADDR_END + 1;
+    localparam int LOSE_CAPTION_ADDR_END    = LOSE_CAPTION_ADDR_START + LOSE_CAPTION_ADDR_COUNT - 1;
+
+    // IDLE background 區域
+    localparam int IDLE_BG_PIXEL_COUNT = VGA_H * VGA_V;
+    localparam int IDLE_BG_ADDR_COUNT  = IDLE_BG_PIXEL_COUNT / PIXELS_PER_ADDR;
+    localparam int IDLE_BG_ADDR_START  = LOSE_CAPTION_ADDR_END + 1;
+    localparam int IDLE_BG_ADDR_END    = IDLE_BG_ADDR_START + IDLE_BG_ADDR_COUNT - 1;
+
+    // Question block 區域
+    localparam int QBLOCK_PIXEL_COUNT = QBLOCK_SIZE * QBLOCK_SIZE;
+    localparam int QBLOCK_ADDR_COUNT  = QBLOCK_PIXEL_COUNT / PIXELS_PER_ADDR;
+    localparam int QBLOCK_ADDR_START  = IDLE_BG_ADDR_END + 1;
+    localparam int QBLOCK_ADDR_END    = QBLOCK_ADDR_START + QBLOCK_ADDR_COUNT - 1;
+
     // Car1 區域
-    localparam int CAR1_PIXEL_COUNT = IMAGE_SIZE * IMAGE_SIZE;
+    localparam int CAR1_PIXEL_COUNT = CAR_SIZE * CAR_SIZE;
     localparam int CAR1_ADDR_COUNT  = CAR1_PIXEL_COUNT / PIXELS_PER_ADDR;
-    localparam int CAR1_ADDR_START  = BAR_DIGIT_ADDR_END + 1;
+    localparam int CAR1_ADDR_START  = QBLOCK_ADDR_END + 1;
     localparam int CAR1_ADDR_END    = CAR1_ADDR_START + CAR1_ADDR_COUNT - 1;
 
     // Car2 區域
-    localparam int CAR2_PIXEL_COUNT = IMAGE_SIZE * IMAGE_SIZE;
+    localparam int CAR2_PIXEL_COUNT = CAR_SIZE * CAR_SIZE;
     localparam int CAR2_ADDR_COUNT  = CAR2_PIXEL_COUNT / PIXELS_PER_ADDR;
     localparam int CAR2_ADDR_START  = CAR1_ADDR_END + 1;
     localparam int CAR2_ADDR_END    = CAR2_ADDR_START + CAR2_ADDR_COUNT - 1;
+
 
     // 確保 SRAM 沒有溢出
     // initial begin

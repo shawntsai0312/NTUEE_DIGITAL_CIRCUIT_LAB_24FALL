@@ -12,8 +12,8 @@ module CarCollision (
     input signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car2_v_x,
     input signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car2_v_y,
 
-    input signed [sram_pkg::IMAGE_COOR_WIDTH-1:0] i_car1_radius,
-    input signed [sram_pkg::IMAGE_COOR_WIDTH-1:0] i_car2_radius,
+    input signed [sram_pkg::CAR_COOR_WIDTH-1:0] i_car1_radius,
+    input signed [sram_pkg::CAR_COOR_WIDTH-1:0] i_car2_radius,
 
     input [game_pkg::CAR_MASS_LEVEL_NUM_WIDTH-1:0] i_car1_mass,
     input [game_pkg::CAR_MASS_LEVEL_NUM_WIDTH-1:0] i_car2_mass,
@@ -165,8 +165,8 @@ module CarCollisionVelocityHandler (
     input signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car2_v_x,
     input signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car2_v_y,
 
-    input signed [sram_pkg::IMAGE_COOR_WIDTH-1:0] i_car1_radius,
-    input signed [sram_pkg::IMAGE_COOR_WIDTH-1:0] i_car2_radius,
+    input signed [sram_pkg::CAR_COOR_WIDTH-1:0] i_car1_radius,
+    input signed [sram_pkg::CAR_COOR_WIDTH-1:0] i_car2_radius,
 
     input [game_pkg::CAR_MASS_LEVEL_NUM_WIDTH-1:0] i_car1_mass,
     input [game_pkg::CAR_MASS_LEVEL_NUM_WIDTH-1:0] i_car2_mass,
@@ -186,7 +186,7 @@ module CarCollisionVelocityHandler (
     localparam PROCESS_WIDTH = game_pkg::VELOCITY_INTEGER_WIDTH
                                 + game_pkg::VELOCITY_FRACTION_WIDTH 
                                 + game_pkg::CAR_MASS_LEVEL_NUM_WIDTH + 1
-                                + 2*sram_pkg::IMAGE_COOR_WIDTH;
+                                + 2*sram_pkg::CAR_COOR_WIDTH;
 
     wire signed [PROCESS_WIDTH-1:0] radius_sum_with_scale;
     wire signed [2*PROCESS_WIDTH-1:0] radius_sum_square_with_scale;

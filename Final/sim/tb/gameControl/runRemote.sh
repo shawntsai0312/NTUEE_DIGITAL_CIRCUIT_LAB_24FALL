@@ -9,6 +9,8 @@ vcs ../../../src/pkg/sramPkg.sv \
     ../../../src/gameControl/carCollision.sv \
     ../../../src/gameControl/trackCollision.sv \
     ../../../src/gameControl/basicTrackCollision.sv \
+    ../../../src/gameControl/qBlock.sv \
+    ../../../src/math/random.sv \
     ../../../src/math/sqrt.sv \
     ../../../src/math/rotateXY.sv \
     ../../../src/math/atanLUT.sv \

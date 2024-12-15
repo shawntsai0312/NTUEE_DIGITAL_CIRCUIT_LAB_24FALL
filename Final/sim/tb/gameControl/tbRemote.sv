@@ -31,7 +31,8 @@ module tb;
         .i_car1_acc           (i_car1_acc),
         .i_car2_acc           (i_car2_acc),
         .i_car1_omega         (i_car1_omega),
-        .i_car2_omega         (i_car2_omega)
+        .i_car2_omega         (i_car2_omega),
+        .i_next_state         (1'b1)
     );
     
 
@@ -80,10 +81,10 @@ module tb;
         i_rst_n = 1'b0;
         #(`CYCLE*3) i_rst_n = 1'b1; // Release reset after a few cycles
         $display("Simulation start");
-        i_car1_acc = 2;
-        i_car2_acc = 0;
-        i_car1_omega = 2'b11;
-        i_car2_omega = 2'b01;
+        i_car1_acc = 0;
+        i_car2_acc = 4;
+        i_car1_omega = 2'b00;
+        i_car2_omega = 2'b00;
         #(`RENDER_CYCLE*`FRAME/2) begin
             i_car1_acc = 0;
             i_car2_acc = 0;

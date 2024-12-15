@@ -11,7 +11,7 @@ module FrameEncoder (
     output [sram_pkg::SRAM_DATA_WIDTH-1:0] o_sram_data,
     output o_sram_writing,
     output game_pkg::ObjectID o_object_id,
-    output [2*sram_pkg::IMAGE_COOR_WIDTH-1:0] o_pixel_counter,
+    output [2*sram_pkg::CAR_COOR_WIDTH-1:0] o_pixel_counter,
     output o_opacity,
     output o_opacity_valid,
     output o_done
@@ -34,28 +34,28 @@ module FrameEncoder (
 
     reg start_rotator_r, start_rotator_w;
 
-    reg [2*sram_pkg::IMAGE_COOR_WIDTH-1:0] pixel_counter_r, pixel_counter_w;
+    reg [2*sram_pkg::CAR_COOR_WIDTH-1:0] pixel_counter_r, pixel_counter_w;
     assign o_pixel_counter = pixel_counter_r;
     
     reg signed [game_pkg::ANG_WIDTH-1:0] angle_r, angle_w;
 
-    reg [sram_pkg::COLOR_WIDTH-1:0] lut_data_r [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1];
-    reg [sram_pkg::COLOR_WIDTH-1:0] lut_data_w [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1];
+    reg [sram_pkg::COLOR_WIDTH-1:0] lut_data_r [0:sram_pkg::CAR_SIZE-1][0:sram_pkg::CAR_SIZE-1];
+    reg [sram_pkg::COLOR_WIDTH-1:0] lut_data_w [0:sram_pkg::CAR_SIZE-1][0:sram_pkg::CAR_SIZE-1];
 
-    wire [sram_pkg::COLOR_WIDTH-1:0] car1_lut_data [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1];
+    wire [sram_pkg::COLOR_WIDTH-1:0] car1_lut_data [0:sram_pkg::CAR_SIZE-1][0:sram_pkg::CAR_SIZE-1];
     car1_lut u_car1_lut (
         .pixel_data    (car1_lut_data)
     );
 
-    wire [sram_pkg::COLOR_WIDTH-1:0] car2_lut_data [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1];
+    wire [sram_pkg::COLOR_WIDTH-1:0] car2_lut_data [0:sram_pkg::CAR_SIZE-1][0:sram_pkg::CAR_SIZE-1];
     car2_lut u_car2_lut (
         .pixel_data    (car2_lut_data)
     );
 
     wire [sram_pkg::COLOR_WIDTH-1:0] encoded_pixel;
     
-    wire [sram_pkg::IMAGE_COOR_WIDTH-1:0] H_to_be_processed;
-    wire [sram_pkg::IMAGE_COOR_WIDTH-1:0] V_to_be_processed;
+    wire [sram_pkg::CAR_COOR_WIDTH-1:0] H_to_be_processed;
+    wire [sram_pkg::CAR_COOR_WIDTH-1:0] V_to_be_processed;
     
     game_pkg::ObjectID object_id;
     assign o_object_id = object_id;
@@ -122,7 +122,7 @@ module FrameEncoder (
                 proc_counter_w = 0;
             end
             S_PROC: begin
-                if (pixel_counter_r == sram_pkg::IMAGE_SIZE*sram_pkg::IMAGE_SIZE - 1) begin
+                if (pixel_counter_r == sram_pkg::CAR_SIZE*sram_pkg::CAR_SIZE - 1) begin
                     if (proc_counter_r == game_pkg::OBJECT_OPACITY_NUM) begin
                         proc_counter_w = proc_counter_r;
                     end
@@ -150,7 +150,7 @@ module FrameEncoder (
             S_PROC: begin
                 if (proc_counter_r < game_pkg::OBJECT_OPACITY_NUM) begin
                     if (pixel_rotate_done) begin
-                        if (H_to_be_processed == sram_pkg::IMAGE_SIZE-1 && V_to_be_processed == sram_pkg::IMAGE_SIZE-1) begin
+                        if (H_to_be_processed == sram_pkg::CAR_SIZE-1 && V_to_be_processed == sram_pkg::CAR_SIZE-1) begin
                             start_rotator_w = 0;
                         end
                     end
@@ -179,7 +179,7 @@ module FrameEncoder (
             end
             S_PROC: begin
                 if (pixel_rotate_done) begin
-                    if (pixel_counter_r == sram_pkg::IMAGE_SIZE*sram_pkg::IMAGE_SIZE - 1) begin
+                    if (pixel_counter_r == sram_pkg::CAR_SIZE*sram_pkg::CAR_SIZE - 1) begin
                         pixel_counter_w = 0;
                     end
                     else begin
@@ -219,8 +219,8 @@ module FrameEncoder (
     // lut_data logic
     genvar i, j;
     generate
-        for (i = 0; i < sram_pkg::IMAGE_SIZE; i = i + 1) begin : LUT_I
-            for (j = 0; j < sram_pkg::IMAGE_SIZE; j = j + 1) begin : LUT_J
+        for (i = 0; i < sram_pkg::CAR_SIZE; i = i + 1) begin : LUT_I
+            for (j = 0; j < sram_pkg::CAR_SIZE; j = j + 1) begin : LUT_J
                 always @(state_r, proc_counter_r, lut_data_r[i][j], car1_lut_data[i][j], car2_lut_data[i][j]) begin
                     lut_data_w[i][j] = lut_data_r[i][j];
                     case (state_r)
@@ -255,8 +255,8 @@ module FrameEncoder (
             angle_r <= 0;
             start_rotator_r <= 0;
             sram_writing_r <= 0;
-            for (integer i = 0; i < sram_pkg::IMAGE_SIZE; i = i + 1) begin
-                for (integer j = 0; j < sram_pkg::IMAGE_SIZE; j = j + 1) begin
+            for (integer i = 0; i < sram_pkg::CAR_SIZE; i = i + 1) begin
+                for (integer j = 0; j < sram_pkg::CAR_SIZE; j = j + 1) begin
                     lut_data_r[i][j] <= 0;
                 end
             end
@@ -268,8 +268,8 @@ module FrameEncoder (
             angle_r <= angle_w;
             start_rotator_r <= start_rotator_w;
             sram_writing_r <= sram_writing_w;
-            for (integer i = 0; i < sram_pkg::IMAGE_SIZE; i = i + 1) begin
-                for (integer j = 0; j < sram_pkg::IMAGE_SIZE; j = j + 1) begin
+            for (integer i = 0; i < sram_pkg::CAR_SIZE; i = i + 1) begin
+                for (integer j = 0; j < sram_pkg::CAR_SIZE; j = j + 1) begin
                     lut_data_r[i][j] <= lut_data_w[i][j];
                 end
             end

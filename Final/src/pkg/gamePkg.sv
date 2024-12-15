@@ -11,12 +11,29 @@ package game_pkg;
         OBJECT_CAR1 = 4'd3, 
         OBJECT_CAR2 = 4'd4,
         OBJECT_CAR1_CIRCLE = 4'd5,
-        OBJECT_CAR2_CIRCLE = 4'd6
+        OBJECT_CAR2_CIRCLE = 4'd6,
+        OBJECT_START_CAPTION = 4'd7,
+        OBJECT_WIN_CAPTION = 4'd8,
+        OBJECT_LOSE_CAPTION = 4'd9,
+        OBJECT_IDLE_BG = 4'd10,
+        OBJECT_QBLOCK = 4'd11
     } ObjectID;
 
+    typedef enum logic [1:0] {
+        GAME_RESULT_IDLE = 2'd0,
+        GAME_RESULT_CAR1_WIN = 2'd1,
+        GAME_RESULT_CAR2_WIN = 2'd2
+    } GameResult;
+
+    localparam int X_MIN = -sram_pkg::MAP_H;
+    localparam int X_MAX = sram_pkg::MAP_H;
+    localparam int Y_MIN = -sram_pkg::MAP_V;
+    localparam int Y_MAX = sram_pkg::MAP_V;
+
     localparam int CAR_CIRCLE_PIXEL_WIDTH = 2;
-    localparam int CAR_MASS_LEVEL_NUM = 3;
-    localparam int CAR_MASS_LEVEL_NUM_WIDTH = 2;
+    localparam int CAR_MASS_LEVEL_NUM = 10;
+    localparam int CAR_MASS_LEVEL_NUM_WIDTH = 4;
+    localparam int CAR_INIT_MASS_LEVEL = 5;
 
     localparam int ANG_WIDTH = 9;
 
@@ -67,15 +84,49 @@ package game_pkg;
     localparam int CAR2_VELOCITY_DISPLAY_HUNDRED_H_POS = CAR2_VELOCITY_DISPLAY_TEN_H_POS - sram_pkg::BAR_DIGIT_H;
 
     localparam int CAR1_INIT_X = -500;
-    localparam int CAR1_INIT_Y = -250 - (sram_pkg::IMAGE_SIZE>>1) - 10;
+    localparam int CAR1_INIT_Y = -250 - (sram_pkg::CAR_SIZE>>1) - 10;
     localparam int CAR2_INIT_X = -500;
-    localparam int CAR2_INIT_Y = -365 + (sram_pkg::IMAGE_SIZE>>1) + 10;
+    localparam int CAR2_INIT_Y = -365 + (sram_pkg::CAR_SIZE>>1) + 10;
     localparam int CAR_INIT_ANGLE = 180;
 
     // localparam int FINISH_LINE_X = -538;
-
     localparam int LAP_MAX = 3;
     localparam int SINGLE_DIGIT_WIDTH = 4;
 
     localparam int CAR_COLLISION_SEPARATE_CONST = 0;
+
+    localparam int START_CAPTION_H_POS_MIN = 470;
+    localparam int START_CAPTION_H_POS_MAX = START_CAPTION_H_POS_MIN + sram_pkg::START_CAPTION_H - 1;
+    localparam int START_CAPTION_V_POS_MIN = 569;
+    localparam int START_CAPTION_V_POS_MAX = START_CAPTION_V_POS_MIN + sram_pkg::START_CAPTION_V - 1;
+
+    localparam int WIN_LOSE_LEFT_CAPTION_H_POS_MIN = 446;
+    localparam int WIN_LOSE_LEFT_CAPTION_H_POS_MAX = WIN_LOSE_LEFT_CAPTION_H_POS_MIN + sram_pkg::WIN_LOSE_CAPTION_H - 1;
+    localparam int WIN_LOSE_RIGHT_CAPTION_H_POS_MIN = 955;
+    localparam int WIN_LOSE_RIGHT_CAPTION_H_POS_MAX = WIN_LOSE_RIGHT_CAPTION_H_POS_MIN + sram_pkg::WIN_LOSE_CAPTION_H - 1;
+    localparam int WIN_LOSE_CAPTION_V_POS_MIN = 569;
+    localparam int WIN_LOSE_CAPTION_V_POS_MAX = WIN_LOSE_CAPTION_V_POS_MIN + sram_pkg::WIN_LOSE_CAPTION_V - 1;
+
+    localparam int QBLOCK_REGENERATE_INTERVAL = 10; // 10 seconds
+    localparam int QBLOCK_REGENERATE_INTERVAL_WIDTH = 4; // 2^4 = 16
+
+    localparam int QBLOCK0_X = -707;
+    localparam int QBLOCK0_Y = 0;
+
+    // // debug
+    // localparam int QBLOCK0_X = 200;
+    // localparam int QBLOCK0_Y = 0;
+
+    localparam int QBLOCK1_X = -235;
+    localparam int QBLOCK1_Y = -393;
+
+    // // debug
+    // localparam int QBLOCK1_X = 100;
+    // localparam int QBLOCK1_Y = 0;
+
+    localparam int QBLOCK2_X = 688;
+    localparam int QBLOCK2_Y = 0;
+
+    localparam int QBLOCK3_X = 0;
+    localparam int QBLOCK3_Y = -308;
 endpackage

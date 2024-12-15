@@ -5,11 +5,16 @@ module Main (
     input i_clk,
     input i_rst_n,
 
+    input i_next_state,
+
     input [2:0] i_car1_acc,
     input [2:0] i_car2_acc,
 
     input [1:0] i_car1_omega,
     input [1:0] i_car2_omega,
+
+    output o_car1_vibrate,
+    output o_car2_vibrate,
 
     output [game_pkg::VELOCITY_OUTPUT_WIDTH-1:0] o_car1_v_m,
     output [game_pkg::VELOCITY_OUTPUT_WIDTH-1:0] o_car2_v_m,
@@ -51,18 +56,18 @@ module Main (
 
     game_pkg::ObjectID pixel_object_id;
 
-    wire [2*sram_pkg::IMAGE_COOR_WIDTH-1:0] pixel_counter;
-    wire [sram_pkg::IMAGE_COOR_WIDTH-1:0] H_frameEncoder_output, V_frameEncoder_output;
-    assign H_frameEncoder_output = pixel_counter % sram_pkg::IMAGE_SIZE;
-    assign V_frameEncoder_output = pixel_counter / sram_pkg::IMAGE_SIZE;
+    wire [2*sram_pkg::CAR_COOR_WIDTH-1:0] pixel_counter;
+    wire [sram_pkg::CAR_COOR_WIDTH-1:0] H_frameEncoder_output, V_frameEncoder_output;
+    assign H_frameEncoder_output = pixel_counter % sram_pkg::CAR_SIZE;
+    assign V_frameEncoder_output = pixel_counter / sram_pkg::CAR_SIZE;
 
     wire pixel_opacity, pixel_opacity_valid, frameEncode_done;
 
-    reg car1_opacity_mask_r [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1];
-    reg car1_opacity_mask_w [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1];
+    reg car1_opacity_mask_r [0:sram_pkg::CAR_SIZE-1][0:sram_pkg::CAR_SIZE-1];
+    reg car1_opacity_mask_w [0:sram_pkg::CAR_SIZE-1][0:sram_pkg::CAR_SIZE-1];
 
-    reg car2_opacity_mask_r [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1];
-    reg car2_opacity_mask_w [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1];
+    reg car2_opacity_mask_r [0:sram_pkg::CAR_SIZE-1][0:sram_pkg::CAR_SIZE-1];
+    reg car2_opacity_mask_w [0:sram_pkg::CAR_SIZE-1][0:sram_pkg::CAR_SIZE-1];
     
     wire [game_pkg::VELOCITY_OUTPUT_WIDTH-1:0] car1_v_m, car2_v_m;
     assign o_car1_v_m = car1_v_m;
@@ -72,6 +77,11 @@ module Main (
 
     wire [game_pkg::SINGLE_DIGIT_WIDTH-1:0] car1_lap, car2_lap;
 
+    wire is_gaming;
+    game_pkg::GameResult game_result;
+
+    wire qBlock0_display, qBlock1_display, qBlock2_display, qBlock3_display;
+
     GameControl u_GameControl (
         .i_clk              (i_clk),
         .i_render_clk       (render_clk),
@@ -79,7 +89,8 @@ module Main (
         .i_car1_acc         (i_car1_acc),
         .i_car2_acc         (i_car2_acc),
         .i_car1_omega       (i_car1_omega),
-        .i_car2_omega       (i_car2_omega),    
+        .i_car2_omega       (i_car2_omega),  
+        .i_next_state       (i_next_state),  
         .o_car1_angle       (car1_angle),
         .o_car2_angle       (car2_angle),
         .o_car1_x           (car1_x),
@@ -92,6 +103,14 @@ module Main (
         .o_car2_mass_level  (car2_mass_level),
         .o_car1_lap         (car1_lap),
         .o_car2_lap         (car2_lap),
+        .o_is_gaming        (is_gaming),
+        .o_car1_vibrate     (o_car1_vibrate),
+        .o_car2_vibrate     (o_car2_vibrate),
+        .o_qBlock0_display  (qBlock0_display),
+        .o_qBlock1_display  (qBlock1_display),
+        .o_qBlock2_display  (qBlock2_display),
+        .o_qBlock3_display  (qBlock3_display),
+        .o_game_result      (game_result)
     );
 
     FrameEncoder u_FrameEncoder (
@@ -125,8 +144,14 @@ module Main (
         .i_car2_opacity_mask    (car2_opacity_mask_r),
         .i_car1_v_m             (car1_v_m),
         .i_car2_v_m             (car2_v_m),
+        .i_qBlock0_display      (qBlock0_display),
+        .i_qBlock1_display      (qBlock1_display),
+        .i_qBlock2_display      (qBlock2_display),
+        .i_qBlock3_display      (qBlock3_display),
         .i_VGA_H                (H_to_be_rendered),
         .i_VGA_V                (V_to_be_rendered),
+        .i_is_gaming            (is_gaming),
+        .i_game_result          (game_result),
         .o_sram_addr            (addr_decode),
         .i_sram_data            (data_decode),
         .o_decoded_color        (decoded_color)
@@ -149,8 +174,8 @@ module Main (
     // opacity map combinatorial logic
     genvar i, j;
     generate
-        for (i = 0; i < sram_pkg::IMAGE_SIZE; i = i + 1) begin: opacity_mask_generate_i
-            for (j = 0; j < sram_pkg::IMAGE_SIZE; j = j + 1) begin: opacity_mask_generate_j
+        for (i = 0; i < sram_pkg::CAR_SIZE; i = i + 1) begin: opacity_mask_generate_i
+            for (j = 0; j < sram_pkg::CAR_SIZE; j = j + 1) begin: opacity_mask_generate_j
                 assign car1_opacity_mask_w[i][j] = ( V_frameEncoder_output == i &&
                                                     H_frameEncoder_output == j &&
                                                     pixel_object_id == game_pkg::OBJECT_CAR1 &&
@@ -168,16 +193,16 @@ module Main (
     // opacity map sequential logic
     always @(posedge i_clk or negedge i_rst_n) begin
         if (!i_rst_n) begin
-            for (integer i = 0; i < sram_pkg::IMAGE_SIZE; i = i + 1) begin
-                for (integer j = 0; j < sram_pkg::IMAGE_SIZE; j = j + 1) begin
+            for (integer i = 0; i < sram_pkg::CAR_SIZE; i = i + 1) begin
+                for (integer j = 0; j < sram_pkg::CAR_SIZE; j = j + 1) begin
                         car1_opacity_mask_r[i][j] <= 0;
                         car2_opacity_mask_r[i][j] <= 0;
                 end
             end
         end
         else begin
-            for (integer i = 0; i < sram_pkg::IMAGE_SIZE; i = i + 1) begin
-                for (integer j = 0; j < sram_pkg::IMAGE_SIZE; j = j + 1) begin
+            for (integer i = 0; i < sram_pkg::CAR_SIZE; i = i + 1) begin
+                for (integer j = 0; j < sram_pkg::CAR_SIZE; j = j + 1) begin
                     car1_opacity_mask_r[i][j] <= car1_opacity_mask_w[i][j];
                     car2_opacity_mask_r[i][j] <= car2_opacity_mask_w[i][j];
                 end

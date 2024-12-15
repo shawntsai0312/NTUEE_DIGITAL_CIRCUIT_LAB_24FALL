@@ -8,7 +8,7 @@ module HorizontalTrackCollision (
     input signed [sram_pkg::MAP_H_WIDTH-1:0] i_x,
     input signed [sram_pkg::MAP_V_WIDTH-1:0] i_y,
     input signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_v_y,
-    input signed [sram_pkg::IMAGE_COOR_WIDTH-1:0] i_radius,
+    input signed [sram_pkg::CAR_COOR_WIDTH-1:0] i_radius,
     output reg o_in_region,
     output reg o_collision
 );
@@ -46,7 +46,7 @@ module VerticalTrackCollision (
     input signed [sram_pkg::MAP_H_WIDTH-1:0] i_x,
     input signed [sram_pkg::MAP_V_WIDTH-1:0] i_y,
     input signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_v_x,
-    input signed [sram_pkg::IMAGE_COOR_WIDTH-1:0] i_radius,
+    input signed [sram_pkg::CAR_COOR_WIDTH-1:0] i_radius,
     output reg o_in_region,
     output reg o_collision
 );
@@ -86,7 +86,7 @@ module CircleTrackCollision (
     input signed [sram_pkg::MAP_V_WIDTH-1:0] i_y,
     input signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_v_x,
     input signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_v_y,
-    input signed [sram_pkg::IMAGE_COOR_WIDTH-1:0] i_radius,
+    input signed [sram_pkg::CAR_COOR_WIDTH-1:0] i_radius,
     output reg o_in_region,
     output reg o_collision
 );

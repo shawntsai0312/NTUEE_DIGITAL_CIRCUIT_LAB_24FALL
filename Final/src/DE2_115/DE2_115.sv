@@ -146,10 +146,13 @@ module DE2_115 (
 	wire [31:0] timer;
 	assign timer = frame_counter / 60;
 
+	wire rst_n;
+	assign rst_n = KEY[3];
+
 	qsys u_qsys (
 		.altpll_108m_clk                      (clk_108m),
 		.clk_clk                              (CLOCK_50),
-		.reset_reset_n                        (KEY[3]),
+		.reset_reset_n                        (rst_n),
 		
 		// .usb_0_avalon_usb_slave_address       (),
 		// .usb_0_avalon_usb_slave_chipselect    (),
@@ -159,22 +162,36 @@ module DE2_115 (
 		// .usb_0_avalon_usb_slave_readdata      (), // only this one is output
 
 		// .usb_0_external_interface_INT1        (), // i don't know what this is
-		.usb_0_external_interface_DATA        (OTG_DATA),
-		.usb_0_external_interface_RST_N       (OTG_RST_N),
-		.usb_0_external_interface_ADDR        (OTG_ADDR),
-		.usb_0_external_interface_CS_N        (OTG_CS_N),
-		.usb_0_external_interface_RD_N        (OTG_RD_N),
-		.usb_0_external_interface_WR_N        (OTG_WR_N),
-		.usb_0_external_interface_INT0        (OTG_INT)
+		// .usb_0_external_interface_DATA        (OTG_DATA),
+		// .usb_0_external_interface_RST_N       (OTG_RST_N),
+		// .usb_0_external_interface_ADDR        (OTG_ADDR),
+		// .usb_0_external_interface_CS_N        (OTG_CS_N),
+		// .usb_0_external_interface_RD_N        (OTG_RD_N),
+		// .usb_0_external_interface_WR_N        (OTG_WR_N),
+		// .usb_0_external_interface_INT0        (OTG_INT)
 	);
 
 	// you can decide key down settings on your own, below is just an example
-	// Debounce deb0(
-	// 	.i_in(KEY[0]), // Record/Pause
-	// 	.i_rst_n(KEY[3]),
-	// 	.i_clk(clk_108m),
-	// 	.o_neg(key0down) 
-	// );
+	Debounce deb0(
+		.i_in(KEY[0]), // Record/Pause
+		.i_rst_n(KEY[3]),
+		.i_clk(clk_108m),
+		.o_neg(key0down) 
+	);
+
+	Debounce deb1(
+		.i_in(KEY[1]), // Reset
+		.i_rst_n(KEY[3]),
+		.i_clk(clk_108m),
+		.o_neg(key1down) 
+	);
+
+	Debounce deb2(
+		.i_in(KEY[2]), // Start
+		.i_rst_n(KEY[3]),
+		.i_clk(clk_108m),
+		.o_neg(key2down) 
+	);
 
 	assign VGA_SYNC_N  = 1'b0;
 	assign VGA_BLANK_N = 1'b1;
@@ -188,9 +205,13 @@ module DE2_115 (
 	// wire signed [game_pkg::ANG_WIDTH-1:0] o_car1_angle, o_car2_angle;
 	wire [game_pkg::VELOCITY_OUTPUT_WIDTH-1:0] car1_v_m, car2_v_m;
 
+	wire next_state;
+	assign next_state = key0down & key1down;
+
 	Main u_Main (
 		.i_clk              (clk_108m),
-		.i_rst_n            (KEY[3]),
+		.i_rst_n            (rst_n),
+		.i_next_state       (next_state),
 		.i_car2_acc         (SW[2:0]),
 		.i_car1_acc         (SW[15:13]),
 		.i_car2_omega	    (SW[4:3]),

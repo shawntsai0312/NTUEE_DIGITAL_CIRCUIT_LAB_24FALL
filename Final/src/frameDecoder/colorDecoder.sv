@@ -38,6 +38,31 @@ module ColorDecoder (
         .color_map    (carCircle_color)
     );
 
+    wire [23:0] idleBackground_color [0:15];
+    idleBackground_palette u_idleBackground_palette (
+        .color_map    (idleBackground_color)
+    );
+
+    wire [23:0] start_color [0:15];
+    start_palette u_start_palette (
+        .color_map    (start_color)
+    );
+
+    wire [23:0] win_color [0:15];
+    win_palette u_win_palette (
+        .color_map    (win_color)
+    );
+
+    wire [23:0] lose_color [0:15];
+    lose_palette u_lose_palette (
+        .color_map    (lose_color)
+    );
+
+    wire [23:0] qblock_color [0:15];
+    qblock_palette u_qblock_palette (
+        .color_map    (qblock_color)
+    );
+
     reg [23:0] decoded_color;
     assign o_decoded_color = decoded_color;
     always @(*) begin
@@ -50,6 +75,11 @@ module ColorDecoder (
             game_pkg::OBJECT_CAR2           : decoded_color = car2_color[i_encoded_color];
             game_pkg::OBJECT_CAR1_CIRCLE    : decoded_color = carCircle_color[i_encoded_color];
             game_pkg::OBJECT_CAR2_CIRCLE    : decoded_color = carCircle_color[i_encoded_color];
+            game_pkg::OBJECT_START_CAPTION  : decoded_color = start_color[i_encoded_color];
+            game_pkg::OBJECT_WIN_CAPTION    : decoded_color = win_color[i_encoded_color];
+            game_pkg::OBJECT_LOSE_CAPTION   : decoded_color = lose_color[i_encoded_color];
+            game_pkg::OBJECT_IDLE_BG        : decoded_color = idleBackground_color[i_encoded_color];
+            game_pkg::OBJECT_QBLOCK : decoded_color = qblock_color[i_encoded_color];
         endcase
     end
 endmodule

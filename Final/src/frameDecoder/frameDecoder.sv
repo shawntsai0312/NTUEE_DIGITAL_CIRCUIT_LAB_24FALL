@@ -16,14 +16,22 @@ module FrameDecoder(
     input [game_pkg::SINGLE_DIGIT_WIDTH-1:0] i_car1_lap,
     input [game_pkg::SINGLE_DIGIT_WIDTH-1:0] i_car2_lap,
     
-    input i_car1_opacity_mask [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1], // 1 for transparent, 0 for opaque
-    input i_car2_opacity_mask [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1],
+    input i_car1_opacity_mask [0:sram_pkg::CAR_SIZE-1][0:sram_pkg::CAR_SIZE-1], // 1 for transparent, 0 for opaque
+    input i_car2_opacity_mask [0:sram_pkg::CAR_SIZE-1][0:sram_pkg::CAR_SIZE-1],
 
     input [game_pkg::VELOCITY_OUTPUT_WIDTH-1:0] i_car1_v_m,
     input [game_pkg::VELOCITY_OUTPUT_WIDTH-1:0] i_car2_v_m,
 
+    input i_qBlock0_display,
+    input i_qBlock1_display,
+    input i_qBlock2_display,
+    input i_qBlock3_display,
+
     input [sram_pkg::MAP_H_WIDTH-1:0] i_VGA_H,
     input [sram_pkg::MAP_V_WIDTH-1:0] i_VGA_V,
+
+    input i_is_gaming,
+    input game_pkg::GameResult i_game_result,
 
     output [sram_pkg::SRAM_ADDR_COUNT-1:0] o_sram_addr,
     input [sram_pkg::SRAM_DATA_WIDTH-1:0] i_sram_data,
@@ -62,8 +70,14 @@ module FrameDecoder(
         .i_car2_mass_level       (i_car2_mass_level),
         .i_car1_lap              (i_car1_lap),
         .i_car2_lap              (i_car2_lap),
+        .i_qBlock0_display       (i_qBlock0_display),
+        .i_qBlock1_display       (i_qBlock1_display),
+        .i_qBlock2_display       (i_qBlock2_display),
+        .i_qBlock3_display       (i_qBlock3_display),
         .i_VGA_H                 (i_VGA_H),
         .i_VGA_V                 (i_VGA_V),
+        .i_is_gaming             (i_is_gaming),
+        .i_game_result           (i_game_result),
         .o_object_id             (object_id_before_sram),
         .o_object_pixel_index    (object_pixel_index_before_sram)
     );

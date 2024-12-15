@@ -10,21 +10,21 @@ module ImageRotator #(
     input i_rst_n,
     input i_start, // hold high for each image
     input signed [ANG_WIDTH-1:0] i_angle,
-    input [sram_pkg::COLOR_WIDTH-1:0] i_lut_data [0:sram_pkg::IMAGE_SIZE-1][0:sram_pkg::IMAGE_SIZE-1],
+    input [sram_pkg::COLOR_WIDTH-1:0] i_lut_data [0:sram_pkg::CAR_SIZE-1][0:sram_pkg::CAR_SIZE-1],
     output [sram_pkg::COLOR_WIDTH-1:0] o_encoded_pixel,
     output o_opacity,
-    output [sram_pkg::IMAGE_COOR_WIDTH-1:0] o_H_to_be_processed,
-    output [sram_pkg::IMAGE_COOR_WIDTH-1:0] o_V_to_be_processed,
+    output [sram_pkg::CAR_COOR_WIDTH-1:0] o_H_to_be_processed,
+    output [sram_pkg::CAR_COOR_WIDTH-1:0] o_V_to_be_processed,
     output o_valid
 );
 
-    reg [sram_pkg::IMAGE_COOR_WIDTH-1:0] H_r, H_w, V_r, V_w;
+    reg [sram_pkg::CAR_COOR_WIDTH-1:0] H_r, H_w, V_r, V_w;
     assign o_H_to_be_processed = H_r;
     assign o_V_to_be_processed = V_r;
 
     reg start_r, start_w;
 
-    wire [sram_pkg::IMAGE_COOR_WIDTH-1:0] H_transformed, V_transformed;
+    wire [sram_pkg::CAR_COOR_WIDTH-1:0] H_transformed, V_transformed;
     wire outOfRange;
 
     RotateImageCoor #(
@@ -64,15 +64,15 @@ module ImageRotator #(
 
     always @(*) begin
         start_w = i_start;
-        if(H_r == sram_pkg::IMAGE_SIZE-1 && V_r == sram_pkg::IMAGE_SIZE-1) start_w = 0;
+        if(H_r == sram_pkg::CAR_SIZE-1 && V_r == sram_pkg::CAR_SIZE-1) start_w = 0;
     end
 
     always @(*) begin
         H_w = H_r;
         V_w = V_r;
         if(start_r) begin
-            if(H_r == sram_pkg::IMAGE_SIZE-1) begin
-                if(V_r == sram_pkg::IMAGE_SIZE-1) begin
+            if(H_r == sram_pkg::CAR_SIZE-1) begin
+                if(V_r == sram_pkg::CAR_SIZE-1) begin
                     H_w = H_r;
                     V_w = H_w;
                 end
