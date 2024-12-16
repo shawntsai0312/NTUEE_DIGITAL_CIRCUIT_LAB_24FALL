@@ -118,7 +118,7 @@ package game_pkg;
     // localparam int QBLOCK0_Y = 0;
 
     localparam int QBLOCK1_X = -235;
-    localparam int QBLOCK1_Y = -393;
+    localparam int QBLOCK1_Y = -155;
 
     // // debug
     // localparam int QBLOCK1_X = 100;

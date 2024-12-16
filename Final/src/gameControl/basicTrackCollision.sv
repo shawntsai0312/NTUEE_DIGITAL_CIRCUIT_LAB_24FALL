@@ -146,8 +146,8 @@ module InRegionChecker (
     input signed [sram_pkg::MAP_V_WIDTH-1:0] i_y_bottom,
     output o_in_region
 );
-    assign o_in_region = (i_x >= i_x_left) 
+    assign o_in_region = (i_x > i_x_left) 
                         & (i_x <= i_x_right) 
-                        & (i_y >= i_y_bottom) 
+                        & (i_y > i_y_bottom) 
                         & (i_y <= i_y_top);
 endmodule

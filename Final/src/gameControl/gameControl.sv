@@ -10,7 +10,10 @@ module GameControl (
     input [2:0] i_car2_acc, // 0 to 7, temp
     input [1:0] i_car1_omega, // -1 to 1
     input [1:0] i_car2_omega, // -1 to 1
-    input i_next_state,
+    input i_audio_init_done,
+    input i_start,
+    input i_restart,
+    output [2:0] o_game_state, // debug
     output signed [game_pkg::ANG_WIDTH-1:0] o_car1_angle,
     output signed [game_pkg::ANG_WIDTH-1:0] o_car2_angle,
     output signed [sram_pkg::MAP_H_WIDTH-1:0] o_car1_x,
@@ -33,17 +36,19 @@ module GameControl (
     output game_pkg::GameResult o_game_result // 0: idle, 1: car1 win, 2: car2 win
 );
 
-    localparam S_IDLE = 2'd0;
-    localparam S_GAME = 2'd1;
-    localparam S_CAR1_WIN = 2'd2;
-    localparam S_CAR2_WIN = 2'd3;
+    localparam S_INIT = 3'd0; // for audio init
+    localparam S_IDLE = 3'd1;
+    localparam S_GAME = 3'd2;
+    localparam S_CAR1_WIN = 3'd3;
+    localparam S_CAR2_WIN = 3'd4;
 
     /*--------------------------------------------------- flip-flop declaration ---------------------------------------------------*/
     // state
-    reg [1:0] state_r, state_w;
+    reg [2:0] state_r, state_w;
     assign o_is_gaming = (state_r == S_GAME);
     assign o_game_result = (state_r == S_CAR1_WIN) ? game_pkg::GAME_RESULT_CAR1_WIN : 
                         (state_r == S_CAR2_WIN) ? game_pkg::GAME_RESULT_CAR2_WIN : GAME_RESULT_IDLE;
+    assign o_game_state = state_r; // debug
 
     // position
     reg signed [sram_pkg::MAP_H_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] car1_x_r, car1_x_w; // -750 to 750, with decimal
@@ -286,18 +291,26 @@ module GameControl (
     always @(*) begin
         state_w = state_r;
         case (state_r)
+            S_INIT: begin
+                if (i_audio_init_done)  state_w = S_IDLE;
+                else                    state_w = S_INIT;
+            end
             S_IDLE: begin
-                if (i_next_state) state_w = S_GAME;
+                if (i_start) state_w = S_GAME;
+                else         state_w = S_IDLE;
             end
             S_GAME: begin
-                if (car1_lap_r == game_pkg::LAP_MAX + 1) state_w = S_CAR1_WIN;
-                if (car2_lap_r == game_pkg::LAP_MAX + 1) state_w = S_CAR2_WIN;
+                if (car1_lap_r == game_pkg::LAP_MAX + 1)        state_w = S_CAR1_WIN;
+                else if (car2_lap_r == game_pkg::LAP_MAX + 1)   state_w = S_CAR2_WIN;
+                else                                            state_w = S_GAME;
             end
             S_CAR1_WIN: begin
-                if (i_next_state) state_w = S_IDLE;
+                if (i_restart)  state_w = S_IDLE;
+                else            state_w = S_CAR1_WIN;
             end
             S_CAR2_WIN: begin
-                if (i_next_state) state_w = S_IDLE;
+                if (i_restart) state_w = S_IDLE;
+                else           state_w = S_CAR2_WIN;
             end
         endcase
     end

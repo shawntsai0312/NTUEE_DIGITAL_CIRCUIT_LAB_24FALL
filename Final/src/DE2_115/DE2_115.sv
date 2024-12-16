@@ -140,7 +140,7 @@ module DE2_115 (
 );
 
 	logic key0down, key1down, key2down, key3down;
-	logic clk_108m;
+	logic clk_108m, clk_12m, clk_100k;
 
 	wire [31:0] frame_counter;
 	wire [31:0] timer;
@@ -151,6 +151,8 @@ module DE2_115 (
 
 	qsys u_qsys (
 		.altpll_108m_clk                      (clk_108m),
+		.altpll_12m_clk                       (clk_12m),
+		.altpll_100k_clk                      (clk_100k),
 		.clk_clk                              (CLOCK_50),
 		.reset_reset_n                        (rst_n),
 		
@@ -202,20 +204,42 @@ module DE2_115 (
 	assign o_SRAM_LB_N = 1'b0;
 	assign o_SRAM_UB_N = 1'b0;
 
+	assign AUD_XCK = clk_12m;
+
 	// wire signed [game_pkg::ANG_WIDTH-1:0] o_car1_angle, o_car2_angle;
 	wire [game_pkg::VELOCITY_OUTPUT_WIDTH-1:0] car1_v_m, car2_v_m;
 
-	wire next_state;
-	assign next_state = key0down & key1down;
+	wire [2:0] car1_acc, car2_acc;
+	assign car2_acc = SW[2:0];
+	assign car1_acc = SW[15:13];
+
+	wire [1:0] car1_omega, car2_omega;
+	assign car2_omega = SW[4:3];
+	assign car1_omega = SW[17:16];
+
+	wire [2:0] game_state;
+	assign LEDG[0] = (game_state == 0);
+	assign LEDG[1] = (game_state == 1);
+	assign LEDG[2] = (game_state == 2);
+	assign LEDG[3] = (game_state == 3);
+	assign LEDG[4] = (game_state == 4);
 
 	Main u_Main (
 		.i_clk              (clk_108m),
 		.i_rst_n            (rst_n),
-		.i_next_state       (next_state),
-		.i_car2_acc         (SW[2:0]),
-		.i_car1_acc         (SW[15:13]),
-		.i_car2_omega	    (SW[4:3]),
-		.i_car1_omega	    (SW[17:16]),
+		.i_start       		(SW[8]),
+		.i_restart			(SW[9]),
+		.i_I2C_clk          (clk_100k),
+		.o_I2C_sclk         (I2C_SCLK),
+		.io_I2C_sdat        (I2C_SDAT),
+		.i_AUD_BCLK         (AUD_BCLK),
+		.i_AUD_DACLRCK      (AUD_DACLRCK),
+		.o_AUD_DACDAT       (AUD_DACDAT),
+		.i_car2_acc         (car2_acc),
+		.i_car1_acc         (car1_acc),
+		.i_car2_omega	    (car2_omega),
+		.i_car1_omega	    (car1_omega),
+		.o_game_state		(game_state),
 		.o_car1_v_m         (car1_v_m),
 		.o_car2_v_m         (car2_v_m),
 		.o_SRAM_ADDR        (SRAM_ADDR),

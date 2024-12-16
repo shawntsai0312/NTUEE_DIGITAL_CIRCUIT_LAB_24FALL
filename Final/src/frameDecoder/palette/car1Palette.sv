@@ -20,26 +20,25 @@
 //     end
 // endmodule
 
-// gray
+// yellow
 module car1_palette(output reg [23:0] color_map [0:15]);
     initial begin
         // use pure black(0,0,0) as the transparent color
         color_map[0] = 24'h000000; // Transparent color
-        color_map[1] = 24'h025d29;
-        color_map[2] = 24'h272827;
-        color_map[3] = 24'h3c3e3c;
-        color_map[4] = 24'h8bb29d;
-        color_map[5] = 24'h17703a;
-        color_map[6] = 24'h418462;
-        color_map[7] = 24'h183424;
-        color_map[8] = 24'h4b4c4b;
-        color_map[9] = 24'h195733;
-        color_map[10] = 24'h046b37;
-        color_map[11] = 24'h619b7e;
-        color_map[12] = 24'h0e4528;
-        color_map[13] = 24'h257a4d;
-        color_map[14] = 24'h0b6732;
-        color_map[15] = 24'h244131;
+        color_map[1] = 24'h827a1d;
+        color_map[2] = 24'h353231;
+        color_map[3] = 24'hebcd13;
+        color_map[4] = 24'hf4eb9d;
+        color_map[5] = 24'hc3b720;
+        color_map[6] = 24'hf9ee08;
+        color_map[7] = 24'hf7e234;
+        color_map[8] = 24'ha8971a;
+        color_map[9] = 24'h4d4721;
+        color_map[10] = 24'h484646;
+        color_map[11] = 24'hf8e65c;
+        color_map[12] = 24'hefb509;
+        color_map[13] = 24'h282322;
+        color_map[14] = 24'hd7a20c;
+        color_map[15] = 24'h665e21;
     end
 endmodule
-

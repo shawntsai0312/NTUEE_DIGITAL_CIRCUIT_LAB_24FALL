@@ -5,7 +5,16 @@ module Main (
     input i_clk,
     input i_rst_n,
 
-    input i_next_state,
+    input i_start,
+    input i_restart,
+
+    input i_I2C_clk,
+    output o_I2C_sclk,
+    inout io_I2C_sdat,
+
+    inout i_AUD_BCLK,
+    inout i_AUD_DACLRCK,
+    output o_AUD_DACDAT,
 
     input [2:0] i_car1_acc,
     input [2:0] i_car2_acc,
@@ -15,6 +24,8 @@ module Main (
 
     output o_car1_vibrate,
     output o_car2_vibrate,
+
+    output [2:0] o_game_state, // debug
 
     output [game_pkg::VELOCITY_OUTPUT_WIDTH-1:0] o_car1_v_m,
     output [game_pkg::VELOCITY_OUTPUT_WIDTH-1:0] o_car2_v_m,
@@ -89,8 +100,11 @@ module Main (
         .i_car1_acc         (i_car1_acc),
         .i_car2_acc         (i_car2_acc),
         .i_car1_omega       (i_car1_omega),
-        .i_car2_omega       (i_car2_omega),  
-        .i_next_state       (i_next_state),  
+        .i_car2_omega       (i_car2_omega),
+        .i_audio_init_done  (1'b1),
+        .i_start            (i_start),
+        .i_restart          (i_restart),
+        .o_game_state       (o_game_state),
         .o_car1_angle       (car1_angle),
         .o_car2_angle       (car2_angle),
         .o_car1_x           (car1_x),

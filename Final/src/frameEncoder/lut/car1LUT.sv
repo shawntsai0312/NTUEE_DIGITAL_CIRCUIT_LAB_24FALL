@@ -1603,7 +1603,7 @@
 //     end
 // endmodule
 
-// gray
+// yellow
 module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
     initial begin
         pixel_data[0][0] = 0; // x=0, y=0, transparent
@@ -1662,13 +1662,13 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[1][13] = 0; // x=13, y=1, transparent
         pixel_data[1][14] = 0; // x=14, y=1, transparent
         pixel_data[1][15] = 0; // x=15, y=1, transparent
-        pixel_data[1][16] = 6; // x=16, y=1, (65, 132, 98)
-        pixel_data[1][17] = 5; // x=17, y=1, (23, 112, 58)
-        pixel_data[1][18] = 14; // x=18, y=1, (11, 103, 50)
-        pixel_data[1][19] = 5; // x=19, y=1, (23, 112, 58)
-        pixel_data[1][20] = 14; // x=20, y=1, (11, 103, 50)
-        pixel_data[1][21] = 5; // x=21, y=1, (23, 112, 58)
-        pixel_data[1][22] = 6; // x=22, y=1, (65, 132, 98)
+        pixel_data[1][16] = 0; // x=16, y=1, transparent
+        pixel_data[1][17] = 0; // x=17, y=1, transparent
+        pixel_data[1][18] = 0; // x=18, y=1, transparent
+        pixel_data[1][19] = 0; // x=19, y=1, transparent
+        pixel_data[1][20] = 0; // x=20, y=1, transparent
+        pixel_data[1][21] = 0; // x=21, y=1, transparent
+        pixel_data[1][22] = 0; // x=22, y=1, transparent
         pixel_data[1][23] = 0; // x=23, y=1, transparent
         pixel_data[1][24] = 0; // x=24, y=1, transparent
         pixel_data[1][25] = 0; // x=25, y=1, transparent
@@ -1700,17 +1700,17 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[2][11] = 0; // x=11, y=2, transparent
         pixel_data[2][12] = 0; // x=12, y=2, transparent
         pixel_data[2][13] = 0; // x=13, y=2, transparent
-        pixel_data[2][14] = 4; // x=14, y=2, (139, 178, 157)
-        pixel_data[2][15] = 14; // x=15, y=2, (11, 103, 50)
-        pixel_data[2][16] = 1; // x=16, y=2, (2, 93, 41)
-        pixel_data[2][17] = 1; // x=17, y=2, (2, 93, 41)
-        pixel_data[2][18] = 1; // x=18, y=2, (2, 93, 41)
-        pixel_data[2][19] = 1; // x=19, y=2, (2, 93, 41)
-        pixel_data[2][20] = 1; // x=20, y=2, (2, 93, 41)
-        pixel_data[2][21] = 1; // x=21, y=2, (2, 93, 41)
-        pixel_data[2][22] = 1; // x=22, y=2, (2, 93, 41)
-        pixel_data[2][23] = 1; // x=23, y=2, (2, 93, 41)
-        pixel_data[2][24] = 4; // x=24, y=2, (139, 178, 157)
+        pixel_data[2][14] = 0; // x=14, y=2, transparent
+        pixel_data[2][15] = 0; // x=15, y=2, transparent
+        pixel_data[2][16] = 0; // x=16, y=2, transparent
+        pixel_data[2][17] = 0; // x=17, y=2, transparent
+        pixel_data[2][18] = 0; // x=18, y=2, transparent
+        pixel_data[2][19] = 0; // x=19, y=2, transparent
+        pixel_data[2][20] = 0; // x=20, y=2, transparent
+        pixel_data[2][21] = 0; // x=21, y=2, transparent
+        pixel_data[2][22] = 0; // x=22, y=2, transparent
+        pixel_data[2][23] = 0; // x=23, y=2, transparent
+        pixel_data[2][24] = 0; // x=24, y=2, transparent
         pixel_data[2][25] = 0; // x=25, y=2, transparent
         pixel_data[2][26] = 0; // x=26, y=2, transparent
         pixel_data[2][27] = 0; // x=27, y=2, transparent
@@ -1739,19 +1739,19 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[3][10] = 0; // x=10, y=3, transparent
         pixel_data[3][11] = 0; // x=11, y=3, transparent
         pixel_data[3][12] = 0; // x=12, y=3, transparent
-        pixel_data[3][13] = 4; // x=13, y=3, (139, 178, 157)
-        pixel_data[3][14] = 5; // x=14, y=3, (23, 112, 58)
-        pixel_data[3][15] = 1; // x=15, y=3, (2, 93, 41)
-        pixel_data[3][16] = 1; // x=16, y=3, (2, 93, 41)
-        pixel_data[3][17] = 1; // x=17, y=3, (2, 93, 41)
-        pixel_data[3][18] = 1; // x=18, y=3, (2, 93, 41)
-        pixel_data[3][19] = 1; // x=19, y=3, (2, 93, 41)
-        pixel_data[3][20] = 1; // x=20, y=3, (2, 93, 41)
-        pixel_data[3][21] = 1; // x=21, y=3, (2, 93, 41)
-        pixel_data[3][22] = 1; // x=22, y=3, (2, 93, 41)
-        pixel_data[3][23] = 1; // x=23, y=3, (2, 93, 41)
-        pixel_data[3][24] = 5; // x=24, y=3, (23, 112, 58)
-        pixel_data[3][25] = 4; // x=25, y=3, (139, 178, 157)
+        pixel_data[3][13] = 0; // x=13, y=3, transparent
+        pixel_data[3][14] = 0; // x=14, y=3, transparent
+        pixel_data[3][15] = 0; // x=15, y=3, transparent
+        pixel_data[3][16] = 0; // x=16, y=3, transparent
+        pixel_data[3][17] = 0; // x=17, y=3, transparent
+        pixel_data[3][18] = 0; // x=18, y=3, transparent
+        pixel_data[3][19] = 0; // x=19, y=3, transparent
+        pixel_data[3][20] = 0; // x=20, y=3, transparent
+        pixel_data[3][21] = 0; // x=21, y=3, transparent
+        pixel_data[3][22] = 0; // x=22, y=3, transparent
+        pixel_data[3][23] = 0; // x=23, y=3, transparent
+        pixel_data[3][24] = 0; // x=24, y=3, transparent
+        pixel_data[3][25] = 0; // x=25, y=3, transparent
         pixel_data[3][26] = 0; // x=26, y=3, transparent
         pixel_data[3][27] = 0; // x=27, y=3, transparent
         pixel_data[3][28] = 0; // x=28, y=3, transparent
@@ -1778,21 +1778,21 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[4][9] = 0; // x=9, y=4, transparent
         pixel_data[4][10] = 0; // x=10, y=4, transparent
         pixel_data[4][11] = 0; // x=11, y=4, transparent
-        pixel_data[4][12] = 11; // x=12, y=4, (97, 155, 126)
-        pixel_data[4][13] = 5; // x=13, y=4, (23, 112, 58)
-        pixel_data[4][14] = 14; // x=14, y=4, (11, 103, 50)
-        pixel_data[4][15] = 1; // x=15, y=4, (2, 93, 41)
-        pixel_data[4][16] = 1; // x=16, y=4, (2, 93, 41)
-        pixel_data[4][17] = 14; // x=17, y=4, (11, 103, 50)
-        pixel_data[4][18] = 1; // x=18, y=4, (2, 93, 41)
-        pixel_data[4][19] = 1; // x=19, y=4, (2, 93, 41)
-        pixel_data[4][20] = 1; // x=20, y=4, (2, 93, 41)
-        pixel_data[4][21] = 14; // x=21, y=4, (11, 103, 50)
-        pixel_data[4][22] = 1; // x=22, y=4, (2, 93, 41)
-        pixel_data[4][23] = 1; // x=23, y=4, (2, 93, 41)
-        pixel_data[4][24] = 14; // x=24, y=4, (11, 103, 50)
-        pixel_data[4][25] = 5; // x=25, y=4, (23, 112, 58)
-        pixel_data[4][26] = 11; // x=26, y=4, (97, 155, 126)
+        pixel_data[4][12] = 0; // x=12, y=4, transparent
+        pixel_data[4][13] = 0; // x=13, y=4, transparent
+        pixel_data[4][14] = 0; // x=14, y=4, transparent
+        pixel_data[4][15] = 0; // x=15, y=4, transparent
+        pixel_data[4][16] = 0; // x=16, y=4, transparent
+        pixel_data[4][17] = 0; // x=17, y=4, transparent
+        pixel_data[4][18] = 0; // x=18, y=4, transparent
+        pixel_data[4][19] = 0; // x=19, y=4, transparent
+        pixel_data[4][20] = 0; // x=20, y=4, transparent
+        pixel_data[4][21] = 0; // x=21, y=4, transparent
+        pixel_data[4][22] = 0; // x=22, y=4, transparent
+        pixel_data[4][23] = 0; // x=23, y=4, transparent
+        pixel_data[4][24] = 0; // x=24, y=4, transparent
+        pixel_data[4][25] = 0; // x=25, y=4, transparent
+        pixel_data[4][26] = 0; // x=26, y=4, transparent
         pixel_data[4][27] = 0; // x=27, y=4, transparent
         pixel_data[4][28] = 0; // x=28, y=4, transparent
         pixel_data[4][29] = 0; // x=29, y=4, transparent
@@ -1817,23 +1817,23 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[5][8] = 0; // x=8, y=5, transparent
         pixel_data[5][9] = 0; // x=9, y=5, transparent
         pixel_data[5][10] = 0; // x=10, y=5, transparent
-        pixel_data[5][11] = 4; // x=11, y=5, (139, 178, 157)
-        pixel_data[5][12] = 1; // x=12, y=5, (2, 93, 41)
-        pixel_data[5][13] = 5; // x=13, y=5, (23, 112, 58)
-        pixel_data[5][14] = 14; // x=14, y=5, (11, 103, 50)
-        pixel_data[5][15] = 1; // x=15, y=5, (2, 93, 41)
-        pixel_data[5][16] = 1; // x=16, y=5, (2, 93, 41)
-        pixel_data[5][17] = 14; // x=17, y=5, (11, 103, 50)
-        pixel_data[5][18] = 1; // x=18, y=5, (2, 93, 41)
-        pixel_data[5][19] = 1; // x=19, y=5, (2, 93, 41)
-        pixel_data[5][20] = 1; // x=20, y=5, (2, 93, 41)
-        pixel_data[5][21] = 14; // x=21, y=5, (11, 103, 50)
-        pixel_data[5][22] = 1; // x=22, y=5, (2, 93, 41)
-        pixel_data[5][23] = 1; // x=23, y=5, (2, 93, 41)
-        pixel_data[5][24] = 14; // x=24, y=5, (11, 103, 50)
-        pixel_data[5][25] = 5; // x=25, y=5, (23, 112, 58)
-        pixel_data[5][26] = 14; // x=26, y=5, (11, 103, 50)
-        pixel_data[5][27] = 4; // x=27, y=5, (139, 178, 157)
+        pixel_data[5][11] = 0; // x=11, y=5, transparent
+        pixel_data[5][12] = 0; // x=12, y=5, transparent
+        pixel_data[5][13] = 0; // x=13, y=5, transparent
+        pixel_data[5][14] = 0; // x=14, y=5, transparent
+        pixel_data[5][15] = 0; // x=15, y=5, transparent
+        pixel_data[5][16] = 0; // x=16, y=5, transparent
+        pixel_data[5][17] = 0; // x=17, y=5, transparent
+        pixel_data[5][18] = 0; // x=18, y=5, transparent
+        pixel_data[5][19] = 0; // x=19, y=5, transparent
+        pixel_data[5][20] = 0; // x=20, y=5, transparent
+        pixel_data[5][21] = 0; // x=21, y=5, transparent
+        pixel_data[5][22] = 0; // x=22, y=5, transparent
+        pixel_data[5][23] = 0; // x=23, y=5, transparent
+        pixel_data[5][24] = 0; // x=24, y=5, transparent
+        pixel_data[5][25] = 0; // x=25, y=5, transparent
+        pixel_data[5][26] = 0; // x=26, y=5, transparent
+        pixel_data[5][27] = 0; // x=27, y=5, transparent
         pixel_data[5][28] = 0; // x=28, y=5, transparent
         pixel_data[5][29] = 0; // x=29, y=5, transparent
         pixel_data[5][30] = 0; // x=30, y=5, transparent
@@ -1857,23 +1857,23 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[6][8] = 0; // x=8, y=6, transparent
         pixel_data[6][9] = 0; // x=9, y=6, transparent
         pixel_data[6][10] = 0; // x=10, y=6, transparent
-        pixel_data[6][11] = 6; // x=11, y=6, (65, 132, 98)
-        pixel_data[6][12] = 10; // x=12, y=6, (4, 107, 55)
-        pixel_data[6][13] = 5; // x=13, y=6, (23, 112, 58)
-        pixel_data[6][14] = 14; // x=14, y=6, (11, 103, 50)
-        pixel_data[6][15] = 1; // x=15, y=6, (2, 93, 41)
-        pixel_data[6][16] = 1; // x=16, y=6, (2, 93, 41)
-        pixel_data[6][17] = 14; // x=17, y=6, (11, 103, 50)
-        pixel_data[6][18] = 1; // x=18, y=6, (2, 93, 41)
-        pixel_data[6][19] = 1; // x=19, y=6, (2, 93, 41)
-        pixel_data[6][20] = 1; // x=20, y=6, (2, 93, 41)
-        pixel_data[6][21] = 14; // x=21, y=6, (11, 103, 50)
-        pixel_data[6][22] = 1; // x=22, y=6, (2, 93, 41)
-        pixel_data[6][23] = 1; // x=23, y=6, (2, 93, 41)
-        pixel_data[6][24] = 14; // x=24, y=6, (11, 103, 50)
-        pixel_data[6][25] = 5; // x=25, y=6, (23, 112, 58)
-        pixel_data[6][26] = 10; // x=26, y=6, (4, 107, 55)
-        pixel_data[6][27] = 6; // x=27, y=6, (65, 132, 98)
+        pixel_data[6][11] = 0; // x=11, y=6, transparent
+        pixel_data[6][12] = 0; // x=12, y=6, transparent
+        pixel_data[6][13] = 0; // x=13, y=6, transparent
+        pixel_data[6][14] = 0; // x=14, y=6, transparent
+        pixel_data[6][15] = 0; // x=15, y=6, transparent
+        pixel_data[6][16] = 0; // x=16, y=6, transparent
+        pixel_data[6][17] = 0; // x=17, y=6, transparent
+        pixel_data[6][18] = 0; // x=18, y=6, transparent
+        pixel_data[6][19] = 0; // x=19, y=6, transparent
+        pixel_data[6][20] = 0; // x=20, y=6, transparent
+        pixel_data[6][21] = 0; // x=21, y=6, transparent
+        pixel_data[6][22] = 0; // x=22, y=6, transparent
+        pixel_data[6][23] = 0; // x=23, y=6, transparent
+        pixel_data[6][24] = 0; // x=24, y=6, transparent
+        pixel_data[6][25] = 0; // x=25, y=6, transparent
+        pixel_data[6][26] = 0; // x=26, y=6, transparent
+        pixel_data[6][27] = 0; // x=27, y=6, transparent
         pixel_data[6][28] = 0; // x=28, y=6, transparent
         pixel_data[6][29] = 0; // x=29, y=6, transparent
         pixel_data[6][30] = 0; // x=30, y=6, transparent
@@ -1897,23 +1897,23 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[7][8] = 0; // x=8, y=7, transparent
         pixel_data[7][9] = 0; // x=9, y=7, transparent
         pixel_data[7][10] = 0; // x=10, y=7, transparent
-        pixel_data[7][11] = 13; // x=11, y=7, (37, 122, 77)
-        pixel_data[7][12] = 10; // x=12, y=7, (4, 107, 55)
-        pixel_data[7][13] = 5; // x=13, y=7, (23, 112, 58)
-        pixel_data[7][14] = 14; // x=14, y=7, (11, 103, 50)
-        pixel_data[7][15] = 1; // x=15, y=7, (2, 93, 41)
-        pixel_data[7][16] = 1; // x=16, y=7, (2, 93, 41)
-        pixel_data[7][17] = 14; // x=17, y=7, (11, 103, 50)
-        pixel_data[7][18] = 1; // x=18, y=7, (2, 93, 41)
-        pixel_data[7][19] = 1; // x=19, y=7, (2, 93, 41)
-        pixel_data[7][20] = 1; // x=20, y=7, (2, 93, 41)
-        pixel_data[7][21] = 14; // x=21, y=7, (11, 103, 50)
-        pixel_data[7][22] = 1; // x=22, y=7, (2, 93, 41)
-        pixel_data[7][23] = 1; // x=23, y=7, (2, 93, 41)
-        pixel_data[7][24] = 14; // x=24, y=7, (11, 103, 50)
-        pixel_data[7][25] = 5; // x=25, y=7, (23, 112, 58)
-        pixel_data[7][26] = 10; // x=26, y=7, (4, 107, 55)
-        pixel_data[7][27] = 5; // x=27, y=7, (23, 112, 58)
+        pixel_data[7][11] = 0; // x=11, y=7, transparent
+        pixel_data[7][12] = 0; // x=12, y=7, transparent
+        pixel_data[7][13] = 0; // x=13, y=7, transparent
+        pixel_data[7][14] = 0; // x=14, y=7, transparent
+        pixel_data[7][15] = 0; // x=15, y=7, transparent
+        pixel_data[7][16] = 0; // x=16, y=7, transparent
+        pixel_data[7][17] = 0; // x=17, y=7, transparent
+        pixel_data[7][18] = 0; // x=18, y=7, transparent
+        pixel_data[7][19] = 0; // x=19, y=7, transparent
+        pixel_data[7][20] = 0; // x=20, y=7, transparent
+        pixel_data[7][21] = 0; // x=21, y=7, transparent
+        pixel_data[7][22] = 0; // x=22, y=7, transparent
+        pixel_data[7][23] = 0; // x=23, y=7, transparent
+        pixel_data[7][24] = 0; // x=24, y=7, transparent
+        pixel_data[7][25] = 0; // x=25, y=7, transparent
+        pixel_data[7][26] = 0; // x=26, y=7, transparent
+        pixel_data[7][27] = 0; // x=27, y=7, transparent
         pixel_data[7][28] = 0; // x=28, y=7, transparent
         pixel_data[7][29] = 0; // x=29, y=7, transparent
         pixel_data[7][30] = 0; // x=30, y=7, transparent
@@ -1937,23 +1937,23 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[8][8] = 0; // x=8, y=8, transparent
         pixel_data[8][9] = 0; // x=9, y=8, transparent
         pixel_data[8][10] = 0; // x=10, y=8, transparent
-        pixel_data[8][11] = 13; // x=11, y=8, (37, 122, 77)
-        pixel_data[8][12] = 10; // x=12, y=8, (4, 107, 55)
-        pixel_data[8][13] = 5; // x=13, y=8, (23, 112, 58)
-        pixel_data[8][14] = 1; // x=14, y=8, (2, 93, 41)
-        pixel_data[8][15] = 1; // x=15, y=8, (2, 93, 41)
-        pixel_data[8][16] = 1; // x=16, y=8, (2, 93, 41)
-        pixel_data[8][17] = 14; // x=17, y=8, (11, 103, 50)
-        pixel_data[8][18] = 1; // x=18, y=8, (2, 93, 41)
-        pixel_data[8][19] = 1; // x=19, y=8, (2, 93, 41)
-        pixel_data[8][20] = 1; // x=20, y=8, (2, 93, 41)
-        pixel_data[8][21] = 14; // x=21, y=8, (11, 103, 50)
-        pixel_data[8][22] = 1; // x=22, y=8, (2, 93, 41)
-        pixel_data[8][23] = 1; // x=23, y=8, (2, 93, 41)
-        pixel_data[8][24] = 1; // x=24, y=8, (2, 93, 41)
-        pixel_data[8][25] = 5; // x=25, y=8, (23, 112, 58)
-        pixel_data[8][26] = 10; // x=26, y=8, (4, 107, 55)
-        pixel_data[8][27] = 5; // x=27, y=8, (23, 112, 58)
+        pixel_data[8][11] = 0; // x=11, y=8, transparent
+        pixel_data[8][12] = 0; // x=12, y=8, transparent
+        pixel_data[8][13] = 0; // x=13, y=8, transparent
+        pixel_data[8][14] = 0; // x=14, y=8, transparent
+        pixel_data[8][15] = 0; // x=15, y=8, transparent
+        pixel_data[8][16] = 0; // x=16, y=8, transparent
+        pixel_data[8][17] = 0; // x=17, y=8, transparent
+        pixel_data[8][18] = 0; // x=18, y=8, transparent
+        pixel_data[8][19] = 0; // x=19, y=8, transparent
+        pixel_data[8][20] = 0; // x=20, y=8, transparent
+        pixel_data[8][21] = 0; // x=21, y=8, transparent
+        pixel_data[8][22] = 0; // x=22, y=8, transparent
+        pixel_data[8][23] = 0; // x=23, y=8, transparent
+        pixel_data[8][24] = 0; // x=24, y=8, transparent
+        pixel_data[8][25] = 0; // x=25, y=8, transparent
+        pixel_data[8][26] = 0; // x=26, y=8, transparent
+        pixel_data[8][27] = 0; // x=27, y=8, transparent
         pixel_data[8][28] = 0; // x=28, y=8, transparent
         pixel_data[8][29] = 0; // x=29, y=8, transparent
         pixel_data[8][30] = 0; // x=30, y=8, transparent
@@ -1977,23 +1977,23 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[9][8] = 0; // x=8, y=9, transparent
         pixel_data[9][9] = 0; // x=9, y=9, transparent
         pixel_data[9][10] = 0; // x=10, y=9, transparent
-        pixel_data[9][11] = 13; // x=11, y=9, (37, 122, 77)
-        pixel_data[9][12] = 10; // x=12, y=9, (4, 107, 55)
-        pixel_data[9][13] = 5; // x=13, y=9, (23, 112, 58)
-        pixel_data[9][14] = 1; // x=14, y=9, (2, 93, 41)
-        pixel_data[9][15] = 1; // x=15, y=9, (2, 93, 41)
-        pixel_data[9][16] = 1; // x=16, y=9, (2, 93, 41)
-        pixel_data[9][17] = 14; // x=17, y=9, (11, 103, 50)
-        pixel_data[9][18] = 1; // x=18, y=9, (2, 93, 41)
-        pixel_data[9][19] = 1; // x=19, y=9, (2, 93, 41)
-        pixel_data[9][20] = 1; // x=20, y=9, (2, 93, 41)
-        pixel_data[9][21] = 14; // x=21, y=9, (11, 103, 50)
-        pixel_data[9][22] = 1; // x=22, y=9, (2, 93, 41)
-        pixel_data[9][23] = 1; // x=23, y=9, (2, 93, 41)
-        pixel_data[9][24] = 1; // x=24, y=9, (2, 93, 41)
-        pixel_data[9][25] = 5; // x=25, y=9, (23, 112, 58)
-        pixel_data[9][26] = 10; // x=26, y=9, (4, 107, 55)
-        pixel_data[9][27] = 5; // x=27, y=9, (23, 112, 58)
+        pixel_data[9][11] = 0; // x=11, y=9, transparent
+        pixel_data[9][12] = 0; // x=12, y=9, transparent
+        pixel_data[9][13] = 0; // x=13, y=9, transparent
+        pixel_data[9][14] = 0; // x=14, y=9, transparent
+        pixel_data[9][15] = 0; // x=15, y=9, transparent
+        pixel_data[9][16] = 0; // x=16, y=9, transparent
+        pixel_data[9][17] = 0; // x=17, y=9, transparent
+        pixel_data[9][18] = 0; // x=18, y=9, transparent
+        pixel_data[9][19] = 0; // x=19, y=9, transparent
+        pixel_data[9][20] = 0; // x=20, y=9, transparent
+        pixel_data[9][21] = 0; // x=21, y=9, transparent
+        pixel_data[9][22] = 0; // x=22, y=9, transparent
+        pixel_data[9][23] = 0; // x=23, y=9, transparent
+        pixel_data[9][24] = 0; // x=24, y=9, transparent
+        pixel_data[9][25] = 0; // x=25, y=9, transparent
+        pixel_data[9][26] = 0; // x=26, y=9, transparent
+        pixel_data[9][27] = 0; // x=27, y=9, transparent
         pixel_data[9][28] = 0; // x=28, y=9, transparent
         pixel_data[9][29] = 0; // x=29, y=9, transparent
         pixel_data[9][30] = 0; // x=30, y=9, transparent
@@ -2017,23 +2017,23 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[10][8] = 0; // x=8, y=10, transparent
         pixel_data[10][9] = 0; // x=9, y=10, transparent
         pixel_data[10][10] = 0; // x=10, y=10, transparent
-        pixel_data[10][11] = 6; // x=11, y=10, (65, 132, 98)
-        pixel_data[10][12] = 10; // x=12, y=10, (4, 107, 55)
-        pixel_data[10][13] = 5; // x=13, y=10, (23, 112, 58)
-        pixel_data[10][14] = 1; // x=14, y=10, (2, 93, 41)
-        pixel_data[10][15] = 1; // x=15, y=10, (2, 93, 41)
-        pixel_data[10][16] = 14; // x=16, y=10, (11, 103, 50)
-        pixel_data[10][17] = 14; // x=17, y=10, (11, 103, 50)
-        pixel_data[10][18] = 1; // x=18, y=10, (2, 93, 41)
-        pixel_data[10][19] = 1; // x=19, y=10, (2, 93, 41)
-        pixel_data[10][20] = 1; // x=20, y=10, (2, 93, 41)
-        pixel_data[10][21] = 14; // x=21, y=10, (11, 103, 50)
-        pixel_data[10][22] = 1; // x=22, y=10, (2, 93, 41)
-        pixel_data[10][23] = 1; // x=23, y=10, (2, 93, 41)
-        pixel_data[10][24] = 1; // x=24, y=10, (2, 93, 41)
-        pixel_data[10][25] = 5; // x=25, y=10, (23, 112, 58)
-        pixel_data[10][26] = 10; // x=26, y=10, (4, 107, 55)
-        pixel_data[10][27] = 6; // x=27, y=10, (65, 132, 98)
+        pixel_data[10][11] = 0; // x=11, y=10, transparent
+        pixel_data[10][12] = 0; // x=12, y=10, transparent
+        pixel_data[10][13] = 0; // x=13, y=10, transparent
+        pixel_data[10][14] = 0; // x=14, y=10, transparent
+        pixel_data[10][15] = 11; // x=15, y=10, (248, 230, 92)
+        pixel_data[10][16] = 0; // x=16, y=10, transparent
+        pixel_data[10][17] = 0; // x=17, y=10, transparent
+        pixel_data[10][18] = 0; // x=18, y=10, transparent
+        pixel_data[10][19] = 0; // x=19, y=10, transparent
+        pixel_data[10][20] = 0; // x=20, y=10, transparent
+        pixel_data[10][21] = 0; // x=21, y=10, transparent
+        pixel_data[10][22] = 0; // x=22, y=10, transparent
+        pixel_data[10][23] = 0; // x=23, y=10, transparent
+        pixel_data[10][24] = 0; // x=24, y=10, transparent
+        pixel_data[10][25] = 0; // x=25, y=10, transparent
+        pixel_data[10][26] = 0; // x=26, y=10, transparent
+        pixel_data[10][27] = 0; // x=27, y=10, transparent
         pixel_data[10][28] = 0; // x=28, y=10, transparent
         pixel_data[10][29] = 0; // x=29, y=10, transparent
         pixel_data[10][30] = 0; // x=30, y=10, transparent
@@ -2052,36 +2052,36 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[11][3] = 0; // x=3, y=11, transparent
         pixel_data[11][4] = 0; // x=4, y=11, transparent
         pixel_data[11][5] = 0; // x=5, y=11, transparent
-        pixel_data[11][6] = 0; // x=6, y=11, transparent
-        pixel_data[11][7] = 0; // x=7, y=11, transparent
-        pixel_data[11][8] = 0; // x=8, y=11, transparent
-        pixel_data[11][9] = 0; // x=9, y=11, transparent
-        pixel_data[11][10] = 0; // x=10, y=11, transparent
-        pixel_data[11][11] = 11; // x=11, y=11, (97, 155, 126)
-        pixel_data[11][12] = 14; // x=12, y=11, (11, 103, 50)
-        pixel_data[11][13] = 5; // x=13, y=11, (23, 112, 58)
-        pixel_data[11][14] = 1; // x=14, y=11, (2, 93, 41)
-        pixel_data[11][15] = 9; // x=15, y=11, (25, 87, 51)
-        pixel_data[11][16] = 5; // x=16, y=11, (23, 112, 58)
-        pixel_data[11][17] = 1; // x=17, y=11, (2, 93, 41)
-        pixel_data[11][18] = 1; // x=18, y=11, (2, 93, 41)
-        pixel_data[11][19] = 1; // x=19, y=11, (2, 93, 41)
-        pixel_data[11][20] = 1; // x=20, y=11, (2, 93, 41)
-        pixel_data[11][21] = 1; // x=21, y=11, (2, 93, 41)
-        pixel_data[11][22] = 9; // x=22, y=11, (25, 87, 51)
-        pixel_data[11][23] = 12; // x=23, y=11, (14, 69, 40)
-        pixel_data[11][24] = 1; // x=24, y=11, (2, 93, 41)
-        pixel_data[11][25] = 5; // x=25, y=11, (23, 112, 58)
-        pixel_data[11][26] = 14; // x=26, y=11, (11, 103, 50)
-        pixel_data[11][27] = 11; // x=27, y=11, (97, 155, 126)
-        pixel_data[11][28] = 0; // x=28, y=11, transparent
-        pixel_data[11][29] = 0; // x=29, y=11, transparent
-        pixel_data[11][30] = 0; // x=30, y=11, transparent
-        pixel_data[11][31] = 0; // x=31, y=11, transparent
-        pixel_data[11][32] = 0; // x=32, y=11, transparent
-        pixel_data[11][33] = 0; // x=33, y=11, transparent
-        pixel_data[11][34] = 0; // x=34, y=11, transparent
-        pixel_data[11][35] = 0; // x=35, y=11, transparent
+        pixel_data[11][6] = 4; // x=6, y=11, (244, 235, 157)
+        pixel_data[11][7] = 11; // x=7, y=11, (248, 230, 92)
+        pixel_data[11][8] = 11; // x=8, y=11, (248, 230, 92)
+        pixel_data[11][9] = 11; // x=9, y=11, (248, 230, 92)
+        pixel_data[11][10] = 11; // x=10, y=11, (248, 230, 92)
+        pixel_data[11][11] = 11; // x=11, y=11, (248, 230, 92)
+        pixel_data[11][12] = 4; // x=12, y=11, (244, 235, 157)
+        pixel_data[11][13] = 4; // x=13, y=11, (244, 235, 157)
+        pixel_data[11][14] = 11; // x=14, y=11, (248, 230, 92)
+        pixel_data[11][15] = 7; // x=15, y=11, (247, 226, 52)
+        pixel_data[11][16] = 4; // x=16, y=11, (244, 235, 157)
+        pixel_data[11][17] = 4; // x=17, y=11, (244, 235, 157)
+        pixel_data[11][18] = 4; // x=18, y=11, (244, 235, 157)
+        pixel_data[11][19] = 4; // x=19, y=11, (244, 235, 157)
+        pixel_data[11][20] = 4; // x=20, y=11, (244, 235, 157)
+        pixel_data[11][21] = 4; // x=21, y=11, (244, 235, 157)
+        pixel_data[11][22] = 4; // x=22, y=11, (244, 235, 157)
+        pixel_data[11][23] = 4; // x=23, y=11, (244, 235, 157)
+        pixel_data[11][24] = 4; // x=24, y=11, (244, 235, 157)
+        pixel_data[11][25] = 4; // x=25, y=11, (244, 235, 157)
+        pixel_data[11][26] = 4; // x=26, y=11, (244, 235, 157)
+        pixel_data[11][27] = 4; // x=27, y=11, (244, 235, 157)
+        pixel_data[11][28] = 4; // x=28, y=11, (244, 235, 157)
+        pixel_data[11][29] = 4; // x=29, y=11, (244, 235, 157)
+        pixel_data[11][30] = 11; // x=30, y=11, (248, 230, 92)
+        pixel_data[11][31] = 11; // x=31, y=11, (248, 230, 92)
+        pixel_data[11][32] = 11; // x=32, y=11, (248, 230, 92)
+        pixel_data[11][33] = 11; // x=33, y=11, (248, 230, 92)
+        pixel_data[11][34] = 11; // x=34, y=11, (248, 230, 92)
+        pixel_data[11][35] = 4; // x=35, y=11, (244, 235, 157)
         pixel_data[11][36] = 0; // x=36, y=11, transparent
         pixel_data[11][37] = 0; // x=37, y=11, transparent
         pixel_data[11][38] = 0; // x=38, y=11, transparent
@@ -2090,560 +2090,560 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[12][1] = 0; // x=1, y=12, transparent
         pixel_data[12][2] = 0; // x=2, y=12, transparent
         pixel_data[12][3] = 0; // x=3, y=12, transparent
-        pixel_data[12][4] = 0; // x=4, y=12, transparent
-        pixel_data[12][5] = 0; // x=5, y=12, transparent
-        pixel_data[12][6] = 0; // x=6, y=12, transparent
-        pixel_data[12][7] = 0; // x=7, y=12, transparent
-        pixel_data[12][8] = 0; // x=8, y=12, transparent
-        pixel_data[12][9] = 0; // x=9, y=12, transparent
-        pixel_data[12][10] = 0; // x=10, y=12, transparent
-        pixel_data[12][11] = 11; // x=11, y=12, (97, 155, 126)
-        pixel_data[12][12] = 14; // x=12, y=12, (11, 103, 50)
-        pixel_data[12][13] = 5; // x=13, y=12, (23, 112, 58)
-        pixel_data[12][14] = 15; // x=14, y=12, (36, 65, 49)
-        pixel_data[12][15] = 2; // x=15, y=12, (39, 40, 39)
-        pixel_data[12][16] = 5; // x=16, y=12, (23, 112, 58)
-        pixel_data[12][17] = 1; // x=17, y=12, (2, 93, 41)
-        pixel_data[12][18] = 1; // x=18, y=12, (2, 93, 41)
-        pixel_data[12][19] = 1; // x=19, y=12, (2, 93, 41)
-        pixel_data[12][20] = 1; // x=20, y=12, (2, 93, 41)
-        pixel_data[12][21] = 1; // x=21, y=12, (2, 93, 41)
-        pixel_data[12][22] = 9; // x=22, y=12, (25, 87, 51)
-        pixel_data[12][23] = 7; // x=23, y=12, (24, 52, 36)
-        pixel_data[12][24] = 7; // x=24, y=12, (24, 52, 36)
-        pixel_data[12][25] = 5; // x=25, y=12, (23, 112, 58)
-        pixel_data[12][26] = 14; // x=26, y=12, (11, 103, 50)
-        pixel_data[12][27] = 11; // x=27, y=12, (97, 155, 126)
-        pixel_data[12][28] = 0; // x=28, y=12, transparent
-        pixel_data[12][29] = 0; // x=29, y=12, transparent
-        pixel_data[12][30] = 0; // x=30, y=12, transparent
-        pixel_data[12][31] = 0; // x=31, y=12, transparent
-        pixel_data[12][32] = 0; // x=32, y=12, transparent
-        pixel_data[12][33] = 0; // x=33, y=12, transparent
-        pixel_data[12][34] = 0; // x=34, y=12, transparent
-        pixel_data[12][35] = 0; // x=35, y=12, transparent
-        pixel_data[12][36] = 0; // x=36, y=12, transparent
+        pixel_data[12][4] = 4; // x=4, y=12, (244, 235, 157)
+        pixel_data[12][5] = 5; // x=5, y=12, (195, 183, 32)
+        pixel_data[12][6] = 3; // x=6, y=12, (235, 205, 19)
+        pixel_data[12][7] = 12; // x=7, y=12, (239, 181, 9)
+        pixel_data[12][8] = 12; // x=8, y=12, (239, 181, 9)
+        pixel_data[12][9] = 12; // x=9, y=12, (239, 181, 9)
+        pixel_data[12][10] = 12; // x=10, y=12, (239, 181, 9)
+        pixel_data[12][11] = 6; // x=11, y=12, (249, 238, 8)
+        pixel_data[12][12] = 6; // x=12, y=12, (249, 238, 8)
+        pixel_data[12][13] = 3; // x=13, y=12, (235, 205, 19)
+        pixel_data[12][14] = 5; // x=14, y=12, (195, 183, 32)
+        pixel_data[12][15] = 5; // x=15, y=12, (195, 183, 32)
+        pixel_data[12][16] = 3; // x=16, y=12, (235, 205, 19)
+        pixel_data[12][17] = 5; // x=17, y=12, (195, 183, 32)
+        pixel_data[12][18] = 1; // x=18, y=12, (130, 122, 29)
+        pixel_data[12][19] = 15; // x=19, y=12, (102, 94, 33)
+        pixel_data[12][20] = 15; // x=20, y=12, (102, 94, 33)
+        pixel_data[12][21] = 1; // x=21, y=12, (130, 122, 29)
+        pixel_data[12][22] = 5; // x=22, y=12, (195, 183, 32)
+        pixel_data[12][23] = 3; // x=23, y=12, (235, 205, 19)
+        pixel_data[12][24] = 14; // x=24, y=12, (215, 162, 12)
+        pixel_data[12][25] = 12; // x=25, y=12, (239, 181, 9)
+        pixel_data[12][26] = 12; // x=26, y=12, (239, 181, 9)
+        pixel_data[12][27] = 12; // x=27, y=12, (239, 181, 9)
+        pixel_data[12][28] = 14; // x=28, y=12, (215, 162, 12)
+        pixel_data[12][29] = 14; // x=29, y=12, (215, 162, 12)
+        pixel_data[12][30] = 14; // x=30, y=12, (215, 162, 12)
+        pixel_data[12][31] = 12; // x=31, y=12, (239, 181, 9)
+        pixel_data[12][32] = 7; // x=32, y=12, (247, 226, 52)
+        pixel_data[12][33] = 7; // x=33, y=12, (247, 226, 52)
+        pixel_data[12][34] = 7; // x=34, y=12, (247, 226, 52)
+        pixel_data[12][35] = 7; // x=35, y=12, (247, 226, 52)
+        pixel_data[12][36] = 11; // x=36, y=12, (248, 230, 92)
         pixel_data[12][37] = 0; // x=37, y=12, transparent
         pixel_data[12][38] = 0; // x=38, y=12, transparent
         pixel_data[12][39] = 0; // x=39, y=12, transparent
         pixel_data[13][0] = 0; // x=0, y=13, transparent
         pixel_data[13][1] = 0; // x=1, y=13, transparent
         pixel_data[13][2] = 0; // x=2, y=13, transparent
-        pixel_data[13][3] = 0; // x=3, y=13, transparent
-        pixel_data[13][4] = 0; // x=4, y=13, transparent
-        pixel_data[13][5] = 0; // x=5, y=13, transparent
-        pixel_data[13][6] = 0; // x=6, y=13, transparent
-        pixel_data[13][7] = 0; // x=7, y=13, transparent
-        pixel_data[13][8] = 0; // x=8, y=13, transparent
-        pixel_data[13][9] = 0; // x=9, y=13, transparent
-        pixel_data[13][10] = 0; // x=10, y=13, transparent
-        pixel_data[13][11] = 11; // x=11, y=13, (97, 155, 126)
-        pixel_data[13][12] = 14; // x=12, y=13, (11, 103, 50)
-        pixel_data[13][13] = 13; // x=13, y=13, (37, 122, 77)
-        pixel_data[13][14] = 5; // x=14, y=13, (23, 112, 58)
-        pixel_data[13][15] = 13; // x=15, y=13, (37, 122, 77)
-        pixel_data[13][16] = 14; // x=16, y=13, (11, 103, 50)
-        pixel_data[13][17] = 12; // x=17, y=13, (14, 69, 40)
-        pixel_data[13][18] = 12; // x=18, y=13, (14, 69, 40)
-        pixel_data[13][19] = 12; // x=19, y=13, (14, 69, 40)
-        pixel_data[13][20] = 12; // x=20, y=13, (14, 69, 40)
-        pixel_data[13][21] = 12; // x=21, y=13, (14, 69, 40)
-        pixel_data[13][22] = 1; // x=22, y=13, (2, 93, 41)
-        pixel_data[13][23] = 5; // x=23, y=13, (23, 112, 58)
-        pixel_data[13][24] = 5; // x=24, y=13, (23, 112, 58)
-        pixel_data[13][25] = 5; // x=25, y=13, (23, 112, 58)
-        pixel_data[13][26] = 14; // x=26, y=13, (11, 103, 50)
-        pixel_data[13][27] = 11; // x=27, y=13, (97, 155, 126)
-        pixel_data[13][28] = 0; // x=28, y=13, transparent
-        pixel_data[13][29] = 0; // x=29, y=13, transparent
-        pixel_data[13][30] = 0; // x=30, y=13, transparent
-        pixel_data[13][31] = 0; // x=31, y=13, transparent
-        pixel_data[13][32] = 0; // x=32, y=13, transparent
-        pixel_data[13][33] = 0; // x=33, y=13, transparent
-        pixel_data[13][34] = 0; // x=34, y=13, transparent
-        pixel_data[13][35] = 0; // x=35, y=13, transparent
-        pixel_data[13][36] = 0; // x=36, y=13, transparent
-        pixel_data[13][37] = 0; // x=37, y=13, transparent
+        pixel_data[13][3] = 4; // x=3, y=13, (244, 235, 157)
+        pixel_data[13][4] = 8; // x=4, y=13, (168, 151, 26)
+        pixel_data[13][5] = 12; // x=5, y=13, (239, 181, 9)
+        pixel_data[13][6] = 12; // x=6, y=13, (239, 181, 9)
+        pixel_data[13][7] = 12; // x=7, y=13, (239, 181, 9)
+        pixel_data[13][8] = 12; // x=8, y=13, (239, 181, 9)
+        pixel_data[13][9] = 12; // x=9, y=13, (239, 181, 9)
+        pixel_data[13][10] = 14; // x=10, y=13, (215, 162, 12)
+        pixel_data[13][11] = 1; // x=11, y=13, (130, 122, 29)
+        pixel_data[13][12] = 15; // x=12, y=13, (102, 94, 33)
+        pixel_data[13][13] = 1; // x=13, y=13, (130, 122, 29)
+        pixel_data[13][14] = 1; // x=14, y=13, (130, 122, 29)
+        pixel_data[13][15] = 1; // x=15, y=13, (130, 122, 29)
+        pixel_data[13][16] = 9; // x=16, y=13, (77, 71, 33)
+        pixel_data[13][17] = 13; // x=17, y=13, (40, 35, 34)
+        pixel_data[13][18] = 2; // x=18, y=13, (53, 50, 49)
+        pixel_data[13][19] = 9; // x=19, y=13, (77, 71, 33)
+        pixel_data[13][20] = 15; // x=20, y=13, (102, 94, 33)
+        pixel_data[13][21] = 1; // x=21, y=13, (130, 122, 29)
+        pixel_data[13][22] = 8; // x=22, y=13, (168, 151, 26)
+        pixel_data[13][23] = 3; // x=23, y=13, (235, 205, 19)
+        pixel_data[13][24] = 3; // x=24, y=13, (235, 205, 19)
+        pixel_data[13][25] = 6; // x=25, y=13, (249, 238, 8)
+        pixel_data[13][26] = 3; // x=26, y=13, (235, 205, 19)
+        pixel_data[13][27] = 12; // x=27, y=13, (239, 181, 9)
+        pixel_data[13][28] = 12; // x=28, y=13, (239, 181, 9)
+        pixel_data[13][29] = 3; // x=29, y=13, (235, 205, 19)
+        pixel_data[13][30] = 5; // x=30, y=13, (195, 183, 32)
+        pixel_data[13][31] = 1; // x=31, y=13, (130, 122, 29)
+        pixel_data[13][32] = 8; // x=32, y=13, (168, 151, 26)
+        pixel_data[13][33] = 3; // x=33, y=13, (235, 205, 19)
+        pixel_data[13][34] = 7; // x=34, y=13, (247, 226, 52)
+        pixel_data[13][35] = 7; // x=35, y=13, (247, 226, 52)
+        pixel_data[13][36] = 7; // x=36, y=13, (247, 226, 52)
+        pixel_data[13][37] = 11; // x=37, y=13, (248, 230, 92)
         pixel_data[13][38] = 0; // x=38, y=13, transparent
         pixel_data[13][39] = 0; // x=39, y=13, transparent
         pixel_data[14][0] = 0; // x=0, y=14, transparent
         pixel_data[14][1] = 0; // x=1, y=14, transparent
         pixel_data[14][2] = 0; // x=2, y=14, transparent
-        pixel_data[14][3] = 0; // x=3, y=14, transparent
-        pixel_data[14][4] = 0; // x=4, y=14, transparent
-        pixel_data[14][5] = 0; // x=5, y=14, transparent
-        pixel_data[14][6] = 0; // x=6, y=14, transparent
-        pixel_data[14][7] = 0; // x=7, y=14, transparent
-        pixel_data[14][8] = 0; // x=8, y=14, transparent
-        pixel_data[14][9] = 0; // x=9, y=14, transparent
-        pixel_data[14][10] = 0; // x=10, y=14, transparent
-        pixel_data[14][11] = 11; // x=11, y=14, (97, 155, 126)
-        pixel_data[14][12] = 14; // x=12, y=14, (11, 103, 50)
-        pixel_data[14][13] = 5; // x=13, y=14, (23, 112, 58)
-        pixel_data[14][14] = 12; // x=14, y=14, (14, 69, 40)
-        pixel_data[14][15] = 7; // x=15, y=14, (24, 52, 36)
-        pixel_data[14][16] = 3; // x=16, y=14, (60, 62, 60)
-        pixel_data[14][17] = 3; // x=17, y=14, (60, 62, 60)
-        pixel_data[14][18] = 3; // x=18, y=14, (60, 62, 60)
-        pixel_data[14][19] = 8; // x=19, y=14, (75, 76, 75)
-        pixel_data[14][20] = 3; // x=20, y=14, (60, 62, 60)
-        pixel_data[14][21] = 3; // x=21, y=14, (60, 62, 60)
-        pixel_data[14][22] = 2; // x=22, y=14, (39, 40, 39)
-        pixel_data[14][23] = 7; // x=23, y=14, (24, 52, 36)
-        pixel_data[14][24] = 12; // x=24, y=14, (14, 69, 40)
-        pixel_data[14][25] = 5; // x=25, y=14, (23, 112, 58)
-        pixel_data[14][26] = 14; // x=26, y=14, (11, 103, 50)
-        pixel_data[14][27] = 11; // x=27, y=14, (97, 155, 126)
-        pixel_data[14][28] = 0; // x=28, y=14, transparent
-        pixel_data[14][29] = 0; // x=29, y=14, transparent
-        pixel_data[14][30] = 0; // x=30, y=14, transparent
-        pixel_data[14][31] = 0; // x=31, y=14, transparent
-        pixel_data[14][32] = 0; // x=32, y=14, transparent
-        pixel_data[14][33] = 0; // x=33, y=14, transparent
-        pixel_data[14][34] = 0; // x=34, y=14, transparent
-        pixel_data[14][35] = 0; // x=35, y=14, transparent
-        pixel_data[14][36] = 0; // x=36, y=14, transparent
-        pixel_data[14][37] = 0; // x=37, y=14, transparent
+        pixel_data[14][3] = 5; // x=3, y=14, (195, 183, 32)
+        pixel_data[14][4] = 12; // x=4, y=14, (239, 181, 9)
+        pixel_data[14][5] = 12; // x=5, y=14, (239, 181, 9)
+        pixel_data[14][6] = 3; // x=6, y=14, (235, 205, 19)
+        pixel_data[14][7] = 6; // x=7, y=14, (249, 238, 8)
+        pixel_data[14][8] = 6; // x=8, y=14, (249, 238, 8)
+        pixel_data[14][9] = 5; // x=9, y=14, (195, 183, 32)
+        pixel_data[14][10] = 15; // x=10, y=14, (102, 94, 33)
+        pixel_data[14][11] = 10; // x=11, y=14, (72, 70, 70)
+        pixel_data[14][12] = 10; // x=12, y=14, (72, 70, 70)
+        pixel_data[14][13] = 10; // x=13, y=14, (72, 70, 70)
+        pixel_data[14][14] = 2; // x=14, y=14, (53, 50, 49)
+        pixel_data[14][15] = 15; // x=15, y=14, (102, 94, 33)
+        pixel_data[14][16] = 1; // x=16, y=14, (130, 122, 29)
+        pixel_data[14][17] = 1; // x=17, y=14, (130, 122, 29)
+        pixel_data[14][18] = 1; // x=18, y=14, (130, 122, 29)
+        pixel_data[14][19] = 15; // x=19, y=14, (102, 94, 33)
+        pixel_data[14][20] = 9; // x=20, y=14, (77, 71, 33)
+        pixel_data[14][21] = 13; // x=21, y=14, (40, 35, 34)
+        pixel_data[14][22] = 13; // x=22, y=14, (40, 35, 34)
+        pixel_data[14][23] = 2; // x=23, y=14, (53, 50, 49)
+        pixel_data[14][24] = 9; // x=24, y=14, (77, 71, 33)
+        pixel_data[14][25] = 1; // x=25, y=14, (130, 122, 29)
+        pixel_data[14][26] = 5; // x=26, y=14, (195, 183, 32)
+        pixel_data[14][27] = 6; // x=27, y=14, (249, 238, 8)
+        pixel_data[14][28] = 6; // x=28, y=14, (249, 238, 8)
+        pixel_data[14][29] = 6; // x=29, y=14, (249, 238, 8)
+        pixel_data[14][30] = 3; // x=30, y=14, (235, 205, 19)
+        pixel_data[14][31] = 14; // x=31, y=14, (215, 162, 12)
+        pixel_data[14][32] = 8; // x=32, y=14, (168, 151, 26)
+        pixel_data[14][33] = 14; // x=33, y=14, (215, 162, 12)
+        pixel_data[14][34] = 3; // x=34, y=14, (235, 205, 19)
+        pixel_data[14][35] = 3; // x=35, y=14, (235, 205, 19)
+        pixel_data[14][36] = 14; // x=36, y=14, (215, 162, 12)
+        pixel_data[14][37] = 3; // x=37, y=14, (235, 205, 19)
         pixel_data[14][38] = 0; // x=38, y=14, transparent
         pixel_data[14][39] = 0; // x=39, y=14, transparent
         pixel_data[15][0] = 0; // x=0, y=15, transparent
         pixel_data[15][1] = 0; // x=1, y=15, transparent
-        pixel_data[15][2] = 0; // x=2, y=15, transparent
-        pixel_data[15][3] = 0; // x=3, y=15, transparent
-        pixel_data[15][4] = 0; // x=4, y=15, transparent
-        pixel_data[15][5] = 0; // x=5, y=15, transparent
-        pixel_data[15][6] = 0; // x=6, y=15, transparent
-        pixel_data[15][7] = 0; // x=7, y=15, transparent
-        pixel_data[15][8] = 0; // x=8, y=15, transparent
-        pixel_data[15][9] = 0; // x=9, y=15, transparent
-        pixel_data[15][10] = 0; // x=10, y=15, transparent
-        pixel_data[15][11] = 11; // x=11, y=15, (97, 155, 126)
-        pixel_data[15][12] = 14; // x=12, y=15, (11, 103, 50)
-        pixel_data[15][13] = 7; // x=13, y=15, (24, 52, 36)
-        pixel_data[15][14] = 3; // x=14, y=15, (60, 62, 60)
-        pixel_data[15][15] = 8; // x=15, y=15, (75, 76, 75)
-        pixel_data[15][16] = 8; // x=16, y=15, (75, 76, 75)
-        pixel_data[15][17] = 8; // x=17, y=15, (75, 76, 75)
-        pixel_data[15][18] = 8; // x=18, y=15, (75, 76, 75)
-        pixel_data[15][19] = 8; // x=19, y=15, (75, 76, 75)
-        pixel_data[15][20] = 8; // x=20, y=15, (75, 76, 75)
-        pixel_data[15][21] = 8; // x=21, y=15, (75, 76, 75)
-        pixel_data[15][22] = 8; // x=22, y=15, (75, 76, 75)
-        pixel_data[15][23] = 8; // x=23, y=15, (75, 76, 75)
-        pixel_data[15][24] = 3; // x=24, y=15, (60, 62, 60)
-        pixel_data[15][25] = 7; // x=25, y=15, (24, 52, 36)
-        pixel_data[15][26] = 5; // x=26, y=15, (23, 112, 58)
-        pixel_data[15][27] = 11; // x=27, y=15, (97, 155, 126)
-        pixel_data[15][28] = 0; // x=28, y=15, transparent
-        pixel_data[15][29] = 0; // x=29, y=15, transparent
-        pixel_data[15][30] = 0; // x=30, y=15, transparent
-        pixel_data[15][31] = 0; // x=31, y=15, transparent
-        pixel_data[15][32] = 0; // x=32, y=15, transparent
-        pixel_data[15][33] = 0; // x=33, y=15, transparent
-        pixel_data[15][34] = 0; // x=34, y=15, transparent
-        pixel_data[15][35] = 0; // x=35, y=15, transparent
-        pixel_data[15][36] = 0; // x=36, y=15, transparent
-        pixel_data[15][37] = 0; // x=37, y=15, transparent
-        pixel_data[15][38] = 0; // x=38, y=15, transparent
+        pixel_data[15][2] = 11; // x=2, y=15, (248, 230, 92)
+        pixel_data[15][3] = 12; // x=3, y=15, (239, 181, 9)
+        pixel_data[15][4] = 6; // x=4, y=15, (249, 238, 8)
+        pixel_data[15][5] = 6; // x=5, y=15, (249, 238, 8)
+        pixel_data[15][6] = 6; // x=6, y=15, (249, 238, 8)
+        pixel_data[15][7] = 6; // x=7, y=15, (249, 238, 8)
+        pixel_data[15][8] = 6; // x=8, y=15, (249, 238, 8)
+        pixel_data[15][9] = 9; // x=9, y=15, (77, 71, 33)
+        pixel_data[15][10] = 10; // x=10, y=15, (72, 70, 70)
+        pixel_data[15][11] = 10; // x=11, y=15, (72, 70, 70)
+        pixel_data[15][12] = 10; // x=12, y=15, (72, 70, 70)
+        pixel_data[15][13] = 10; // x=13, y=15, (72, 70, 70)
+        pixel_data[15][14] = 2; // x=14, y=15, (53, 50, 49)
+        pixel_data[15][15] = 2; // x=15, y=15, (53, 50, 49)
+        pixel_data[15][16] = 2; // x=16, y=15, (53, 50, 49)
+        pixel_data[15][17] = 2; // x=17, y=15, (53, 50, 49)
+        pixel_data[15][18] = 2; // x=18, y=15, (53, 50, 49)
+        pixel_data[15][19] = 2; // x=19, y=15, (53, 50, 49)
+        pixel_data[15][20] = 15; // x=20, y=15, (102, 94, 33)
+        pixel_data[15][21] = 1; // x=21, y=15, (130, 122, 29)
+        pixel_data[15][22] = 1; // x=22, y=15, (130, 122, 29)
+        pixel_data[15][23] = 1; // x=23, y=15, (130, 122, 29)
+        pixel_data[15][24] = 1; // x=24, y=15, (130, 122, 29)
+        pixel_data[15][25] = 1; // x=25, y=15, (130, 122, 29)
+        pixel_data[15][26] = 1; // x=26, y=15, (130, 122, 29)
+        pixel_data[15][27] = 8; // x=27, y=15, (168, 151, 26)
+        pixel_data[15][28] = 6; // x=28, y=15, (249, 238, 8)
+        pixel_data[15][29] = 6; // x=29, y=15, (249, 238, 8)
+        pixel_data[15][30] = 6; // x=30, y=15, (249, 238, 8)
+        pixel_data[15][31] = 6; // x=31, y=15, (249, 238, 8)
+        pixel_data[15][32] = 6; // x=32, y=15, (249, 238, 8)
+        pixel_data[15][33] = 3; // x=33, y=15, (235, 205, 19)
+        pixel_data[15][34] = 12; // x=34, y=15, (239, 181, 9)
+        pixel_data[15][35] = 3; // x=35, y=15, (235, 205, 19)
+        pixel_data[15][36] = 14; // x=36, y=15, (215, 162, 12)
+        pixel_data[15][37] = 12; // x=37, y=15, (239, 181, 9)
+        pixel_data[15][38] = 11; // x=38, y=15, (248, 230, 92)
         pixel_data[15][39] = 0; // x=39, y=15, transparent
         pixel_data[16][0] = 0; // x=0, y=16, transparent
-        pixel_data[16][1] = 0; // x=1, y=16, transparent
-        pixel_data[16][2] = 0; // x=2, y=16, transparent
-        pixel_data[16][3] = 0; // x=3, y=16, transparent
-        pixel_data[16][4] = 0; // x=4, y=16, transparent
-        pixel_data[16][5] = 0; // x=5, y=16, transparent
-        pixel_data[16][6] = 0; // x=6, y=16, transparent
-        pixel_data[16][7] = 0; // x=7, y=16, transparent
-        pixel_data[16][8] = 0; // x=8, y=16, transparent
-        pixel_data[16][9] = 0; // x=9, y=16, transparent
-        pixel_data[16][10] = 0; // x=10, y=16, transparent
-        pixel_data[16][11] = 11; // x=11, y=16, (97, 155, 126)
-        pixel_data[16][12] = 9; // x=12, y=16, (25, 87, 51)
-        pixel_data[16][13] = 8; // x=13, y=16, (75, 76, 75)
-        pixel_data[16][14] = 8; // x=14, y=16, (75, 76, 75)
-        pixel_data[16][15] = 8; // x=15, y=16, (75, 76, 75)
-        pixel_data[16][16] = 8; // x=16, y=16, (75, 76, 75)
-        pixel_data[16][17] = 8; // x=17, y=16, (75, 76, 75)
-        pixel_data[16][18] = 8; // x=18, y=16, (75, 76, 75)
-        pixel_data[16][19] = 8; // x=19, y=16, (75, 76, 75)
-        pixel_data[16][20] = 8; // x=20, y=16, (75, 76, 75)
-        pixel_data[16][21] = 8; // x=21, y=16, (75, 76, 75)
-        pixel_data[16][22] = 8; // x=22, y=16, (75, 76, 75)
-        pixel_data[16][23] = 8; // x=23, y=16, (75, 76, 75)
-        pixel_data[16][24] = 8; // x=24, y=16, (75, 76, 75)
-        pixel_data[16][25] = 8; // x=25, y=16, (75, 76, 75)
-        pixel_data[16][26] = 9; // x=26, y=16, (25, 87, 51)
-        pixel_data[16][27] = 11; // x=27, y=16, (97, 155, 126)
-        pixel_data[16][28] = 0; // x=28, y=16, transparent
-        pixel_data[16][29] = 0; // x=29, y=16, transparent
-        pixel_data[16][30] = 0; // x=30, y=16, transparent
-        pixel_data[16][31] = 0; // x=31, y=16, transparent
-        pixel_data[16][32] = 0; // x=32, y=16, transparent
-        pixel_data[16][33] = 0; // x=33, y=16, transparent
-        pixel_data[16][34] = 0; // x=34, y=16, transparent
-        pixel_data[16][35] = 0; // x=35, y=16, transparent
-        pixel_data[16][36] = 0; // x=36, y=16, transparent
-        pixel_data[16][37] = 0; // x=37, y=16, transparent
-        pixel_data[16][38] = 0; // x=38, y=16, transparent
+        pixel_data[16][1] = 4; // x=1, y=16, (244, 235, 157)
+        pixel_data[16][2] = 6; // x=2, y=16, (249, 238, 8)
+        pixel_data[16][3] = 6; // x=3, y=16, (249, 238, 8)
+        pixel_data[16][4] = 14; // x=4, y=16, (215, 162, 12)
+        pixel_data[16][5] = 14; // x=5, y=16, (215, 162, 12)
+        pixel_data[16][6] = 6; // x=6, y=16, (249, 238, 8)
+        pixel_data[16][7] = 6; // x=7, y=16, (249, 238, 8)
+        pixel_data[16][8] = 1; // x=8, y=16, (130, 122, 29)
+        pixel_data[16][9] = 10; // x=9, y=16, (72, 70, 70)
+        pixel_data[16][10] = 10; // x=10, y=16, (72, 70, 70)
+        pixel_data[16][11] = 10; // x=11, y=16, (72, 70, 70)
+        pixel_data[16][12] = 10; // x=12, y=16, (72, 70, 70)
+        pixel_data[16][13] = 10; // x=13, y=16, (72, 70, 70)
+        pixel_data[16][14] = 2; // x=14, y=16, (53, 50, 49)
+        pixel_data[16][15] = 2; // x=15, y=16, (53, 50, 49)
+        pixel_data[16][16] = 2; // x=16, y=16, (53, 50, 49)
+        pixel_data[16][17] = 2; // x=17, y=16, (53, 50, 49)
+        pixel_data[16][18] = 2; // x=18, y=16, (53, 50, 49)
+        pixel_data[16][19] = 2; // x=19, y=16, (53, 50, 49)
+        pixel_data[16][20] = 10; // x=20, y=16, (72, 70, 70)
+        pixel_data[16][21] = 10; // x=21, y=16, (72, 70, 70)
+        pixel_data[16][22] = 2; // x=22, y=16, (53, 50, 49)
+        pixel_data[16][23] = 10; // x=23, y=16, (72, 70, 70)
+        pixel_data[16][24] = 2; // x=24, y=16, (53, 50, 49)
+        pixel_data[16][25] = 13; // x=25, y=16, (40, 35, 34)
+        pixel_data[16][26] = 2; // x=26, y=16, (53, 50, 49)
+        pixel_data[16][27] = 9; // x=27, y=16, (77, 71, 33)
+        pixel_data[16][28] = 15; // x=28, y=16, (102, 94, 33)
+        pixel_data[16][29] = 1; // x=29, y=16, (130, 122, 29)
+        pixel_data[16][30] = 8; // x=30, y=16, (168, 151, 26)
+        pixel_data[16][31] = 5; // x=31, y=16, (195, 183, 32)
+        pixel_data[16][32] = 6; // x=32, y=16, (249, 238, 8)
+        pixel_data[16][33] = 6; // x=33, y=16, (249, 238, 8)
+        pixel_data[16][34] = 6; // x=34, y=16, (249, 238, 8)
+        pixel_data[16][35] = 6; // x=35, y=16, (249, 238, 8)
+        pixel_data[16][36] = 14; // x=36, y=16, (215, 162, 12)
+        pixel_data[16][37] = 12; // x=37, y=16, (239, 181, 9)
+        pixel_data[16][38] = 3; // x=38, y=16, (235, 205, 19)
         pixel_data[16][39] = 0; // x=39, y=16, transparent
         pixel_data[17][0] = 0; // x=0, y=17, transparent
-        pixel_data[17][1] = 0; // x=1, y=17, transparent
-        pixel_data[17][2] = 0; // x=2, y=17, transparent
-        pixel_data[17][3] = 0; // x=3, y=17, transparent
-        pixel_data[17][4] = 0; // x=4, y=17, transparent
-        pixel_data[17][5] = 0; // x=5, y=17, transparent
-        pixel_data[17][6] = 0; // x=6, y=17, transparent
-        pixel_data[17][7] = 0; // x=7, y=17, transparent
-        pixel_data[17][8] = 0; // x=8, y=17, transparent
-        pixel_data[17][9] = 0; // x=9, y=17, transparent
-        pixel_data[17][10] = 0; // x=10, y=17, transparent
-        pixel_data[17][11] = 6; // x=11, y=17, (65, 132, 98)
-        pixel_data[17][12] = 9; // x=12, y=17, (25, 87, 51)
-        pixel_data[17][13] = 8; // x=13, y=17, (75, 76, 75)
-        pixel_data[17][14] = 8; // x=14, y=17, (75, 76, 75)
-        pixel_data[17][15] = 8; // x=15, y=17, (75, 76, 75)
-        pixel_data[17][16] = 8; // x=16, y=17, (75, 76, 75)
-        pixel_data[17][17] = 8; // x=17, y=17, (75, 76, 75)
-        pixel_data[17][18] = 8; // x=18, y=17, (75, 76, 75)
-        pixel_data[17][19] = 8; // x=19, y=17, (75, 76, 75)
-        pixel_data[17][20] = 8; // x=20, y=17, (75, 76, 75)
-        pixel_data[17][21] = 8; // x=21, y=17, (75, 76, 75)
-        pixel_data[17][22] = 8; // x=22, y=17, (75, 76, 75)
-        pixel_data[17][23] = 8; // x=23, y=17, (75, 76, 75)
-        pixel_data[17][24] = 8; // x=24, y=17, (75, 76, 75)
-        pixel_data[17][25] = 8; // x=25, y=17, (75, 76, 75)
-        pixel_data[17][26] = 15; // x=26, y=17, (36, 65, 49)
-        pixel_data[17][27] = 6; // x=27, y=17, (65, 132, 98)
-        pixel_data[17][28] = 0; // x=28, y=17, transparent
-        pixel_data[17][29] = 0; // x=29, y=17, transparent
-        pixel_data[17][30] = 0; // x=30, y=17, transparent
-        pixel_data[17][31] = 0; // x=31, y=17, transparent
-        pixel_data[17][32] = 0; // x=32, y=17, transparent
-        pixel_data[17][33] = 0; // x=33, y=17, transparent
-        pixel_data[17][34] = 0; // x=34, y=17, transparent
-        pixel_data[17][35] = 0; // x=35, y=17, transparent
-        pixel_data[17][36] = 0; // x=36, y=17, transparent
-        pixel_data[17][37] = 0; // x=37, y=17, transparent
-        pixel_data[17][38] = 0; // x=38, y=17, transparent
+        pixel_data[17][1] = 11; // x=1, y=17, (248, 230, 92)
+        pixel_data[17][2] = 3; // x=2, y=17, (235, 205, 19)
+        pixel_data[17][3] = 15; // x=3, y=17, (102, 94, 33)
+        pixel_data[17][4] = 14; // x=4, y=17, (215, 162, 12)
+        pixel_data[17][5] = 3; // x=5, y=17, (235, 205, 19)
+        pixel_data[17][6] = 6; // x=6, y=17, (249, 238, 8)
+        pixel_data[17][7] = 6; // x=7, y=17, (249, 238, 8)
+        pixel_data[17][8] = 9; // x=8, y=17, (77, 71, 33)
+        pixel_data[17][9] = 10; // x=9, y=17, (72, 70, 70)
+        pixel_data[17][10] = 10; // x=10, y=17, (72, 70, 70)
+        pixel_data[17][11] = 10; // x=11, y=17, (72, 70, 70)
+        pixel_data[17][12] = 10; // x=12, y=17, (72, 70, 70)
+        pixel_data[17][13] = 10; // x=13, y=17, (72, 70, 70)
+        pixel_data[17][14] = 2; // x=14, y=17, (53, 50, 49)
+        pixel_data[17][15] = 2; // x=15, y=17, (53, 50, 49)
+        pixel_data[17][16] = 2; // x=16, y=17, (53, 50, 49)
+        pixel_data[17][17] = 2; // x=17, y=17, (53, 50, 49)
+        pixel_data[17][18] = 2; // x=18, y=17, (53, 50, 49)
+        pixel_data[17][19] = 2; // x=19, y=17, (53, 50, 49)
+        pixel_data[17][20] = 10; // x=20, y=17, (72, 70, 70)
+        pixel_data[17][21] = 10; // x=21, y=17, (72, 70, 70)
+        pixel_data[17][22] = 10; // x=22, y=17, (72, 70, 70)
+        pixel_data[17][23] = 10; // x=23, y=17, (72, 70, 70)
+        pixel_data[17][24] = 2; // x=24, y=17, (53, 50, 49)
+        pixel_data[17][25] = 2; // x=25, y=17, (53, 50, 49)
+        pixel_data[17][26] = 2; // x=26, y=17, (53, 50, 49)
+        pixel_data[17][27] = 2; // x=27, y=17, (53, 50, 49)
+        pixel_data[17][28] = 2; // x=28, y=17, (53, 50, 49)
+        pixel_data[17][29] = 13; // x=29, y=17, (40, 35, 34)
+        pixel_data[17][30] = 2; // x=30, y=17, (53, 50, 49)
+        pixel_data[17][31] = 2; // x=31, y=17, (53, 50, 49)
+        pixel_data[17][32] = 10; // x=32, y=17, (72, 70, 70)
+        pixel_data[17][33] = 8; // x=33, y=17, (168, 151, 26)
+        pixel_data[17][34] = 12; // x=34, y=17, (239, 181, 9)
+        pixel_data[17][35] = 12; // x=35, y=17, (239, 181, 9)
+        pixel_data[17][36] = 14; // x=36, y=17, (215, 162, 12)
+        pixel_data[17][37] = 14; // x=37, y=17, (215, 162, 12)
+        pixel_data[17][38] = 12; // x=38, y=17, (239, 181, 9)
         pixel_data[17][39] = 0; // x=39, y=17, transparent
         pixel_data[18][0] = 0; // x=0, y=18, transparent
-        pixel_data[18][1] = 0; // x=1, y=18, transparent
-        pixel_data[18][2] = 0; // x=2, y=18, transparent
-        pixel_data[18][3] = 0; // x=3, y=18, transparent
-        pixel_data[18][4] = 0; // x=4, y=18, transparent
-        pixel_data[18][5] = 0; // x=5, y=18, transparent
-        pixel_data[18][6] = 0; // x=6, y=18, transparent
-        pixel_data[18][7] = 0; // x=7, y=18, transparent
-        pixel_data[18][8] = 0; // x=8, y=18, transparent
-        pixel_data[18][9] = 0; // x=9, y=18, transparent
-        pixel_data[18][10] = 0; // x=10, y=18, transparent
-        pixel_data[18][11] = 6; // x=11, y=18, (65, 132, 98)
-        pixel_data[18][12] = 12; // x=12, y=18, (14, 69, 40)
-        pixel_data[18][13] = 3; // x=13, y=18, (60, 62, 60)
-        pixel_data[18][14] = 8; // x=14, y=18, (75, 76, 75)
-        pixel_data[18][15] = 8; // x=15, y=18, (75, 76, 75)
-        pixel_data[18][16] = 8; // x=16, y=18, (75, 76, 75)
-        pixel_data[18][17] = 8; // x=17, y=18, (75, 76, 75)
-        pixel_data[18][18] = 8; // x=18, y=18, (75, 76, 75)
-        pixel_data[18][19] = 8; // x=19, y=18, (75, 76, 75)
-        pixel_data[18][20] = 8; // x=20, y=18, (75, 76, 75)
-        pixel_data[18][21] = 8; // x=21, y=18, (75, 76, 75)
-        pixel_data[18][22] = 8; // x=22, y=18, (75, 76, 75)
-        pixel_data[18][23] = 8; // x=23, y=18, (75, 76, 75)
-        pixel_data[18][24] = 8; // x=24, y=18, (75, 76, 75)
-        pixel_data[18][25] = 8; // x=25, y=18, (75, 76, 75)
-        pixel_data[18][26] = 15; // x=26, y=18, (36, 65, 49)
-        pixel_data[18][27] = 6; // x=27, y=18, (65, 132, 98)
-        pixel_data[18][28] = 0; // x=28, y=18, transparent
-        pixel_data[18][29] = 0; // x=29, y=18, transparent
-        pixel_data[18][30] = 0; // x=30, y=18, transparent
-        pixel_data[18][31] = 0; // x=31, y=18, transparent
-        pixel_data[18][32] = 0; // x=32, y=18, transparent
-        pixel_data[18][33] = 0; // x=33, y=18, transparent
-        pixel_data[18][34] = 0; // x=34, y=18, transparent
-        pixel_data[18][35] = 0; // x=35, y=18, transparent
-        pixel_data[18][36] = 0; // x=36, y=18, transparent
-        pixel_data[18][37] = 0; // x=37, y=18, transparent
-        pixel_data[18][38] = 0; // x=38, y=18, transparent
+        pixel_data[18][1] = 7; // x=1, y=18, (247, 226, 52)
+        pixel_data[18][2] = 1; // x=2, y=18, (130, 122, 29)
+        pixel_data[18][3] = 9; // x=3, y=18, (77, 71, 33)
+        pixel_data[18][4] = 14; // x=4, y=18, (215, 162, 12)
+        pixel_data[18][5] = 6; // x=5, y=18, (249, 238, 8)
+        pixel_data[18][6] = 6; // x=6, y=18, (249, 238, 8)
+        pixel_data[18][7] = 3; // x=7, y=18, (235, 205, 19)
+        pixel_data[18][8] = 2; // x=8, y=18, (53, 50, 49)
+        pixel_data[18][9] = 10; // x=9, y=18, (72, 70, 70)
+        pixel_data[18][10] = 10; // x=10, y=18, (72, 70, 70)
+        pixel_data[18][11] = 10; // x=11, y=18, (72, 70, 70)
+        pixel_data[18][12] = 10; // x=12, y=18, (72, 70, 70)
+        pixel_data[18][13] = 10; // x=13, y=18, (72, 70, 70)
+        pixel_data[18][14] = 2; // x=14, y=18, (53, 50, 49)
+        pixel_data[18][15] = 2; // x=15, y=18, (53, 50, 49)
+        pixel_data[18][16] = 2; // x=16, y=18, (53, 50, 49)
+        pixel_data[18][17] = 2; // x=17, y=18, (53, 50, 49)
+        pixel_data[18][18] = 10; // x=18, y=18, (72, 70, 70)
+        pixel_data[18][19] = 10; // x=19, y=18, (72, 70, 70)
+        pixel_data[18][20] = 10; // x=20, y=18, (72, 70, 70)
+        pixel_data[18][21] = 10; // x=21, y=18, (72, 70, 70)
+        pixel_data[18][22] = 10; // x=22, y=18, (72, 70, 70)
+        pixel_data[18][23] = 10; // x=23, y=18, (72, 70, 70)
+        pixel_data[18][24] = 10; // x=24, y=18, (72, 70, 70)
+        pixel_data[18][25] = 10; // x=25, y=18, (72, 70, 70)
+        pixel_data[18][26] = 10; // x=26, y=18, (72, 70, 70)
+        pixel_data[18][27] = 2; // x=27, y=18, (53, 50, 49)
+        pixel_data[18][28] = 2; // x=28, y=18, (53, 50, 49)
+        pixel_data[18][29] = 2; // x=29, y=18, (53, 50, 49)
+        pixel_data[18][30] = 2; // x=30, y=18, (53, 50, 49)
+        pixel_data[18][31] = 2; // x=31, y=18, (53, 50, 49)
+        pixel_data[18][32] = 2; // x=32, y=18, (53, 50, 49)
+        pixel_data[18][33] = 2; // x=33, y=18, (53, 50, 49)
+        pixel_data[18][34] = 15; // x=34, y=18, (102, 94, 33)
+        pixel_data[18][35] = 8; // x=35, y=18, (168, 151, 26)
+        pixel_data[18][36] = 14; // x=36, y=18, (215, 162, 12)
+        pixel_data[18][37] = 14; // x=37, y=18, (215, 162, 12)
+        pixel_data[18][38] = 12; // x=38, y=18, (239, 181, 9)
         pixel_data[18][39] = 0; // x=39, y=18, transparent
         pixel_data[19][0] = 0; // x=0, y=19, transparent
-        pixel_data[19][1] = 0; // x=1, y=19, transparent
-        pixel_data[19][2] = 0; // x=2, y=19, transparent
-        pixel_data[19][3] = 0; // x=3, y=19, transparent
-        pixel_data[19][4] = 0; // x=4, y=19, transparent
-        pixel_data[19][5] = 0; // x=5, y=19, transparent
-        pixel_data[19][6] = 0; // x=6, y=19, transparent
-        pixel_data[19][7] = 0; // x=7, y=19, transparent
-        pixel_data[19][8] = 0; // x=8, y=19, transparent
-        pixel_data[19][9] = 0; // x=9, y=19, transparent
-        pixel_data[19][10] = 0; // x=10, y=19, transparent
-        pixel_data[19][11] = 15; // x=11, y=19, (36, 65, 49)
-        pixel_data[19][12] = 15; // x=12, y=19, (36, 65, 49)
-        pixel_data[19][13] = 15; // x=13, y=19, (36, 65, 49)
-        pixel_data[19][14] = 8; // x=14, y=19, (75, 76, 75)
-        pixel_data[19][15] = 3; // x=15, y=19, (60, 62, 60)
-        pixel_data[19][16] = 3; // x=16, y=19, (60, 62, 60)
-        pixel_data[19][17] = 3; // x=17, y=19, (60, 62, 60)
-        pixel_data[19][18] = 2; // x=18, y=19, (39, 40, 39)
-        pixel_data[19][19] = 2; // x=19, y=19, (39, 40, 39)
-        pixel_data[19][20] = 2; // x=20, y=19, (39, 40, 39)
-        pixel_data[19][21] = 2; // x=21, y=19, (39, 40, 39)
-        pixel_data[19][22] = 3; // x=22, y=19, (60, 62, 60)
-        pixel_data[19][23] = 3; // x=23, y=19, (60, 62, 60)
-        pixel_data[19][24] = 3; // x=24, y=19, (60, 62, 60)
-        pixel_data[19][25] = 3; // x=25, y=19, (60, 62, 60)
-        pixel_data[19][26] = 15; // x=26, y=19, (36, 65, 49)
-        pixel_data[19][27] = 15; // x=27, y=19, (36, 65, 49)
-        pixel_data[19][28] = 0; // x=28, y=19, transparent
-        pixel_data[19][29] = 0; // x=29, y=19, transparent
-        pixel_data[19][30] = 0; // x=30, y=19, transparent
-        pixel_data[19][31] = 0; // x=31, y=19, transparent
-        pixel_data[19][32] = 0; // x=32, y=19, transparent
-        pixel_data[19][33] = 0; // x=33, y=19, transparent
-        pixel_data[19][34] = 0; // x=34, y=19, transparent
-        pixel_data[19][35] = 0; // x=35, y=19, transparent
-        pixel_data[19][36] = 0; // x=36, y=19, transparent
-        pixel_data[19][37] = 0; // x=37, y=19, transparent
-        pixel_data[19][38] = 0; // x=38, y=19, transparent
+        pixel_data[19][1] = 7; // x=1, y=19, (247, 226, 52)
+        pixel_data[19][2] = 3; // x=2, y=19, (235, 205, 19)
+        pixel_data[19][3] = 6; // x=3, y=19, (249, 238, 8)
+        pixel_data[19][4] = 6; // x=4, y=19, (249, 238, 8)
+        pixel_data[19][5] = 6; // x=5, y=19, (249, 238, 8)
+        pixel_data[19][6] = 6; // x=6, y=19, (249, 238, 8)
+        pixel_data[19][7] = 3; // x=7, y=19, (235, 205, 19)
+        pixel_data[19][8] = 2; // x=8, y=19, (53, 50, 49)
+        pixel_data[19][9] = 10; // x=9, y=19, (72, 70, 70)
+        pixel_data[19][10] = 10; // x=10, y=19, (72, 70, 70)
+        pixel_data[19][11] = 10; // x=11, y=19, (72, 70, 70)
+        pixel_data[19][12] = 10; // x=12, y=19, (72, 70, 70)
+        pixel_data[19][13] = 10; // x=13, y=19, (72, 70, 70)
+        pixel_data[19][14] = 2; // x=14, y=19, (53, 50, 49)
+        pixel_data[19][15] = 2; // x=15, y=19, (53, 50, 49)
+        pixel_data[19][16] = 2; // x=16, y=19, (53, 50, 49)
+        pixel_data[19][17] = 10; // x=17, y=19, (72, 70, 70)
+        pixel_data[19][18] = 10; // x=18, y=19, (72, 70, 70)
+        pixel_data[19][19] = 10; // x=19, y=19, (72, 70, 70)
+        pixel_data[19][20] = 10; // x=20, y=19, (72, 70, 70)
+        pixel_data[19][21] = 10; // x=21, y=19, (72, 70, 70)
+        pixel_data[19][22] = 10; // x=22, y=19, (72, 70, 70)
+        pixel_data[19][23] = 10; // x=23, y=19, (72, 70, 70)
+        pixel_data[19][24] = 10; // x=24, y=19, (72, 70, 70)
+        pixel_data[19][25] = 10; // x=25, y=19, (72, 70, 70)
+        pixel_data[19][26] = 10; // x=26, y=19, (72, 70, 70)
+        pixel_data[19][27] = 2; // x=27, y=19, (53, 50, 49)
+        pixel_data[19][28] = 13; // x=28, y=19, (40, 35, 34)
+        pixel_data[19][29] = 13; // x=29, y=19, (40, 35, 34)
+        pixel_data[19][30] = 13; // x=30, y=19, (40, 35, 34)
+        pixel_data[19][31] = 13; // x=31, y=19, (40, 35, 34)
+        pixel_data[19][32] = 13; // x=32, y=19, (40, 35, 34)
+        pixel_data[19][33] = 2; // x=33, y=19, (53, 50, 49)
+        pixel_data[19][34] = 2; // x=34, y=19, (53, 50, 49)
+        pixel_data[19][35] = 10; // x=35, y=19, (72, 70, 70)
+        pixel_data[19][36] = 14; // x=36, y=19, (215, 162, 12)
+        pixel_data[19][37] = 14; // x=37, y=19, (215, 162, 12)
+        pixel_data[19][38] = 12; // x=38, y=19, (239, 181, 9)
         pixel_data[19][39] = 0; // x=39, y=19, transparent
         pixel_data[20][0] = 0; // x=0, y=20, transparent
-        pixel_data[20][1] = 0; // x=1, y=20, transparent
-        pixel_data[20][2] = 0; // x=2, y=20, transparent
-        pixel_data[20][3] = 0; // x=3, y=20, transparent
-        pixel_data[20][4] = 0; // x=4, y=20, transparent
-        pixel_data[20][5] = 0; // x=5, y=20, transparent
-        pixel_data[20][6] = 0; // x=6, y=20, transparent
-        pixel_data[20][7] = 0; // x=7, y=20, transparent
-        pixel_data[20][8] = 0; // x=8, y=20, transparent
-        pixel_data[20][9] = 0; // x=9, y=20, transparent
-        pixel_data[20][10] = 0; // x=10, y=20, transparent
-        pixel_data[20][11] = 13; // x=11, y=20, (37, 122, 77)
-        pixel_data[20][12] = 15; // x=12, y=20, (36, 65, 49)
-        pixel_data[20][13] = 12; // x=13, y=20, (14, 69, 40)
-        pixel_data[20][14] = 15; // x=14, y=20, (36, 65, 49)
-        pixel_data[20][15] = 2; // x=15, y=20, (39, 40, 39)
-        pixel_data[20][16] = 2; // x=16, y=20, (39, 40, 39)
-        pixel_data[20][17] = 2; // x=17, y=20, (39, 40, 39)
-        pixel_data[20][18] = 2; // x=18, y=20, (39, 40, 39)
-        pixel_data[20][19] = 2; // x=19, y=20, (39, 40, 39)
-        pixel_data[20][20] = 2; // x=20, y=20, (39, 40, 39)
-        pixel_data[20][21] = 2; // x=21, y=20, (39, 40, 39)
-        pixel_data[20][22] = 2; // x=22, y=20, (39, 40, 39)
-        pixel_data[20][23] = 2; // x=23, y=20, (39, 40, 39)
-        pixel_data[20][24] = 7; // x=24, y=20, (24, 52, 36)
-        pixel_data[20][25] = 12; // x=25, y=20, (14, 69, 40)
-        pixel_data[20][26] = 15; // x=26, y=20, (36, 65, 49)
-        pixel_data[20][27] = 5; // x=27, y=20, (23, 112, 58)
-        pixel_data[20][28] = 0; // x=28, y=20, transparent
-        pixel_data[20][29] = 0; // x=29, y=20, transparent
-        pixel_data[20][30] = 0; // x=30, y=20, transparent
-        pixel_data[20][31] = 0; // x=31, y=20, transparent
-        pixel_data[20][32] = 0; // x=32, y=20, transparent
-        pixel_data[20][33] = 0; // x=33, y=20, transparent
-        pixel_data[20][34] = 0; // x=34, y=20, transparent
-        pixel_data[20][35] = 0; // x=35, y=20, transparent
-        pixel_data[20][36] = 0; // x=36, y=20, transparent
-        pixel_data[20][37] = 0; // x=37, y=20, transparent
-        pixel_data[20][38] = 0; // x=38, y=20, transparent
+        pixel_data[20][1] = 7; // x=1, y=20, (247, 226, 52)
+        pixel_data[20][2] = 1; // x=2, y=20, (130, 122, 29)
+        pixel_data[20][3] = 15; // x=3, y=20, (102, 94, 33)
+        pixel_data[20][4] = 12; // x=4, y=20, (239, 181, 9)
+        pixel_data[20][5] = 6; // x=5, y=20, (249, 238, 8)
+        pixel_data[20][6] = 6; // x=6, y=20, (249, 238, 8)
+        pixel_data[20][7] = 3; // x=7, y=20, (235, 205, 19)
+        pixel_data[20][8] = 2; // x=8, y=20, (53, 50, 49)
+        pixel_data[20][9] = 10; // x=9, y=20, (72, 70, 70)
+        pixel_data[20][10] = 10; // x=10, y=20, (72, 70, 70)
+        pixel_data[20][11] = 10; // x=11, y=20, (72, 70, 70)
+        pixel_data[20][12] = 10; // x=12, y=20, (72, 70, 70)
+        pixel_data[20][13] = 2; // x=13, y=20, (53, 50, 49)
+        pixel_data[20][14] = 2; // x=14, y=20, (53, 50, 49)
+        pixel_data[20][15] = 13; // x=15, y=20, (40, 35, 34)
+        pixel_data[20][16] = 13; // x=16, y=20, (40, 35, 34)
+        pixel_data[20][17] = 13; // x=17, y=20, (40, 35, 34)
+        pixel_data[20][18] = 2; // x=18, y=20, (53, 50, 49)
+        pixel_data[20][19] = 2; // x=19, y=20, (53, 50, 49)
+        pixel_data[20][20] = 2; // x=20, y=20, (53, 50, 49)
+        pixel_data[20][21] = 2; // x=21, y=20, (53, 50, 49)
+        pixel_data[20][22] = 2; // x=22, y=20, (53, 50, 49)
+        pixel_data[20][23] = 2; // x=23, y=20, (53, 50, 49)
+        pixel_data[20][24] = 2; // x=24, y=20, (53, 50, 49)
+        pixel_data[20][25] = 2; // x=25, y=20, (53, 50, 49)
+        pixel_data[20][26] = 2; // x=26, y=20, (53, 50, 49)
+        pixel_data[20][27] = 13; // x=27, y=20, (40, 35, 34)
+        pixel_data[20][28] = 13; // x=28, y=20, (40, 35, 34)
+        pixel_data[20][29] = 13; // x=29, y=20, (40, 35, 34)
+        pixel_data[20][30] = 13; // x=30, y=20, (40, 35, 34)
+        pixel_data[20][31] = 13; // x=31, y=20, (40, 35, 34)
+        pixel_data[20][32] = 2; // x=32, y=20, (53, 50, 49)
+        pixel_data[20][33] = 2; // x=33, y=20, (53, 50, 49)
+        pixel_data[20][34] = 15; // x=34, y=20, (102, 94, 33)
+        pixel_data[20][35] = 8; // x=35, y=20, (168, 151, 26)
+        pixel_data[20][36] = 14; // x=36, y=20, (215, 162, 12)
+        pixel_data[20][37] = 14; // x=37, y=20, (215, 162, 12)
+        pixel_data[20][38] = 12; // x=38, y=20, (239, 181, 9)
         pixel_data[20][39] = 0; // x=39, y=20, transparent
         pixel_data[21][0] = 0; // x=0, y=21, transparent
-        pixel_data[21][1] = 0; // x=1, y=21, transparent
-        pixel_data[21][2] = 0; // x=2, y=21, transparent
-        pixel_data[21][3] = 0; // x=3, y=21, transparent
-        pixel_data[21][4] = 0; // x=4, y=21, transparent
-        pixel_data[21][5] = 0; // x=5, y=21, transparent
-        pixel_data[21][6] = 0; // x=6, y=21, transparent
-        pixel_data[21][7] = 0; // x=7, y=21, transparent
-        pixel_data[21][8] = 0; // x=8, y=21, transparent
-        pixel_data[21][9] = 0; // x=9, y=21, transparent
-        pixel_data[21][10] = 0; // x=10, y=21, transparent
-        pixel_data[21][11] = 13; // x=11, y=21, (37, 122, 77)
-        pixel_data[21][12] = 15; // x=12, y=21, (36, 65, 49)
-        pixel_data[21][13] = 15; // x=13, y=21, (36, 65, 49)
-        pixel_data[21][14] = 12; // x=14, y=21, (14, 69, 40)
-        pixel_data[21][15] = 2; // x=15, y=21, (39, 40, 39)
-        pixel_data[21][16] = 2; // x=16, y=21, (39, 40, 39)
-        pixel_data[21][17] = 2; // x=17, y=21, (39, 40, 39)
-        pixel_data[21][18] = 2; // x=18, y=21, (39, 40, 39)
-        pixel_data[21][19] = 2; // x=19, y=21, (39, 40, 39)
-        pixel_data[21][20] = 2; // x=20, y=21, (39, 40, 39)
-        pixel_data[21][21] = 2; // x=21, y=21, (39, 40, 39)
-        pixel_data[21][22] = 2; // x=22, y=21, (39, 40, 39)
-        pixel_data[21][23] = 2; // x=23, y=21, (39, 40, 39)
-        pixel_data[21][24] = 12; // x=24, y=21, (14, 69, 40)
-        pixel_data[21][25] = 15; // x=25, y=21, (36, 65, 49)
-        pixel_data[21][26] = 15; // x=26, y=21, (36, 65, 49)
-        pixel_data[21][27] = 5; // x=27, y=21, (23, 112, 58)
-        pixel_data[21][28] = 0; // x=28, y=21, transparent
-        pixel_data[21][29] = 0; // x=29, y=21, transparent
-        pixel_data[21][30] = 0; // x=30, y=21, transparent
-        pixel_data[21][31] = 0; // x=31, y=21, transparent
-        pixel_data[21][32] = 0; // x=32, y=21, transparent
-        pixel_data[21][33] = 0; // x=33, y=21, transparent
-        pixel_data[21][34] = 0; // x=34, y=21, transparent
-        pixel_data[21][35] = 0; // x=35, y=21, transparent
-        pixel_data[21][36] = 0; // x=36, y=21, transparent
-        pixel_data[21][37] = 0; // x=37, y=21, transparent
-        pixel_data[21][38] = 0; // x=38, y=21, transparent
+        pixel_data[21][1] = 11; // x=1, y=21, (248, 230, 92)
+        pixel_data[21][2] = 5; // x=2, y=21, (195, 183, 32)
+        pixel_data[21][3] = 9; // x=3, y=21, (77, 71, 33)
+        pixel_data[21][4] = 14; // x=4, y=21, (215, 162, 12)
+        pixel_data[21][5] = 3; // x=5, y=21, (235, 205, 19)
+        pixel_data[21][6] = 6; // x=6, y=21, (249, 238, 8)
+        pixel_data[21][7] = 6; // x=7, y=21, (249, 238, 8)
+        pixel_data[21][8] = 2; // x=8, y=21, (53, 50, 49)
+        pixel_data[21][9] = 2; // x=9, y=21, (53, 50, 49)
+        pixel_data[21][10] = 2; // x=10, y=21, (53, 50, 49)
+        pixel_data[21][11] = 2; // x=11, y=21, (53, 50, 49)
+        pixel_data[21][12] = 2; // x=12, y=21, (53, 50, 49)
+        pixel_data[21][13] = 2; // x=13, y=21, (53, 50, 49)
+        pixel_data[21][14] = 2; // x=14, y=21, (53, 50, 49)
+        pixel_data[21][15] = 10; // x=15, y=21, (72, 70, 70)
+        pixel_data[21][16] = 13; // x=16, y=21, (40, 35, 34)
+        pixel_data[21][17] = 13; // x=17, y=21, (40, 35, 34)
+        pixel_data[21][18] = 13; // x=18, y=21, (40, 35, 34)
+        pixel_data[21][19] = 13; // x=19, y=21, (40, 35, 34)
+        pixel_data[21][20] = 13; // x=20, y=21, (40, 35, 34)
+        pixel_data[21][21] = 2; // x=21, y=21, (53, 50, 49)
+        pixel_data[21][22] = 2; // x=22, y=21, (53, 50, 49)
+        pixel_data[21][23] = 2; // x=23, y=21, (53, 50, 49)
+        pixel_data[21][24] = 13; // x=24, y=21, (40, 35, 34)
+        pixel_data[21][25] = 13; // x=25, y=21, (40, 35, 34)
+        pixel_data[21][26] = 13; // x=26, y=21, (40, 35, 34)
+        pixel_data[21][27] = 13; // x=27, y=21, (40, 35, 34)
+        pixel_data[21][28] = 13; // x=28, y=21, (40, 35, 34)
+        pixel_data[21][29] = 13; // x=29, y=21, (40, 35, 34)
+        pixel_data[21][30] = 2; // x=30, y=21, (53, 50, 49)
+        pixel_data[21][31] = 2; // x=31, y=21, (53, 50, 49)
+        pixel_data[21][32] = 9; // x=32, y=21, (77, 71, 33)
+        pixel_data[21][33] = 8; // x=33, y=21, (168, 151, 26)
+        pixel_data[21][34] = 12; // x=34, y=21, (239, 181, 9)
+        pixel_data[21][35] = 3; // x=35, y=21, (235, 205, 19)
+        pixel_data[21][36] = 14; // x=36, y=21, (215, 162, 12)
+        pixel_data[21][37] = 14; // x=37, y=21, (215, 162, 12)
+        pixel_data[21][38] = 12; // x=38, y=21, (239, 181, 9)
         pixel_data[21][39] = 0; // x=39, y=21, transparent
         pixel_data[22][0] = 0; // x=0, y=22, transparent
         pixel_data[22][1] = 0; // x=1, y=22, transparent
-        pixel_data[22][2] = 0; // x=2, y=22, transparent
-        pixel_data[22][3] = 0; // x=3, y=22, transparent
-        pixel_data[22][4] = 0; // x=4, y=22, transparent
-        pixel_data[22][5] = 0; // x=5, y=22, transparent
-        pixel_data[22][6] = 0; // x=6, y=22, transparent
-        pixel_data[22][7] = 0; // x=7, y=22, transparent
-        pixel_data[22][8] = 0; // x=8, y=22, transparent
-        pixel_data[22][9] = 0; // x=9, y=22, transparent
-        pixel_data[22][10] = 0; // x=10, y=22, transparent
-        pixel_data[22][11] = 13; // x=11, y=22, (37, 122, 77)
-        pixel_data[22][12] = 15; // x=12, y=22, (36, 65, 49)
-        pixel_data[22][13] = 15; // x=13, y=22, (36, 65, 49)
-        pixel_data[22][14] = 1; // x=14, y=22, (2, 93, 41)
-        pixel_data[22][15] = 2; // x=15, y=22, (39, 40, 39)
-        pixel_data[22][16] = 2; // x=16, y=22, (39, 40, 39)
-        pixel_data[22][17] = 2; // x=17, y=22, (39, 40, 39)
-        pixel_data[22][18] = 2; // x=18, y=22, (39, 40, 39)
-        pixel_data[22][19] = 2; // x=19, y=22, (39, 40, 39)
-        pixel_data[22][20] = 2; // x=20, y=22, (39, 40, 39)
-        pixel_data[22][21] = 2; // x=21, y=22, (39, 40, 39)
-        pixel_data[22][22] = 2; // x=22, y=22, (39, 40, 39)
-        pixel_data[22][23] = 2; // x=23, y=22, (39, 40, 39)
-        pixel_data[22][24] = 12; // x=24, y=22, (14, 69, 40)
-        pixel_data[22][25] = 15; // x=25, y=22, (36, 65, 49)
-        pixel_data[22][26] = 15; // x=26, y=22, (36, 65, 49)
-        pixel_data[22][27] = 5; // x=27, y=22, (23, 112, 58)
-        pixel_data[22][28] = 0; // x=28, y=22, transparent
-        pixel_data[22][29] = 0; // x=29, y=22, transparent
-        pixel_data[22][30] = 0; // x=30, y=22, transparent
-        pixel_data[22][31] = 0; // x=31, y=22, transparent
-        pixel_data[22][32] = 0; // x=32, y=22, transparent
-        pixel_data[22][33] = 0; // x=33, y=22, transparent
-        pixel_data[22][34] = 0; // x=34, y=22, transparent
-        pixel_data[22][35] = 0; // x=35, y=22, transparent
-        pixel_data[22][36] = 0; // x=36, y=22, transparent
-        pixel_data[22][37] = 0; // x=37, y=22, transparent
-        pixel_data[22][38] = 0; // x=38, y=22, transparent
+        pixel_data[22][2] = 6; // x=2, y=22, (249, 238, 8)
+        pixel_data[22][3] = 3; // x=3, y=22, (235, 205, 19)
+        pixel_data[22][4] = 14; // x=4, y=22, (215, 162, 12)
+        pixel_data[22][5] = 12; // x=5, y=22, (239, 181, 9)
+        pixel_data[22][6] = 6; // x=6, y=22, (249, 238, 8)
+        pixel_data[22][7] = 6; // x=7, y=22, (249, 238, 8)
+        pixel_data[22][8] = 15; // x=8, y=22, (102, 94, 33)
+        pixel_data[22][9] = 2; // x=9, y=22, (53, 50, 49)
+        pixel_data[22][10] = 2; // x=10, y=22, (53, 50, 49)
+        pixel_data[22][11] = 2; // x=11, y=22, (53, 50, 49)
+        pixel_data[22][12] = 2; // x=12, y=22, (53, 50, 49)
+        pixel_data[22][13] = 2; // x=13, y=22, (53, 50, 49)
+        pixel_data[22][14] = 2; // x=14, y=22, (53, 50, 49)
+        pixel_data[22][15] = 10; // x=15, y=22, (72, 70, 70)
+        pixel_data[22][16] = 13; // x=16, y=22, (40, 35, 34)
+        pixel_data[22][17] = 13; // x=17, y=22, (40, 35, 34)
+        pixel_data[22][18] = 13; // x=18, y=22, (40, 35, 34)
+        pixel_data[22][19] = 13; // x=19, y=22, (40, 35, 34)
+        pixel_data[22][20] = 13; // x=20, y=22, (40, 35, 34)
+        pixel_data[22][21] = 2; // x=21, y=22, (53, 50, 49)
+        pixel_data[22][22] = 13; // x=22, y=22, (40, 35, 34)
+        pixel_data[22][23] = 2; // x=23, y=22, (53, 50, 49)
+        pixel_data[22][24] = 13; // x=24, y=22, (40, 35, 34)
+        pixel_data[22][25] = 13; // x=25, y=22, (40, 35, 34)
+        pixel_data[22][26] = 9; // x=26, y=22, (77, 71, 33)
+        pixel_data[22][27] = 15; // x=27, y=22, (102, 94, 33)
+        pixel_data[22][28] = 1; // x=28, y=22, (130, 122, 29)
+        pixel_data[22][29] = 8; // x=29, y=22, (168, 151, 26)
+        pixel_data[22][30] = 5; // x=30, y=22, (195, 183, 32)
+        pixel_data[22][31] = 5; // x=31, y=22, (195, 183, 32)
+        pixel_data[22][32] = 6; // x=32, y=22, (249, 238, 8)
+        pixel_data[22][33] = 6; // x=33, y=22, (249, 238, 8)
+        pixel_data[22][34] = 6; // x=34, y=22, (249, 238, 8)
+        pixel_data[22][35] = 6; // x=35, y=22, (249, 238, 8)
+        pixel_data[22][36] = 14; // x=36, y=22, (215, 162, 12)
+        pixel_data[22][37] = 14; // x=37, y=22, (215, 162, 12)
+        pixel_data[22][38] = 3; // x=38, y=22, (235, 205, 19)
         pixel_data[22][39] = 0; // x=39, y=22, transparent
         pixel_data[23][0] = 0; // x=0, y=23, transparent
         pixel_data[23][1] = 0; // x=1, y=23, transparent
-        pixel_data[23][2] = 0; // x=2, y=23, transparent
-        pixel_data[23][3] = 0; // x=3, y=23, transparent
-        pixel_data[23][4] = 0; // x=4, y=23, transparent
-        pixel_data[23][5] = 0; // x=5, y=23, transparent
-        pixel_data[23][6] = 0; // x=6, y=23, transparent
-        pixel_data[23][7] = 0; // x=7, y=23, transparent
-        pixel_data[23][8] = 0; // x=8, y=23, transparent
-        pixel_data[23][9] = 0; // x=9, y=23, transparent
-        pixel_data[23][10] = 0; // x=10, y=23, transparent
-        pixel_data[23][11] = 13; // x=11, y=23, (37, 122, 77)
-        pixel_data[23][12] = 15; // x=12, y=23, (36, 65, 49)
-        pixel_data[23][13] = 15; // x=13, y=23, (36, 65, 49)
-        pixel_data[23][14] = 1; // x=14, y=23, (2, 93, 41)
-        pixel_data[23][15] = 2; // x=15, y=23, (39, 40, 39)
-        pixel_data[23][16] = 2; // x=16, y=23, (39, 40, 39)
-        pixel_data[23][17] = 2; // x=17, y=23, (39, 40, 39)
-        pixel_data[23][18] = 2; // x=18, y=23, (39, 40, 39)
-        pixel_data[23][19] = 2; // x=19, y=23, (39, 40, 39)
-        pixel_data[23][20] = 2; // x=20, y=23, (39, 40, 39)
-        pixel_data[23][21] = 2; // x=21, y=23, (39, 40, 39)
-        pixel_data[23][22] = 2; // x=22, y=23, (39, 40, 39)
-        pixel_data[23][23] = 2; // x=23, y=23, (39, 40, 39)
-        pixel_data[23][24] = 12; // x=24, y=23, (14, 69, 40)
-        pixel_data[23][25] = 15; // x=25, y=23, (36, 65, 49)
-        pixel_data[23][26] = 15; // x=26, y=23, (36, 65, 49)
-        pixel_data[23][27] = 14; // x=27, y=23, (11, 103, 50)
-        pixel_data[23][28] = 0; // x=28, y=23, transparent
-        pixel_data[23][29] = 0; // x=29, y=23, transparent
-        pixel_data[23][30] = 0; // x=30, y=23, transparent
-        pixel_data[23][31] = 0; // x=31, y=23, transparent
-        pixel_data[23][32] = 0; // x=32, y=23, transparent
-        pixel_data[23][33] = 0; // x=33, y=23, transparent
-        pixel_data[23][34] = 0; // x=34, y=23, transparent
-        pixel_data[23][35] = 0; // x=35, y=23, transparent
-        pixel_data[23][36] = 0; // x=36, y=23, transparent
-        pixel_data[23][37] = 0; // x=37, y=23, transparent
-        pixel_data[23][38] = 0; // x=38, y=23, transparent
+        pixel_data[23][2] = 11; // x=2, y=23, (248, 230, 92)
+        pixel_data[23][3] = 3; // x=3, y=23, (235, 205, 19)
+        pixel_data[23][4] = 6; // x=4, y=23, (249, 238, 8)
+        pixel_data[23][5] = 3; // x=5, y=23, (235, 205, 19)
+        pixel_data[23][6] = 6; // x=6, y=23, (249, 238, 8)
+        pixel_data[23][7] = 6; // x=7, y=23, (249, 238, 8)
+        pixel_data[23][8] = 3; // x=8, y=23, (235, 205, 19)
+        pixel_data[23][9] = 2; // x=9, y=23, (53, 50, 49)
+        pixel_data[23][10] = 2; // x=10, y=23, (53, 50, 49)
+        pixel_data[23][11] = 2; // x=11, y=23, (53, 50, 49)
+        pixel_data[23][12] = 2; // x=12, y=23, (53, 50, 49)
+        pixel_data[23][13] = 2; // x=13, y=23, (53, 50, 49)
+        pixel_data[23][14] = 2; // x=14, y=23, (53, 50, 49)
+        pixel_data[23][15] = 2; // x=15, y=23, (53, 50, 49)
+        pixel_data[23][16] = 13; // x=16, y=23, (40, 35, 34)
+        pixel_data[23][17] = 13; // x=17, y=23, (40, 35, 34)
+        pixel_data[23][18] = 13; // x=18, y=23, (40, 35, 34)
+        pixel_data[23][19] = 2; // x=19, y=23, (53, 50, 49)
+        pixel_data[23][20] = 15; // x=20, y=23, (102, 94, 33)
+        pixel_data[23][21] = 1; // x=21, y=23, (130, 122, 29)
+        pixel_data[23][22] = 1; // x=22, y=23, (130, 122, 29)
+        pixel_data[23][23] = 8; // x=23, y=23, (168, 151, 26)
+        pixel_data[23][24] = 8; // x=24, y=23, (168, 151, 26)
+        pixel_data[23][25] = 8; // x=25, y=23, (168, 151, 26)
+        pixel_data[23][26] = 8; // x=26, y=23, (168, 151, 26)
+        pixel_data[23][27] = 5; // x=27, y=23, (195, 183, 32)
+        pixel_data[23][28] = 6; // x=28, y=23, (249, 238, 8)
+        pixel_data[23][29] = 6; // x=29, y=23, (249, 238, 8)
+        pixel_data[23][30] = 6; // x=30, y=23, (249, 238, 8)
+        pixel_data[23][31] = 6; // x=31, y=23, (249, 238, 8)
+        pixel_data[23][32] = 6; // x=32, y=23, (249, 238, 8)
+        pixel_data[23][33] = 3; // x=33, y=23, (235, 205, 19)
+        pixel_data[23][34] = 12; // x=34, y=23, (239, 181, 9)
+        pixel_data[23][35] = 3; // x=35, y=23, (235, 205, 19)
+        pixel_data[23][36] = 14; // x=36, y=23, (215, 162, 12)
+        pixel_data[23][37] = 12; // x=37, y=23, (239, 181, 9)
+        pixel_data[23][38] = 11; // x=38, y=23, (248, 230, 92)
         pixel_data[23][39] = 0; // x=39, y=23, transparent
         pixel_data[24][0] = 0; // x=0, y=24, transparent
         pixel_data[24][1] = 0; // x=1, y=24, transparent
         pixel_data[24][2] = 0; // x=2, y=24, transparent
-        pixel_data[24][3] = 0; // x=3, y=24, transparent
-        pixel_data[24][4] = 0; // x=4, y=24, transparent
-        pixel_data[24][5] = 0; // x=5, y=24, transparent
-        pixel_data[24][6] = 0; // x=6, y=24, transparent
-        pixel_data[24][7] = 0; // x=7, y=24, transparent
-        pixel_data[24][8] = 0; // x=8, y=24, transparent
-        pixel_data[24][9] = 0; // x=9, y=24, transparent
-        pixel_data[24][10] = 0; // x=10, y=24, transparent
-        pixel_data[24][11] = 13; // x=11, y=24, (37, 122, 77)
-        pixel_data[24][12] = 15; // x=12, y=24, (36, 65, 49)
-        pixel_data[24][13] = 15; // x=13, y=24, (36, 65, 49)
-        pixel_data[24][14] = 1; // x=14, y=24, (2, 93, 41)
-        pixel_data[24][15] = 2; // x=15, y=24, (39, 40, 39)
-        pixel_data[24][16] = 2; // x=16, y=24, (39, 40, 39)
-        pixel_data[24][17] = 2; // x=17, y=24, (39, 40, 39)
-        pixel_data[24][18] = 2; // x=18, y=24, (39, 40, 39)
-        pixel_data[24][19] = 2; // x=19, y=24, (39, 40, 39)
-        pixel_data[24][20] = 2; // x=20, y=24, (39, 40, 39)
-        pixel_data[24][21] = 2; // x=21, y=24, (39, 40, 39)
-        pixel_data[24][22] = 2; // x=22, y=24, (39, 40, 39)
-        pixel_data[24][23] = 2; // x=23, y=24, (39, 40, 39)
-        pixel_data[24][24] = 12; // x=24, y=24, (14, 69, 40)
-        pixel_data[24][25] = 15; // x=25, y=24, (36, 65, 49)
-        pixel_data[24][26] = 15; // x=26, y=24, (36, 65, 49)
-        pixel_data[24][27] = 14; // x=27, y=24, (11, 103, 50)
-        pixel_data[24][28] = 0; // x=28, y=24, transparent
-        pixel_data[24][29] = 0; // x=29, y=24, transparent
-        pixel_data[24][30] = 0; // x=30, y=24, transparent
-        pixel_data[24][31] = 0; // x=31, y=24, transparent
-        pixel_data[24][32] = 0; // x=32, y=24, transparent
-        pixel_data[24][33] = 0; // x=33, y=24, transparent
-        pixel_data[24][34] = 0; // x=34, y=24, transparent
-        pixel_data[24][35] = 0; // x=35, y=24, transparent
-        pixel_data[24][36] = 0; // x=36, y=24, transparent
-        pixel_data[24][37] = 0; // x=37, y=24, transparent
+        pixel_data[24][3] = 7; // x=3, y=24, (247, 226, 52)
+        pixel_data[24][4] = 12; // x=4, y=24, (239, 181, 9)
+        pixel_data[24][5] = 3; // x=5, y=24, (235, 205, 19)
+        pixel_data[24][6] = 3; // x=6, y=24, (235, 205, 19)
+        pixel_data[24][7] = 6; // x=7, y=24, (249, 238, 8)
+        pixel_data[24][8] = 6; // x=8, y=24, (249, 238, 8)
+        pixel_data[24][9] = 5; // x=9, y=24, (195, 183, 32)
+        pixel_data[24][10] = 2; // x=10, y=24, (53, 50, 49)
+        pixel_data[24][11] = 2; // x=11, y=24, (53, 50, 49)
+        pixel_data[24][12] = 2; // x=12, y=24, (53, 50, 49)
+        pixel_data[24][13] = 2; // x=13, y=24, (53, 50, 49)
+        pixel_data[24][14] = 13; // x=14, y=24, (40, 35, 34)
+        pixel_data[24][15] = 9; // x=15, y=24, (77, 71, 33)
+        pixel_data[24][16] = 8; // x=16, y=24, (168, 151, 26)
+        pixel_data[24][17] = 5; // x=17, y=24, (195, 183, 32)
+        pixel_data[24][18] = 8; // x=18, y=24, (168, 151, 26)
+        pixel_data[24][19] = 1; // x=19, y=24, (130, 122, 29)
+        pixel_data[24][20] = 9; // x=20, y=24, (77, 71, 33)
+        pixel_data[24][21] = 13; // x=21, y=24, (40, 35, 34)
+        pixel_data[24][22] = 13; // x=22, y=24, (40, 35, 34)
+        pixel_data[24][23] = 13; // x=23, y=24, (40, 35, 34)
+        pixel_data[24][24] = 2; // x=24, y=24, (53, 50, 49)
+        pixel_data[24][25] = 1; // x=25, y=24, (130, 122, 29)
+        pixel_data[24][26] = 5; // x=26, y=24, (195, 183, 32)
+        pixel_data[24][27] = 6; // x=27, y=24, (249, 238, 8)
+        pixel_data[24][28] = 6; // x=28, y=24, (249, 238, 8)
+        pixel_data[24][29] = 6; // x=29, y=24, (249, 238, 8)
+        pixel_data[24][30] = 3; // x=30, y=24, (235, 205, 19)
+        pixel_data[24][31] = 8; // x=31, y=24, (168, 151, 26)
+        pixel_data[24][32] = 1; // x=32, y=24, (130, 122, 29)
+        pixel_data[24][33] = 14; // x=33, y=24, (215, 162, 12)
+        pixel_data[24][34] = 12; // x=34, y=24, (239, 181, 9)
+        pixel_data[24][35] = 7; // x=35, y=24, (247, 226, 52)
+        pixel_data[24][36] = 14; // x=36, y=24, (215, 162, 12)
+        pixel_data[24][37] = 12; // x=37, y=24, (239, 181, 9)
         pixel_data[24][38] = 0; // x=38, y=24, transparent
         pixel_data[24][39] = 0; // x=39, y=24, transparent
         pixel_data[25][0] = 0; // x=0, y=25, transparent
         pixel_data[25][1] = 0; // x=1, y=25, transparent
         pixel_data[25][2] = 0; // x=2, y=25, transparent
         pixel_data[25][3] = 0; // x=3, y=25, transparent
-        pixel_data[25][4] = 0; // x=4, y=25, transparent
-        pixel_data[25][5] = 0; // x=5, y=25, transparent
-        pixel_data[25][6] = 0; // x=6, y=25, transparent
-        pixel_data[25][7] = 0; // x=7, y=25, transparent
-        pixel_data[25][8] = 0; // x=8, y=25, transparent
-        pixel_data[25][9] = 0; // x=9, y=25, transparent
-        pixel_data[25][10] = 0; // x=10, y=25, transparent
-        pixel_data[25][11] = 13; // x=11, y=25, (37, 122, 77)
-        pixel_data[25][12] = 15; // x=12, y=25, (36, 65, 49)
-        pixel_data[25][13] = 15; // x=13, y=25, (36, 65, 49)
-        pixel_data[25][14] = 1; // x=14, y=25, (2, 93, 41)
-        pixel_data[25][15] = 2; // x=15, y=25, (39, 40, 39)
-        pixel_data[25][16] = 2; // x=16, y=25, (39, 40, 39)
-        pixel_data[25][17] = 2; // x=17, y=25, (39, 40, 39)
-        pixel_data[25][18] = 2; // x=18, y=25, (39, 40, 39)
-        pixel_data[25][19] = 2; // x=19, y=25, (39, 40, 39)
-        pixel_data[25][20] = 2; // x=20, y=25, (39, 40, 39)
-        pixel_data[25][21] = 2; // x=21, y=25, (39, 40, 39)
-        pixel_data[25][22] = 2; // x=22, y=25, (39, 40, 39)
-        pixel_data[25][23] = 2; // x=23, y=25, (39, 40, 39)
-        pixel_data[25][24] = 12; // x=24, y=25, (14, 69, 40)
-        pixel_data[25][25] = 15; // x=25, y=25, (36, 65, 49)
-        pixel_data[25][26] = 15; // x=26, y=25, (36, 65, 49)
-        pixel_data[25][27] = 14; // x=27, y=25, (11, 103, 50)
-        pixel_data[25][28] = 0; // x=28, y=25, transparent
-        pixel_data[25][29] = 0; // x=29, y=25, transparent
-        pixel_data[25][30] = 0; // x=30, y=25, transparent
-        pixel_data[25][31] = 0; // x=31, y=25, transparent
-        pixel_data[25][32] = 0; // x=32, y=25, transparent
-        pixel_data[25][33] = 0; // x=33, y=25, transparent
-        pixel_data[25][34] = 0; // x=34, y=25, transparent
-        pixel_data[25][35] = 0; // x=35, y=25, transparent
-        pixel_data[25][36] = 0; // x=36, y=25, transparent
-        pixel_data[25][37] = 0; // x=37, y=25, transparent
+        pixel_data[25][4] = 5; // x=4, y=25, (195, 183, 32)
+        pixel_data[25][5] = 12; // x=5, y=25, (239, 181, 9)
+        pixel_data[25][6] = 12; // x=6, y=25, (239, 181, 9)
+        pixel_data[25][7] = 12; // x=7, y=25, (239, 181, 9)
+        pixel_data[25][8] = 12; // x=8, y=25, (239, 181, 9)
+        pixel_data[25][9] = 3; // x=9, y=25, (235, 205, 19)
+        pixel_data[25][10] = 5; // x=10, y=25, (195, 183, 32)
+        pixel_data[25][11] = 1; // x=11, y=25, (130, 122, 29)
+        pixel_data[25][12] = 1; // x=12, y=25, (130, 122, 29)
+        pixel_data[25][13] = 8; // x=13, y=25, (168, 151, 26)
+        pixel_data[25][14] = 8; // x=14, y=25, (168, 151, 26)
+        pixel_data[25][15] = 1; // x=15, y=25, (130, 122, 29)
+        pixel_data[25][16] = 9; // x=16, y=25, (77, 71, 33)
+        pixel_data[25][17] = 13; // x=17, y=25, (40, 35, 34)
+        pixel_data[25][18] = 2; // x=18, y=25, (53, 50, 49)
+        pixel_data[25][19] = 9; // x=19, y=25, (77, 71, 33)
+        pixel_data[25][20] = 9; // x=20, y=25, (77, 71, 33)
+        pixel_data[25][21] = 1; // x=21, y=25, (130, 122, 29)
+        pixel_data[25][22] = 8; // x=22, y=25, (168, 151, 26)
+        pixel_data[25][23] = 5; // x=23, y=25, (195, 183, 32)
+        pixel_data[25][24] = 3; // x=24, y=25, (235, 205, 19)
+        pixel_data[25][25] = 6; // x=25, y=25, (249, 238, 8)
+        pixel_data[25][26] = 3; // x=26, y=25, (235, 205, 19)
+        pixel_data[25][27] = 12; // x=27, y=25, (239, 181, 9)
+        pixel_data[25][28] = 12; // x=28, y=25, (239, 181, 9)
+        pixel_data[25][29] = 3; // x=29, y=25, (235, 205, 19)
+        pixel_data[25][30] = 5; // x=30, y=25, (195, 183, 32)
+        pixel_data[25][31] = 1; // x=31, y=25, (130, 122, 29)
+        pixel_data[25][32] = 8; // x=32, y=25, (168, 151, 26)
+        pixel_data[25][33] = 12; // x=33, y=25, (239, 181, 9)
+        pixel_data[25][34] = 7; // x=34, y=25, (247, 226, 52)
+        pixel_data[25][35] = 7; // x=35, y=25, (247, 226, 52)
+        pixel_data[25][36] = 3; // x=36, y=25, (235, 205, 19)
+        pixel_data[25][37] = 11; // x=37, y=25, (248, 230, 92)
         pixel_data[25][38] = 0; // x=38, y=25, transparent
         pixel_data[25][39] = 0; // x=39, y=25, transparent
         pixel_data[26][0] = 0; // x=0, y=26, transparent
@@ -2651,38 +2651,38 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[26][2] = 0; // x=2, y=26, transparent
         pixel_data[26][3] = 0; // x=3, y=26, transparent
         pixel_data[26][4] = 0; // x=4, y=26, transparent
-        pixel_data[26][5] = 0; // x=5, y=26, transparent
-        pixel_data[26][6] = 0; // x=6, y=26, transparent
-        pixel_data[26][7] = 0; // x=7, y=26, transparent
-        pixel_data[26][8] = 0; // x=8, y=26, transparent
-        pixel_data[26][9] = 0; // x=9, y=26, transparent
-        pixel_data[26][10] = 0; // x=10, y=26, transparent
-        pixel_data[26][11] = 5; // x=11, y=26, (23, 112, 58)
-        pixel_data[26][12] = 7; // x=12, y=26, (24, 52, 36)
-        pixel_data[26][13] = 7; // x=13, y=26, (24, 52, 36)
-        pixel_data[26][14] = 1; // x=14, y=26, (2, 93, 41)
-        pixel_data[26][15] = 2; // x=15, y=26, (39, 40, 39)
-        pixel_data[26][16] = 2; // x=16, y=26, (39, 40, 39)
-        pixel_data[26][17] = 2; // x=17, y=26, (39, 40, 39)
-        pixel_data[26][18] = 2; // x=18, y=26, (39, 40, 39)
-        pixel_data[26][19] = 2; // x=19, y=26, (39, 40, 39)
-        pixel_data[26][20] = 2; // x=20, y=26, (39, 40, 39)
-        pixel_data[26][21] = 2; // x=21, y=26, (39, 40, 39)
-        pixel_data[26][22] = 2; // x=22, y=26, (39, 40, 39)
-        pixel_data[26][23] = 2; // x=23, y=26, (39, 40, 39)
-        pixel_data[26][24] = 12; // x=24, y=26, (14, 69, 40)
-        pixel_data[26][25] = 15; // x=25, y=26, (36, 65, 49)
-        pixel_data[26][26] = 7; // x=26, y=26, (24, 52, 36)
-        pixel_data[26][27] = 5; // x=27, y=26, (23, 112, 58)
-        pixel_data[26][28] = 0; // x=28, y=26, transparent
-        pixel_data[26][29] = 0; // x=29, y=26, transparent
-        pixel_data[26][30] = 0; // x=30, y=26, transparent
-        pixel_data[26][31] = 0; // x=31, y=26, transparent
-        pixel_data[26][32] = 0; // x=32, y=26, transparent
-        pixel_data[26][33] = 0; // x=33, y=26, transparent
-        pixel_data[26][34] = 0; // x=34, y=26, transparent
-        pixel_data[26][35] = 0; // x=35, y=26, transparent
-        pixel_data[26][36] = 0; // x=36, y=26, transparent
+        pixel_data[26][5] = 11; // x=5, y=26, (248, 230, 92)
+        pixel_data[26][6] = 3; // x=6, y=26, (235, 205, 19)
+        pixel_data[26][7] = 12; // x=7, y=26, (239, 181, 9)
+        pixel_data[26][8] = 12; // x=8, y=26, (239, 181, 9)
+        pixel_data[26][9] = 12; // x=9, y=26, (239, 181, 9)
+        pixel_data[26][10] = 12; // x=10, y=26, (239, 181, 9)
+        pixel_data[26][11] = 6; // x=11, y=26, (249, 238, 8)
+        pixel_data[26][12] = 6; // x=12, y=26, (249, 238, 8)
+        pixel_data[26][13] = 3; // x=13, y=26, (235, 205, 19)
+        pixel_data[26][14] = 8; // x=14, y=26, (168, 151, 26)
+        pixel_data[26][15] = 8; // x=15, y=26, (168, 151, 26)
+        pixel_data[26][16] = 5; // x=16, y=26, (195, 183, 32)
+        pixel_data[26][17] = 8; // x=17, y=26, (168, 151, 26)
+        pixel_data[26][18] = 15; // x=18, y=26, (102, 94, 33)
+        pixel_data[26][19] = 15; // x=19, y=26, (102, 94, 33)
+        pixel_data[26][20] = 15; // x=20, y=26, (102, 94, 33)
+        pixel_data[26][21] = 1; // x=21, y=26, (130, 122, 29)
+        pixel_data[26][22] = 8; // x=22, y=26, (168, 151, 26)
+        pixel_data[26][23] = 3; // x=23, y=26, (235, 205, 19)
+        pixel_data[26][24] = 14; // x=24, y=26, (215, 162, 12)
+        pixel_data[26][25] = 12; // x=25, y=26, (239, 181, 9)
+        pixel_data[26][26] = 12; // x=26, y=26, (239, 181, 9)
+        pixel_data[26][27] = 12; // x=27, y=26, (239, 181, 9)
+        pixel_data[26][28] = 12; // x=28, y=26, (239, 181, 9)
+        pixel_data[26][29] = 14; // x=29, y=26, (215, 162, 12)
+        pixel_data[26][30] = 14; // x=30, y=26, (215, 162, 12)
+        pixel_data[26][31] = 12; // x=31, y=26, (239, 181, 9)
+        pixel_data[26][32] = 3; // x=32, y=26, (235, 205, 19)
+        pixel_data[26][33] = 7; // x=33, y=26, (247, 226, 52)
+        pixel_data[26][34] = 7; // x=34, y=26, (247, 226, 52)
+        pixel_data[26][35] = 7; // x=35, y=26, (247, 226, 52)
+        pixel_data[26][36] = 11; // x=36, y=26, (248, 230, 92)
         pixel_data[26][37] = 0; // x=37, y=26, transparent
         pixel_data[26][38] = 0; // x=38, y=26, transparent
         pixel_data[26][39] = 0; // x=39, y=26, transparent
@@ -2692,36 +2692,36 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[27][3] = 0; // x=3, y=27, transparent
         pixel_data[27][4] = 0; // x=4, y=27, transparent
         pixel_data[27][5] = 0; // x=5, y=27, transparent
-        pixel_data[27][6] = 0; // x=6, y=27, transparent
-        pixel_data[27][7] = 0; // x=7, y=27, transparent
-        pixel_data[27][8] = 0; // x=8, y=27, transparent
-        pixel_data[27][9] = 0; // x=9, y=27, transparent
-        pixel_data[27][10] = 0; // x=10, y=27, transparent
-        pixel_data[27][11] = 10; // x=11, y=27, (4, 107, 55)
-        pixel_data[27][12] = 12; // x=12, y=27, (14, 69, 40)
-        pixel_data[27][13] = 7; // x=13, y=27, (24, 52, 36)
-        pixel_data[27][14] = 1; // x=14, y=27, (2, 93, 41)
-        pixel_data[27][15] = 2; // x=15, y=27, (39, 40, 39)
-        pixel_data[27][16] = 2; // x=16, y=27, (39, 40, 39)
-        pixel_data[27][17] = 2; // x=17, y=27, (39, 40, 39)
-        pixel_data[27][18] = 2; // x=18, y=27, (39, 40, 39)
-        pixel_data[27][19] = 2; // x=19, y=27, (39, 40, 39)
-        pixel_data[27][20] = 2; // x=20, y=27, (39, 40, 39)
-        pixel_data[27][21] = 2; // x=21, y=27, (39, 40, 39)
-        pixel_data[27][22] = 2; // x=22, y=27, (39, 40, 39)
-        pixel_data[27][23] = 2; // x=23, y=27, (39, 40, 39)
-        pixel_data[27][24] = 12; // x=24, y=27, (14, 69, 40)
-        pixel_data[27][25] = 12; // x=25, y=27, (14, 69, 40)
-        pixel_data[27][26] = 7; // x=26, y=27, (24, 52, 36)
-        pixel_data[27][27] = 14; // x=27, y=27, (11, 103, 50)
-        pixel_data[27][28] = 0; // x=28, y=27, transparent
-        pixel_data[27][29] = 0; // x=29, y=27, transparent
-        pixel_data[27][30] = 0; // x=30, y=27, transparent
-        pixel_data[27][31] = 0; // x=31, y=27, transparent
-        pixel_data[27][32] = 0; // x=32, y=27, transparent
-        pixel_data[27][33] = 0; // x=33, y=27, transparent
-        pixel_data[27][34] = 0; // x=34, y=27, transparent
-        pixel_data[27][35] = 0; // x=35, y=27, transparent
+        pixel_data[27][6] = 4; // x=6, y=27, (244, 235, 157)
+        pixel_data[27][7] = 11; // x=7, y=27, (248, 230, 92)
+        pixel_data[27][8] = 11; // x=8, y=27, (248, 230, 92)
+        pixel_data[27][9] = 11; // x=9, y=27, (248, 230, 92)
+        pixel_data[27][10] = 11; // x=10, y=27, (248, 230, 92)
+        pixel_data[27][11] = 4; // x=11, y=27, (244, 235, 157)
+        pixel_data[27][12] = 4; // x=12, y=27, (244, 235, 157)
+        pixel_data[27][13] = 4; // x=13, y=27, (244, 235, 157)
+        pixel_data[27][14] = 11; // x=14, y=27, (248, 230, 92)
+        pixel_data[27][15] = 0; // x=15, y=27, transparent
+        pixel_data[27][16] = 0; // x=16, y=27, transparent
+        pixel_data[27][17] = 4; // x=17, y=27, (244, 235, 157)
+        pixel_data[27][18] = 4; // x=18, y=27, (244, 235, 157)
+        pixel_data[27][19] = 4; // x=19, y=27, (244, 235, 157)
+        pixel_data[27][20] = 4; // x=20, y=27, (244, 235, 157)
+        pixel_data[27][21] = 4; // x=21, y=27, (244, 235, 157)
+        pixel_data[27][22] = 4; // x=22, y=27, (244, 235, 157)
+        pixel_data[27][23] = 4; // x=23, y=27, (244, 235, 157)
+        pixel_data[27][24] = 4; // x=24, y=27, (244, 235, 157)
+        pixel_data[27][25] = 4; // x=25, y=27, (244, 235, 157)
+        pixel_data[27][26] = 4; // x=26, y=27, (244, 235, 157)
+        pixel_data[27][27] = 4; // x=27, y=27, (244, 235, 157)
+        pixel_data[27][28] = 4; // x=28, y=27, (244, 235, 157)
+        pixel_data[27][29] = 11; // x=29, y=27, (248, 230, 92)
+        pixel_data[27][30] = 11; // x=30, y=27, (248, 230, 92)
+        pixel_data[27][31] = 11; // x=31, y=27, (248, 230, 92)
+        pixel_data[27][32] = 11; // x=32, y=27, (248, 230, 92)
+        pixel_data[27][33] = 11; // x=33, y=27, (248, 230, 92)
+        pixel_data[27][34] = 11; // x=34, y=27, (248, 230, 92)
+        pixel_data[27][35] = 4; // x=35, y=27, (244, 235, 157)
         pixel_data[27][36] = 0; // x=36, y=27, transparent
         pixel_data[27][37] = 0; // x=37, y=27, transparent
         pixel_data[27][38] = 0; // x=38, y=27, transparent
@@ -2737,23 +2737,23 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[28][8] = 0; // x=8, y=28, transparent
         pixel_data[28][9] = 0; // x=9, y=28, transparent
         pixel_data[28][10] = 0; // x=10, y=28, transparent
-        pixel_data[28][11] = 10; // x=11, y=28, (4, 107, 55)
-        pixel_data[28][12] = 12; // x=12, y=28, (14, 69, 40)
-        pixel_data[28][13] = 12; // x=13, y=28, (14, 69, 40)
-        pixel_data[28][14] = 1; // x=14, y=28, (2, 93, 41)
-        pixel_data[28][15] = 3; // x=15, y=28, (60, 62, 60)
-        pixel_data[28][16] = 3; // x=16, y=28, (60, 62, 60)
-        pixel_data[28][17] = 3; // x=17, y=28, (60, 62, 60)
-        pixel_data[28][18] = 3; // x=18, y=28, (60, 62, 60)
-        pixel_data[28][19] = 3; // x=19, y=28, (60, 62, 60)
-        pixel_data[28][20] = 3; // x=20, y=28, (60, 62, 60)
-        pixel_data[28][21] = 3; // x=21, y=28, (60, 62, 60)
-        pixel_data[28][22] = 3; // x=22, y=28, (60, 62, 60)
-        pixel_data[28][23] = 8; // x=23, y=28, (75, 76, 75)
-        pixel_data[28][24] = 9; // x=24, y=28, (25, 87, 51)
-        pixel_data[28][25] = 12; // x=25, y=28, (14, 69, 40)
-        pixel_data[28][26] = 12; // x=26, y=28, (14, 69, 40)
-        pixel_data[28][27] = 10; // x=27, y=28, (4, 107, 55)
+        pixel_data[28][11] = 0; // x=11, y=28, transparent
+        pixel_data[28][12] = 0; // x=12, y=28, transparent
+        pixel_data[28][13] = 0; // x=13, y=28, transparent
+        pixel_data[28][14] = 0; // x=14, y=28, transparent
+        pixel_data[28][15] = 0; // x=15, y=28, transparent
+        pixel_data[28][16] = 0; // x=16, y=28, transparent
+        pixel_data[28][17] = 0; // x=17, y=28, transparent
+        pixel_data[28][18] = 0; // x=18, y=28, transparent
+        pixel_data[28][19] = 0; // x=19, y=28, transparent
+        pixel_data[28][20] = 0; // x=20, y=28, transparent
+        pixel_data[28][21] = 0; // x=21, y=28, transparent
+        pixel_data[28][22] = 0; // x=22, y=28, transparent
+        pixel_data[28][23] = 0; // x=23, y=28, transparent
+        pixel_data[28][24] = 0; // x=24, y=28, transparent
+        pixel_data[28][25] = 0; // x=25, y=28, transparent
+        pixel_data[28][26] = 0; // x=26, y=28, transparent
+        pixel_data[28][27] = 0; // x=27, y=28, transparent
         pixel_data[28][28] = 0; // x=28, y=28, transparent
         pixel_data[28][29] = 0; // x=29, y=28, transparent
         pixel_data[28][30] = 0; // x=30, y=28, transparent
@@ -2777,23 +2777,23 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[29][8] = 0; // x=8, y=29, transparent
         pixel_data[29][9] = 0; // x=9, y=29, transparent
         pixel_data[29][10] = 0; // x=10, y=29, transparent
-        pixel_data[29][11] = 10; // x=11, y=29, (4, 107, 55)
-        pixel_data[29][12] = 1; // x=12, y=29, (2, 93, 41)
-        pixel_data[29][13] = 12; // x=13, y=29, (14, 69, 40)
-        pixel_data[29][14] = 1; // x=14, y=29, (2, 93, 41)
-        pixel_data[29][15] = 3; // x=15, y=29, (60, 62, 60)
-        pixel_data[29][16] = 3; // x=16, y=29, (60, 62, 60)
-        pixel_data[29][17] = 3; // x=17, y=29, (60, 62, 60)
-        pixel_data[29][18] = 3; // x=18, y=29, (60, 62, 60)
-        pixel_data[29][19] = 3; // x=19, y=29, (60, 62, 60)
-        pixel_data[29][20] = 3; // x=20, y=29, (60, 62, 60)
-        pixel_data[29][21] = 8; // x=21, y=29, (75, 76, 75)
-        pixel_data[29][22] = 8; // x=22, y=29, (75, 76, 75)
-        pixel_data[29][23] = 8; // x=23, y=29, (75, 76, 75)
-        pixel_data[29][24] = 9; // x=24, y=29, (25, 87, 51)
-        pixel_data[29][25] = 12; // x=25, y=29, (14, 69, 40)
-        pixel_data[29][26] = 9; // x=26, y=29, (25, 87, 51)
-        pixel_data[29][27] = 10; // x=27, y=29, (4, 107, 55)
+        pixel_data[29][11] = 0; // x=11, y=29, transparent
+        pixel_data[29][12] = 0; // x=12, y=29, transparent
+        pixel_data[29][13] = 0; // x=13, y=29, transparent
+        pixel_data[29][14] = 0; // x=14, y=29, transparent
+        pixel_data[29][15] = 0; // x=15, y=29, transparent
+        pixel_data[29][16] = 0; // x=16, y=29, transparent
+        pixel_data[29][17] = 0; // x=17, y=29, transparent
+        pixel_data[29][18] = 0; // x=18, y=29, transparent
+        pixel_data[29][19] = 0; // x=19, y=29, transparent
+        pixel_data[29][20] = 0; // x=20, y=29, transparent
+        pixel_data[29][21] = 0; // x=21, y=29, transparent
+        pixel_data[29][22] = 0; // x=22, y=29, transparent
+        pixel_data[29][23] = 0; // x=23, y=29, transparent
+        pixel_data[29][24] = 0; // x=24, y=29, transparent
+        pixel_data[29][25] = 0; // x=25, y=29, transparent
+        pixel_data[29][26] = 0; // x=26, y=29, transparent
+        pixel_data[29][27] = 0; // x=27, y=29, transparent
         pixel_data[29][28] = 0; // x=28, y=29, transparent
         pixel_data[29][29] = 0; // x=29, y=29, transparent
         pixel_data[29][30] = 0; // x=30, y=29, transparent
@@ -2817,23 +2817,23 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[30][8] = 0; // x=8, y=30, transparent
         pixel_data[30][9] = 0; // x=9, y=30, transparent
         pixel_data[30][10] = 0; // x=10, y=30, transparent
-        pixel_data[30][11] = 10; // x=11, y=30, (4, 107, 55)
-        pixel_data[30][12] = 10; // x=12, y=30, (4, 107, 55)
-        pixel_data[30][13] = 12; // x=13, y=30, (14, 69, 40)
-        pixel_data[30][14] = 1; // x=14, y=30, (2, 93, 41)
-        pixel_data[30][15] = 3; // x=15, y=30, (60, 62, 60)
-        pixel_data[30][16] = 3; // x=16, y=30, (60, 62, 60)
-        pixel_data[30][17] = 3; // x=17, y=30, (60, 62, 60)
-        pixel_data[30][18] = 3; // x=18, y=30, (60, 62, 60)
-        pixel_data[30][19] = 3; // x=19, y=30, (60, 62, 60)
-        pixel_data[30][20] = 3; // x=20, y=30, (60, 62, 60)
-        pixel_data[30][21] = 8; // x=21, y=30, (75, 76, 75)
-        pixel_data[30][22] = 8; // x=22, y=30, (75, 76, 75)
-        pixel_data[30][23] = 8; // x=23, y=30, (75, 76, 75)
-        pixel_data[30][24] = 9; // x=24, y=30, (25, 87, 51)
-        pixel_data[30][25] = 12; // x=25, y=30, (14, 69, 40)
-        pixel_data[30][26] = 5; // x=26, y=30, (23, 112, 58)
-        pixel_data[30][27] = 10; // x=27, y=30, (4, 107, 55)
+        pixel_data[30][11] = 0; // x=11, y=30, transparent
+        pixel_data[30][12] = 0; // x=12, y=30, transparent
+        pixel_data[30][13] = 0; // x=13, y=30, transparent
+        pixel_data[30][14] = 0; // x=14, y=30, transparent
+        pixel_data[30][15] = 0; // x=15, y=30, transparent
+        pixel_data[30][16] = 0; // x=16, y=30, transparent
+        pixel_data[30][17] = 0; // x=17, y=30, transparent
+        pixel_data[30][18] = 0; // x=18, y=30, transparent
+        pixel_data[30][19] = 0; // x=19, y=30, transparent
+        pixel_data[30][20] = 0; // x=20, y=30, transparent
+        pixel_data[30][21] = 0; // x=21, y=30, transparent
+        pixel_data[30][22] = 0; // x=22, y=30, transparent
+        pixel_data[30][23] = 0; // x=23, y=30, transparent
+        pixel_data[30][24] = 0; // x=24, y=30, transparent
+        pixel_data[30][25] = 0; // x=25, y=30, transparent
+        pixel_data[30][26] = 0; // x=26, y=30, transparent
+        pixel_data[30][27] = 0; // x=27, y=30, transparent
         pixel_data[30][28] = 0; // x=28, y=30, transparent
         pixel_data[30][29] = 0; // x=29, y=30, transparent
         pixel_data[30][30] = 0; // x=30, y=30, transparent
@@ -2857,23 +2857,23 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[31][8] = 0; // x=8, y=31, transparent
         pixel_data[31][9] = 0; // x=9, y=31, transparent
         pixel_data[31][10] = 0; // x=10, y=31, transparent
-        pixel_data[31][11] = 10; // x=11, y=31, (4, 107, 55)
-        pixel_data[31][12] = 10; // x=12, y=31, (4, 107, 55)
-        pixel_data[31][13] = 5; // x=13, y=31, (23, 112, 58)
-        pixel_data[31][14] = 1; // x=14, y=31, (2, 93, 41)
-        pixel_data[31][15] = 3; // x=15, y=31, (60, 62, 60)
-        pixel_data[31][16] = 3; // x=16, y=31, (60, 62, 60)
-        pixel_data[31][17] = 3; // x=17, y=31, (60, 62, 60)
-        pixel_data[31][18] = 3; // x=18, y=31, (60, 62, 60)
-        pixel_data[31][19] = 3; // x=19, y=31, (60, 62, 60)
-        pixel_data[31][20] = 3; // x=20, y=31, (60, 62, 60)
-        pixel_data[31][21] = 8; // x=21, y=31, (75, 76, 75)
-        pixel_data[31][22] = 8; // x=22, y=31, (75, 76, 75)
-        pixel_data[31][23] = 8; // x=23, y=31, (75, 76, 75)
-        pixel_data[31][24] = 9; // x=24, y=31, (25, 87, 51)
-        pixel_data[31][25] = 14; // x=25, y=31, (11, 103, 50)
-        pixel_data[31][26] = 5; // x=26, y=31, (23, 112, 58)
-        pixel_data[31][27] = 10; // x=27, y=31, (4, 107, 55)
+        pixel_data[31][11] = 0; // x=11, y=31, transparent
+        pixel_data[31][12] = 0; // x=12, y=31, transparent
+        pixel_data[31][13] = 0; // x=13, y=31, transparent
+        pixel_data[31][14] = 0; // x=14, y=31, transparent
+        pixel_data[31][15] = 0; // x=15, y=31, transparent
+        pixel_data[31][16] = 0; // x=16, y=31, transparent
+        pixel_data[31][17] = 0; // x=17, y=31, transparent
+        pixel_data[31][18] = 0; // x=18, y=31, transparent
+        pixel_data[31][19] = 0; // x=19, y=31, transparent
+        pixel_data[31][20] = 0; // x=20, y=31, transparent
+        pixel_data[31][21] = 0; // x=21, y=31, transparent
+        pixel_data[31][22] = 0; // x=22, y=31, transparent
+        pixel_data[31][23] = 0; // x=23, y=31, transparent
+        pixel_data[31][24] = 0; // x=24, y=31, transparent
+        pixel_data[31][25] = 0; // x=25, y=31, transparent
+        pixel_data[31][26] = 0; // x=26, y=31, transparent
+        pixel_data[31][27] = 0; // x=27, y=31, transparent
         pixel_data[31][28] = 0; // x=28, y=31, transparent
         pixel_data[31][29] = 0; // x=29, y=31, transparent
         pixel_data[31][30] = 0; // x=30, y=31, transparent
@@ -2897,23 +2897,23 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[32][8] = 0; // x=8, y=32, transparent
         pixel_data[32][9] = 0; // x=9, y=32, transparent
         pixel_data[32][10] = 0; // x=10, y=32, transparent
-        pixel_data[32][11] = 10; // x=11, y=32, (4, 107, 55)
-        pixel_data[32][12] = 10; // x=12, y=32, (4, 107, 55)
-        pixel_data[32][13] = 5; // x=13, y=32, (23, 112, 58)
-        pixel_data[32][14] = 1; // x=14, y=32, (2, 93, 41)
-        pixel_data[32][15] = 3; // x=15, y=32, (60, 62, 60)
-        pixel_data[32][16] = 3; // x=16, y=32, (60, 62, 60)
-        pixel_data[32][17] = 3; // x=17, y=32, (60, 62, 60)
-        pixel_data[32][18] = 3; // x=18, y=32, (60, 62, 60)
-        pixel_data[32][19] = 3; // x=19, y=32, (60, 62, 60)
-        pixel_data[32][20] = 3; // x=20, y=32, (60, 62, 60)
-        pixel_data[32][21] = 8; // x=21, y=32, (75, 76, 75)
-        pixel_data[32][22] = 8; // x=22, y=32, (75, 76, 75)
-        pixel_data[32][23] = 8; // x=23, y=32, (75, 76, 75)
-        pixel_data[32][24] = 9; // x=24, y=32, (25, 87, 51)
-        pixel_data[32][25] = 5; // x=25, y=32, (23, 112, 58)
-        pixel_data[32][26] = 10; // x=26, y=32, (4, 107, 55)
-        pixel_data[32][27] = 10; // x=27, y=32, (4, 107, 55)
+        pixel_data[32][11] = 0; // x=11, y=32, transparent
+        pixel_data[32][12] = 0; // x=12, y=32, transparent
+        pixel_data[32][13] = 0; // x=13, y=32, transparent
+        pixel_data[32][14] = 0; // x=14, y=32, transparent
+        pixel_data[32][15] = 0; // x=15, y=32, transparent
+        pixel_data[32][16] = 0; // x=16, y=32, transparent
+        pixel_data[32][17] = 0; // x=17, y=32, transparent
+        pixel_data[32][18] = 0; // x=18, y=32, transparent
+        pixel_data[32][19] = 0; // x=19, y=32, transparent
+        pixel_data[32][20] = 0; // x=20, y=32, transparent
+        pixel_data[32][21] = 0; // x=21, y=32, transparent
+        pixel_data[32][22] = 0; // x=22, y=32, transparent
+        pixel_data[32][23] = 0; // x=23, y=32, transparent
+        pixel_data[32][24] = 0; // x=24, y=32, transparent
+        pixel_data[32][25] = 0; // x=25, y=32, transparent
+        pixel_data[32][26] = 0; // x=26, y=32, transparent
+        pixel_data[32][27] = 0; // x=27, y=32, transparent
         pixel_data[32][28] = 0; // x=28, y=32, transparent
         pixel_data[32][29] = 0; // x=29, y=32, transparent
         pixel_data[32][30] = 0; // x=30, y=32, transparent
@@ -2937,23 +2937,23 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[33][8] = 0; // x=8, y=33, transparent
         pixel_data[33][9] = 0; // x=9, y=33, transparent
         pixel_data[33][10] = 0; // x=10, y=33, transparent
-        pixel_data[33][11] = 14; // x=11, y=33, (11, 103, 50)
-        pixel_data[33][12] = 10; // x=12, y=33, (4, 107, 55)
-        pixel_data[33][13] = 5; // x=13, y=33, (23, 112, 58)
-        pixel_data[33][14] = 1; // x=14, y=33, (2, 93, 41)
-        pixel_data[33][15] = 15; // x=15, y=33, (36, 65, 49)
-        pixel_data[33][16] = 3; // x=16, y=33, (60, 62, 60)
-        pixel_data[33][17] = 3; // x=17, y=33, (60, 62, 60)
-        pixel_data[33][18] = 3; // x=18, y=33, (60, 62, 60)
-        pixel_data[33][19] = 3; // x=19, y=33, (60, 62, 60)
-        pixel_data[33][20] = 3; // x=20, y=33, (60, 62, 60)
-        pixel_data[33][21] = 8; // x=21, y=33, (75, 76, 75)
-        pixel_data[33][22] = 8; // x=22, y=33, (75, 76, 75)
-        pixel_data[33][23] = 8; // x=23, y=33, (75, 76, 75)
-        pixel_data[33][24] = 9; // x=24, y=33, (25, 87, 51)
-        pixel_data[33][25] = 5; // x=25, y=33, (23, 112, 58)
-        pixel_data[33][26] = 10; // x=26, y=33, (4, 107, 55)
-        pixel_data[33][27] = 14; // x=27, y=33, (11, 103, 50)
+        pixel_data[33][11] = 0; // x=11, y=33, transparent
+        pixel_data[33][12] = 0; // x=12, y=33, transparent
+        pixel_data[33][13] = 0; // x=13, y=33, transparent
+        pixel_data[33][14] = 0; // x=14, y=33, transparent
+        pixel_data[33][15] = 0; // x=15, y=33, transparent
+        pixel_data[33][16] = 0; // x=16, y=33, transparent
+        pixel_data[33][17] = 0; // x=17, y=33, transparent
+        pixel_data[33][18] = 0; // x=18, y=33, transparent
+        pixel_data[33][19] = 0; // x=19, y=33, transparent
+        pixel_data[33][20] = 0; // x=20, y=33, transparent
+        pixel_data[33][21] = 0; // x=21, y=33, transparent
+        pixel_data[33][22] = 0; // x=22, y=33, transparent
+        pixel_data[33][23] = 0; // x=23, y=33, transparent
+        pixel_data[33][24] = 0; // x=24, y=33, transparent
+        pixel_data[33][25] = 0; // x=25, y=33, transparent
+        pixel_data[33][26] = 0; // x=26, y=33, transparent
+        pixel_data[33][27] = 0; // x=27, y=33, transparent
         pixel_data[33][28] = 0; // x=28, y=33, transparent
         pixel_data[33][29] = 0; // x=29, y=33, transparent
         pixel_data[33][30] = 0; // x=30, y=33, transparent
@@ -2977,23 +2977,23 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[34][8] = 0; // x=8, y=34, transparent
         pixel_data[34][9] = 0; // x=9, y=34, transparent
         pixel_data[34][10] = 0; // x=10, y=34, transparent
-        pixel_data[34][11] = 13; // x=11, y=34, (37, 122, 77)
-        pixel_data[34][12] = 10; // x=12, y=34, (4, 107, 55)
-        pixel_data[34][13] = 5; // x=13, y=34, (23, 112, 58)
-        pixel_data[34][14] = 1; // x=14, y=34, (2, 93, 41)
-        pixel_data[34][15] = 9; // x=15, y=34, (25, 87, 51)
-        pixel_data[34][16] = 15; // x=16, y=34, (36, 65, 49)
-        pixel_data[34][17] = 3; // x=17, y=34, (60, 62, 60)
-        pixel_data[34][18] = 3; // x=18, y=34, (60, 62, 60)
-        pixel_data[34][19] = 3; // x=19, y=34, (60, 62, 60)
-        pixel_data[34][20] = 8; // x=20, y=34, (75, 76, 75)
-        pixel_data[34][21] = 8; // x=21, y=34, (75, 76, 75)
-        pixel_data[34][22] = 3; // x=22, y=34, (60, 62, 60)
-        pixel_data[34][23] = 9; // x=23, y=34, (25, 87, 51)
-        pixel_data[34][24] = 14; // x=24, y=34, (11, 103, 50)
-        pixel_data[34][25] = 14; // x=25, y=34, (11, 103, 50)
-        pixel_data[34][26] = 10; // x=26, y=34, (4, 107, 55)
-        pixel_data[34][27] = 5; // x=27, y=34, (23, 112, 58)
+        pixel_data[34][11] = 0; // x=11, y=34, transparent
+        pixel_data[34][12] = 0; // x=12, y=34, transparent
+        pixel_data[34][13] = 0; // x=13, y=34, transparent
+        pixel_data[34][14] = 0; // x=14, y=34, transparent
+        pixel_data[34][15] = 0; // x=15, y=34, transparent
+        pixel_data[34][16] = 0; // x=16, y=34, transparent
+        pixel_data[34][17] = 0; // x=17, y=34, transparent
+        pixel_data[34][18] = 0; // x=18, y=34, transparent
+        pixel_data[34][19] = 0; // x=19, y=34, transparent
+        pixel_data[34][20] = 0; // x=20, y=34, transparent
+        pixel_data[34][21] = 0; // x=21, y=34, transparent
+        pixel_data[34][22] = 0; // x=22, y=34, transparent
+        pixel_data[34][23] = 0; // x=23, y=34, transparent
+        pixel_data[34][24] = 0; // x=24, y=34, transparent
+        pixel_data[34][25] = 0; // x=25, y=34, transparent
+        pixel_data[34][26] = 0; // x=26, y=34, transparent
+        pixel_data[34][27] = 0; // x=27, y=34, transparent
         pixel_data[34][28] = 0; // x=28, y=34, transparent
         pixel_data[34][29] = 0; // x=29, y=34, transparent
         pixel_data[34][30] = 0; // x=30, y=34, transparent
@@ -3018,21 +3018,21 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[35][9] = 0; // x=9, y=35, transparent
         pixel_data[35][10] = 0; // x=10, y=35, transparent
         pixel_data[35][11] = 0; // x=11, y=35, transparent
-        pixel_data[35][12] = 9; // x=12, y=35, (25, 87, 51)
-        pixel_data[35][13] = 14; // x=13, y=35, (11, 103, 50)
-        pixel_data[35][14] = 1; // x=14, y=35, (2, 93, 41)
-        pixel_data[35][15] = 5; // x=15, y=35, (23, 112, 58)
-        pixel_data[35][16] = 5; // x=16, y=35, (23, 112, 58)
-        pixel_data[35][17] = 5; // x=17, y=35, (23, 112, 58)
-        pixel_data[35][18] = 5; // x=18, y=35, (23, 112, 58)
-        pixel_data[35][19] = 5; // x=19, y=35, (23, 112, 58)
-        pixel_data[35][20] = 5; // x=20, y=35, (23, 112, 58)
-        pixel_data[35][21] = 5; // x=21, y=35, (23, 112, 58)
-        pixel_data[35][22] = 5; // x=22, y=35, (23, 112, 58)
-        pixel_data[35][23] = 5; // x=23, y=35, (23, 112, 58)
-        pixel_data[35][24] = 14; // x=24, y=35, (11, 103, 50)
-        pixel_data[35][25] = 14; // x=25, y=35, (11, 103, 50)
-        pixel_data[35][26] = 9; // x=26, y=35, (25, 87, 51)
+        pixel_data[35][12] = 0; // x=12, y=35, transparent
+        pixel_data[35][13] = 0; // x=13, y=35, transparent
+        pixel_data[35][14] = 0; // x=14, y=35, transparent
+        pixel_data[35][15] = 0; // x=15, y=35, transparent
+        pixel_data[35][16] = 0; // x=16, y=35, transparent
+        pixel_data[35][17] = 0; // x=17, y=35, transparent
+        pixel_data[35][18] = 0; // x=18, y=35, transparent
+        pixel_data[35][19] = 0; // x=19, y=35, transparent
+        pixel_data[35][20] = 0; // x=20, y=35, transparent
+        pixel_data[35][21] = 0; // x=21, y=35, transparent
+        pixel_data[35][22] = 0; // x=22, y=35, transparent
+        pixel_data[35][23] = 0; // x=23, y=35, transparent
+        pixel_data[35][24] = 0; // x=24, y=35, transparent
+        pixel_data[35][25] = 0; // x=25, y=35, transparent
+        pixel_data[35][26] = 0; // x=26, y=35, transparent
         pixel_data[35][27] = 0; // x=27, y=35, transparent
         pixel_data[35][28] = 0; // x=28, y=35, transparent
         pixel_data[35][29] = 0; // x=29, y=35, transparent
@@ -3059,20 +3059,20 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[36][10] = 0; // x=10, y=36, transparent
         pixel_data[36][11] = 0; // x=11, y=36, transparent
         pixel_data[36][12] = 0; // x=12, y=36, transparent
-        pixel_data[36][13] = 7; // x=13, y=36, (24, 52, 36)
-        pixel_data[36][14] = 12; // x=14, y=36, (14, 69, 40)
-        pixel_data[36][15] = 1; // x=15, y=36, (2, 93, 41)
-        pixel_data[36][16] = 14; // x=16, y=36, (11, 103, 50)
-        pixel_data[36][17] = 14; // x=17, y=36, (11, 103, 50)
-        pixel_data[36][18] = 5; // x=18, y=36, (23, 112, 58)
-        pixel_data[36][19] = 5; // x=19, y=36, (23, 112, 58)
-        pixel_data[36][20] = 5; // x=20, y=36, (23, 112, 58)
-        pixel_data[36][21] = 5; // x=21, y=36, (23, 112, 58)
-        pixel_data[36][22] = 14; // x=22, y=36, (11, 103, 50)
-        pixel_data[36][23] = 9; // x=23, y=36, (25, 87, 51)
-        pixel_data[36][24] = 12; // x=24, y=36, (14, 69, 40)
-        pixel_data[36][25] = 7; // x=25, y=36, (24, 52, 36)
-        pixel_data[36][26] = 3; // x=26, y=36, (60, 62, 60)
+        pixel_data[36][13] = 0; // x=13, y=36, transparent
+        pixel_data[36][14] = 0; // x=14, y=36, transparent
+        pixel_data[36][15] = 0; // x=15, y=36, transparent
+        pixel_data[36][16] = 0; // x=16, y=36, transparent
+        pixel_data[36][17] = 0; // x=17, y=36, transparent
+        pixel_data[36][18] = 0; // x=18, y=36, transparent
+        pixel_data[36][19] = 0; // x=19, y=36, transparent
+        pixel_data[36][20] = 0; // x=20, y=36, transparent
+        pixel_data[36][21] = 0; // x=21, y=36, transparent
+        pixel_data[36][22] = 0; // x=22, y=36, transparent
+        pixel_data[36][23] = 0; // x=23, y=36, transparent
+        pixel_data[36][24] = 0; // x=24, y=36, transparent
+        pixel_data[36][25] = 0; // x=25, y=36, transparent
+        pixel_data[36][26] = 0; // x=26, y=36, transparent
         pixel_data[36][27] = 0; // x=27, y=36, transparent
         pixel_data[36][28] = 0; // x=28, y=36, transparent
         pixel_data[36][29] = 0; // x=29, y=36, transparent
@@ -3100,18 +3100,18 @@ module car1_lut(output reg [3:0] pixel_data [0:39][0:39]);
         pixel_data[37][11] = 0; // x=11, y=37, transparent
         pixel_data[37][12] = 0; // x=12, y=37, transparent
         pixel_data[37][13] = 0; // x=13, y=37, transparent
-        pixel_data[37][14] = 2; // x=14, y=37, (39, 40, 39)
-        pixel_data[37][15] = 2; // x=15, y=37, (39, 40, 39)
-        pixel_data[37][16] = 7; // x=16, y=37, (24, 52, 36)
-        pixel_data[37][17] = 7; // x=17, y=37, (24, 52, 36)
-        pixel_data[37][18] = 7; // x=18, y=37, (24, 52, 36)
-        pixel_data[37][19] = 7; // x=19, y=37, (24, 52, 36)
-        pixel_data[37][20] = 7; // x=20, y=37, (24, 52, 36)
-        pixel_data[37][21] = 7; // x=21, y=37, (24, 52, 36)
-        pixel_data[37][22] = 7; // x=22, y=37, (24, 52, 36)
-        pixel_data[37][23] = 2; // x=23, y=37, (39, 40, 39)
-        pixel_data[37][24] = 2; // x=24, y=37, (39, 40, 39)
-        pixel_data[37][25] = 2; // x=25, y=37, (39, 40, 39)
+        pixel_data[37][14] = 0; // x=14, y=37, transparent
+        pixel_data[37][15] = 0; // x=15, y=37, transparent
+        pixel_data[37][16] = 0; // x=16, y=37, transparent
+        pixel_data[37][17] = 0; // x=17, y=37, transparent
+        pixel_data[37][18] = 0; // x=18, y=37, transparent
+        pixel_data[37][19] = 0; // x=19, y=37, transparent
+        pixel_data[37][20] = 0; // x=20, y=37, transparent
+        pixel_data[37][21] = 0; // x=21, y=37, transparent
+        pixel_data[37][22] = 0; // x=22, y=37, transparent
+        pixel_data[37][23] = 0; // x=23, y=37, transparent
+        pixel_data[37][24] = 0; // x=24, y=37, transparent
+        pixel_data[37][25] = 0; // x=25, y=37, transparent
         pixel_data[37][26] = 0; // x=26, y=37, transparent
         pixel_data[37][27] = 0; // x=27, y=37, transparent
         pixel_data[37][28] = 0; // x=28, y=37, transparent

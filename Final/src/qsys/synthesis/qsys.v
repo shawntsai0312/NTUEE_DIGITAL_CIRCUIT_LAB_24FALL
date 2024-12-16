@@ -4,7 +4,10 @@
 
 `timescale 1 ps / 1 ps
 module qsys (
+		output wire        altpll_100k_clk,                   //              altpll_100k.clk
 		output wire        altpll_108m_clk,                   //              altpll_108m.clk
+		output wire        altpll_12m_clk,                    //               altpll_12m.clk
+		output wire        altpll_400k_clk,                   //              altpll_400k.clk
 		input  wire        clk_clk,                           //                      clk.clk
 		input  wire        reset_reset_n,                     //                    reset.reset_n
 		input  wire [1:0]  usb_0_avalon_usb_slave_address,    //   usb_0_avalon_usb_slave.address
@@ -34,6 +37,9 @@ module qsys (
 		.readdata  (),                               //                      .readdata
 		.writedata (),                               //                      .writedata
 		.c0        (altpll_108m_clk),                //                    c0.clk
+		.c1        (altpll_12m_clk),                 //                    c1.clk
+		.c2        (altpll_100k_clk),                //                    c2.clk
+		.c3        (altpll_400k_clk),                //                    c3.clk
 		.areset    (),                               //        areset_conduit.export
 		.locked    (),                               //        locked_conduit.export
 		.phasedone ()                                //     phasedone_conduit.export

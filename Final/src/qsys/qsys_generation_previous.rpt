@@ -1,0 +1,49 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate C:\Users\user\Desktop\Final\qsys.qsys --block-symbol-file --output-directory=C:\Users\user\Desktop\Final\src\qsys --family="Cyclone IV E" --part=EP4CE115F29C7
+Progress: Loading Final/qsys.qsys
+Progress: Reading input file
+Progress: Adding altpll_0 [altpll 15.0]
+Progress: Parameterizing module altpll_0
+Progress: Adding clk_0 [clock_source 15.0]
+Progress: Parameterizing module clk_0
+Progress: Adding usb_0 [altera_up_avalon_usb 15.0]
+Progress: Parameterizing module usb_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: qsys.altpll_0: altpll_0.areset_conduit must be exported, or connected to a matching conduit.
+Warning: qsys.altpll_0: altpll_0.locked_conduit must be exported, or connected to a matching conduit.
+Warning: qsys.altpll_0: altpll_0.phasedone_conduit must be exported, or connected to a matching conduit.
+Warning: qsys.usb_0: Interrupt sender usb_0.interrupt is not connected to an interrupt receiver
+Warning: qsys.altpll_0: altpll_0.pll_slave must be connected to an Avalon-MM master
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate C:\Users\user\Desktop\Final\qsys.qsys --synthesis=VERILOG --output-directory=C:\Users\user\Desktop\Final\src\qsys\synthesis --family="Cyclone IV E" --part=EP4CE115F29C7
+Progress: Loading Final/qsys.qsys
+Progress: Reading input file
+Progress: Adding altpll_0 [altpll 15.0]
+Progress: Parameterizing module altpll_0
+Progress: Adding clk_0 [clock_source 15.0]
+Progress: Parameterizing module clk_0
+Progress: Adding usb_0 [altera_up_avalon_usb 15.0]
+Progress: Parameterizing module usb_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: qsys.altpll_0: altpll_0.areset_conduit must be exported, or connected to a matching conduit.
+Warning: qsys.altpll_0: altpll_0.locked_conduit must be exported, or connected to a matching conduit.
+Warning: qsys.altpll_0: altpll_0.phasedone_conduit must be exported, or connected to a matching conduit.
+Warning: qsys.usb_0: Interrupt sender usb_0.interrupt is not connected to an interrupt receiver
+Warning: qsys.altpll_0: altpll_0.pll_slave must be connected to an Avalon-MM master
+Info: qsys: Generating qsys "qsys" for QUARTUS_SYNTH
+Info: altpll_0: "qsys" instantiated altpll "altpll_0"
+Info: usb_0: Starting Generation of USB Controller
+Info: usb_0: "qsys" instantiated altera_up_avalon_usb "usb_0"
+Info: rst_controller: "qsys" instantiated altera_reset_controller "rst_controller"
+Info: qsys: Done "qsys" with 4 modules, 6 files
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis
