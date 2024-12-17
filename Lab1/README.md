@@ -1,6 +1,45 @@
 # Lab 1 亂數產生器
 
-### Before Running
+### File Structures
+
+```
+.
+├── Guideline.md
+├── README.md
+├── doc
+│   ├── Lab1_lecture.pdf
+│   ├── Lab1_quartus.pdf
+│   ├── architecture.drawio
+│   ├── machine.drawio
+│   ├── state.drawio
+│   ├── state.png
+│   └── team04_lab1_report.pdf
+├── include
+│   └── LAB1_include.sv
+├── lint
+│   └── Makefile
+├── sim
+│   ├── Top_test.py
+│   ├── Top_test.sv
+│   ├── run.sh
+│   ├── seven.py
+│   ├── tb_Top.sv
+│   └── tool.sh
+└── src
+    ├── DE2_115
+    │   ├── DE2_115.qsf
+    │   ├── DE2_115.sdc
+    │   ├── DE2_115.sv
+    │   ├── Debounce.sv
+    │   └── SevenHexDecoder.sv
+    └── Top.sv
+```
+
+### How To Run on DE2-115 with QuartusII
+
+ - [Tutorial Video](https://youtu.be/d8w0doN23KI)
+
+### Before Simulation
 
 ```shell
 cd Lab1/sim/

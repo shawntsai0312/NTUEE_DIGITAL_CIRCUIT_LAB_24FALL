@@ -1,6 +1,100 @@
 # Lab 2 RSA256 解密機
 
-### Before Running
+### File Structures
+
+```
+.
+├── Guideline.md
+├── README.md
+├── doc
+│   ├── Lab2_lecture.pdf
+│   ├── Lab2_qsys_tuto1.pdf
+│   ├── core state.drawio
+│   ├── core state.png
+│   ├── prep mont state.drawio
+│   ├── prep mont state.png
+│   ├── team04_lab2_report.pdf
+│   ├── wrapper state.drawio
+│   └── wrapper state.png
+└── src
+    ├── DE2_115
+    │   ├── DE2_115.qsf
+    │   ├── DE2_115.sdc
+    │   └── DE2_115.sv
+    ├── Rsa256Core.sv
+    ├── Rsa256Wrapper.sv
+    ├── pc_python
+    │   ├── enc.bin
+    │   ├── enc.txt
+    │   ├── golden
+    │   │   ├── core.log
+    │   │   ├── core.py
+    │   │   ├── core.sh
+    │   │   ├── dec1.txt
+    │   │   ├── dec2.txt
+    │   │   ├── dec3.txt
+    │   │   ├── enc1.bin
+    │   │   ├── enc1.txt
+    │   │   ├── enc2.bin
+    │   │   ├── enc2.txt
+    │   │   ├── enc3.bin
+    │   │   ├── enc3.txt
+    │   │   ├── key.bin
+    │   │   ├── key.txt
+    │   │   ├── key_ascii.txt
+    │   │   ├── mont.log
+    │   │   ├── mont.py
+    │   │   ├── mont.sh
+    │   │   ├── prep.log
+    │   │   ├── prep.py
+    │   │   ├── prep.sh
+    │   │   └── rsa.py
+    │   ├── key.bin
+    │   ├── key.txt
+    │   ├── rs232_python2.py
+    │   ├── rs232.cpp
+    │   └── rs232.py
+    ├── rsa_qsys
+    │   ├── rsa_qsys.bsf
+    │   ├── rsa_qsys.cmp
+    │   ├── rsa_qsys.html
+    │   ├── rsa_qsys.xml
+    │   ├── rsa_qsys_bb.v
+    │   ├── rsa_qsys_generation.rpt
+    │   ├── rsa_qsys_inst.v
+    │   ├── rsa_qsys_inst.vhd
+    │   └── synthesis
+    │       ├── rsa_qsys.debuginfo.xml
+    │       ├── rsa_qsys.qip
+    │       ├── rsa_qsys.v
+    │       └── submodules
+    │           ├── Rsa256Core.sv
+    │           ├── Rsa256Wrapper.sv
+    │           ├── altera_merlin_master_translator.sv
+    │           ├── altera_merlin_slave_translator.sv
+    │           ├── altera_reset_controller.sdc
+    │           ├── altera_reset_controller.v
+    │           ├── altera_reset_synchronizer.v
+    │           ├── rsa_qsys_altpll_0.v
+    │           ├── rsa_qsys_mm_interconnect_0.v
+    │           └── rsa_qsys_uart_0.v
+    └── tb_verilog
+        ├── PipelineCtrl.v
+        ├── PipelineTb.v
+        ├── core.sh
+        ├── tb.sv
+        ├── test_wrapper.sv
+        ├── tool.sh
+        ├── wrapper.sh
+        ├── wrapper_input.txt
+        └── wrapper_output.txt
+```
+
+### How To Run on DE2-115 with QuartusII
+
+ - [Tutorial Video](https://youtu.be/MsHFpBeLLhE)
+
+### Before Simulation
 
 ```shell
 cd Lab2/src/tb_verilog
