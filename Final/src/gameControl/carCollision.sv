@@ -210,8 +210,8 @@ module CarCollisionVelocityHandler (
     wire signed [2*PROCESS_WIDTH:0] scale_factor;
     assign scale_factor = ($signed({1'b0, i_car1_mass}) + $signed({1'b0, i_car2_mass})) * (relative_x_square + relative_y_square);
 
-    wire signed [2*PROCESS_WIDTH-1:0] dot_product_result;
-    assign dot_product_result = relative_v_x * relative_x + relative_v_y * relative_y;
+    wire signed [2*PROCESS_WIDTH-1:0] dot_product;
+    assign dot_product = relative_v_x * relative_x + relative_v_y * relative_y;
 
     wire signed [3*PROCESS_WIDTH-1:0] car1_v_x_former_term, car1_v_y_former_term;
     wire signed [3*PROCESS_WIDTH-1:0] car2_v_x_former_term, car2_v_y_former_term;
@@ -222,10 +222,10 @@ module CarCollisionVelocityHandler (
 
     wire signed [3*PROCESS_WIDTH-1:0] car1_v_x_latter_term, car1_v_y_latter_term;
     wire signed [3*PROCESS_WIDTH-1:0] car2_v_x_latter_term, car2_v_y_latter_term;
-    assign car1_v_x_latter_term = 2 * $signed({1'b0, i_car2_mass}) * dot_product_result * relative_x;
-    assign car1_v_y_latter_term = 2 * $signed({1'b0, i_car2_mass}) * dot_product_result * relative_y;
-    assign car2_v_x_latter_term = 2 * $signed({1'b0, i_car1_mass}) * dot_product_result * relative_x;
-    assign car2_v_y_latter_term = 2 * $signed({1'b0, i_car1_mass}) * dot_product_result * relative_y;
+    assign car1_v_x_latter_term = 2 * $signed({1'b0, i_car2_mass}) * dot_product * relative_x;
+    assign car1_v_y_latter_term = 2 * $signed({1'b0, i_car2_mass}) * dot_product * relative_y;
+    assign car2_v_x_latter_term = 2 * $signed({1'b0, i_car1_mass}) * dot_product * relative_x;
+    assign car2_v_y_latter_term = 2 * $signed({1'b0, i_car1_mass}) * dot_product * relative_y;
 
     // divider only support 64-bit signed division
     wire signed [63:0] car1_after_collision_v_x_with_scale, car1_after_collision_v_y_with_scale;
@@ -241,19 +241,5 @@ module CarCollisionVelocityHandler (
     assign o_car2_v_x = car2_after_collision_v_x_with_scale / scale_factor;
     assign o_car2_v_y = car2_after_collision_v_y_with_scale / scale_factor;
 
-    // assign car1_after_collision_v_x_with_scale = (car1_v_x_former_term - car1_v_x_latter_term) >>> (3*PROCESS_WIDTH - 64);
-    // assign car1_after_collision_v_y_with_scale = (car1_v_y_former_term - car1_v_y_latter_term) >>> (3*PROCESS_WIDTH - 64);
-    // assign car2_after_collision_v_x_with_scale = (car2_v_x_former_term + car2_v_x_latter_term) >>> (3*PROCESS_WIDTH - 64);
-    // assign car2_after_collision_v_y_with_scale = (car2_v_y_former_term + car2_v_y_latter_term) >>> (3*PROCESS_WIDTH - 64);
-
-    // wire signed [63:0] scale_factor_in_division;
-    // assign scale_factor_in_division = scale_factor >>> (3*PROCESS_WIDTH - 64);
-
-    // assign o_car1_v_x = car1_after_collision_v_x_with_scale / scale_factor_in_division;
-    // assign o_car1_v_y = car1_after_collision_v_y_with_scale / scale_factor_in_division;
-
-    // assign o_car2_v_x = car2_after_collision_v_x_with_scale / scale_factor_in_division;
-    // assign o_car2_v_y = car2_after_collision_v_y_with_scale / scale_factor_in_division;
-
-    assign o_collision = ((relative_x_square + relative_y_square) <= radius_sum_square_with_scale) & (dot_product_result < 0);
+    assign o_collision = ((relative_x_square + relative_y_square) <= radius_sum_square_with_scale) & (dot_product < 0);
 endmodule
