@@ -22,8 +22,8 @@ module Main (
     input [2:0] i_car1_brake,
     input [2:0] i_car2_brake,
 
-    input [2:0] i_car1_omega,
-    input [2:0] i_car2_omega,
+    input [3:0] i_car1_omega,
+    input [3:0] i_car2_omega,
 
     output o_car1_vibrate,
     output o_car2_vibrate,

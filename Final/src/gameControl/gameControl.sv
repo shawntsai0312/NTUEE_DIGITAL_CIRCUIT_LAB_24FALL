@@ -10,8 +10,8 @@ module GameControl (
     input [2:0] i_car2_acc, // 0 to 7, temp
     input [2:0] i_car1_brake, // 0 to 7, temp
     input [2:0] i_car2_brake, // 0 to 7, temp
-    input signed [2:0] i_car1_omega, // -1 to 1
-    input signed [2:0] i_car2_omega, // -1 to 1
+    input signed [3:0] i_car1_omega, // -1 to 1
+    input signed [3:0] i_car2_omega, // -1 to 1
     input i_audio_init_done,
     input i_start,
     input i_restart,
@@ -419,17 +419,6 @@ module GameControl (
 
         case (state_r)
             S_GAME: begin
-                // if (!i_car1_omega[0]) car1_angle_w = car1_angle_r;
-                // else begin
-                //     if (i_car1_omega[1])    car1_angle_w = car1_angle_r + 1;
-                //     else                    car1_angle_w = car1_angle_r - 1;
-                // end
-
-                // if (!i_car2_omega[0]) car2_angle_w = car2_angle_r;
-                // else begin
-                //     if (i_car2_omega[1])    car2_angle_w = car2_angle_r + 1;
-                //     else                    car2_angle_w = car2_angle_r - 1;
-                // end
                 car1_angle_w = car1_angle_r + i_car1_omega;
                 car2_angle_w = car2_angle_r + i_car2_omega;
             end

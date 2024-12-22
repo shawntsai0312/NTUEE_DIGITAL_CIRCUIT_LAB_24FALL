@@ -36,7 +36,7 @@ package game_pkg;
     localparam int CAR_INIT_MASS_LEVEL = 5;
 
     localparam int ANG_WIDTH = 9;
-    localparam int ANG_FRACTION_WIDTH = 1;
+    localparam int ANG_FRACTION_WIDTH = 2;
 
     localparam int VELOCITY_INTEGER_WIDTH = 4; // 2's complement, MSB is -2^3, LSB is 2^0
     localparam int VELOCITY_FRACTION_WIDTH = 6;

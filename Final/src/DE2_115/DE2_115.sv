@@ -212,15 +212,69 @@ module DE2_115 (
 
 	wire [2:0] car1_acc, car2_acc;
 	wire [2:0] car1_brake, car2_brake;
-	wire [2:0] car1_omega, car2_omega;
+	wire [3:0] car1_omega, car2_omega;
+
+	wire [15:0] car1_acc_value, car2_acc_value;
+	wire [15:0] car1_brake_value, car2_brake_value;
+
+	PeddleHandler u_PeddleHandler_car1_acc (
+		.i_clk                   (clk_100k),
+		.i_rst_n                 (rst_n),
+		.o_CS                    (GPIO[16]),
+		.o_SPC                   (GPIO[10]),
+		.o_SDI                   (GPIO[12]),
+		.i_SDO                   (GPIO[14]),
+		.i_level0_lower_bound    (150),
+		.i_level1_lower_bound    (142),
+		.i_level2_lower_bound    (134),
+		.i_level3_lower_bound    (126),
+		.i_level4_lower_bound    (118),
+		.i_level5_lower_bound    (110),
+		.i_level6_lower_bound    (100),
+		.o_acc_value			 (car1_acc_value),
+		.o_level                 (car1_acc)
+	);
+
+	PeddleHandler u_PeddleHandler_car1_brake (
+		.i_clk                   (clk_100k),
+		.i_rst_n                 (rst_n),
+		.o_CS					 (GPIO[24]),
+		.o_SPC					 (GPIO[18]),
+		.o_SDI					 (GPIO[20]),
+		.i_SDO					 (GPIO[22]), 
+		.i_level0_lower_bound    (160),
+		.i_level1_lower_bound    (130),
+		.i_level2_lower_bound    (115),
+		.i_level3_lower_bound    (108),
+		.i_level4_lower_bound    (104),
+		.i_level5_lower_bound    (102),
+		.i_level6_lower_bound    (100),
+		.o_acc_value			 (car1_brake_value),
+		.o_level                 (car1_brake)
+	);
+
+	WheelHandler u_WheelHandler_car1_omega (
+		.i_clk                   (clk_100k),
+		.i_rst_n                 (rst_n),
+		.o_CS					 (GPIO[6]),
+		.o_SPC					 (GPIO[0]),
+		.o_SDI					 (GPIO[2]),
+		.i_SDO					 (GPIO[4]),
+		.i_level0_lower_bound	 (100),
+		.i_level1_lower_bound	 (125),
+		.i_level2_lower_bound	 (150),
+		.i_level3_lower_bound	 (175),
+		.i_level4_lower_bound	 (200),
+		.o_level                 (car1_omega)
+	);
+
+	// assign car1_acc = SW[12:10];
+	// assign car1_brake = SW[15:13];
+	// assign car1_omega = {SW[17],1'b0,SW[16]};
 
 	assign car2_acc = SW[2:0];
 	assign car2_brake = SW[5:3];
 	assign car2_omega = {SW[7],1'b0,SW[6]};
-
-	assign car1_acc = SW[12:10];
-	assign car1_brake = SW[15:13];
-	assign car1_omega = {SW[17],1'b0,SW[16]};
 
 	wire [2:0] game_state;
 	assign LEDG[0] = (game_state == 0);
@@ -259,7 +313,7 @@ module DE2_115 (
 	);
 
 	SignedValueDecoder car1_value (
-		.i_value			(car1_v_m),
+		.i_value			(car1_brake_value),
 		.o_seven_sign		(HEX7),
 		.o_seven_hundred	(HEX6),
 		.o_seven_ten		(HEX5),
@@ -267,7 +321,7 @@ module DE2_115 (
 	);
 
 	SignedValueDecoder car2_value (
-		.i_value			(car2_v_m),
+		.i_value			(car1_acc_value),
 		.o_seven_sign		(HEX3),
 		.o_seven_hundred	(HEX2),
 		.o_seven_ten		(HEX1),
