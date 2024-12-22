@@ -105,8 +105,8 @@ module GameControl (
     reg car2_is_in_track1_now, car2_is_in_track1_next, car2_is_in_track1_prev;
 
     // track collision
-    // reg car1_track_collision_r, car1_track_collision_w;
-    // reg car2_track_collision_r, car2_track_collision_w;
+    reg car1_track_collision_r, car1_track_collision_w;
+    reg car2_track_collision_r, car2_track_collision_w;
 
     // car collision
     reg car_collsion;
@@ -167,7 +167,7 @@ module GameControl (
         .o_in_track1    (car1_is_in_track1_next),
         .o_in_sand      (car1_is_in_sand),
         .o_in_rock      (car1_is_in_rock),
-        .o_collision    (car1_track_collision)
+        .o_collision    (car1_track_collision_w)
     );
     TrackCollision u_TrackCollision_car2 (
         .i_x            ((car2_x_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
@@ -181,7 +181,7 @@ module GameControl (
         .o_in_track1    (car2_is_in_track1_next),
         .o_in_sand      (car2_is_in_sand),
         .o_in_rock      (car2_is_in_rock),
-        .o_collision    (car2_track_collision)
+        .o_collision    (car2_track_collision_w)
     );
     assign o_car1_vibrate = car1_is_in_rock;
     assign o_car2_vibrate = car2_is_in_rock;
@@ -373,11 +373,11 @@ module GameControl (
         //     car2_y_w = car2_y_r + (car2_v_y_after_track_collision > 2 ? car2_v_y_after_track_collision : 0); // prevent some rounding error
         // end
 
-        if (car1_track_collision) begin
+        if (car1_track_collision_r) begin
             car1_x_w = car1_x_r;
             car1_y_w = car1_y_r;
         end
-        if (car2_track_collision) begin
+        if (car2_track_collision_r) begin
             car2_x_w = car2_x_r;
             car2_y_w = car2_y_r;
         end
@@ -425,8 +425,8 @@ module GameControl (
             car2_v_m_w = car2_after_collision_v;
         end
 
-        if (car1_track_collision) car1_v_m_w = 1; // cannot set to 0, cuz 0 will cause track_collision = false, and thus going out of track
-        if (car2_track_collision) car2_v_m_w = 1; // cannot set to 0, cuz 0 will cause track_collision = false, and thus going out of track
+        if (car1_track_collision_r) car1_v_m_w = 1; // cannot set to 0, cuz 0 will cause track_collision = false, and thus going out of track
+        if (car2_track_collision_r) car2_v_m_w = 1; // cannot set to 0, cuz 0 will cause track_collision = false, and thus going out of track
     end
 
     // velocity angle update
@@ -556,7 +556,7 @@ module GameControl (
             car1_y_r <= (game_pkg::CAR1_INIT_Y << game_pkg::VELOCITY_FRACTION_WIDTH);
             car1_v_m_r <= 0;
             car1_angle_r <= (game_pkg::CAR_INIT_ANGLE << game_pkg::ANG_FRACTION_WIDTH);
-            // car1_track_collision_r <= 0;
+            car1_track_collision_r <= 0;
             car1_get_qblock_r <= 0;
             car1_mass_level_r <= game_pkg::CAR_INIT_MASS_LEVEL;
             car1_lap_r <= 0;
@@ -569,7 +569,7 @@ module GameControl (
             car2_y_r <= (game_pkg::CAR2_INIT_Y << game_pkg::VELOCITY_FRACTION_WIDTH);
             car2_v_m_r <= 0;
             car2_angle_r <= (game_pkg::CAR_INIT_ANGLE << game_pkg::ANG_FRACTION_WIDTH);
-            // car2_track_collision_r <= 0;
+            car2_track_collision_r <= 0;
             car2_get_qblock_r <= 0;
             car2_mass_level_r <= game_pkg::CAR_INIT_MASS_LEVEL;
             car2_lap_r <= 0;
@@ -584,7 +584,7 @@ module GameControl (
             car1_y_r <= car1_y_w;
             car1_v_m_r <= car1_v_m_w;
             car1_angle_r <= car1_angle_w;
-            // car1_track_collision_r <= car1_track_collision_w;
+            car1_track_collision_r <= car1_track_collision_w;
             car1_get_qblock_r <= car1_get_qblock_w;
             car1_mass_level_r <= car1_mass_level_w;
             car1_lap_r <= car1_lap_w;
@@ -597,7 +597,7 @@ module GameControl (
             car2_y_r <= car2_y_w;
             car2_v_m_r <= car2_v_m_w;
             car2_angle_r <= car2_angle_w;
-            // car2_track_collision_r <= car2_track_collision_w;
+            car2_track_collision_r <= car2_track_collision_w;
             car2_get_qblock_r <= car2_get_qblock_w;
             car2_mass_level_r <= car2_mass_level_w;
             car2_lap_r <= car2_lap_w;
