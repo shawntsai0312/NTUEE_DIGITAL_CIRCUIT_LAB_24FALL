@@ -213,15 +213,15 @@ module CarCollisionVelocityHandler (
     wire signed [2*PROCESS_WIDTH-1:0] dot_product;
     assign dot_product = relative_v_x * relative_x + relative_v_y * relative_y;
 
-    wire signed [3*PROCESS_WIDTH-1:0] car1_v_x_former_term, car1_v_y_former_term;
-    wire signed [3*PROCESS_WIDTH-1:0] car2_v_x_former_term, car2_v_y_former_term;
+    wire signed [63:0] car1_v_x_former_term, car1_v_y_former_term;
+    wire signed [63:0] car2_v_x_former_term, car2_v_y_former_term;
     assign car1_v_x_former_term = scale_factor * i_car1_v_x;
     assign car1_v_y_former_term = scale_factor * i_car1_v_y;
     assign car2_v_x_former_term = scale_factor * i_car2_v_x;
     assign car2_v_y_former_term = scale_factor * i_car2_v_y;
 
-    wire signed [3*PROCESS_WIDTH-1:0] car1_v_x_latter_term, car1_v_y_latter_term;
-    wire signed [3*PROCESS_WIDTH-1:0] car2_v_x_latter_term, car2_v_y_latter_term;
+    wire signed [63:0] car1_v_x_latter_term, car1_v_y_latter_term;
+    wire signed [63:0] car2_v_x_latter_term, car2_v_y_latter_term;
     assign car1_v_x_latter_term = 2 * $signed({1'b0, i_car2_mass}) * dot_product * relative_x;
     assign car1_v_y_latter_term = 2 * $signed({1'b0, i_car2_mass}) * dot_product * relative_y;
     assign car2_v_x_latter_term = 2 * $signed({1'b0, i_car1_mass}) * dot_product * relative_x;
