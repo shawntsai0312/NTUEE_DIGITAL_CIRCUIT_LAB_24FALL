@@ -151,8 +151,6 @@ module GameControl (
     );
 
     /*------------------------------------------------------ track collision ------------------------------------------------------*/
-    wire signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] car1_v_x_after_track_collision, car1_v_y_after_track_collision;
-    wire signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] car2_v_x_after_track_collision, car2_v_y_after_track_collision;
     wire car1_is_in_sand, car1_is_in_rock;
     wire car2_is_in_sand, car2_is_in_rock;
     TrackCollision u_TrackCollision_car1 (
@@ -161,8 +159,6 @@ module GameControl (
         .i_v_x          (car1_v_x_r),
         .i_v_y          (car1_v_y_r),
         .i_radius       ((sram_pkg::CAR_SIZE >> 1)),
-        .o_v_x          (car1_v_x_after_track_collision),
-        .o_v_y          (car1_v_y_after_track_collision),
         .o_in_track0    (car1_is_in_track0_next),
         .o_in_track1    (car1_is_in_track1_next),
         .o_in_sand      (car1_is_in_sand),
@@ -175,8 +171,6 @@ module GameControl (
         .i_v_x          (car2_v_x_r),
         .i_v_y          (car2_v_y_r),
         .i_radius       ((sram_pkg::CAR_SIZE >> 1)),
-        .o_v_x          (car2_v_x_after_track_collision),
-        .o_v_y          (car2_v_y_after_track_collision),
         .o_in_track0    (car2_is_in_track0_next),
         .o_in_track1    (car2_is_in_track1_next),
         .o_in_sand      (car2_is_in_sand),
@@ -364,15 +358,6 @@ module GameControl (
             car2_y_w = car2_y_r + (car2_after_collision_v_y << game_pkg::CAR_COLLISION_SEPARATE_CONST);
         end
 
-        // if (car1_track_collision) begin
-        //     car1_x_w = car1_x_r + (car1_v_x_after_track_collision > 2 ? car1_v_x_after_track_collision : 0); // prevent some rounding error
-        //     car1_y_w = car1_y_r + (car1_v_y_after_track_collision > 2 ? car1_v_y_after_track_collision : 0); // prevent some rounding error
-        // end
-        // if (car2_track_collision) begin
-        //     car2_x_w = car2_x_r + (car2_v_x_after_track_collision > 2 ? car2_v_x_after_track_collision : 0); // prevent some rounding error
-        //     car2_y_w = car2_y_r + (car2_v_y_after_track_collision > 2 ? car2_v_y_after_track_collision : 0); // prevent some rounding error
-        // end
-
         if (car1_track_collision_r) begin
             car1_x_w = car1_x_r;
             car1_y_w = car1_y_r;
@@ -381,7 +366,6 @@ module GameControl (
             car2_x_w = car2_x_r;
             car2_y_w = car2_y_r;
         end
-
     end
 
     // velocity magnitude update
@@ -390,7 +374,6 @@ module GameControl (
 
     wire [2:0] CAR1_FRICTION_WITH_BRAKE_SHIFT;
     wire [2:0] CAR2_FRICTION_WITH_BRAKE_SHIFT;
-
     assign CAR1_FRICTION_WITH_BRAKE_SHIFT = game_pkg::FRICTION_CONSTANT_RECIPROCAL_REMAIN_SHIFT - i_car1_brake;
     assign CAR2_FRICTION_WITH_BRAKE_SHIFT = game_pkg::FRICTION_CONSTANT_RECIPROCAL_REMAIN_SHIFT - i_car2_brake;
     always @(*) begin

@@ -87,8 +87,6 @@ module CircleTrackCollision (
     input signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_v_x,
     input signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_v_y,
     input signed [sram_pkg::CAR_COOR_WIDTH-1:0] i_radius,
-    output signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] o_v_x,
-    output signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] o_v_y,
     output reg o_in_region,
     output reg o_collision
 );
@@ -105,37 +103,36 @@ module CircleTrackCollision (
         .o_in_region    (in_region)
     );
 
-    localparam PROCESS_WIDTH = 2*sram_pkg::MAP_H_WIDTH+game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH;
-
-    wire signed [PROCESS_WIDTH-1:0] displacement_center_x, displacement_center_y;
+    wire signed [sram_pkg::MAP_H_WIDTH-1:0] displacement_center_x, displacement_center_y;
     assign displacement_center_x = i_x - i_track.center_x;
     assign displacement_center_y = i_y - i_track.center_y;
 
-    wire signed [PROCESS_WIDTH-1:0] displacement_center_square;
+    wire signed [2*sram_pkg::MAP_H_WIDTH-1:0] displacement_center_square;
     assign displacement_center_square = displacement_center_x * displacement_center_x + displacement_center_y * displacement_center_y;
 
-    wire signed [PROCESS_WIDTH-1:0] distance_lowerBound, distance_upperBound;
+    wire signed [sram_pkg::MAP_H_WIDTH-1:0] distance_lowerBound, distance_upperBound;
     assign distance_lowerBound = i_track.radius_inner + i_radius;
     assign distance_upperBound = i_track.radius_outer - i_radius;
 
-    wire signed [PROCESS_WIDTH-1:0] distance_lowerBound_square, distance_upperBound_square;
+    wire signed [2*sram_pkg::MAP_H_WIDTH-1:0] distance_lowerBound_square, distance_upperBound_square;
     assign distance_lowerBound_square = distance_lowerBound * distance_lowerBound;
     assign distance_upperBound_square = distance_upperBound * distance_upperBound;
 
     // calculate the dot product of the velocity and the vector from the center to the car
     // if the dot product is positive, the car is moving away from the center
     // if the dot product is negative, the car is moving towards the center
-    wire [PROCESS_WIDTH-1:0] dot_product;
+    localparam PROCESS_WIDTH = sram_pkg::MAP_H_WIDTH + game_pkg::VELOCITY_INTEGER_WIDTH + game_pkg::VELOCITY_FRACTION_WIDTH;
+    wire signed [PROCESS_WIDTH:0] dot_product;
     assign dot_product = i_v_x * displacement_center_x + i_v_y * displacement_center_y;
-
-    assign o_v_x = (displacement_center_square * i_v_x - dot_product * displacement_center_x) / displacement_center_square;
-    assign o_v_y = (displacement_center_square * i_v_y - dot_product * displacement_center_y) / displacement_center_square;
+    wire going_outwards, going_inwards;
+    assign going_outwards = dot_product > 0;
+    assign going_inwards = dot_product < 0;
 
     always @(*) begin
         if (in_region) begin
             o_collision = 0;
-            if (displacement_center_square <= distance_lowerBound_square && dot_product < 0) o_collision = 1;
-            if (displacement_center_square >= distance_upperBound_square && dot_product > 0) o_collision = 1;
+            if (displacement_center_square <= distance_lowerBound_square && going_inwards) o_collision = 1;
+            if (displacement_center_square >= distance_upperBound_square && going_outwards) o_collision = 1;
         end
         else begin
             o_collision = 0;
