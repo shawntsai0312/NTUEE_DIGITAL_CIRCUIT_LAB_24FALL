@@ -140,7 +140,7 @@ module DE2_115 (
 );
 
 	logic key0down, key1down, key2down, key3down;
-	logic clk_108m, clk_12m, clk_100k;
+	logic clk_108m, clk_12m, clk_100k, clk_400k;
 
 	wire [31:0] frame_counter;
 	wire [31:0] timer;
@@ -153,6 +153,7 @@ module DE2_115 (
 		.altpll_108m_clk                      (clk_108m),
 		.altpll_12m_clk                       (clk_12m),
 		.altpll_100k_clk                      (clk_100k),
+		.altpll_400k_clk                      (clk_400k),
 		.clk_clk                              (CLOCK_50),
 		.reset_reset_n                        (rst_n),
 		
@@ -210,12 +211,16 @@ module DE2_115 (
 	wire [game_pkg::VELOCITY_OUTPUT_WIDTH-1:0] car1_v_m, car2_v_m;
 
 	wire [2:0] car1_acc, car2_acc;
-	assign car2_acc = SW[2:0];
-	assign car1_acc = SW[15:13];
+	wire [2:0] car1_brake, car2_brake;
+	wire [2:0] car1_omega, car2_omega;
 
-	wire [1:0] car1_omega, car2_omega;
-	assign car2_omega = SW[4:3];
-	assign car1_omega = SW[17:16];
+	assign car2_acc = SW[2:0];
+	assign car2_brake = SW[5:3];
+	assign car2_omega = {SW[7],1'b0,SW[6]};
+
+	assign car1_acc = SW[12:10];
+	assign car1_brake = SW[15:13];
+	assign car1_omega = {SW[17],1'b0,SW[16]};
 
 	wire [2:0] game_state;
 	assign LEDG[0] = (game_state == 0);
@@ -235,10 +240,12 @@ module DE2_115 (
 		.i_AUD_BCLK         (AUD_BCLK),
 		.i_AUD_DACLRCK      (AUD_DACLRCK),
 		.o_AUD_DACDAT       (AUD_DACDAT),
-		.i_car2_acc         (car2_acc),
 		.i_car1_acc         (car1_acc),
-		.i_car2_omega	    (car2_omega),
+		.i_car2_acc         (car2_acc),
+		.i_car1_brake       (car1_brake),
+        .i_car2_brake       (car2_brake),
 		.i_car1_omega	    (car1_omega),
+		.i_car2_omega	    (car2_omega),
 		.o_game_state		(game_state),
 		.o_car1_v_m         (car1_v_m),
 		.o_car2_v_m         (car2_v_m),

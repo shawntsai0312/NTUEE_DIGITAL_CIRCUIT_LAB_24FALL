@@ -1,14 +1,14 @@
 module QBlockHandler (
     input i_render_clk,
     input i_rst_n,
-    input signed [sram_pkg::MAP_H_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car1_x,
-    input signed [sram_pkg::MAP_V_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car1_y,
-    input signed [sram_pkg::MAP_H_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car2_x,
-    input signed [sram_pkg::MAP_V_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car2_y,
+    input signed [sram_pkg::MAP_H_WIDTH-1:0] i_car1_x,
+    input signed [sram_pkg::MAP_V_WIDTH-1:0] i_car1_y,
+    input signed [sram_pkg::MAP_H_WIDTH-1:0] i_car2_x,
+    input signed [sram_pkg::MAP_V_WIDTH-1:0] i_car2_y,
     input signed [sram_pkg::CAR_COOR_WIDTH-1:0] i_car1_radius,
     input signed [sram_pkg::CAR_COOR_WIDTH-1:0] i_car2_radius,
-    input signed [sram_pkg::MAP_H_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_qblock_x,
-    input signed [sram_pkg::MAP_V_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_qblock_y,
+    input signed [sram_pkg::MAP_H_WIDTH-1:0] i_qblock_x,
+    input signed [sram_pkg::MAP_V_WIDTH-1:0] i_qblock_y,
     input signed [sram_pkg::QBLOCK_COOR_WIDTH-1:0] i_qblock_radius,
     output o_car1_collision,
     output o_car2_collision,
@@ -45,28 +45,28 @@ module QBlockCollision (
     input i_render_clk,
     input i_rst_n,
     input i_display,
-    input signed [sram_pkg::MAP_H_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car1_x,
-    input signed [sram_pkg::MAP_V_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car1_y,
-    input signed [sram_pkg::MAP_H_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car2_x,
-    input signed [sram_pkg::MAP_V_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car2_y,
+    input signed [sram_pkg::MAP_H_WIDTH-1:0] i_car1_x,
+    input signed [sram_pkg::MAP_V_WIDTH-1:0] i_car1_y,
+    input signed [sram_pkg::MAP_H_WIDTH-1:0] i_car2_x,
+    input signed [sram_pkg::MAP_V_WIDTH-1:0] i_car2_y,
     input signed [sram_pkg::CAR_COOR_WIDTH-1:0] i_car1_radius,
     input signed [sram_pkg::CAR_COOR_WIDTH-1:0] i_car2_radius,
-    input signed [sram_pkg::MAP_H_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_qblock_x,
-    input signed [sram_pkg::MAP_V_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_qblock_y,
+    input signed [sram_pkg::MAP_H_WIDTH-1:0] i_qblock_x,
+    input signed [sram_pkg::MAP_V_WIDTH-1:0] i_qblock_y,
     input signed [sram_pkg::QBLOCK_COOR_WIDTH-1:0] i_qblock_radius,
     output o_car1_collision,
     output o_car2_collision
 );
-    wire signed [sram_pkg::MAP_H_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] car1_x_diff;
-    wire signed [sram_pkg::MAP_V_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] car1_y_diff;
-    wire signed [sram_pkg::MAP_H_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] car1_qblock_radius_sum;
+    wire signed [sram_pkg::MAP_H_WIDTH-1:0] car1_x_diff;
+    wire signed [sram_pkg::MAP_V_WIDTH-1:0] car1_y_diff;
+    wire signed [sram_pkg::MAP_H_WIDTH-1:0] car1_qblock_radius_sum;
     assign car1_x_diff = i_car1_x - i_qblock_x;
     assign car1_y_diff = i_car1_y - i_qblock_y;
-    assign car1_qblock_radius_sum = (i_car1_radius + i_qblock_radius) << game_pkg::VELOCITY_FRACTION_WIDTH;
+    assign car1_qblock_radius_sum = (i_car1_radius + i_qblock_radius);
 
-    wire signed [39:0] car1_x_diff_square;
-    wire signed [39:0] car1_y_diff_square;
-    wire signed [39:0] car1_qblock_radius_sum_square;
+    wire signed [2*sram_pkg::MAP_H_WIDTH-1:0] car1_x_diff_square;
+    wire signed [2*sram_pkg::MAP_H_WIDTH-1:0] car1_y_diff_square;
+    wire signed [2*sram_pkg::MAP_H_WIDTH-1:0] car1_qblock_radius_sum_square;
     reg car1_collision_r, car1_collision_w;
     assign car1_x_diff_square = car1_x_diff * car1_x_diff;
     assign car1_y_diff_square = car1_y_diff * car1_y_diff;
@@ -74,16 +74,16 @@ module QBlockCollision (
     assign car1_collision_w = ((car1_x_diff_square + car1_y_diff_square) <= car1_qblock_radius_sum_square) & i_display;
     assign o_car1_collision = car1_collision_r;
 
-    wire signed [sram_pkg::MAP_H_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] car2_x_diff;
-    wire signed [sram_pkg::MAP_V_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] car2_y_diff;
-    wire signed [sram_pkg::MAP_H_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] car2_qblock_radius_sum;
+    wire signed [sram_pkg::MAP_H_WIDTH-1:0] car2_x_diff;
+    wire signed [sram_pkg::MAP_V_WIDTH-1:0] car2_y_diff;
+    wire signed [sram_pkg::MAP_H_WIDTH-1:0] car2_qblock_radius_sum;
     assign car2_x_diff = i_car2_x - i_qblock_x;
     assign car2_y_diff = i_car2_y - i_qblock_y;
-    assign car2_qblock_radius_sum = (i_car2_radius + i_qblock_radius) << game_pkg::VELOCITY_FRACTION_WIDTH;
+    assign car2_qblock_radius_sum = (i_car2_radius + i_qblock_radius);
 
-    wire signed [39:0] car2_x_diff_square;
-    wire signed [39:0] car2_y_diff_square;
-    wire signed [39:0] car2_qblock_radius_sum_square;
+    wire signed [2*sram_pkg::MAP_H_WIDTH-1:0] car2_x_diff_square;
+    wire signed [2*sram_pkg::MAP_H_WIDTH-1:0] car2_y_diff_square;
+    wire signed [2*sram_pkg::MAP_H_WIDTH-1:0] car2_qblock_radius_sum_square;
     reg car2_collision_r, car2_collision_w;
     assign car2_x_diff_square = car2_x_diff * car2_x_diff;
     assign car2_y_diff_square = car2_y_diff * car2_y_diff;

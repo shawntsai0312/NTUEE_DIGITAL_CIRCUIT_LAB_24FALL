@@ -2,10 +2,10 @@ module CarCollision (
     input i_clk,
     input i_rst_n,
 
-    input signed [sram_pkg::MAP_H_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car1_x,
-    input signed [sram_pkg::MAP_V_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car1_y,
-    input signed [sram_pkg::MAP_H_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car2_x,
-    input signed [sram_pkg::MAP_V_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car2_y,
+    input signed [sram_pkg::MAP_H_WIDTH-1:0] i_car1_x,
+    input signed [sram_pkg::MAP_V_WIDTH-1:0] i_car1_y,
+    input signed [sram_pkg::MAP_H_WIDTH-1:0] i_car2_x,
+    input signed [sram_pkg::MAP_V_WIDTH-1:0] i_car2_y,
 
     input signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car1_v_x,
     input signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car1_v_y,
@@ -155,10 +155,10 @@ module CarCollision (
 endmodule
 
 module CarCollisionVelocityHandler (
-    input signed [sram_pkg::MAP_H_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car1_x,
-    input signed [sram_pkg::MAP_V_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car1_y,
-    input signed [sram_pkg::MAP_H_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car2_x,
-    input signed [sram_pkg::MAP_V_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car2_y,
+    input signed [sram_pkg::MAP_H_WIDTH-1:0] i_car1_x,
+    input signed [sram_pkg::MAP_V_WIDTH-1:0] i_car1_y,
+    input signed [sram_pkg::MAP_H_WIDTH-1:0] i_car2_x,
+    input signed [sram_pkg::MAP_V_WIDTH-1:0] i_car2_y,
 
     input signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car1_v_x,
     input signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car1_v_y,
@@ -190,7 +190,7 @@ module CarCollisionVelocityHandler (
 
     wire signed [PROCESS_WIDTH-1:0] radius_sum_with_scale;
     wire signed [2*PROCESS_WIDTH-1:0] radius_sum_square_with_scale;
-    assign radius_sum_with_scale = (i_car1_radius + i_car2_radius) << game_pkg::VELOCITY_FRACTION_WIDTH;
+    assign radius_sum_with_scale = (i_car1_radius + i_car2_radius);
     assign radius_sum_square_with_scale = radius_sum_with_scale * radius_sum_with_scale;
     // assign o_radius_sum_square_with_scale = radius_sum_square_with_scale; // for test
 

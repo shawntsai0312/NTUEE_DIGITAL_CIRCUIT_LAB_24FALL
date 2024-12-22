@@ -19,8 +19,11 @@ module Main (
     input [2:0] i_car1_acc,
     input [2:0] i_car2_acc,
 
-    input [1:0] i_car1_omega,
-    input [1:0] i_car2_omega,
+    input [2:0] i_car1_brake,
+    input [2:0] i_car2_brake,
+
+    input [2:0] i_car1_omega,
+    input [2:0] i_car2_omega,
 
     output o_car1_vibrate,
     output o_car2_vibrate,
@@ -99,6 +102,8 @@ module Main (
         .i_rst_n            (i_rst_n),
         .i_car1_acc         (i_car1_acc),
         .i_car2_acc         (i_car2_acc),
+        .i_car1_brake       (i_car1_brake),
+        .i_car2_brake       (i_car2_brake),
         .i_car1_omega       (i_car1_omega),
         .i_car2_omega       (i_car2_omega),
         .i_audio_init_done  (1'b1),

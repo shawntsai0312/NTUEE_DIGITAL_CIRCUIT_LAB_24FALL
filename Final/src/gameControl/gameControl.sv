@@ -8,8 +8,10 @@ module GameControl (
     input i_rst_n,
     input [2:0] i_car1_acc, // 0 to 7, temp
     input [2:0] i_car2_acc, // 0 to 7, temp
-    input [1:0] i_car1_omega, // -1 to 1
-    input [1:0] i_car2_omega, // -1 to 1
+    input [2:0] i_car1_brake, // 0 to 7, temp
+    input [2:0] i_car2_brake, // 0 to 7, temp
+    input signed [2:0] i_car1_omega, // -1 to 1
+    input signed [2:0] i_car2_omega, // -1 to 1
     input i_audio_init_done,
     input i_start,
     input i_restart,
@@ -67,10 +69,10 @@ module GameControl (
     assign o_car2_v_m = car2_v_m_r[game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-2:2]; // no need to output the sign bit
 
     // velocity angle
-    reg signed [game_pkg::ANG_WIDTH:0] car1_angle_r, car1_angle_w; // 0 to 360
-    reg signed [game_pkg::ANG_WIDTH:0] car2_angle_r, car2_angle_w; // 0 to 360
-    assign o_car1_angle = car1_angle_r - 180;
-    assign o_car2_angle = car2_angle_r - 180;
+    reg signed [game_pkg::ANG_WIDTH+game_pkg::ANG_FRACTION_WIDTH:0] car1_angle_r, car1_angle_w; // 0 to 360
+    reg signed [game_pkg::ANG_WIDTH+game_pkg::ANG_FRACTION_WIDTH:0] car2_angle_r, car2_angle_w; // 0 to 360
+    assign o_car1_angle = (car1_angle_r >>> game_pkg::ANG_FRACTION_WIDTH) - 180;
+    assign o_car2_angle = (car2_angle_r >>> game_pkg::ANG_FRACTION_WIDTH) - 180;
 
     // velocity vector
     reg signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] car1_v_x_r, car1_v_x_w;
@@ -103,8 +105,8 @@ module GameControl (
     reg car2_is_in_track1_now, car2_is_in_track1_next, car2_is_in_track1_prev;
 
     // track collision
-    reg car1_track_collision_r, car1_track_collision_w;
-    reg car2_track_collision_r, car2_track_collision_w;
+    // reg car1_track_collision_r, car1_track_collision_w;
+    // reg car2_track_collision_r, car2_track_collision_w;
 
     // car collision
     reg car_collsion;
@@ -123,7 +125,9 @@ module GameControl (
         .i_start              (1), 
         .i_x                  (car1_v_m_r),
         .i_y                  (0),
-        .i_angle              ((car1_angle_r > 180) ? (car1_angle_r - 360) : car1_angle_r), // -180 to 180
+        .i_angle              (((car1_angle_r >>> game_pkg::ANG_FRACTION_WIDTH) > 180) ? 
+                                ((car1_angle_r >>> game_pkg::ANG_FRACTION_WIDTH) - 360) : 
+                                (car1_angle_r >>> game_pkg::ANG_FRACTION_WIDTH)), // -180 to 180
         .o_x                  (car1_v_decomposition_x),
         .o_y                  (car1_v_decomposition_y),
         .o_done               (car1_v_decomposition_done)
@@ -138,13 +142,17 @@ module GameControl (
         .i_start              (1), 
         .i_x                  (car2_v_m_r),
         .i_y                  (0),
-        .i_angle              ((car2_angle_r > 180) ? (car2_angle_r - 360) : car2_angle_r), // -180 to 180
+        .i_angle              (((car2_angle_r >>> game_pkg::ANG_FRACTION_WIDTH) > 180) ? 
+                                ((car2_angle_r >>> game_pkg::ANG_FRACTION_WIDTH) - 360) : 
+                                (car2_angle_r >>> game_pkg::ANG_FRACTION_WIDTH)), // -180 to 180
         .o_x                  (car2_v_decomposition_x),
         .o_y                  (car2_v_decomposition_y),
         .o_done               (car2_v_decomposition_done)
     );
 
     /*------------------------------------------------------ track collision ------------------------------------------------------*/
+    wire signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] car1_v_x_after_track_collision, car1_v_y_after_track_collision;
+    wire signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] car2_v_x_after_track_collision, car2_v_y_after_track_collision;
     wire car1_is_in_sand, car1_is_in_rock;
     wire car2_is_in_sand, car2_is_in_rock;
     TrackCollision u_TrackCollision_car1 (
@@ -153,11 +161,13 @@ module GameControl (
         .i_v_x          (car1_v_x_r),
         .i_v_y          (car1_v_y_r),
         .i_radius       ((sram_pkg::CAR_SIZE >> 1)),
+        .o_v_x          (car1_v_x_after_track_collision),
+        .o_v_y          (car1_v_y_after_track_collision),
         .o_in_track0    (car1_is_in_track0_next),
         .o_in_track1    (car1_is_in_track1_next),
         .o_in_sand      (car1_is_in_sand),
         .o_in_rock      (car1_is_in_rock),
-        .o_collision    (car1_track_collision_w)
+        .o_collision    (car1_track_collision)
     );
     TrackCollision u_TrackCollision_car2 (
         .i_x            ((car2_x_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
@@ -165,11 +175,13 @@ module GameControl (
         .i_v_x          (car2_v_x_r),
         .i_v_y          (car2_v_y_r),
         .i_radius       ((sram_pkg::CAR_SIZE >> 1)),
+        .o_v_x          (car2_v_x_after_track_collision),
+        .o_v_y          (car2_v_y_after_track_collision),
         .o_in_track0    (car2_is_in_track0_next),
         .o_in_track1    (car2_is_in_track1_next),
         .o_in_sand      (car2_is_in_sand),
         .o_in_rock      (car2_is_in_rock),
-        .o_collision    (car2_track_collision_w)
+        .o_collision    (car2_track_collision)
     );
     assign o_car1_vibrate = car1_is_in_rock;
     assign o_car2_vibrate = car2_is_in_rock;
@@ -182,10 +194,10 @@ module GameControl (
     CarCollision u_CarCollision (
         .i_clk            (i_clk),
         .i_rst_n          (i_rst_n),
-        .i_car1_x         (car1_x_r),
-        .i_car1_y         (car1_y_r),
-        .i_car2_x         (car2_x_r),
-        .i_car2_y         (car2_y_r),
+        .i_car1_x         ((car1_x_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
+        .i_car1_y         ((car1_y_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
+        .i_car2_x         ((car2_x_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
+        .i_car2_y         ((car2_y_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
         .i_car1_v_x       (car1_v_x_r),
         .i_car1_v_y       (car1_v_y_r),
         .i_car2_v_x       (car2_v_x_r),
@@ -210,14 +222,14 @@ module GameControl (
     QBlockHandler u_QBlockHandler_block0 (
         .i_render_clk        (i_render_clk),
         .i_rst_n             (i_rst_n),
-        .i_car1_x            (car1_x_r),
-        .i_car1_y            (car1_y_r),
-        .i_car2_x            (car2_x_r),
-        .i_car2_y            (car2_y_r),
+        .i_car1_x            ((car1_x_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
+        .i_car1_y            ((car1_y_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
+        .i_car2_x            ((car2_x_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
+        .i_car2_y            ((car2_y_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
         .i_car1_radius       ((sram_pkg::CAR_SIZE >> 1)),
         .i_car2_radius       ((sram_pkg::CAR_SIZE >> 1)),
-        .i_qblock_x          ((game_pkg::QBLOCK0_X << game_pkg::VELOCITY_FRACTION_WIDTH)),
-        .i_qblock_y          ((game_pkg::QBLOCK0_Y << game_pkg::VELOCITY_FRACTION_WIDTH)),
+        .i_qblock_x          (game_pkg::QBLOCK0_X),
+        .i_qblock_y          (game_pkg::QBLOCK0_Y),
         .i_qblock_radius     ((sram_pkg::QBLOCK_SIZE >> 1)),
         .o_car1_collision    (car1_qblock0_collision),
         .o_car2_collision    (car2_qblock0_collision),
@@ -228,14 +240,14 @@ module GameControl (
     QBlockHandler u_QBlockHandler_block1 (
         .i_render_clk        (i_render_clk),
         .i_rst_n             (i_rst_n),
-        .i_car1_x            (car1_x_r),
-        .i_car1_y            (car1_y_r),
-        .i_car2_x            (car2_x_r),
-        .i_car2_y            (car2_y_r),
+        .i_car1_x            ((car1_x_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
+        .i_car1_y            ((car1_y_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
+        .i_car2_x            ((car2_x_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
+        .i_car2_y            ((car2_y_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
         .i_car1_radius       ((sram_pkg::CAR_SIZE >> 1)),
         .i_car2_radius       ((sram_pkg::CAR_SIZE >> 1)),
-        .i_qblock_x          ((game_pkg::QBLOCK1_X << game_pkg::VELOCITY_FRACTION_WIDTH)),
-        .i_qblock_y          ((game_pkg::QBLOCK1_Y << game_pkg::VELOCITY_FRACTION_WIDTH)),
+        .i_qblock_x          (game_pkg::QBLOCK1_X),
+        .i_qblock_y          (game_pkg::QBLOCK1_Y),
         .i_qblock_radius     ((sram_pkg::QBLOCK_SIZE >> 1)),
         .o_car1_collision    (car1_qblock1_collision),
         .o_car2_collision    (car2_qblock1_collision),
@@ -246,14 +258,14 @@ module GameControl (
     QBlockHandler u_QBlockHandler_block2 (
         .i_render_clk        (i_render_clk),
         .i_rst_n             (i_rst_n),
-        .i_car1_x            (car1_x_r),
-        .i_car1_y            (car1_y_r),
-        .i_car2_x            (car2_x_r),
-        .i_car2_y            (car2_y_r),
+        .i_car1_x            ((car1_x_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
+        .i_car1_y            ((car1_y_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
+        .i_car2_x            ((car2_x_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
+        .i_car2_y            ((car2_y_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
         .i_car1_radius       ((sram_pkg::CAR_SIZE >> 1)),
         .i_car2_radius       ((sram_pkg::CAR_SIZE >> 1)),
-        .i_qblock_x          ((game_pkg::QBLOCK2_X << game_pkg::VELOCITY_FRACTION_WIDTH)),
-        .i_qblock_y          ((game_pkg::QBLOCK2_Y << game_pkg::VELOCITY_FRACTION_WIDTH)),
+        .i_qblock_x          (game_pkg::QBLOCK2_X),
+        .i_qblock_y          (game_pkg::QBLOCK2_Y),
         .i_qblock_radius     ((sram_pkg::QBLOCK_SIZE >> 1)),
         .o_car1_collision    (car1_qblock2_collision),
         .o_car2_collision    (car2_qblock2_collision),
@@ -264,14 +276,14 @@ module GameControl (
     QBlockHandler u_QBlockHandler_block3 (
         .i_render_clk        (i_render_clk),
         .i_rst_n             (i_rst_n),
-        .i_car1_x            (car1_x_r),
-        .i_car1_y            (car1_y_r),
-        .i_car2_x            (car2_x_r),
-        .i_car2_y            (car2_y_r),
+        .i_car1_x            ((car1_x_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
+        .i_car1_y            ((car1_y_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
+        .i_car2_x            ((car2_x_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
+        .i_car2_y            ((car2_y_r >>> game_pkg::VELOCITY_FRACTION_WIDTH)),
         .i_car1_radius       ((sram_pkg::CAR_SIZE >> 1)),
         .i_car2_radius       ((sram_pkg::CAR_SIZE >> 1)),
-        .i_qblock_x          ((game_pkg::QBLOCK3_X << game_pkg::VELOCITY_FRACTION_WIDTH)),
-        .i_qblock_y          ((game_pkg::QBLOCK3_Y << game_pkg::VELOCITY_FRACTION_WIDTH)),
+        .i_qblock_x          (game_pkg::QBLOCK3_X),
+        .i_qblock_y          (game_pkg::QBLOCK3_Y),
         .i_qblock_radius     ((sram_pkg::QBLOCK_SIZE >> 1)),
         .o_car1_collision    (car1_qblock3_collision),
         .o_car2_collision    (car2_qblock3_collision),
@@ -352,22 +364,38 @@ module GameControl (
             car2_y_w = car2_y_r + (car2_after_collision_v_y << game_pkg::CAR_COLLISION_SEPARATE_CONST);
         end
 
-        if (car1_track_collision_r) begin
+        // if (car1_track_collision) begin
+        //     car1_x_w = car1_x_r + (car1_v_x_after_track_collision > 2 ? car1_v_x_after_track_collision : 0); // prevent some rounding error
+        //     car1_y_w = car1_y_r + (car1_v_y_after_track_collision > 2 ? car1_v_y_after_track_collision : 0); // prevent some rounding error
+        // end
+        // if (car2_track_collision) begin
+        //     car2_x_w = car2_x_r + (car2_v_x_after_track_collision > 2 ? car2_v_x_after_track_collision : 0); // prevent some rounding error
+        //     car2_y_w = car2_y_r + (car2_v_y_after_track_collision > 2 ? car2_v_y_after_track_collision : 0); // prevent some rounding error
+        // end
+
+        if (car1_track_collision) begin
             car1_x_w = car1_x_r;
             car1_y_w = car1_y_r;
         end
-        if (car2_track_collision_r) begin
+        if (car2_track_collision) begin
             car2_x_w = car2_x_r;
             car2_y_w = car2_y_r;
         end
+
     end
 
     // velocity magnitude update
     reg signed [31:0] car1_v_temp_shift, car2_v_temp_shift; // prevent bit truncation
     reg [2:0] car1_acc, car2_acc;
+
+    wire [2:0] CAR1_FRICTION_WITH_BRAKE_SHIFT;
+    wire [2:0] CAR2_FRICTION_WITH_BRAKE_SHIFT;
+
+    assign CAR1_FRICTION_WITH_BRAKE_SHIFT = game_pkg::FRICTION_CONSTANT_RECIPROCAL_REMAIN_SHIFT - i_car1_brake;
+    assign CAR2_FRICTION_WITH_BRAKE_SHIFT = game_pkg::FRICTION_CONSTANT_RECIPROCAL_REMAIN_SHIFT - i_car2_brake;
     always @(*) begin
-        car1_v_temp_shift = car1_v_m_r << game_pkg::FRICTION_CONSTANT_RECIPROCAL_REMAIN_SHIFT;
-        car2_v_temp_shift = car2_v_m_r << game_pkg::FRICTION_CONSTANT_RECIPROCAL_REMAIN_SHIFT;
+        car1_v_temp_shift = car1_v_m_r << CAR1_FRICTION_WITH_BRAKE_SHIFT;
+        car2_v_temp_shift = car2_v_m_r << CAR2_FRICTION_WITH_BRAKE_SHIFT;
 
         car1_v_m_w = 0;
         car2_v_m_w = 0;
@@ -379,9 +407,9 @@ module GameControl (
             S_GAME: begin
                 if (car1_is_in_sand) car1_acc = i_car1_acc >> 1;
                 if (car2_is_in_sand) car2_acc = i_car2_acc >> 1;
-                car1_v_m_w = ((car1_v_temp_shift - car1_v_m_r) >>> game_pkg::FRICTION_CONSTANT_RECIPROCAL_REMAIN_SHIFT)
+                car1_v_m_w = ((car1_v_temp_shift - car1_v_m_r) >>> CAR1_FRICTION_WITH_BRAKE_SHIFT)
                             + ((car1_acc)<<(game_pkg::VELOCITY_FRACTION_WIDTH-game_pkg::ACCELERATION_FRACTION_WIDTH));
-                car2_v_m_w = ((car2_v_temp_shift - car2_v_m_r) >>> game_pkg::FRICTION_CONSTANT_RECIPROCAL_REMAIN_SHIFT)
+                car2_v_m_w = ((car2_v_temp_shift - car2_v_m_r) >>> CAR2_FRICTION_WITH_BRAKE_SHIFT)
                             + ((car2_acc)<<(game_pkg::VELOCITY_FRACTION_WIDTH-game_pkg::ACCELERATION_FRACTION_WIDTH));
             end
         endcase
@@ -397,41 +425,43 @@ module GameControl (
             car2_v_m_w = car2_after_collision_v;
         end
 
-        if (car1_track_collision_r) car1_v_m_w = 1; // cannot set to 0, cuz 0 will cause track_collision = false, and thus going out of track
-        if (car2_track_collision_r) car2_v_m_w = 1; // cannot set to 0, cuz 0 will cause track_collision = false, and thus going out of track
+        if (car1_track_collision) car1_v_m_w = 1; // cannot set to 0, cuz 0 will cause track_collision = false, and thus going out of track
+        if (car2_track_collision) car2_v_m_w = 1; // cannot set to 0, cuz 0 will cause track_collision = false, and thus going out of track
     end
 
     // velocity angle update
     always @(*) begin
-        car1_angle_w = game_pkg::CAR_INIT_ANGLE;
-        car2_angle_w = game_pkg::CAR_INIT_ANGLE;
+        car1_angle_w = game_pkg::CAR_INIT_ANGLE << game_pkg::ANG_FRACTION_WIDTH;
+        car2_angle_w = game_pkg::CAR_INIT_ANGLE << game_pkg::ANG_FRACTION_WIDTH;
 
         case (state_r)
             S_GAME: begin
-                if (!i_car1_omega[0]) car1_angle_w = car1_angle_r;
-                else begin
-                    if (i_car1_omega[1])    car1_angle_w = car1_angle_r + 1;
-                    else                    car1_angle_w = car1_angle_r - 1;
-                end
+                // if (!i_car1_omega[0]) car1_angle_w = car1_angle_r;
+                // else begin
+                //     if (i_car1_omega[1])    car1_angle_w = car1_angle_r + 1;
+                //     else                    car1_angle_w = car1_angle_r - 1;
+                // end
 
-                if (!i_car2_omega[0]) car2_angle_w = car2_angle_r;
-                else begin
-                    if (i_car2_omega[1])    car2_angle_w = car2_angle_r + 1;
-                    else                    car2_angle_w = car2_angle_r - 1;
-                end
+                // if (!i_car2_omega[0]) car2_angle_w = car2_angle_r;
+                // else begin
+                //     if (i_car2_omega[1])    car2_angle_w = car2_angle_r + 1;
+                //     else                    car2_angle_w = car2_angle_r - 1;
+                // end
+                car1_angle_w = car1_angle_r + i_car1_omega;
+                car2_angle_w = car2_angle_r + i_car2_omega;
             end
         endcase
 
         if (car_collsion) begin
-            car1_angle_w = (car1_after_collision_v == 0) ? car2_angle_r : car1_after_collision_angle;
-            car2_angle_w = (car2_after_collision_v == 0) ? car1_angle_r : car2_after_collision_angle;
+            car1_angle_w = (car1_after_collision_v == 0) ? car2_angle_r : (car1_after_collision_angle << game_pkg::ANG_FRACTION_WIDTH);
+            car2_angle_w = (car2_after_collision_v == 0) ? car1_angle_r : (car2_after_collision_angle << game_pkg::ANG_FRACTION_WIDTH);
         end
 
         // fix angle, the range can only be [-180, 180]
-        if (car1_angle_w <= 0) car1_angle_w = car1_angle_w + 360;
-        if (car2_angle_w <= 0) car2_angle_w = car2_angle_w + 360;
-        if (car1_angle_w >= 360) car1_angle_w = car1_angle_w - 360;
-        if (car2_angle_w >= 360) car2_angle_w = car2_angle_w - 360;
+        if (car1_angle_w <= 0) car1_angle_w = car1_angle_w + (360 << game_pkg::ANG_FRACTION_WIDTH);
+        if (car2_angle_w <= 0) car2_angle_w = car2_angle_w + (360 << game_pkg::ANG_FRACTION_WIDTH);
+        if (car1_angle_w >= (360 << game_pkg::ANG_FRACTION_WIDTH)) car1_angle_w = car1_angle_w - (360 << game_pkg::ANG_FRACTION_WIDTH);
+        if (car2_angle_w >= (360 << game_pkg::ANG_FRACTION_WIDTH)) car2_angle_w = car2_angle_w - (360 << game_pkg::ANG_FRACTION_WIDTH);
     end
 
     // velocity vector update
@@ -444,14 +474,15 @@ module GameControl (
         case (state_r)
             S_GAME: begin
                 // prevent fpga bug
-                if (car1_angle_r == 90 || car1_angle_r == 270)  car1_v_x_w = 0;
-                else                                            car1_v_x_w = car1_v_decomposition_x;
-                if (car1_angle_r == 0 || car1_angle_r == 180 || car1_angle_r == 360) car1_v_y_w = 0;
-                else                                            car1_v_y_w = car1_v_decomposition_y;
-                if (car2_angle_r == 90 || car2_angle_r == 270)  car2_v_x_w = 0;
-                else                                            car2_v_x_w = car2_v_decomposition_x;
-                if (car2_angle_r == 0 || car2_angle_r == 180 || car2_angle_r == 360) car2_v_y_w = 0;
-                else                                            car2_v_y_w = car2_v_decomposition_y;
+                if (car1_angle_r == (90 << game_pkg::ANG_FRACTION_WIDTH) || car1_angle_r == (270 << game_pkg::ANG_FRACTION_WIDTH))  car1_v_x_w = 0;
+                else                                                                                                                car1_v_x_w = car1_v_decomposition_x;
+                if (car1_angle_r == 0 || car1_angle_r == (180 << game_pkg::ANG_FRACTION_WIDTH) || car1_angle_r == (360 << game_pkg::ANG_FRACTION_WIDTH))    car1_v_y_w = 0;
+                else                                                                                                                                        car1_v_y_w = car1_v_decomposition_y;
+
+                if (car2_angle_r == (90 << game_pkg::ANG_FRACTION_WIDTH) || car2_angle_r == (270 << game_pkg::ANG_FRACTION_WIDTH))  car2_v_x_w = 0;
+                else                                                                                                                car2_v_x_w = car2_v_decomposition_x;
+                if (car2_angle_r == 0 || car2_angle_r == (180 << game_pkg::ANG_FRACTION_WIDTH) || car2_angle_r == (360 << game_pkg::ANG_FRACTION_WIDTH))    car2_v_y_w = 0;
+                else                                                                                                                                        car2_v_y_w = car2_v_decomposition_y;
             end
         endcase
     end
@@ -524,8 +555,8 @@ module GameControl (
             car1_x_r <= (game_pkg::CAR1_INIT_X << game_pkg::VELOCITY_FRACTION_WIDTH);
             car1_y_r <= (game_pkg::CAR1_INIT_Y << game_pkg::VELOCITY_FRACTION_WIDTH);
             car1_v_m_r <= 0;
-            car1_angle_r <= game_pkg::CAR_INIT_ANGLE;
-            car1_track_collision_r <= 0;
+            car1_angle_r <= (game_pkg::CAR_INIT_ANGLE << game_pkg::ANG_FRACTION_WIDTH);
+            // car1_track_collision_r <= 0;
             car1_get_qblock_r <= 0;
             car1_mass_level_r <= game_pkg::CAR_INIT_MASS_LEVEL;
             car1_lap_r <= 0;
@@ -537,8 +568,8 @@ module GameControl (
             car2_x_r <= (game_pkg::CAR2_INIT_X << game_pkg::VELOCITY_FRACTION_WIDTH);
             car2_y_r <= (game_pkg::CAR2_INIT_Y << game_pkg::VELOCITY_FRACTION_WIDTH);
             car2_v_m_r <= 0;
-            car2_angle_r <= game_pkg::CAR_INIT_ANGLE;
-            car2_track_collision_r <= 0;
+            car2_angle_r <= (game_pkg::CAR_INIT_ANGLE << game_pkg::ANG_FRACTION_WIDTH);
+            // car2_track_collision_r <= 0;
             car2_get_qblock_r <= 0;
             car2_mass_level_r <= game_pkg::CAR_INIT_MASS_LEVEL;
             car2_lap_r <= 0;
@@ -553,7 +584,7 @@ module GameControl (
             car1_y_r <= car1_y_w;
             car1_v_m_r <= car1_v_m_w;
             car1_angle_r <= car1_angle_w;
-            car1_track_collision_r <= car1_track_collision_w;
+            // car1_track_collision_r <= car1_track_collision_w;
             car1_get_qblock_r <= car1_get_qblock_w;
             car1_mass_level_r <= car1_mass_level_w;
             car1_lap_r <= car1_lap_w;
@@ -566,7 +597,7 @@ module GameControl (
             car2_y_r <= car2_y_w;
             car2_v_m_r <= car2_v_m_w;
             car2_angle_r <= car2_angle_w;
-            car2_track_collision_r <= car2_track_collision_w;
+            // car2_track_collision_r <= car2_track_collision_w;
             car2_get_qblock_r <= car2_get_qblock_w;
             car2_mass_level_r <= car2_mass_level_w;
             car2_lap_r <= car2_lap_w;

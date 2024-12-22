@@ -36,6 +36,7 @@ package game_pkg;
     localparam int CAR_INIT_MASS_LEVEL = 5;
 
     localparam int ANG_WIDTH = 9;
+    localparam int ANG_FRACTION_WIDTH = 1;
 
     localparam int VELOCITY_INTEGER_WIDTH = 4; // 2's complement, MSB is -2^3, LSB is 2^0
     localparam int VELOCITY_FRACTION_WIDTH = 6;
@@ -44,7 +45,7 @@ package game_pkg;
     localparam int ACCELERATION_FRACTION_WIDTH = 6;
 
     // localparam int FRICTION_CONSTANT_RECIPROCAL = 1 - 1/64; // fraction_constant = 64/63
-    localparam int FRICTION_CONSTANT_RECIPROCAL_REMAIN_SHIFT = 6; // minus 1/64, so shift 6 bits to the right
+    localparam int FRICTION_CONSTANT_RECIPROCAL_REMAIN_SHIFT = 7; // minus 1/64, so shift 6 bits to the right
 
     localparam int VELOCITY_OUTPUT_WIDTH = VELOCITY_INTEGER_WIDTH + VELOCITY_FRACTION_WIDTH - 3;
     
