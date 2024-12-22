@@ -12,13 +12,14 @@ module tb;
 
     reg i_clk, i_rst_n;
 
-    reg signed [sram_pkg::MAP_H_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car1_x, i_car2_x;
-    reg signed [sram_pkg::MAP_V_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car1_y, i_car2_y;
+    reg signed [sram_pkg::MAP_H_WIDTH-1:0] i_car1_x, i_car2_x;
+    reg signed [sram_pkg::MAP_V_WIDTH-1:0] i_car1_y, i_car2_y;
 
     reg signed [game_pkg::VELOCITY_INTEGER_WIDTH+game_pkg::VELOCITY_FRACTION_WIDTH-1:0] i_car1_v_x, i_car1_v_y, i_car2_v_x, i_car2_v_y;
 
 
     CarCollision u_CarCollision (
+
         .i_car1_x         (i_car1_x),
         .i_car1_y         (i_car1_y),
         .i_car2_x         (i_car2_x),
@@ -27,10 +28,10 @@ module tb;
         .i_car1_v_y       (i_car1_v_y),
         .i_car2_v_x       (i_car2_v_x),
         .i_car2_v_y       (i_car2_v_y),
-        .i_car1_radius    (20),
-        .i_car2_radius    (20),
+        .i_car1_radius    (25),
+        .i_car2_radius    (25),
         .i_car1_mass      (1),
-        .i_car2_mass      (1)
+        .i_car2_mass      (3)
     );
 
     // Clock generation
@@ -73,14 +74,14 @@ module tb;
         i_rst_n = 1'b0;
         #(`CYCLE*3) i_rst_n = 1'b1; // Release reset after a few cycles
         $display("Simulation start");
-        i_car1_x = -32143;
-        i_car1_y = -18952;
-        i_car2_x = -32000;
-        i_car2_y = -21440;
-        i_car1_v_x = -6;
-        i_car1_v_y = -49;
+        i_car1_x = -30;
+        i_car1_y = 40;
+        i_car2_x = 0;
+        i_car2_y = 0;
+        i_car1_v_x = 0;
+        i_car1_v_y = 0;
         i_car2_v_x = 0;
-        i_car2_v_y = 0;
+        i_car2_v_y = 25;
     end
     
     // Simulation termination

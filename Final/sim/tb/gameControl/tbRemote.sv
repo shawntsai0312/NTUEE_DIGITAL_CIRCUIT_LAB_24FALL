@@ -21,7 +21,7 @@ module tb;
 
     reg i_clk, i_rst_n, i_render_clk;
     reg [2:0] i_car1_acc, i_car2_acc;
-    reg [1:0] i_car1_omega, i_car2_omega;
+    reg [3:0] i_car1_omega, i_car2_omega;
 
 
     GameControl u_GameControl (
@@ -30,9 +30,11 @@ module tb;
         .i_rst_n              (i_rst_n),
         .i_car1_acc           (i_car1_acc),
         .i_car2_acc           (i_car2_acc),
+        .i_car1_brake         (0),
+        .i_car2_brake         (0),
         .i_car1_omega         (i_car1_omega),
         .i_car2_omega         (i_car2_omega),
-        .i_next_state         (1'b1)
+        .i_start              (1'b1)
     );
     
 

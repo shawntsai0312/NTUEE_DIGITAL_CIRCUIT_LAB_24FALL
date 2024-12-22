@@ -1,1 +1,1 @@
-vcs ../../../src/pkg/sramPkg.sv ../../../src/pkg/gamePkg.sv tb.sv ../../../src/gameControl/carCollision.sv -full64 -R -debug_access+all -sverilog -Xrerolloff +access+rw |& tee compile_log.txt
+vcs ../../../src/pkg/sramPkg.sv ../../../src/pkg/gamePkg.sv tb.sv ../../../src/math/sqrt.sv ../../../src/math/rotateXY.sv ../../../src/math/atanLUT.sv  ../../../src/gameControl/carCollision.sv -full64 -R -debug_access+all -sverilog -Xrerolloff +access+rw |& tee compile_log.txt
