@@ -103,7 +103,7 @@ module WheelHandler (
             o_level = -5;
         end
         else if (acc_x < -i_level0_x_bound && acc_y > 0) begin
-            o_level = 7;
+            o_level = -7;
         end
         else if (acc_x > i_level0_x_bound && acc_y <= 0) begin
             o_level = 1;
