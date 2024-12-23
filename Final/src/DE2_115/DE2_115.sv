@@ -260,11 +260,11 @@ module DE2_115 (
 		.o_SPC					 (GPIO[0]),
 		.o_SDI					 (GPIO[2]),
 		.i_SDO					 (GPIO[4]),
-		.i_level0_lower_bound	 (100),
-		.i_level1_lower_bound	 (125),
-		.i_level2_lower_bound	 (150),
-		.i_level3_lower_bound	 (175),
-		.i_level4_lower_bound	 (200),
+		.i_level0_x_bound	 (100),
+		.i_level1_x_bound	 (125),
+		.i_level2_x_bound	 (150),
+		.i_level3_x_bound	 (175),
+		.i_level4_x_bound	 (200),
 		.o_level                 (car1_omega)
 	);
 
