@@ -45,7 +45,7 @@ package game_pkg;
     localparam int ACCELERATION_FRACTION_WIDTH = 6;
 
     // localparam int FRICTION_CONSTANT_RECIPROCAL = 1 - 1/64; // fraction_constant = 64/63
-    localparam int FRICTION_CONSTANT_RECIPROCAL_REMAIN_SHIFT = 7; // minus 1/64, so shift 6 bits to the right
+    localparam int FRICTION_CONSTANT_RECIPROCAL_REMAIN_SHIFT = 6; // minus 1/64, so shift 6 bits to the right
 
     localparam int VELOCITY_OUTPUT_WIDTH = VELOCITY_INTEGER_WIDTH + VELOCITY_FRACTION_WIDTH - 3;
     
@@ -91,7 +91,7 @@ package game_pkg;
     localparam int CAR_INIT_ANGLE = 180;
 
     // localparam int FINISH_LINE_X = -538;
-    localparam int LAP_MAX = 3;
+    localparam int LAP_MAX = 10;
     localparam int SINGLE_DIGIT_WIDTH = 4;
 
     localparam int CAR_COLLISION_SEPARATE_CONST = 0;

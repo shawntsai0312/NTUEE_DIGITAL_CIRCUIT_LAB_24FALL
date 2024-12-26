@@ -1,4 +1,4 @@
-module PeddleHandler (
+module PaddleHandler (
     input i_clk,
     input i_rst_n,
     output o_CS,
@@ -6,23 +6,22 @@ module PeddleHandler (
     output o_SDI,
     input i_SDO,
 
-    input [15:0] i_level0_lower_bound,
-    input [15:0] i_level1_lower_bound,
-    input [15:0] i_level2_lower_bound,
-    input [15:0] i_level3_lower_bound,
-    input [15:0] i_level4_lower_bound,
-    input [15:0] i_level5_lower_bound,
-    input [15:0] i_level6_lower_bound,
-    output [15:0] o_acc_value,
+    input [7:0] i_level0_lower_bound,
+    input [7:0] i_level1_lower_bound,
+    input [7:0] i_level2_lower_bound,
+    input [7:0] i_level3_lower_bound,
+    input [7:0] i_level4_lower_bound,
+    input [7:0] i_level5_lower_bound,
+    input [7:0] i_level6_lower_bound,
+    output [7:0] o_acc_value,
     output reg [2:0] o_level
 );
-    wire signed [15:0] acc;
+    wire signed [7:0] acc;
     assign o_acc_value = acc;
 
     ADXL345_ONE_DIR u_ADXL345 (
         .i_clk      (i_clk),
         .i_rst_n    (i_rst_n),
-        .i_dir      (1),    // y direction
         .o_CS       (o_CS),
         .o_SPC      (o_SPC),
         .o_SDI      (o_SDI),
@@ -62,15 +61,16 @@ module WheelHandler (
     output o_SDI,
     input i_SDO,
 
-    input signed [15:0] i_level0_x_bound,
-    input signed [15:0] i_level1_x_bound,
-    input signed [15:0] i_level2_x_bound,
-    input signed [15:0] i_level3_x_bound,
-    input signed [15:0] i_level4_x_bound,
+    input signed [7:0] i_level0_x_bound,
+    input signed [7:0] i_level1_x_bound,
+    input signed [7:0] i_level2_x_bound,
+    input signed [7:0] i_level3_x_bound,
+    input signed [7:0] i_level4_x_bound,
+    input signed [7:0] i_level5_x_bound,
 
     output reg signed [3:0] o_level
 );
-    wire signed [15:0] acc_x, acc_y;
+    wire signed [7:0] acc_x, acc_y;
     ADXL345_TWO_DIR u_ADXL345 (
         .i_clk      (i_clk),
         .i_rst_n    (i_rst_n),
@@ -84,48 +84,24 @@ module WheelHandler (
 
     always @(*) begin
         o_level = 0;
-        if (acc_x >= -i_level0_x_bound && acc_x <= i_level0_x_bound && acc_y <= 0) begin
-            o_level = 0;
-        end
-        else if (acc_x < -i_level0_x_bound && acc_y <= 0) begin
-            o_level = -1;
-        end
-        else if (acc_x < -i_level1_x_bound && acc_y <= 0) begin
-            o_level = -2;
-        end
-        else if (acc_x < -i_level2_x_bound && acc_y <= 0) begin
-            o_level = -3;
-        end
-        else if (acc_x < -i_level3_x_bound && acc_y <= 0) begin
-            o_level = -4;
-        end
-        else if (acc_x < -i_level4_x_bound && acc_y <= 0) begin
-            o_level = -5;
-        end
-        else if (acc_x < -i_level0_x_bound && acc_y > 0) begin
-            o_level = -7;
-        end
-        else if (acc_x > i_level0_x_bound && acc_y <= 0) begin
-            o_level = 1;
-        end
-        else if (acc_x > i_level1_x_bound && acc_y <= 0) begin
-            o_level = 2;
-        end
-        else if (acc_x > i_level2_x_bound && acc_y <= 0) begin
-            o_level = 3;
-        end
-        else if (acc_x > i_level3_x_bound && acc_y <= 0) begin
-            o_level = 4;
-        end
-        else if (acc_x > i_level4_x_bound && acc_y <= 0) begin
-            o_level = 5;
-        end
-        else if (acc_x > i_level0_x_bound && acc_y > 0) begin
-            o_level = 7;
-        end
-        else begin
-            o_level = 0;
-        end
+
+        if (acc_x >= -i_level0_x_bound && acc_x <= i_level0_x_bound && acc_y <= 0)  o_level = 0;
+
+        if (acc_x >  i_level0_x_bound && acc_x <=  i_level1_x_bound && acc_y <= 0)  o_level = 1;
+        if (acc_x >  i_level1_x_bound && acc_x <=  i_level2_x_bound && acc_y <= 0)  o_level = 2;
+        if (acc_x >  i_level2_x_bound && acc_x <=  i_level3_x_bound && acc_y <= 0)  o_level = 3;
+        if (acc_x >  i_level3_x_bound && acc_x <=  i_level4_x_bound && acc_y <= 0)  o_level = 4;
+        if (acc_x >  i_level4_x_bound && acc_x <=  i_level5_x_bound && acc_y <= 0)  o_level = 5;
+        if (acc_x >  i_level5_x_bound && acc_y <= 0)  o_level = 6;
+        if (acc_x > 0 && acc_y > 0)  o_level = 7;
+
+        if (acc_x < -i_level0_x_bound && acc_x >= -i_level1_x_bound && acc_y <= 0)  o_level = -1;
+        if (acc_x < -i_level1_x_bound && acc_x >= -i_level2_x_bound && acc_y <= 0)  o_level = -2;
+        if (acc_x < -i_level2_x_bound && acc_x >= -i_level3_x_bound && acc_y <= 0)  o_level = -3;
+        if (acc_x < -i_level3_x_bound && acc_x >= -i_level4_x_bound && acc_y <= 0)  o_level = -4;
+        if (acc_x < -i_level4_x_bound && acc_x >= -i_level5_x_bound && acc_y <= 0)  o_level = -5;
+        if (acc_x < -i_level5_x_bound && acc_y <= 0)  o_level = -6;
+        if (acc_x < 0 && acc_y > 0)  o_level = -7;
     end
 
 endmodule

@@ -38,11 +38,11 @@ module GameControl (
     output game_pkg::GameResult o_game_result // 0: idle, 1: car1 win, 2: car2 win
 );
 
-    localparam S_INIT = 3'd0; // for audio init
-    localparam S_IDLE = 3'd1;
-    localparam S_GAME = 3'd2;
-    localparam S_CAR1_WIN = 3'd3;
-    localparam S_CAR2_WIN = 3'd4;
+    localparam S_INIT = 3'd4; // for audio init
+    localparam S_IDLE = 3'd0;
+    localparam S_GAME = 3'd1;
+    localparam S_CAR1_WIN = 3'd2;
+    localparam S_CAR2_WIN = 3'd3;
 
     /*--------------------------------------------------- flip-flop declaration ---------------------------------------------------*/
     // state

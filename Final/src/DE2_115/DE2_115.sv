@@ -146,8 +146,9 @@ module DE2_115 (
 	wire [31:0] timer;
 	assign timer = frame_counter / 60;
 
-	wire rst_n;
+	wire rst_n, rst_n_acc_sensor;
 	assign rst_n = KEY[3];
+	assign rst_n_acc_sensor = KEY[0];
 
 	qsys u_qsys (
 		.altpll_108m_clk                      (clk_108m),
@@ -212,69 +213,150 @@ module DE2_115 (
 
 	wire [2:0] car1_acc, car2_acc;
 	wire [2:0] car1_brake, car2_brake;
-	wire [3:0] car1_omega, car2_omega;
+	wire signed [3:0] car1_omega, car2_omega;
 
-	wire [15:0] car1_acc_value, car2_acc_value;
-	wire [15:0] car1_brake_value, car2_brake_value;
+	wire [2:0] car1_acc_by_ADXL, car2_acc_by_ADXL;
+	wire signed [3:0] car1_omega_by_ADXL, car2_omega_by_ADXL;
 
-	PeddleHandler u_PeddleHandler_car1_acc (
+	wire signed [7:0] car1_acc_value, car2_acc_value;
+	wire signed [7:0] car1_brake_value, car2_brake_value;
+
+	PaddleHandler u_PaddleHandler_car1_acc (
 		.i_clk                   (clk_100k),
-		.i_rst_n                 (rst_n),
-		.o_CS                    (GPIO[16]),
-		.o_SPC                   (GPIO[10]),
-		.o_SDI                   (GPIO[12]),
-		.i_SDO                   (GPIO[14]),
-		.i_level0_lower_bound    (150),
-		.i_level1_lower_bound    (142),
-		.i_level2_lower_bound    (134),
-		.i_level3_lower_bound    (126),
-		.i_level4_lower_bound    (118),
-		.i_level5_lower_bound    (110),
-		.i_level6_lower_bound    (100),
-		.o_acc_value			 (car1_acc_value),
-		.o_level                 (car1_acc)
-	);
-
-	PeddleHandler u_PeddleHandler_car1_brake (
-		.i_clk                   (clk_100k),
-		.i_rst_n                 (rst_n),
+		.i_rst_n                 (rst_n_acc_sensor),
 		.o_CS					 (GPIO[24]),
 		.o_SPC					 (GPIO[18]),
 		.o_SDI					 (GPIO[20]),
-		.i_SDO					 (GPIO[22]), 
-		.i_level0_lower_bound    (160),
-		.i_level1_lower_bound    (130),
-		.i_level2_lower_bound    (115),
-		.i_level3_lower_bound    (108),
-		.i_level4_lower_bound    (104),
-		.i_level5_lower_bound    (102),
-		.i_level6_lower_bound    (100),
-		.o_acc_value			 (car1_brake_value),
-		.o_level                 (car1_brake)
+		.i_SDO					 (GPIO[22]),
+		.i_level0_lower_bound    (45),
+		.i_level1_lower_bound    (42),
+		.i_level2_lower_bound    (39),
+		.i_level3_lower_bound    (36),
+		.i_level4_lower_bound    (33),
+		.i_level5_lower_bound    (30),
+		.i_level6_lower_bound    (27),
+		.o_acc_value			 (car1_acc_value),
+		.o_level                 (car1_acc_by_ADXL)
 	);
+
+	// PaddleHandler u_PaddleHandler_car1_brake (
+	// 	.i_clk                   (clk_100k),
+	// 	.i_rst_n                 (rst_n_acc_sensor),
+	// 	.o_CS                    (GPIO[16]),
+	// 	.o_SPC                   (GPIO[10]),
+	// 	.o_SDI                   (GPIO[12]),
+	// 	.i_SDO                   (GPIO[14]),
+	// 	.i_level0_lower_bound    (160),
+	// 	.i_level1_lower_bound    (130),
+	// 	.i_level2_lower_bound    (115),
+	// 	.i_level3_lower_bound    (108),
+	// 	.i_level4_lower_bound    (104),
+	// 	.i_level5_lower_bound    (102),
+	// 	.i_level6_lower_bound    (100),
+	// 	.o_acc_value			 (car1_brake_value),
+	// 	.o_level                 (car1_brake)
+	// );
 
 	WheelHandler u_WheelHandler_car1_omega (
 		.i_clk                   (clk_100k),
-		.i_rst_n                 (rst_n),
+		.i_rst_n                 (rst_n_acc_sensor),
 		.o_CS					 (GPIO[6]),
 		.o_SPC					 (GPIO[0]),
 		.o_SDI					 (GPIO[2]),
 		.i_SDO					 (GPIO[4]),
-		.i_level0_x_bound	 (100),
-		.i_level1_x_bound	 (125),
-		.i_level2_x_bound	 (150),
-		.i_level3_x_bound	 (175),
-		.i_level4_x_bound	 (200),
-		.o_level                 (car1_omega)
+		.i_level0_x_bound	 	 (30),
+		.i_level1_x_bound	 	 (36),
+		.i_level2_x_bound	 	 (42),
+		.i_level3_x_bound	 	 (48),
+		.i_level4_x_bound	 	 (54),
+		.i_level5_x_bound	 	 (60),
+		.o_level                 (car1_omega_by_ADXL)
 	);
 
-	// assign car1_acc = SW[12:10];
-	// assign car1_brake = SW[15:13];
-	// assign car1_omega = {SW[17],1'b0,SW[16]};
+	PaddleHandler u_PaddleHandler_car2_acc (
+		.i_clk                   (clk_100k),
+		.i_rst_n                 (rst_n_acc_sensor),
+		.o_CS					 (GPIO[25]),
+		.o_SPC					 (GPIO[19]),
+		.o_SDI					 (GPIO[21]),
+		.i_SDO					 (GPIO[23]),
+		// .i_level0_lower_bound    (45),
+		// .i_level1_lower_bound    (42),
+		// .i_level2_lower_bound    (39),
+		// .i_level3_lower_bound    (36),
+		// .i_level4_lower_bound    (33),
+		// .i_level5_lower_bound    (30),
+		// .i_level6_lower_bound    (27),
+		.i_level0_lower_bound    (50),
+		.i_level1_lower_bound    (46),
+		.i_level2_lower_bound    (42),
+		.i_level3_lower_bound    (38),
+		.i_level4_lower_bound    (34),
+		.i_level5_lower_bound    (30),
+		.i_level6_lower_bound    (25),
+		.o_acc_value			 (car2_acc_value),
+		.o_level                 (car2_acc_by_ADXL)
+	);
 
-	assign car2_acc = SW[2:0];
-	assign car2_brake = SW[5:3];
-	assign car2_omega = {SW[7],1'b0,SW[6]};
+	// PaddleHandler u_PaddleHandler_car2_brake (
+	// 	.i_clk                   (clk_100k),
+	// 	.i_rst_n                 (rst_n_acc_sensor),
+	// 	.o_CS                    (GPIO[17]),
+	// 	.o_SPC                   (GPIO[11]),
+	// 	.o_SDI                   (GPIO[13]),
+	// 	.i_SDO                   (GPIO[15]),
+	// 	.i_level0_lower_bound    (190),
+	// 	.i_level1_lower_bound    (160),
+	// 	.i_level2_lower_bound    (145),
+	// 	.i_level3_lower_bound    (130),
+	// 	.i_level4_lower_bound    (115),
+	// 	.i_level5_lower_bound    (105),
+	// 	.i_level6_lower_bound    (100),
+	// 	.o_acc_value			 (car2_brake_value),
+	// 	.o_level                 (car2_brake)
+	// );
+
+	WheelHandler u_WheelHandler_car2_omega (
+		.i_clk                   (clk_100k),
+		.i_rst_n                 (rst_n_acc_sensor),
+		.o_CS					 (GPIO[7]),
+		.o_SPC					 (GPIO[1]),
+		.o_SDI					 (GPIO[3]),
+		.i_SDO					 (GPIO[5]),
+		.i_level0_x_bound	 	 (30),
+		.i_level1_x_bound	 	 (36),
+		.i_level2_x_bound	 	 (42),
+		.i_level3_x_bound	 	 (48),
+		.i_level4_x_bound	 	 (54),
+		.i_level5_x_bound	 	 (60),
+		.o_level                 (car2_omega_by_ADXL)
+	);
+
+	assign car1_acc = SW[17] ? SW[12:10] : car1_acc_by_ADXL;
+	assign car1_brake = 0;
+	assign car1_omega = SW[17] ? SW[16:13] : car1_omega_by_ADXL;
+
+	assign car2_acc = SW[7] ? SW[2:0] : car2_acc_by_ADXL;
+	assign car2_brake = 0;
+	assign car2_omega = SW[7] ? SW[6:3] : car2_omega_by_ADXL;
+
+	StatusDecoder u_StatusDecoder_car1 (
+		.i_omega		(car1_omega_by_ADXL),
+		.i_acc_value	(car1_acc_value),
+		.o_omega_sign	(HEX7),
+		.o_omega_abs	(HEX6),
+		.o_acc_ten		(HEX5),
+		.o_acc_one		(HEX4)
+	);
+
+	StatusDecoder u_StatusDecoder_car2 (
+		.i_omega		(car2_omega_by_ADXL),
+		.i_acc_value	(car2_acc_value),
+		.o_omega_sign	(HEX3),
+		.o_omega_abs	(HEX2),
+		.o_acc_ten		(HEX1),
+		.o_acc_one		(HEX0)
+	);
 
 	wire [2:0] game_state;
 	assign LEDG[0] = (game_state == 0);
@@ -283,11 +365,21 @@ module DE2_115 (
 	assign LEDG[3] = (game_state == 3);
 	assign LEDG[4] = (game_state == 4);
 
+	wire car1_vibrate, car2_vibrate;
+	// assign GPIO[30] = !car1_vibrate;
+	// assign GPIO[31] = !car2_vibrate;
+	assign GPIO[30] = !(car1_acc > 5);
+	assign GPIO[31] = !(car2_acc > 5);
+
+	wire game_start, game_restart;
+	assign game_start = (SW[8] | (GPIO[34] & GPIO[35]));
+	assign game_restart = SW[9];
+
 	Main u_Main (
 		.i_clk              (clk_108m),
 		.i_rst_n            (rst_n),
-		.i_start       		(SW[8]),
-		.i_restart			(SW[9]),
+		.i_start       		(game_start),
+		.i_restart			(game_restart),
 		.i_I2C_clk          (clk_100k),
 		.o_I2C_sclk         (I2C_SCLK),
 		.io_I2C_sdat        (I2C_SDAT),
@@ -300,6 +392,8 @@ module DE2_115 (
         .i_car2_brake       (car2_brake),
 		.i_car1_omega	    (car1_omega),
 		.i_car2_omega	    (car2_omega),
+		.o_car1_vibrate     (car1_vibrate),
+		.o_car2_vibrate     (car2_vibrate),
 		.o_game_state		(game_state),
 		.o_car1_v_m         (car1_v_m),
 		.o_car2_v_m         (car2_v_m),
@@ -310,22 +404,6 @@ module DE2_115 (
 		.o_V_sync           (VGA_VS),
 		.o_RGB              ({VGA_R, VGA_G, VGA_B}),
 		.o_frame_counter	(frame_counter)
-	);
-
-	SignedValueDecoder car1_value (
-		.i_value			(car1_brake_value),
-		.o_seven_sign		(HEX7),
-		.o_seven_hundred	(HEX6),
-		.o_seven_ten		(HEX5),
-		.o_seven_one		(HEX4)
-	);
-
-	SignedValueDecoder car2_value (
-		.i_value			(car1_acc_value),
-		.o_seven_sign		(HEX3),
-		.o_seven_hundred	(HEX2),
-		.o_seven_ten		(HEX1),
-		.o_seven_one		(HEX0)
 	);
 
 	// comment those are use for display
