@@ -2,9 +2,15 @@
 
 ##### author: B10901176 蔡弘祥, B10901163 張顥譽, B1090179 鄭承瑞
 
+## Important Links
+
+  - [Quartus Project](https://drive.google.com/drive/folders/1OktEoPV2jMeLqUy1SiT1-zwpx0gXxLmx?usp=sharing)
+  - [Tutorial Playlist](https://www.youtube.com/playlist?list=PLP9ciln8xBIb9-tJLALe52f9hO5jF7NEm)
+
 ## Lab 1 亂數產生器
 
  - [Problem](./Lab1/doc/Lab1_lecture.pdf)
+ - [Report](./Lab1/doc/team04_lab1_report.pdf)
  - [Tutorial Doc](./Lab1/README.md)
  - [Tutorial Video](https://youtu.be/d8w0doN23KI)
  - [Demo Video](https://youtube.com/shorts/18ylWNKHyas?feature=share)
@@ -24,6 +30,7 @@
 ## Lab 2 RSA256 解密機
 
  - [Problem](./Lab2/doc/Lab2_lecture.pdf)
+ - [Report](./Lab2/doc/team04_lab2_report.pdf)
  - [Tutorial Doc](./Lab2/README.md)
  - [Tutorial Video](https://youtu.be/MsHFpBeLLhE)
  - [Demo Video](https://youtube.com/shorts/qKg8rVshnjM?feature=share)
@@ -36,6 +43,7 @@
 ## Lab 3 數位錄音機
 
  - [Problem](./Lab3/doc/Lab3_lecture.pdf)
+ - [Report](./Lab3/doc/team04_lab3_report.pdf)
  - [Tutorial Doc](./Lab3/README.md)
  - [Tutorial Video 1](https://youtu.be/lxQ1CqLxdgA)
  - [Tutorial Video 2](https://youtu.be/XZyHApFdQvU)
@@ -52,6 +60,21 @@
 
 - Bonus
   1. 可將錄音/播放時間顯示在七段顯示器上
+
+## Final P2P賽車遊戲
+
+ - [Report](./Final/doc/team04_final_report.pdf)
+ - [Presentation Slide](./Final/doc/team04_final_presentation.pdf)
+ - [Intro Doc](./Final/README.md)
+ - [Demo Video](https://youtu.be/5cRheklZcRc)
+
+### Features
+
+  1. 2-Player Competition
+  2. Wheels and paddles as control
+  3. Vibration feedback
+  4. Different friction constants for different tracks
+  5. 2D elastic collision
 
 ## Some Github Commands
 
