@@ -106,7 +106,7 @@
 │   │       └── tbRemote.sv
 │   └── tool.sh
 └── src
-    ├── AccHandler
+    ├── accHandler
     │   ├── ADXL345_SPI.sv
     │   └── accHandler.sv
     ├── DE2_115
@@ -192,6 +192,10 @@
    ![Control Panel](doc/controlPanel.png)
 2. Set the GPIO pins in `src/DE2_115/DE2_115.sv` (cmd+f/ctrl+f to search all GPIO pins)
 3. Compile the project and load the `.sof`
+
+### How To Build Wheels and Paddles
+
+* Both of the design files are designed in Fusion360. Implement with laser-cutting machine
 
 ### Before Simulation
 
