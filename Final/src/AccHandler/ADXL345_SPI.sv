@@ -7,7 +7,8 @@ module ADXL345_ONE_DIR (
     input i_SDO, 
     output [7:0] o_av
 );
-
+    // only read the y-axis
+    
     reg CS, SPC, SDI;
     reg [1:0] state, state_nxt;
     reg [6:0] counter, counter_nxt;
