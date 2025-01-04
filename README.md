@@ -2,12 +2,42 @@
 
 ##### author: B10901176 蔡弘祥, B10901163 張顥譽, B1090179 鄭承瑞
 
-## Important Links
+## Links
+
+### Important Links
 
  - [Quartus Project](https://drive.google.com/drive/folders/1OktEoPV2jMeLqUy1SiT1-zwpx0gXxLmx?usp=sharing)
  - [Tutorial Playlist](https://www.youtube.com/playlist?list=PLP9ciln8xBIb9-tJLALe52f9hO5jF7NEm)
- - [Lab 3 Documentary](https://youtu.be/LfaZXk93TVM?si=xt3CV7MuYrcmKlDo)
- - [Final Documentary](https://youtu.be/1tR94tOqX50?si=pVh7EZTTQjXuG8Md)
+  
+### Documentary Links
+
+ - [Lab 3](https://youtu.be/LfaZXk93TVM?si=xt3CV7MuYrcmKlDo)
+ - [Final](https://youtu.be/1tR94tOqX50?si=pVh7EZTTQjXuG8Md)
+  
+### DCLAB Official Links
+
+ - [Official Youtube Channel](https://www.youtube.com/@dclabntuee8993)
+ - [Verilog Materials](https://github.com/Terminatorjjjjj/NTUEE-DCLAB-Materials.git)
+
+### Other DCLAB Repo Links
+
+| Year | Semester | Author      | Project                      | Link                                                                                         |
+|------|----------|-------------|------------------------------|----------------------------------------------------------------------------------------------|
+| 2017 | Spring   | victoresque | Lab 1, Lab 2, Lab 3          | [GitHub](https://github.com/victoresque/DCLab.git)                                           |
+| 2017 | Spring   | victoresque | Final                        | [GitHub](https://github.com/victoresque/FPGA-Renderer.git)                                   |
+| 2017 | Fall     | kevin71104  | All                          | [GitHub](https://github.com/kevin71104/DCLab.git)                                            |
+| 2020 | Fall     | ChienKaiMa  | All                          | [GitHub](https://github.com/ChienKaiMa/2020Fall-NTUEE-DCLAB.git)                             |
+| 2020 | Fall     | ChienKaiMa  | Final                        | [GitHub](https://github.com/ChienKaiMa/HDR-Imaging-with-FPGA.git)                            |
+| 2021 | Fall     | DCLAB08     | Final                        | [GitHub](https://github.com/DCLAB08/Real-Time-Image-Video-Dehazing.git)                      |
+| 2021 | Fall     | ray0426     | Final                        | [GitHub](https://github.com/ray0426/Pac-Man.git)                                             |
+| 2023 | Fall     | Ryan Chu    | Final                        | [Google Drive](https://drive.google.com/file/d/1QJ_y93y4-3qb3C534n-g0cIdbn02ZxVt/view?usp=drive_link) |
+| 2024 | Spring   | dereklin1205| All                          | [GitHub](https://github.com/dereklin1205/NTUEE_DCLAB.git)                                    |
+| 2024 | Fall     | gary920209  | Lab 1, Lab 2, Lab 3          | [GitHub](https://github.com/gary920209/Digital_Design_Lab.git)                               |
+| 2024 | Fall     | gary920209  | Final                        | [GitHub](https://github.com/gary920209/music_interactive_games.git)                          |
+
+### Other Links
+
+ - [FPGA Games](https://github.com/douggilliland/FPGA_Games.git)
 
 ## Lab 1 亂數產生器
 
@@ -79,19 +109,6 @@
   3. Vibration feedback
   4. Different friction constants for different tracks
   5. 2D elastic collision
-
-## Other DCLAB Links/Repo
-
- - [Official Youtube Channel](https://www.youtube.com/@dclabntuee8993)
- - [Materials](https://github.com/Terminatorjjjjj/NTUEE-DCLAB-Materials.git)
- - [2017 Spring, victoresque, Lab 1, Lab 2, Lab 3](https://github.com/victoresque/DCLab.git)
- - [2017 Spring, victoresque, Final](https://github.com/victoresque/FPGA-Renderer.git)
- - [2020 Fall, ChienKaiMa, All](https://github.com/ChienKaiMa/2020Fall-NTUEE-DCLAB.git)
- - [2020 Fall, ChienKaiMa, Final](https://github.com/ChienKaiMa/HDR-Imaging-with-FPGA.git)
- - [2021 Fall, DCLAB08, Final](https://github.com/DCLAB08/Real-Time-Image-Video-Dehazing.git)
- - [2024 Spring, dereklin1205, All](https://github.com/dereklin1205/NTUEE_DCLAB.git)
- - [2024 Fall, gary920209, Lab 1, Lab 2, Lab 3](https://github.com/gary920209/Digital_Design_Lab.git)
- - [2024 Fall, gary920209, Final](https://github.com/gary920209/music_interactive_games.git)
 
 ## Some Github Commands
 
