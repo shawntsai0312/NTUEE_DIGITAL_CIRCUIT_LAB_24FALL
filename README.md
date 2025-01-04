@@ -4,8 +4,10 @@
 
 ## Important Links
 
-  - [Quartus Project](https://drive.google.com/drive/folders/1OktEoPV2jMeLqUy1SiT1-zwpx0gXxLmx?usp=sharing)
-  - [Tutorial Playlist](https://www.youtube.com/playlist?list=PLP9ciln8xBIb9-tJLALe52f9hO5jF7NEm)
+ - [Quartus Project](https://drive.google.com/drive/folders/1OktEoPV2jMeLqUy1SiT1-zwpx0gXxLmx?usp=sharing)
+ - [Tutorial Playlist](https://www.youtube.com/playlist?list=PLP9ciln8xBIb9-tJLALe52f9hO5jF7NEm)
+ - [Lab 3 Documentary](https://youtu.be/LfaZXk93TVM?si=xt3CV7MuYrcmKlDo)
+ - [Final Documentary](https://youtu.be/1tR94tOqX50?si=pVh7EZTTQjXuG8Md)
 
 ## Lab 1 亂數產生器
 
@@ -48,6 +50,7 @@
  - [Tutorial Video 1](https://youtu.be/lxQ1CqLxdgA)
  - [Tutorial Video 2](https://youtu.be/XZyHApFdQvU)
  - [Demo Video](https://youtube.com/shorts/vMJCUgTGA44?feature=share)
+ - [Documentary](https://youtu.be/LfaZXk93TVM?si=xt3CV7MuYrcmKlDo)
 
 ### Functions
 
@@ -67,6 +70,7 @@
  - [Presentation Slide](./Final/doc/team04_final_presentation.pdf)
  - [Intro Doc](./Final/README.md)
  - [Demo Video](https://youtu.be/5cRheklZcRc)
+ - [Documentary](https://youtu.be/1tR94tOqX50?si=pVh7EZTTQjXuG8Md)
 
 ### Features
 
@@ -75,6 +79,19 @@
   3. Vibration feedback
   4. Different friction constants for different tracks
   5. 2D elastic collision
+
+## Other DCLAB Links/Repo
+
+ - [Official Youtube Channel](https://www.youtube.com/@dclabntuee8993)
+ - [Materials](https://github.com/Terminatorjjjjj/NTUEE-DCLAB-Materials.git)
+ - [2017 Spring, victoresque, Lab 1, Lab 2, Lab 3](https://github.com/victoresque/DCLab.git)
+ - [2017 Spring, victoresque, Final](https://github.com/victoresque/FPGA-Renderer.git)
+ - [2020 Fall, ChienKaiMa, All](https://github.com/ChienKaiMa/2020Fall-NTUEE-DCLAB.git)
+ - [2020 Fall, ChienKaiMa, Final](https://github.com/ChienKaiMa/HDR-Imaging-with-FPGA.git)
+ - [2021 Fall, DCLAB08, Final](https://github.com/DCLAB08/Real-Time-Image-Video-Dehazing.git)
+ - [2024 Spring, dereklin1205, All](https://github.com/dereklin1205/NTUEE_DCLAB.git)
+ - [2024 Fall, gary920209, Lab 1, Lab 2, Lab 3](https://github.com/gary920209/Digital_Design_Lab.git)
+ - [2024 Fall, gary920209, Final](https://github.com/gary920209/music_interactive_games.git)
 
 ## Some Github Commands
 

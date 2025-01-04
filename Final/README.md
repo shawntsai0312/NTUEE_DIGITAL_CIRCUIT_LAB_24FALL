@@ -183,11 +183,8 @@
 
 ### How To Run on DE2-115 with QuartusII
 
- - [Report](./doc/team04_final_report.pdf)
- - [Presentation Slide](./doc/team04_final_presentation.pdf)
- - [Intro Doc](./README.md)
  - [Demo Video](https://youtu.be/5cRheklZcRc)
-
+  
 1. Open DE2-115 Control Panel (download it on the web) and write in `bin/combinedLUT.bin`
    ![Control Panel](doc/controlPanel.png)
 2. Set the GPIO pins in `src/DE2_115/DE2_115.sv` (cmd+f/ctrl+f to search all GPIO pins)
