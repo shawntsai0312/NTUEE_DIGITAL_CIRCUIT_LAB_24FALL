@@ -9,14 +9,17 @@
  - [Quartus Project](https://drive.google.com/drive/folders/1OktEoPV2jMeLqUy1SiT1-zwpx0gXxLmx?usp=sharing)
  - [Tutorial Playlist](https://www.youtube.com/playlist?list=PLP9ciln8xBIb9-tJLALe52f9hO5jF7NEm)
   
-### Documentary Links
+### Video Links
 
  - [Lab 3](https://youtu.be/LfaZXk93TVM?si=xt3CV7MuYrcmKlDo)
  - [Final](https://youtu.be/1tR94tOqX50?si=pVh7EZTTQjXuG8Md)
-  
+ - [Our Presentation Video](https://youtu.be/OwmA2eghf5o?si=G6pYxRW7M8cx9a35)
+ - [Our Demo Video](https://youtu.be/X_OLTKEBgTw?si=fdE8sxL5pbc62rOw)
+
 ### DCLAB Official Links
 
  - [Official Youtube Channel](https://www.youtube.com/@dclabntuee8993)
+ - [113-1 Presentation and Demo Playlist](https://youtube.com/playlist?list=PLjqvDMiqDL6Ki06k8v3-GK8ipcqom1hJH&si=dq6rd8fkag4ajfMh)
  - [Verilog Materials](https://github.com/Terminatorjjjjj/NTUEE-DCLAB-Materials.git)
 
 ### Other DCLAB Repo Links
