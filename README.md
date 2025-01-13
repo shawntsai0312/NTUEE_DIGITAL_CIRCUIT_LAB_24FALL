@@ -11,8 +11,9 @@
   
 ### Video Links
 
- - [Lab 3](https://youtu.be/LfaZXk93TVM?si=xt3CV7MuYrcmKlDo)
- - [Final](https://youtu.be/1tR94tOqX50?si=pVh7EZTTQjXuG8Md)
+ - [Lab 3 Documentary](https://youtu.be/LfaZXk93TVM?si=xt3CV7MuYrcmKlDo)
+ - [Final Documentary](https://youtu.be/1tR94tOqX50?si=pVh7EZTTQjXuG8Md)
+ - [Final by Other Groups](https://youtu.be/RhPzl2LPbVI?si=q1EIlNYF92LYrn2b)
  - [Our Presentation Video](https://youtu.be/OwmA2eghf5o?si=G6pYxRW7M8cx9a35)
  - [Our Demo Video](https://youtu.be/X_OLTKEBgTw?si=fdE8sxL5pbc62rOw)
 
